@@ -1,0 +1,15 @@
+.post h1, .post h2 {
+  border-bottom: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
+  font-family: 'ZCOOL XiaoWei';
+}
+
+.post HR {
+  height: 4px;
+  background-image: repeating-linear-gradient(-45deg, rgb(43, 47, 49), rgb(43, 47, 49) 4px, rgba(0, 0, 0, 0) 4px, rgba(0, 0, 0, 0) 8px);
+  border-style: none;
+  opacity: 0.4;
+}

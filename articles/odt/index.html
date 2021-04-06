@@ -1,0 +1,209 @@
+ 
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 20px;"> 
+
+DPairの非自制blog
+
+  </p>
+  <div class="saying" id="saying"> </div>
+</div>
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <HR align="center">
+      <div style="margin: 2 auto; width: min-content">
+          <img class="avatar" alt="DPair" src="/images/avatar.png">
+        </div>
+    <ul class="sidebar-links">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/66511" class="friend-link"> 
+      luogu 
+    </a>
+  </li>
+
+    </ul>
+  </div>
+
+  <ul class="sidebar-links">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/140572" class="friend-link"> 
+      DSair
+    </a>
+  </li>
+
+  </ul>
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+
+      <h1 id="%E6%B5%85%E8%B0%88%E7%8F%82%E6%9C%B5%E8%8E%89%E6%A0%91">浅谈珂朵莉树</h1>
+<p><del>又是一个不想写题的下午，所以来整点活.jpg</del></p>
+<p>什么，你问我为什么现在突然想起来要写这个东西？</p>
+<p>你猜</p>
+<h2 id="-1-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86">-1 前置知识</h2>
+<ul>
+<li><p><code>std :: set</code> 的基础使用（当然不知道也没什么太大关系）</p>
+</li>
+<li><p>一定的对于时间复杂度的理解</p>
+</li>
+<li><p>一定的左闭右开思想</p>
+</li>
+<li><p><del>末日三问的番（（</del></p>
+</li>
+</ul>
+<h2 id="0-%E7%8F%82%E6%9C%B5%E8%8E%89%E6%A0%91">0 珂朵莉树</h2>
+<h3 id="0-0-%E7%AE%80%E4%BB%8B">0-0 简介</h3>
+<p>没错标题是骗你进来的，珂朵莉树我们就简单提一提。</p>
+<p>珂朵莉树（又称 “老司机树” 即 ODT ）可以用来处理一些区间推平或类似的问题。</p>
+<p>具体来说，我们不难发现一个序列可以用 <strong>某种方式</strong> 被分为多个 <strong>连续段</strong> （甚至是 $n$ 个），然后我们用 <code>std :: set</code> 来维护 <strong>连续段</strong>，然后用 <code>std :: set</code> 的一些方便的操作来实现一些暴力。</p>
+<p>然后经过一些奇怪的推导会发现对于某一些题目来说，用暴力的复杂度是对的。</p>
+<p>这就是珂朵莉树的意义所在。</p>
+<p>下面我们来讲一讲珂朵莉树的实现：</p>
+<p>具体来说我们需要 <strong>一个结构体，两个函数（事实上是一个）</strong>。</p>
+<h3 id="0-1-%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89">0-1 结构体定义</h3>
+<p>个人喜欢以 <code>NODE</code> 为结构体名称</p>
+<p>一般的珂朵莉树需要这样子的结构体：</p>
+<pre><code class="lang-cpp">struct NODE{
+    int l, r, val;
+    NODE(int l, int r, int val) : l(l), r(r), val(val){}
+    inline bool operator &lt; (const NODE &amp;tmp) const{return l &lt; tmp.l;}
+};
+set &lt;NODE&gt; ODT;
+</code></pre>
+<p>我们已经说过，珂朵莉树是一种用来维护 <strong>连续段</strong> 的数据结构，所以我们需要 $[l, r]$ 来表示一个连续段，一个连续段当中显然有一些东西是我们可以只用一个数表示的，所以再加上一个权值 <code>val</code> 。</p>
+<p>由于要放到 <code>std :: set</code> 里面我们再加一个重载运算符。</p>
+<h3 id="0-2-%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0">0-2 函数实现</h3>
+<p>珂朵莉树的核心函数个人认为是这个 <code>split()</code> 即分裂函数，它可以把一个连续段分成两个。</p>
+<p>其意义在于，当我们要对 $[l, r]$ 进行操作时，两边的连续段不一定完整，此时我们就把两边的连续段给分裂出来就变完整了。</p>
+<p>比如 $[1, 3], [4, 6]$ 是两个连续段，我们要操作 $[2, 5]$ ，我们就先分裂出来 $[1, 1], [2, 3], [4, 5], [6, 6]$ ，然后就可以只对完整的连续段进行操作了。</p>
+<p>可以顺便返回一下分裂出来的连续段的迭代器。</p>
+<p>它是这么实现的：（<code>emplace</code> 和 <code>insert</code> 基本相同，可以直接视为 <code>insert</code>）</p>
+<p>//update：而且用 <code>emplace()</code> 似乎不用构造函数，不过似乎要 C++11 以上？（感谢 @<em>Wallace</em>）</p>
+<pre><code class="lang-cpp">inline IT split(int x){
+    IT it = t.lower_bound(NODE(x, 0, 0));
+    if(it != t.end() &amp;&amp; it -&gt; l == x) return it;//特判连续段已经完整的情况
+    -- it;int val = it -&gt; x, l = it -&gt; l, r = it -&gt; r;
+    t.erase(it);t.emplace(l, x - 1, val);//删除原连续段然后插入新连续段
+    return t.emplace(x, r, val).first;//返回新节点的迭代器
+}
+</code></pre>
+<p>扔一个 <code>insert</code> 版本：</p>
+<pre><code class="lang-cpp">inline IT split(int x){
+    IT it = t.lower_bound(NODE(x, 0, 0));
+    if(it != t.end() &amp;&amp; it -&gt; l == x) return it;//特判连续段已经完整的情况
+    -- it;int val = it -&gt; x, l = it -&gt; l, r = it -&gt; r;
+    t.erase(it);t.insert(NODE(l, x - 1, val));//删除原连续段然后插入新连续段
+    return t.insert(NODE(x, r, val)).first;//返回新节点的迭代器
+}
+</code></pre>
+<p>我们也说过，珂朵莉树一般用来处理区间推平或类似的问题，下面以推平为例：</p>
+<pre><code class="lang-cpp">inline void assign(int l, int r, int x){
+    IT R = split(r + 1), L = split(l);
+    t.erase(L, R);t.emplace(l, r, x);
+}
+</code></pre>
+<p>是不是十分简单？</p>
+<h3 id="0-3-%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0">0-3 其他函数</h3>
+<p>当然一个数据结构不可能只有推平，我们可能还需要干一些其他东西。</p>
+<p>这里以区间求 <code>max</code> 为例，显然我们遍历连续段就行了。</p>
+<pre><code class="lang-cpp">inline int query(int l, int r){
+    int ret = -0x3f3f3f3f;
+    IT R = split(r + 1), L = split(l);
+    for (IT i = L;i != R;++ i) ret = max(ret, it -&gt; val);
+    return ret;
+}
+</code></pre>
+<p>当然修改或者其他查询也可以用类似的方式，只不过可能需要用上一些叫 <code>mutable</code> 的奇怪东西，这不是本文的重点故不多赘述。</p>
+<p>可见珂朵莉树实现十分简单。</p>
+<h3 id="0-4-%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8">0-4 简单应用</h3>
+<p>有一些数据随机的题目用珂朵莉树直接做复杂度是对的。</p>
+<p>这不是本文的重点故不多赘述，下面给大家先推荐一道经典题目，建议看完之后再继续往下读。</p>
+<p><a href="https://www.luogu.com.cn/problem/CF896C">CF896C Willem, Chtholly and Seniorious</a></p>
+<p>用珂朵莉树直接实现即可，代码不放了，反正这道题题解里面也有很详细的实现。</p>
+<h2 id="1-%E5%BA%94%E7%94%A8">1 应用</h2>
+<p><del>重点开始</del></p>
+<p>然而这东西是不是一副暴力的样子。</p>
+<p><del>没错它就是暴力</del></p>
+<p>但是有些时候，在我们对复杂度一番分析之后，会惊奇的发现用珂朵莉树维护一些东西不仅复杂度正确而且十分方便。</p>
+<p>下面举一些例子：</p>
+<h3 id="%E4%BE%8B1%EF%BC%9A-p4690-ynoi2016-%E9%95%9C%E4%B8%AD%E7%9A%84%E6%98%86%E8%99%AB-https-www-luogu-com-cn-problem-p4690">例1： <a href="https://www.luogu.com.cn/problem/P4690">P4690 [Ynoi2016] 镜中的昆虫</a></h3>
+<h4 id="%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86">前置知识</h4>
+<p>CDQ 分治二维数点。</p>
+<h4 id="%E7%AE%80%E8%A6%81%E9%A2%98%E6%84%8F">简要题意</h4>
+<p>区间推平区间数颜色</p>
+<h4 id="%E9%A2%98%E8%A7%A3">题解</h4>
+<p>首先我们考虑单点修改区间数颜色怎么做。</p>
+<p><del>不要跟我说什么带修莫队。</del></p>
+<p>有一个十分<del>金典</del>经典的套路是记录每一个元素本身以及它的同色前驱的位置，转化为一个二维数点，前驱不在区间内且本身在区间内的点可以产生 $1$ 的贡献，这个用 CDQ分治然后差分一下什么的就行了（没想到吧这是我第一次用CDQ分治二维数点）。</p>
+<p>考虑单点修改，我们修改这个位置的前驱，前驱的后继，后继的前驱就行了，然后可以通过加一维时间以及负权点来实现修改。</p>
+<p><del>突然感觉 CDQ 有点强大的啊。</del></p>
+<p>然后我们考虑区间修改。</p>
+<p>区间推平？我会暴力珂朵莉树！</p>
+<p>如果你是暴力数颜色的话，你就只能拿 $10\text{pts}$ 。 </p>
+<p>我们考虑把两种方法结合起来。</p>
+<p>这时候有人要问了，这样子的话修改的点数难道不是 $O(nm)$ 的吗？</p>
+<p>考虑对于一次推平，我们在珂朵莉树上的操作是删除一堆同色区间然后插入一个大同色区间，不难发现一个同色中只有 $l$ 节点的位置的前驱不是它本身的“位置 - 1”。</p>
+<p>于是我们删除的这些小区间中，我们只需要修改每一个小区间的 $l$ 节点即可！</p>
+<p>显然我们每修改一个 $l$ ，小区间就减少一个，而且由于一个小区间同色，需要修改的“前驱的后继”和“后继的前驱”也都只有一个，而且事实上这里同样用 <code>std :: set</code> 维护的话对于每一种颜色可以方便地求出后继，也就是说直接修改后继就行了。</p>
+<p>所以每一个区间产生的贡献是 $O(1)$ 的，于是暴力修改的点数变化量是 $O(n+m)$ 。</p>
+<p>那么就转化成了若干单点修改和矩形查询，CDQ分治二维数点即可。</p>
+<p>本题 $n, m$ 同阶，所以最终复杂度 $O(n\log^2 n)$ 。</p>
+
+      
+
+    </div>
+
+  </div>
+</body>
