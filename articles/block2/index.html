@@ -1,0 +1,244 @@
+ 
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 20px;"> 
+
+DPair の 非自制 blog
+
+  </p>
+  <div class="saying" id="saying"> </div>
+</div>
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <HR align="center">
+      <div style="margin: 2 auto; width: min-content">
+          <img class="avatar" alt="DPair" src="/images/avatar.png">
+        </div>
+    <ul class="sidebar-links">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/66511" class="friend-link"> 
+      luogu home page 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://gitee.com/DPair" class="friend-link"> 
+      gitee 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link"> 
+      github 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="mailto:DPair2005@163.com" class="friend-link"> 
+      mail 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://dev.xjoi.net/user/profile/DPair__" class="friend-link"> 
+      XJOI 
+    </a>
+  </li>
+
+    </ul>
+  </div>
+
+  <ul class="sidebar-links">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/140572" class="friend-link"> 
+      DSair
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link"> 
+      Jacderzhang's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.gitee.io/" class="friend-link"> 
+      xYix's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Flying2018/" class="friend-link"> 
+      Flying2018's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/-Wallace-/" class="friend-link"> 
+      _Wallace_'s blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Point-King/" class="friend-link"> 
+      Point_King's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/c2522943959/" class="friend-link"> 
+      OIerwanglong's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://endless1936.blog.luogu.org/" class="friend-link"> 
+      Krimson's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/daniu/" class="friend-link"> 
+      Leap_Frog's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://programming.blog.luogu.org/" class="friend-link"> 
+      serverkiller's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/wlzhouzhuan/" class="friend-link"> 
+      wlzhouzhuan(win)'s blog
+    </a>
+  </li>
+
+  </ul>
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+
+      <h1 id="%E5%85%B3%E4%BA%8E%E5%88%86%E5%9D%97-%E3%81%AE-%E5%A5%87%E6%80%AA%E4%BC%98%E5%8C%96">关于分块 の 奇怪优化</h1>
+<h2 id="0-%E5%89%8D%E8%A8%80">0 前言</h2>
+<p>看标签你会知道，这是一篇 “探究笔记”。</p>
+<p>所以现在它并不完整，甚至可能是空的，但是会持续更新。</p>
+<p>我觉得我现在在搞的这个东西可能已经在 OI 界出现了，但是请知道的人不要声张，我想自己试试。</p>
+<p>里面可能会出现大量十分 naive 的话，但这些都是自己探究时的思路，请大佬们轻喷。</p>
+<p>本博客的目的是 <strong>骗分+实用</strong> ，所以有时可能会牺牲效率换取实现的方便，勿喷。</p>
+<h2 id="1-%E8%B5%B7%E5%9B%A0">1 起因</h2>
+<p>事情是这么开始的：</p>
+<p><strong>NOI online 2021 提高级</strong> 的赛时，菜鸡 DPair 由于不会 T3 ，写了个分块，然后发现会被 $[1, n]$ 的数据卡掉，而且瓶颈在于 <strong>散块</strong> 。</p>
+<p>于是 DPair 写了个奇怪的分块，具体来说，就是第一块和最后一块长度是 $300$ 而中间其他块块长正常。</p>
+<p>实测跑 $[1, n]$ 的数据效率极高，并且在不开 $\text{O2}$ 的情况下多跑了 $\text{45pts}$ 。</p>
+<p>这使得 DPair 想到一个非常显然的事情，是不是每个块块长不同，会使得程序变快呢？</p>
+<p>当然被出题人定向卡</p>
+<h2 id="2-%E5%88%9D%E6%AD%A5%E5%B0%9D%E8%AF%95">2 初步尝试</h2>
+<p>首先，一个比较 naive 的想法是，越两边的块块长要越小，越中间的块块长越大。</p>
+<p>一个原因是，越两边的块作为散块被扫到时，中间的整块一定会更多，所以作为散块，常数越小越好。</p>
+<p>另一个原因是比较懒的出题人（<del>如€€£</del>）一般会出 $[1, n]$ 或最多加一点扰动的数据来卡一些算法，所以这样可以大大减小散块常数。</p>
+<p>实测洛谷上就快了很多不是吗？</p>
+<p>然而这东西可能拿来骗骗分是可以的，实际上，这东西连随机数据都不一定跑得过去（（</p>
+<p>所以初步尝试宣告失败，<del>但这并不能阻止我对分块的热情</del></p>
+<h2 id="3-%E5%B0%9D%E8%AF%95%E4%BC%98%E5%8C%96">3 尝试优化</h2>
+<p>我们意识到，分块的意义主要在于 <strong>合并操作</strong> ，所以才出现了 <strong>“块”</strong> 这种东西，那么，要是我们能够尽可能多的 <strong>散块操作</strong> 合并，不就最大化优化效果了吗？</p>
+<p>我现在有一个十分奇怪的想法，就是在分块前先把所有操作离线下来，然后直接考虑每个块被作为散块查询几次，然后查询次数比较多的块直接暴力从中间劈开。</p>
+<p>事实上确实有快一些，但是并不会有本质上的飞跃，目前也就卡常的时候可以试试。</p>
+<p>而且局限性很大，只能对于能离线的题目优化。</p>
+<p>目前的实现：</p>
+<pre><code class="lang-cpp">int _edit[MAXN];//作为散块出现的次数
+int siz[MAXN];
+inline void init2(){
+    int id = 0, n_ = bel[n];
+    rep(i, 1, n_){
+        if(_edit[i] &gt;= lim1){
+            siz[++ id] = block &gt;&gt; 2;
+            siz[++ id] = block &gt;&gt; 2;
+            siz[++ id] = block &gt;&gt; 2;
+            siz[++ id] = block &gt;&gt; 2;
+        }
+        elif(_edit[i] &gt;= lim2){
+            siz[++ id] = block &gt;&gt; 1;
+            siz[++ id] = block &gt;&gt; 1;
+        }
+        else siz[++ id] = block;
+    }
+    int _it = 1;
+    rep(i, 1, id){
+        lst[i] = _it + siz[i] - 1;
+        if(lst[i] &gt;= n){
+            lst[i] = n;
+            rep(j, _it, n) bel[j] = i;
+            break;
+        }
+        rep(j, _it, _it + siz[i] - 1) bel[j] = i;
+        _it += siz[i];
+    }
+}
+</code></pre>
+<h2 id="4-%E5%BC%80%E5%A7%8B%E5%8F%A3%E8%83%A1">4 开始口胡</h2>
+<p>在碰不到电脑的这段时间里口胡了一些奇怪的东西，<strong>一个都没有实现过</strong>，所以还在尝试。</p>
+<ol>
+<li>二分块长，然后预测运行效率，最后根据最优块长求解。</li>
+</ol>
+<p>缺点：这个东西不一定单调或者单峰吧（（</p>
+<p>改进：后来考虑在一段区间内选块长，然后用类似方法运算。</p>
+<p>但是这样各块块长还是相同的（（</p>
+<ol>
+<li>不难发现我们分块的目的是合并多个操作，所以我们考虑对于一组操作如果多次出现就把它并为一组，然后用整块的方式处理。</li>
+</ol>
+<p>缺点：常数大，不一定有优化效果，而且实现困难</p>
+<h2 id="5-%E6%94%BE%E5%BC%83">5 放弃</h2>
+<p>这东西似乎没什么用，所以放弃了（（</p>
+<p>博客留作纪念</p>
+
+      
+
+    </div>
+
+  </div>
+</body>

@@ -25,7 +25,7 @@
       <div class="sidebar-title">
   <p style="font-weight: bold; font-size: 20px;"> 
 
-DPairの非自制blog
+DPair の 非自制 blog
 
   </p>
   <div class="saying" id="saying"> </div>
@@ -63,7 +63,32 @@ DPairの非自制blog
 
 <li class="sidebar-links-item">
     <a href="https://www.luogu.com.cn/user/66511" class="friend-link"> 
-      luogu 
+      luogu home page 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://gitee.com/DPair" class="friend-link"> 
+      gitee 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link"> 
+      github 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="mailto:DPair2005@163.com" class="friend-link"> 
+      mail 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://dev.xjoi.net/user/profile/DPair__" class="friend-link"> 
+      XJOI 
     </a>
   </li>
 
@@ -77,6 +102,56 @@ DPairの非自制blog
 <li class="sidebar-links-item">
     <a href="https://www.luogu.com.cn/user/140572" class="friend-link"> 
       DSair
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link"> 
+      Jacderzhang's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.gitee.io/" class="friend-link"> 
+      xYix's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Flying2018/" class="friend-link"> 
+      Flying2018's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/-Wallace-/" class="friend-link"> 
+      _Wallace_'s blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Point-King/" class="friend-link"> 
+      Point_King's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/c2522943959/" class="friend-link"> 
+      OIerwanglong's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://endless1936.blog.luogu.org/" class="friend-link"> 
+      Krimson's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/daniu/" class="friend-link"> 
+      Leap_Frog's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://programming.blog.luogu.org/" class="friend-link"> 
+      serverkiller's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/wlzhouzhuan/" class="friend-link"> 
+      wlzhouzhuan(win)'s blog
     </a>
   </li>
 
@@ -570,7 +645,7 @@ a^p=a^{p\mod \phi(m)+[p\ge \phi(m)]\times \phi(m)} \mod m</script><p>然后不�
 ((\sum_x cnt[x]^2)-len)/2</script><p><del>自证不难</del></p>
 <p>那么我们维护这个式子即可：</p>
 <script type="math/tex; mode=display">
-\sum_x cnt[x]^2</script><p>这样一来就阳间多了。</p>
+\sum\_x cnt[x]^2</script><p>这样一来就阳间多了。</p>
 <p>接下来我们考虑用一个前缀和之差的形式表示这个值。</p>
 <p>显然为 ：
 （ <code>b</code> 表示前缀和）</p>
@@ -584,7 +659,7 @@ a^p=a^{p\mod \phi(m)+[p\ge \phi(m)]\times \phi(m)} \mod m</script><p>然后不�
 <p>我们不妨设 $b[i], b[j]$ 均对于 $x$。</p>
 <ul>
 <li>$i &lt; k, j &lt; k$ 显然没必要动。</li>
-<li>$i &lt; k, j\ge k$ 这一部分的修改量为 $b<a href="b[j]+y">i</a>-b[i]b[j]=b[i]y$ ，故枚举 $i$ 然后用差分的思想修改即可，因为我们查询时显然也可以带 $\sqrt{n}$。</li>
+<li>$i &lt; k, j\ge k$ 这一部分的修改量为 $b[i](b[j]+y)-b[i]b[j]=b[i]y$ ，故枚举 $i$ 然后用差分的思想修改即可，因为我们查询时显然也可以带 $\sqrt{n}$。</li>
 <li>$i \ge k, j \ge k$ 这一部分的修改量为 $(b[i]+y)(b[j]+y)-b[i][j]=b[i]y+b[j]y+y^2$ ，同理修改即可，不做赘述。</li>
 </ul>
 <p>然后查询就十分方便了，先整块直接用 $f, s$ 两个东西算出来，然后散块暴力就行了。</p>
@@ -615,7 +690,7 @@ a^p=a^{p\mod \phi(m)+[p\ge \phi(m)]\times \phi(m)} \mod m</script><p>然后不�
 <p>不难发现我们还没有定块长，而且这道题的复杂度似乎和块长没有关系，故 <strong>块数越少越好</strong> 。</p>
 <p>并且，我们需要使得 $3$ 情况可以被判断，一个有效的思路是 <strong>一旦</strong> $x \in [l, r)$ <strong>成立，那么这个块一定需要被修改</strong> 。</p>
 <p>即我们需要满足 $r-x&lt;l$ 对 <strong>同一块内</strong> 一切 $(l, r)$ 的二元组成立。</p>
-<p>不难发现 $r &lt; l + x$ ，故 $r<em>{\max}=l+x-1$ ，又因为我们要保证这个式子对于任意 $x\in [l, r)$ 成立，故取最劣情况 $x=l$ 即 $r</em>{\max}=2l-1$ 。由于我们要使得块数尽可能少，我们取 $r=r_{\max}=2l-1$ 。</p>
+<p>不难发现 $r &lt; l + x$ ，故 $r_{\max}=l+x-1$ ，又因为我们要保证这个式子对于任意 $x\in [l, r)$ 成立，故取最劣情况 $x=l$ 即 $r_{\max}=2l-1$ 。由于我们要使得块数尽可能少，我们取 $r=r_{\max}=2l-1$ 。</p>
 <p>所以我们进行的就是类似 <strong>倍增</strong> 的 <strong>不均匀分块</strong> ，这个思路是真的妙。</p>
 <p>不难发现块数 $B= \log V$ （ $V$ 为值域），所以总复杂度为 $O((n+m)\log n\log V)$ ，空间复杂度 $O(n\log V)$ 。</p>
 <p><del>没错，一道分块题拥有了 polylog 的复杂度，没想到吧（（</del></p>

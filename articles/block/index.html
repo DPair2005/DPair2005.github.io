@@ -1,0 +1,331 @@
+ 
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 20px;"> 
+
+DPair の 非自制 blog
+
+  </p>
+  <div class="saying" id="saying"> </div>
+</div>
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <HR align="center">
+      <div style="margin: 2 auto; width: min-content">
+          <img class="avatar" alt="DPair" src="/images/avatar.png">
+        </div>
+    <ul class="sidebar-links">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/66511" class="friend-link"> 
+      luogu home page 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://gitee.com/DPair" class="friend-link"> 
+      gitee 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link"> 
+      github 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="mailto:DPair2005@163.com" class="friend-link"> 
+      mail 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://dev.xjoi.net/user/profile/DPair__" class="friend-link"> 
+      XJOI 
+    </a>
+  </li>
+
+    </ul>
+  </div>
+
+  <ul class="sidebar-links">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/140572" class="friend-link"> 
+      DSair
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link"> 
+      Jacderzhang's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.gitee.io/" class="friend-link"> 
+      xYix's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Flying2018/" class="friend-link"> 
+      Flying2018's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/-Wallace-/" class="friend-link"> 
+      _Wallace_'s blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Point-King/" class="friend-link"> 
+      Point_King's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/c2522943959/" class="friend-link"> 
+      OIerwanglong's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://endless1936.blog.luogu.org/" class="friend-link"> 
+      Krimson's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/daniu/" class="friend-link"> 
+      Leap_Frog's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://programming.blog.luogu.org/" class="friend-link"> 
+      serverkiller's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/wlzhouzhuan/" class="friend-link"> 
+      wlzhouzhuan(win)'s blog
+    </a>
+  </li>
+
+  </ul>
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+
+      <h1 id="%E5%90%84%E7%B1%BB%E5%88%86%E5%9D%97%E6%8A%80%E5%B7%A7%E3%81%AE%E6%80%BB%E7%BB%93">各类分块技巧の总结</h1>
+<p>不是很想写题，所以就来随便总结一下前段时间做 Ynoi 的经验，算是对数据结构的一个收尾。</p>
+<h2 id="-3-%E5%89%8D%E8%A8%80">-3 前言</h2>
+<p>本文中可能会存在学术性或表述性错误，若有请一定要指出，本人会立刻改正。</p>
+<h2 id="-2-%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E">-2 一些说明</h2>
+<p>本文中若无特殊说明认为每一道题中的序列长度与查询次数同阶，即 $n, m$ 同阶。</p>
+<p>当然特殊情况特殊处理，本文不作赘述。</p>
+<p>另外，本文不讨论莫队与树分块，前者可以看这篇<a href="../mo">博客</a>，后者可以另外学习。</p>
+<p>操作分块由于不多见（<del>主要是第十分块我自己也没切掉</del>），所以暂时咕咕咕。</p>
+<p>本文讨论根号分治并认为这是配合分块的一种重要思想（技巧）。</p>
+<p>顺便宣传一下一个<a href="https://www.luogu.com.cn/training/62596">分块入门题单</a> 。</p>
+<h2 id="-1-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86">-1 前置知识</h2>
+<ul>
+<li>循环结构</li>
+<li>数组</li>
+<li>模拟</li>
+<li>一定的数据结构基础（当然没有关系也不是很大）</li>
+</ul>
+<p><del>没错这些都会你就能学分块了</del></p>
+<h2 id="0-%E5%88%86%E5%9D%97%E6%80%9D%E6%83%B3">0 分块思想</h2>
+<p>首先讲分块的话，我们得知道分块是一种什么思想。</p>
+<p>分块，顾名思义就是 <strong>分成很多块</strong> 。然后需要用到分块的题目中，我们一般会 <strong>对一个区间</strong> （可能是值域上也可能是序列上）进行区间操作，然后不难发现一个区间会经过一些 <strong>完整的块</strong> （称为“整块”） 和一些 <strong>不完整的块</strong> （称为散块），此时我们就可以 <strong>整块整体处理，散块暴力处理</strong> ，然后设置合理的块长以 <strong>平衡两部分的复杂度</strong> ，最终达到全局复杂度的优化。</p>
+<p>这么干说似乎很难懂，下面给出一些分块的具体例子。</p>
+<h2 id="1-%E5%BA%8F%E5%88%97%E5%88%86%E5%9D%97">1 序列分块</h2>
+<p>这是一个很常用的套路，个人感觉应该是最常见的一种分块。</p>
+<p>这种题目一般会给我们一个序列，然后让我们执行一些区间操作。</p>
+<h3 id="1-1-%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B">1-1 算法流程</h3>
+<p>首先我们把整个序列分成若干长度为 $b$ 的块，比如对于一个这样的序列</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/qfm5sttn.png" alt="pic1"></p>
+<p>我们考虑以 $b=3$ 为块长对这个序列分块，那么它就会长这样：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/5c4grqne.png" alt="pic2"></p>
+<p>（注意实际操作中，最后一个块不一定完整）</p>
+<p>那么比如说我们要操作一段区间 $[2,7]$ 时，我们实际上操作的是这样一段区间：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/7d559lrj.png" alt="pic3"></p>
+<p>不难发现这里面涉及到两个不完整的块和一个完整的块，那么我们对于每一个完整的块进行整体操作，对于不完整的块进行暴力操作，显然一次操作只会涉及到 $O({n\over b})$ 个整块， $O(b)$ 个 <strong>散块中的单点</strong> ，于是我们一般取 $b=\sqrt{n}$ 以达到复杂度的平衡，当然具体情况具体讨论。</p>
+<p>下面给一个具体的例子进行说明。</p>
+<h3 id="1-2-%E4%BE%8B%E9%A2%98%E8%AE%B2%E8%A7%A3">1-2 例题讲解</h3>
+<p>例1：<a href="https://www.luogu.com.cn/problem/P3372">P3372 【模板】线段树 1</a></p>
+<h4 id="%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0">题意简述</h4>
+<p>如题，已知一个数列，你需要进行下面两种操作：</p>
+<ol>
+<li>将某区间每一个数加上 $k$。</li>
+<li>求出某区间每一个数的和。</li>
+</ol>
+<h4 id="%E5%88%86%E6%9E%90">分析</h4>
+<p>这是一道区间修改区间询问的基础数据结构题，可以用线段树、树状数组等数据结构解决，但这里我们考虑序列分块的做法。</p>
+<p>首先我们还是以刚才那一张图为例，有一个长度为 $n=12$ 的序列。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/qfm5sttn.png" alt="pic1"></p>
+<p>此时我们先不取块长，等到分析完复杂度之后再取块长。</p>
+<p>我们先处理修改。</p>
+<p>单点修改我相信大家都会，对于一个散块中的散点 $a_i$ ，我们暴力执行 $a_i=a_i+k$ 就行。</p>
+<p>那么区间修改呢？</p>
+<p>我们可以用 <strong>打标记</strong> 的方法，对于每一个 <strong>块</strong> 维护一个 $tag$ 变量，表示这个块被 <strong>整体加了几次</strong> ，那么块内每一个元素 $a_i$ 的真实值应该是 $a_i+tag$ 。显然这两个修改的复杂度都是 $O(1)$ 的。</p>
+<p>然后考虑询问。</p>
+<p>对于散块还是很好处理，对于每一个散点，执行 $ans=ans+a_i$ 即可。</p>
+<p>考虑对于整块怎么处理。</p>
+<p>我们也可以用“把一堆点看做一个整体”的方法，对于每一个块维护一个 $sum$ 表示这一个块内所有元素 <strong>真实值</strong> 的和，这个在修改的时候显然也可以 $O(1)$ 维护，而且在询问的时候，我们就实现对于每一个块 $O(1)$ 查询了。</p>
+<p>那么现在我们假设块长为 $b$ 。</p>
+<p>我们每一次操作访问到的 <strong>散点</strong> 个数都为 $O(b)$ 级别，而访问到的 <strong>整块</strong> 个数都为 $O({n\over b})$ 级别。我们需要尽可能平衡这两部分复杂度，故应使得 $b={n\over b}$ ，解得 $b$ 应该取 $\sqrt{n}$ 。</p>
+<p>此时复杂度就是 $O(m\sqrt{n})$ 的，足以通过 $10^5$ 的数据范围。</p>
+<h3 id="1-3-%E7%AE%97%E6%B3%95%E4%BC%98%E5%8A%A3">1-3 算法优劣</h3>
+<p>优势：</p>
+<ol>
+<li>应用范围广且容易理解与实现</li>
+<li>某些情况下便于配合其他分块均摊复杂度</li>
+</ol>
+<p>劣势：</p>
+<p>复杂度带 $\sqrt{n}$ 而不是 $\log$ ，相对较慢，无法处理 $10^6$ 级别的数据。</p>
+<h3 id="1-4-%E4%B9%A0%E9%A2%98%E6%8E%A8%E8%8D%90">1-4 习题推荐</h3>
+<p>推荐完成 loj 上的序列分块9题，应该是比较基础的。</p>
+<p><a href="https://loj.ac/p?keyword=%E5%88%86%E5%9D%97">链接见此</a></p>
+<p>这里不过多赘述了，这些题目网上应该都能搜索到比较详细的题解。</p>
+<h2 id="1-5-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86">1.5 前置知识</h2>
+<p>后面的部分由于基本上都是技巧，一般配合其他算法使用而不单独成题，故可能需要更多的前置知识，下面再次进行列举。</p>
+<ul>
+<li>各种莫队（可以看这篇<a href="../mo">博客</a>）</li>
+<li>序列分块（可以看看上面的东西）</li>
+</ul>
+<h2 id="2-%E5%80%BC%E5%9F%9F%E5%88%86%E5%9D%97">2 值域分块</h2>
+<p><del>正片开始</del></p>
+<p>值域分块，顾名思义就是在值域上分块，似乎一般用来均摊复杂度，比如有些时候会以 $O(\sqrt{n})$ 修改 $O(1)$ 查询代替两者均为 $O(\log n)$ 的权值树状数组。</p>
+<h3 id="2-1-%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4">2-1 适用范围</h3>
+<p>一般当我们发现一道题是分块题且有些操作和值域有关，或在复杂度带 $\sqrt{n}$ 的题中发现需要使用带 $\log$ 的处理值域的数据结构时，就可以考虑值域分块。</p>
+<p>具体分块的方法和序列分块相差并不多，下面以一道例题作为讲解。</p>
+<h3 id="2-2-%E4%BE%8B%E9%A2%98%E8%AE%B2%E8%A7%A3">2-2 例题讲解</h3>
+<p>例2：<a href="https://www.luogu.com.cn/problem/P4396">P4396 [AHOI2013]作业</a></p>
+<h4 id="%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0">题意简述</h4>
+<p>给定了一个长度为 $n$ 的数列和若干个询问，首先你要统计区间 $[l,r]$ 内大于等于 $a$，小于等于 $b$ 的数的个数，其次是所有大于等于 $a$，小于等于 $b$ 的，且在区间 $[l,r]$ 中出现过的 <strong>数值</strong> 的个数。</p>
+<h4 id="%E5%88%86%E6%9E%90">分析</h4>
+<p>做法：莫队+值域分块</p>
+<p>不会莫队的这边请：<a href="https://www.luogu.com.cn/blog/DPair2005/talk-talk-bruh-forces-in-oi">博客</a></p>
+<p>好了现在我默认你们都会莫队了。</p>
+<p>首先显然第二个询问就是第一个询问去重后的结果，这个在莫队的时候直接去重即可，故下面我们只讨论第一个询问。</p>
+<p>首先我们有一种比较劣的做法，就是莫队的时候用 $O(\log n)$ 的权值线段树进行修改，然后在处理完区间后进行一次在值域上的区间查询（这是由于每一次查询的 $[a,b]$ 区间各不相同），可以使用类似这样的实现：</p>
+<pre><code class="lang-cpp">for (int i = 1;i &lt;= m;i ++){//遍历排完序的询问
+    while()...
+    while()...
+    while()...
+    while()...//莫队的区间左右端点移动，这里不多赘述
+    ans[id]=query(a,b);//在值域上区间查询，而不是实时维护
+}
+</code></pre>
+<p>这样子复杂度是 $O(n\sqrt{n} \log n)$ 的，并不能通过本题。</p>
+<p>但是我们不难发现，我们修改进行了 $O(n\sqrt{n})$ 次，但询问只进行了 $O(n)$ 次，这里并不均匀。</p>
+<p>所以我们使用值域分块均摊复杂度。</p>
+<p>我们先想一想有什么可以 $O(1)$ 修改，没错就是一个数组。</p>
+<p>然后我们会发现在数组上的修改虽然是 $O(1)$ 的，但查询是 $O(n)$ 的。</p>
+<p>不过我们又惊喜的发现，这是一个 “单点修改，区间查询” 的数据结构，所以可以采用类似序列分块的手法。</p>
+<p>首先考虑修改，我们仍然需要 $O(1)$ 修改，但又要方便后面的查询，故我们还是对于每一个 <strong>值域上的块</strong> 维护一个 $sum$ 表示区间和，那么每一次单点修改就只修改 <strong>对应的值</strong> 以及 <strong>对应值所属的块</strong> 的信息即可。</p>
+<p>那么查询就类似序列分块了，可以 $O(\sqrt{n})$ 实现。</p>
+<p>那么莫队的部分就变成了 $O(n\sqrt{n})$ ，而查询的部分虽然看似退化成了 $O(n\sqrt{n})$，但是我们均摊整体复杂度为 $O(n\sqrt{n})$ 了，于是复杂度正确，并可以通过本题。</p>
+<h3 id="2-3-%E7%AE%97%E6%B3%95%E4%BC%98%E5%8A%A3">2-3 算法优劣</h3>
+<p>优势：</p>
+<p>可以有效处理值域上的问题并与各类根号算法均摊复杂度以达到全局复杂度正确。</p>
+<p>劣势：</p>
+<p>复杂度带 $\sqrt{n}$ 而不是 $\log$ ，相对较慢，无法处理 $10^6$ 级别的数据。</p>
+<p>（不过这个劣势由于值域分块的适用范围基本可以忽略不计）</p>
+<h3 id="2-4-%E4%B9%A0%E9%A2%98%E6%8E%A8%E8%8D%90">2-4 习题推荐</h3>
+<p>1. <a href="https://www.luogu.com.cn/problem/P4867">P4867 Gty的二逼妹子序列</a></p>
+<p>双倍经验。</p>
+<p>2. <a href="https://www.luogu.com.cn/problem/P4119">P4119 [Ynoi2018]未来日记</a></p>
+<p><strong>望月悲叹最初分块</strong> ，略卡常。</p>
+<h2 id="3-%E6%A0%B9%E5%8F%B7%E5%88%86%E6%B2%BB">3 根号分治</h2>
+<p>严格来说这应该不是分块</p>
+<h3 id="3-1-%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4">3-1 适用范围</h3>
+<p>但是这个东西还是比较有用的，经常能配合分块或者莫队等处理一些奇奇怪怪的问题。</p>
+<p>似乎一般拿来处理的问题都和除法或多或少有一些关系。</p>
+<h3 id="3-2-%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B">3-2 算法流程</h3>
+<p>首先对于这种题目，我们考虑设置一个阈值 $limit$ 。</p>
+<p>对于 $&gt; limit$ 的数据，会有一些性质，我们根据这个性质进行处理。</p>
+<p>对于 $\le limit$ 的数据同样也会有一些性质，我们也根据这个性质特殊处理。</p>
+<p>而且这两部分若缺少了这些性质复杂度就难以保证，但把它分开了复杂度就对了。</p>
+<p>我们 $limit$ 一般取 $\sqrt{n}$ ，但实际情况实际考虑。</p>
+<h3 id="3-3-%E7%89%B9%E6%AE%8A%E6%80%A7%E8%B4%A8">3-3 特殊性质</h3>
+<p>根号分治在某一些题目里会存在一些优美的特殊性质，这一些性质对解题会有很大帮助，下面简单说几种我见过的常见性质。</p>
+<p>我们先考虑 $\le limit$ 的那一部分。</p>
+<p>1. 若考虑对值域根号分治，这一部分数最多有 $limit$ <strong>种</strong></p>
+<p>这个性质可以用于对于每一 <strong>种</strong> $\le limit$ 的数进行 $O(n)$ 的预处理，然后就可以使得后面的一些操作忽略这一部分。</p>
+<p>一般是 $&gt; limit$ 的部分可以在值域上暴力的时候会把这一部分分离出来处理，另一部分的处理见后文、</p>
+<p>2. 若考虑对值域根号分治，这一部分数值最大为 $limit$ </p>
+<p>这是显然的吧。。。但仍然有一些作用。</p>
+<p>比如说我们有些题目可能要存形如 $a[i \in[1,V]][j \in[0,i-1]]$ （其中 $V$ 为值域）的信息。那么我们就可以暴力存 $i \le limit$ 的信息，另一部分后面再考虑。</p>
+<p>然后再考虑 $&gt; limit$ 的那一部分。</p>
+<p>1. 若考虑对出现次数根号分治，则这一类数最多有 $n \over limit$ 个</p>
+<p>这是显然的，但是在 <a href="https://www.luogu.com.cn/problem/P5397">P5397 [Ynoi2018] 天降之物</a> 的根号分治做法中有很重要的意义。</p>
+<p>2. 若考虑对值域根号分治，则这一类数在值域中的倍数最多有 $V \over limit$ 个。</p>
+<p>于是我们做一些和 “取模” “倍数” 有关的题目时，这一部分暴力的复杂度是对的。</p>
+<h3 id="3-4-%E4%B9%A0%E9%A2%98%E6%8E%A8%E8%8D%90">3-4 习题推荐</h3>
+<p>这里就不提供例题了，因为这个东西太思路化。</p>
+<p>0. <a href="https://www.luogu.com.cn/problem/P3396">P3396 哈希冲突</a></p>
+<p>根号分治板子题，这个东西重在应用所以板子认为是 “第 0 题”。</p>
+<p>1. <a href="https://www.luogu.com.cn/problem/P5355">P5355 [Ynoi2017] 由乃的玉米田</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P3674">P3674 小清新人渣的本愿</a> 的加强版，需要根号分治。</p>
+<p>2. <a href="https://www.luogu.com.cn/problem/P5397">P5397 [Ynoi2018] 天降之物</a></p>
+<p>存在序列分块做法，但会被卡常。</p>
+<p>3. <a href="https://www.luogu.com.cn/problem/P5309">P5309 [Ynoi2011] 初始化</a></p>
+<p>序列分块套根号分治。</p>
+<p>4. <a href="https://www.luogu.com.cn/problem/P5398">P5398 [Ynoi2018] GOSICK</a></p>
+<p>需要二次离线莫队科技，不会的可以看我上面给的博客链接，需要根号分治。</p>
+
+      
+
+    </div>
+
+  </div>
+</body>

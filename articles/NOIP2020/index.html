@@ -1,0 +1,209 @@
+ 
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <script src="/js/crypto-js.min.js"></script>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      hljs.configure({ tabReplace: '  ' });
+      drawSaying();
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 20px;"> 
+
+DPair の 非自制 blog
+
+  </p>
+  <div class="saying" id="saying"> </div>
+</div>
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <HR align="center">
+      <div style="margin: 2 auto; width: min-content">
+          <img class="avatar" alt="DPair" src="/images/avatar.png">
+        </div>
+    <ul class="sidebar-links">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/66511" class="friend-link"> 
+      luogu home page 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://gitee.com/DPair" class="friend-link"> 
+      gitee 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link"> 
+      github 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="mailto:DPair2005@163.com" class="friend-link"> 
+      mail 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://dev.xjoi.net/user/profile/DPair__" class="friend-link"> 
+      XJOI 
+    </a>
+  </li>
+
+    </ul>
+  </div>
+
+  <ul class="sidebar-links">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/140572" class="friend-link"> 
+      DSair
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link"> 
+      Jacderzhang's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.gitee.io/" class="friend-link"> 
+      xYix's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Flying2018/" class="friend-link"> 
+      Flying2018's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/-Wallace-/" class="friend-link"> 
+      _Wallace_'s blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Point-King/" class="friend-link"> 
+      Point_King's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/c2522943959/" class="friend-link"> 
+      OIerwanglong's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://endless1936.blog.luogu.org/" class="friend-link"> 
+      Krimson's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/daniu/" class="friend-link"> 
+      Leap_Frog's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://programming.blog.luogu.org/" class="friend-link"> 
+      serverkiller's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/wlzhouzhuan/" class="friend-link"> 
+      wlzhouzhuan(win)'s blog
+    </a>
+  </li>
+
+  </ul>
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+
+      
+
+      
+
+      
+      
+      
+
+      <h2> 被加密的内容 </h2>
+
+      <form onsubmit="verify()">
+        <span> 输入密码以查看：</span>
+        <input class="underline-input" id="password" type="password">
+        <input class="gradual-button" type="submit" value="submit">
+      </form>
+
+      <script>
+        passwdMd5 = "36e929662b88b67410cb8eef52603c43"
+        encryptedBlog = "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"
+
+        function verify() {
+          let passwd = document.getElementById("password").value
+          passwd = CryptoJS.MD5(passwd).toString().substr(0,8)
+          if (passwd == "") {
+            alert("please enter password!")
+            return
+          }
+          if (CryptoJS.MD5(passwd).toString() !== passwdMd5) {
+            alert("password incorret")
+            return
+          }
+          let key = CryptoJS.enc.Utf8.parse(passwd)
+          decrypted = CryptoJS.AES.decrypt(encryptedBlog, key, {iv: key})
+          decrypted = CryptoJS.enc.Utf8.stringify(decrypted)
+          let DOMPost = document.getElementById("post")
+          DOMPost.innerHTML = decrypted
+
+          loadMath()
+          hljs.initHighlighting()
+        }
+      </script>
+    </div>
+
+  </div>
+</body>

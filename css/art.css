@@ -13,3 +13,19 @@
   border-style: none;
   opacity: 0.4;
 }
+
+.underline-input {
+  border: none;
+  border-bottom: rgb(43, 47, 49) groove 1px;
+  outline: none;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+}
+
+.underline-input:focus-visible {
+  border-bottom: rgb(43, 47, 49) groove 1px;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+}

@@ -25,7 +25,7 @@
       <div class="sidebar-title">
   <p style="font-weight: bold; font-size: 20px;"> 
 
-DPairの非自制blog
+DPair の 非自制 blog
 
   </p>
   <div class="saying" id="saying"> </div>
@@ -63,7 +63,32 @@ DPairの非自制blog
 
 <li class="sidebar-links-item">
     <a href="https://www.luogu.com.cn/user/66511" class="friend-link"> 
-      luogu 
+      luogu home page 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://gitee.com/DPair" class="friend-link"> 
+      gitee 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link"> 
+      github 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="mailto:DPair2005@163.com" class="friend-link"> 
+      mail 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://dev.xjoi.net/user/profile/DPair__" class="friend-link"> 
+      XJOI 
     </a>
   </li>
 
@@ -77,6 +102,56 @@ DPairの非自制blog
 <li class="sidebar-links-item">
     <a href="https://www.luogu.com.cn/user/140572" class="friend-link"> 
       DSair
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link"> 
+      Jacderzhang's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.gitee.io/" class="friend-link"> 
+      xYix's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Flying2018/" class="friend-link"> 
+      Flying2018's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/-Wallace-/" class="friend-link"> 
+      _Wallace_'s blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Point-King/" class="friend-link"> 
+      Point_King's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/c2522943959/" class="friend-link"> 
+      OIerwanglong's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://endless1936.blog.luogu.org/" class="friend-link"> 
+      Krimson's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/daniu/" class="friend-link"> 
+      Leap_Frog's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://programming.blog.luogu.org/" class="friend-link"> 
+      serverkiller's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/wlzhouzhuan/" class="friend-link"> 
+      wlzhouzhuan(win)'s blog
     </a>
   </li>
 
@@ -123,17 +198,17 @@ DPairの非自制blog
 <p><strong>【题意简述】</strong>
 给你一个长度为 $n$ 的序列 $a$ ，$a[i] \in [1,k]$，有 $m$ 次询问，每一次询问一个区间 $[l,r]$ 中 $\sum_{i=1}^k c_i^2$ 的值， $c_i$ 表示 $i$ 在 $[l,r]$ 中的出现次数。</p>
 <p><strong>【思路】</strong>
-考虑暴力枚举，每一次暴力扫一遍整个区间，对于遇到的每一个 $a<em>i$ ，我们使得 $c</em>{a<em>i} ++$ ，最后暴力求出 $\sum</em>{i=1}^k c_i^2$ 即可。</p>
+考虑暴力枚举，每一次暴力扫一遍整个区间，对于遇到的每一个 $a_i$ ，我们使得 $c_{a_i} ++$ ，最后暴力求出 $\sum_{i=1}^k c_i^2$ 即可。</p>
 <p>复杂度 $O(m(n+k))$ 。<del>非常优秀</del></p>
 <p>显然过不去。</p>
 <p>我们考虑怎么优化这个算法。</p>
-<p>不难发现，我们执行 $c<em>{a_i} ++$ 操作时，我们已经可以考虑最终答案会怎么变化，不难发现当 $c</em>{a<em>i} ++$ 时，答案会增加 $2c</em>{a<em>i}+1$ （这里的 $ c</em>{a_i}$ 是未变化前的）。</p>
+<p>不难发现，我们执行 $c_{a_i}++$ 操作时，我们已经可以考虑最终答案会怎么变化，不难发现当 $c_{a_i}++$ 时，答案会增加 $2c_{a_i}+1$ （这里的 $c_{a_i}$ 是未变化前的）。</p>
 <p>因此我们每一次 $c_{a_i}++$ 时可以直接更新答案，复杂度现在与 $k$ 无关了，为 $O(nm)$ 。</p>
 <p>然后我们不难发现我们经常会算重一些区间，比如 $[1,10]$ 和 $[2,11]$ 的差距其实是不大的。</p>
-<p>那么我们考虑算完 $[1,10]$ 之后，算 $[2,11]$ 时把 $a<em>1$ 的贡献去掉 $a</em>{11}$ 的贡献加上，就是 $[2,11]$ 的答案了，我们可以把这个操作看成移动区间的端点。</p>
+<p>那么我们考虑算完 $[1,10]$ 之后，算 $[2,11]$ 时把 $a_1$ 的贡献去掉 $a_{11}$ 的贡献加上，就是 $[2,11]$ 的答案了，我们可以把这个操作看成移动区间的端点。</p>
 <p>那么怎么减去贡献呢？</p>
 <p>其实和加是差不多的。</p>
-<p>和 $c<em>{a_i}++$ 类似， $c</em>{a<em>i} --$ 时我们只需要考虑答案会减少多少，不难发现减少的也是 $2c</em>{a<em>i}+1$ （然而这里 $ c</em>{a_i}$ 是变化后的），然后我们就可以通过上一个询问更新出下一个询问的答案了，具体这么实现：</p>
+<p>和 $c_{a_i}++$ 类似， $c_{a_i} --$ 时我们只需要考虑答案会减少多少，不难发现减少的也是 $2c_{a_i}+1$ （然而这里 $ c_{a_i}$ 是变化后的），然后我们就可以通过上一个询问更新出下一个询问的答案了，具体这么实现：</p>
 <pre><code class="lang-cpp">while(l &gt; q[i].l) add(a[-- l]);
 while(r &lt; q[i].r) add(a[++ r]);
 while(l &lt; q[i].l) del(a[l ++]);
@@ -183,11 +258,9 @@ struct QUEST{//表示一个询问
 <p>不难发现我在用莫队解刚才那一道题目的时候与原题似乎没有任何关系。</p>
 <p>可见这其实就是莫队的一个通法。</p>
 <p>算法大概遵循一个这样的流程：</p>
-<ol>
-<li>对于所有区间端点的移动，我们要设计出一种 $O(1)$ 的方法使得我们可以快速维护移动端点后一个区间的答案。</li>
-<li>有了这种方法之后，我们根据刚才的复杂度分析，我们对整个序列分块，每一块大小 $O(\sqrt{n})$ 。</li>
-<li>然后我们对所有询问的区间排序，排序完之后左端点每一次最多移动 $\sqrt{n}$ 的距离总共 $n$ 次，右端点单调不降所以每一个块移动 $n$ 的距离总共 $\sqrt{n}$ 次，所以总复杂度为 $O(n\sqrt{n})$ 。</li>
-</ol>
+<p>1.对于所有区间端点的移动，我们要设计出一种 $O(1)$ 的方法使得我们可以快速维护移动端点后一个区间的答案。</p>
+<p>2.有了这种方法之后，我们根据刚才的复杂度分析，我们对整个序列分块，每一块大小 $O(\sqrt{n})$ 。</p>
+<p>3.然后我们对所有询问的区间排序，排序完之后左端点每一次最多移动 $\sqrt{n}$ 的距离总共 $n$ 次，右端点单调不降所以每一个块移动 $n$ 的距离总共 $\sqrt{n}$ 次，所以总复杂度为 $O(n\sqrt{n})$ 。</p>
 <p>最后全部输出即可。</p>
 <h3 id="1-4-%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96">1-4 算法优化</h3>
 <p>其实可以加一个小小的优化。</p>
@@ -207,29 +280,17 @@ struct QUEST{
 <p>是一个优化，但并不能降低算法复杂度。</p>
 <h3 id="1-5-%E7%AE%97%E6%B3%95%E4%BC%98%E5%8A%A3">1-5 算法优劣</h3>
 <h4 id="%E4%BC%98%E5%8A%BF">优势</h4>
-<ol>
-<li>复杂度优秀，可以处理不少区间询问的问题</li>
-<li>实现简单，思维难度小，不容易出错</li>
-</ol>
+<p>1.复杂度优秀，可以处理不少区间询问的问题</p>
+<p>2.实现简单，思维难度小，不容易出错</p>
 <h4 id="%E5%8A%A3%E5%8A%BF">劣势</h4>
-<ol>
-<li><p>只能离线，无法处理强制在线的问题</p>
-</li>
-<li><p>复杂度是 $O(n\sqrt{n})$ 而不是 $O(n\log n)$ ，有时数据范围较大则无法处理后者能处理的问题</p>
-</li>
-</ol>
+<p>1.只能离线，无法处理强制在线的问题</p>
+<p>2.复杂度是 $O(n\sqrt{n})$ 而不是 $O(n\log n)$ ，有时数据范围较大则无法处理后者能处理的问题</p>
 <h3 id="1-6-%E6%8E%A8%E8%8D%90%E4%B9%A0%E9%A2%98">1-6 推荐习题</h3>
-<ol>
-<li><a href="https://www.luogu.com.cn/problem/SP3267">SP3267 DQUERY - D-query</a></li>
-</ol>
+<p>1.<a href="https://www.luogu.com.cn/problem/SP3267">SP3267 DQUERY - D-query</a></p>
 <p>莫队的经典运用之一：区间数颜色</p>
-<ol>
-<li><a href="https://www.luogu.com.cn/problem/CF617E">CF617E XOR and Favorite Number</a></li>
-</ol>
+<p>2.<a href="https://www.luogu.com.cn/problem/CF617E">CF617E XOR and Favorite Number</a></p>
 <p>很套路但有一定思维难度的莫队</p>
-<ol>
-<li><a href="https://www.luogu.com.cn/problem/P3709">P3709 大爷的字符串题</a></li>
-</ol>
+<p>3.<a href="https://www.luogu.com.cn/problem/P3709">P3709 大爷的字符串题</a></p>
 <p>莫队的应用，需要离散化</p>
 <h2 id="2-%E5%B8%A6%E4%BF%AE%E8%8E%AB%E9%98%9F">2 带修莫队</h2>
 <p>没想到吧，这东西还可以带修。</p>
@@ -277,25 +338,17 @@ struct QUEST{
 <p>但至少比暴力修改要好。</p>
 <h3 id="2-3-%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B">2-3 算法流程</h3>
 <p>其实和普通莫队差不多。</p>
-<ol>
-<li>设计出这道题不带修怎么莫队。</li>
-<li>把时间戳 $t$ 加入到排序中，然后在处理询问时移动 $t$ 指针，采用一个加一个删来等效替代修改操作。</li>
-</ol>
+<p>1.设计出这道题不带修怎么莫队。</p>
+<p>2.把时间戳 $t$ 加入到排序中，然后在处理询问时移动 $t$ 指针，采用一个加一个删来等效替代修改操作。</p>
 <p>然后。。。其实就好了</p>
 <h3 id="2-4-%E7%AE%97%E6%B3%95%E4%BC%98%E5%8A%A3">2-4 算法优劣</h3>
 <h4 id="%E4%BC%98%E5%8A%BF%EF%BC%9A">优势：</h4>
-<ol>
-<li>可以支持修改，莫队又变强了。</li>
-</ol>
+<p>1.可以支持修改，莫队又变强了。</p>
 <h4 id="%E5%8A%A3%E5%8A%BF%EF%BC%9A">劣势：</h4>
-<ol>
-<li>复杂度较高，无法应对大数据范围</li>
-<li>似乎只能支持单点修改</li>
-</ol>
+<p>1.复杂度较高，无法应对大数据范围</p>
+<p>2.似乎只能支持单点修改</p>
 <h3 id="2-5-%E6%8E%A8%E8%8D%90%E4%B9%A0%E9%A2%98">2-5 推荐习题</h3>
-<ol>
-<li><a href="https://www.luogu.com.cn/problem/CF940F">CF940F Machine Learning</a></li>
-</ol>
+<p>1.<a href="https://www.luogu.com.cn/problem/CF940F">CF940F Machine Learning</a></p>
 <p>带修莫队应用</p>
 <h2 id="3-%E6%A0%91%E4%B8%8A%E8%8E%AB%E9%98%9F">3 树上莫队</h2>
 <p>没想到吧，这东西还可以上树</p>
@@ -336,11 +389,9 @@ struct QUEST{
 <p>然后数组长度是 $2n$ 不要忘了。</p>
 <h3 id="3-4-%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B">3-4 算法流程</h3>
 <p>其实也说得很清楚了。</p>
-<ol>
-<li>建出这棵树的括号序并处理出 $lca$ 。</li>
-<li>按普通莫队去跑，分类讨论子树关系，然后特判 $lca$ 的情况。</li>
-<li>修改时注意不一定是加点或者删点，而要根据这个点的出现次数判断是加点还是删点。</li>
-</ol>
+<p>1.建出这棵树的括号序并处理出 $lca$ 。</p>
+<p>2.按普通莫队去跑，分类讨论子树关系，然后特判 $lca$ 的情况。</p>
+<p>3.修改时注意不一定是加点或者删点，而要根据这个点的出现次数判断是加点还是删点。</p>
 <h3 id="3-5-%E7%AE%97%E6%B3%95%E4%BC%98%E5%8A%A3">3-5 算法优劣</h3>
 <h4 id="%E4%BC%98%E5%8A%BF%EF%BC%9A">优势：</h4>
 <p>莫队可以上树了，莫队又变强了</p>
@@ -357,32 +408,26 @@ struct QUEST{
 <p>回滚莫队分两类，只删不增和只增不删，我们先说前者。</p>
 <h4 id="1%E3%80%81%E5%8F%AA%E5%88%A0%E4%B8%8D%E5%A2%9E%E5%9B%9E%E6%BB%9A%E8%8E%AB%E9%98%9F">1、只删不增回滚莫队</h4>
 <p>流程大致如下：</p>
-<ol>
-<li>先按原来的莫队排序方法进行排序，但是不能使用奇偶块排序的优化，我们要求 $r$ 单调递减。</li>
-<li>对于每一个左端点所在的块 $x$ ，我们设 $fst[x]$ 表示这个块的第一个节点，那么我们初始设一个区间 $[fst[x],n]$ ，这是一个大区间。</li>
-<li>对于 $[l,r]$ 在同一个块内的，我们可以暴力处理。</li>
-<li>对于 $[l,r]$ 不在同一个块里的，我们先移动右端点指针 $r$ ，由于 $r$ <strong>单调递减</strong> 所以我们只用删除。</li>
-<li>记录此时的答案 $tmp$ ，防止到时候回溯 $l$ 节点时需要增加。</li>
-<li>然后再移动 $l$ 指针 ，同理我们只用删除。</li>
-<li>最后恢复 $l$ 指针，利用先前留下的 $tmp$ 。</li>
-</ol>
+<p>1.先按原来的莫队排序方法进行排序，但是不能使用奇偶块排序的优化，我们要求 $r$ 单调递减。</p>
+<p>2.对于每一个左端点所在的块 $x$ ，我们设 $fst[x]$ 表示这个块的第一个节点，那么我们初始设一个区间 $[fst[x],n]$ ，这是一个大区间。</p>
+<p>3.对于 $[l,r]$ 在同一个块内的，我们可以暴力处理。</p>
+<p>4.对于 $[l,r]$ 不在同一个块里的，我们先移动右端点指针 $r$ ，由于 $r$ <strong>单调递减</strong> 所以我们只用删除。</p>
+<p>5.记录此时的答案 $tmp$ ，防止到时候回溯 $l$ 节点时需要增加。</p>
+<p>6.然后再移动 $l$ 指针 ，同理我们只用删除。</p>
+<p>7.最后恢复 $l$ 指针，利用先前留下的 $tmp$ 。</p>
 <h4 id="2%E3%80%81%E5%8F%AA%E5%A2%9E%E4%B8%8D%E5%88%A0%E5%9B%9E%E6%BB%9A%E8%8E%AB%E9%98%9F">2、只增不删回滚莫队</h4>
 <p>流程大致如下：</p>
-<ol>
-<li>先按原来的莫队排序方法进行排序，但是不能使用奇偶块排序的优化，我们要求 $r$ <strong>单调递增</strong>。</li>
-<li>对于每一个左端点所在的块 $x$ ，我们设 $lst[x]$ 表示这个块的最后一个节点，那么我们初始设一个区间 $[lst[x],lst[x]-1]$ ，这是一个空区间。</li>
-<li>对于 $[l,r]$ 在同一个块内的，我们可以暴力处理。</li>
-<li>对于 $[l,r]$ 不在同一个块里的，我们先移动右端点指针 $r$ ，由于 $r$ 单调递增所以我们只用增加。</li>
-<li>记录此时的答案 $tmp$ ，防止到时候回溯 $l$ 节点时需要删除。</li>
-<li>然后再移动 $l$ 指针 ，同理我们只用增加。</li>
-<li>最后恢复 $l$ 指针，利用先前留下的 $tmp$ 。</li>
-</ol>
+<p>1.先按原来的莫队排序方法进行排序，但是不能使用奇偶块排序的优化，我们要求 $r$ <strong>单调递增</strong>。</p>
+<p>2.对于每一个左端点所在的块 $x$ ，我们设 $lst[x]$ 表示这个块的最后一个节点，那么我们初始设一个区间 $[lst[x],lst[x]-1]$ ，这是一个空区间。</p>
+<p>3.对于 $[l,r]$ 在同一个块内的，我们可以暴力处理。</p>
+<p>4.对于 $[l,r]$ 不在同一个块里的，我们先移动右端点指针 $r$ ，由于 $r$ 单调递增所以我们只用增加。</p>
+<p>5.记录此时的答案 $tmp$ ，防止到时候回溯 $l$ 节点时需要删除。</p>
+<p>6.然后再移动 $l$ 指针 ，同理我们只用增加。</p>
+<p>7.最后恢复 $l$ 指针，利用先前留下的 $tmp$ 。</p>
 <p>是不是和普通莫队很像？</p>
 <p>区别主要在于：</p>
-<ol>
-<li>每一个块分开处理，且使用不同的初始区间</li>
-<li>$r$ 排序方向特定</li>
-</ol>
+<p>1.每一个块分开处理，且使用不同的初始区间</p>
+<p>2.$r$ 排序方向特定</p>
 <p>然后你就学会了回滚莫队</p>
 <p>它的复杂度显然是对的，因为每一次左端点最多还是移动 $O(\sqrt{n})$ 总共 $n$ 次，右端点还是 $O(n)$ 总共 $\sqrt{n}$ 次，总体复杂度还是 $O(n\sqrt{n})$ ，复杂度并没有下降，只是可能会增加常数。</p>
 <h3 id="4-3-%E4%BE%8B%E9%A2%98%E5%BC%95%E5%85%A5">4-3 例题引入</h3>
@@ -400,45 +445,28 @@ struct QUEST{
 <p>于是回滚莫队就有其用武之地了。</p>
 <p>后面其实不用多说，按照刚才回滚莫队的板子去套就行了。</p>
 <h3 id="4-4-%E6%8E%A8%E8%8D%90%E4%B9%A0%E9%A2%98">4-4 推荐习题</h3>
-<ol>
-<li><a href="https://www.luogu.com.cn/problem/AT1219">AT1219 歴史の研究</a></li>
-</ol>
+<p>1.<a href="https://www.luogu.com.cn/problem/AT1219">AT1219 歴史の研究</a></p>
 <p>不少人心目中的回滚莫队模板</p>
-<ol>
-<li><a href="https://www.luogu.com.cn/problem/P5906">P5906 【模板】回滚莫队&amp;不删除莫队</a></li>
-</ol>
+<p>2.<a href="https://www.luogu.com.cn/problem/P5906">P5906 【模板】回滚莫队&amp;不删除莫队</a></p>
 <p>洛谷钦定的回滚莫队模板</p>
-<ol>
-<li><a href="https://www.luogu.com.cn/problem/SP20644">SP20644 ZQUERY - Zero Query</a></li>
-</ol>
+<p>3.<a href="https://www.luogu.com.cn/problem/SP20644">SP20644 ZQUERY - Zero Query</a></p>
 <p>回滚莫队的应用</p>
 <h2 id="5-%E4%BA%8C%E6%AC%A1%E7%A6%BB%E7%BA%BF%E8%8E%AB%E9%98%9F">5 二次离线莫队</h2>
 <p>没想到吧，这东西还可以再离线。</p>
 <h3 id="5-1-%E7%AE%97%E6%B3%95%E7%AE%80%E4%BB%8B">5-1 算法简介</h3>
 <p>大毒瘤 lxl 发明的算法，很强（双重含义）。</p>
 <p>二次离线莫队一般会被用于解决这样的问题：</p>
-<ol>
-<li><p>可以莫队（废话）</p>
-</li>
-<li><p>莫队移动端点的修改复杂度比较大（比如 log）</p>
-</li>
-</ol>
+<p>1.可以莫队（废话）</p>
+<p>2.莫队移动端点的修改复杂度比较大（比如 log）</p>
 <p>这时，我们就会考虑把莫队移动的这些端点也都离线下来预处理，从而进一步优化。</p>
 <p>估计因此叫做二次离线。</p>
 <h3 id="5-2-%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B">5-2 算法流程</h3>
 <p>目前理解下来流程大概这样：</p>
-<ol>
-<li><p>先跑莫队，由于是二元组形式，我们考虑把每一个点的贡献拆分成 <strong>这个点与这个点上一个点的前缀的贡献</strong> 减去 <strong>这个点与一段确定前缀</strong> 的贡献。</p>
-</li>
-<li><p>弄出一种数据结构，可以 $O(1)$ （或有些情况下稍劣） 查出一个点集与一个点之间的贡献，并可以 $O(\sqrt{n})$ （或有些情况下稍劣） 修改点集内的信息。</p>
-</li>
-<li><p>那么我们先一遍扫预处理出 <strong>这个点与这个点上一个点的前缀的贡献</strong> 这一部分的贡献，显然是 $O(n\sqrt{n})$ 的。</p>
-</li>
-<li><p>我们再在莫队的时候把所有需要求出的 <strong>这个点与一段确定前缀</strong> 所对应的 <strong>询问点</strong> 记录下来，由于这些点由第一次莫队处理出来所以点数为 $O(n\sqrt{n})$ 级别，我们可以选择用 <code>std::vector</code> 或其他工具把这些询问存储到对应 <strong>产生贡献</strong> 的前缀上去。</p>
-</li>
-<li><p>最后由于每一个前缀都要修改一次，总共有 $n$ 个前缀每一次修改 $O(\sqrt{n})$， 所以这一部分 $O(n\sqrt{n})$ ，然后处理出的 <strong>询问点</strong> 的个数也是 $O(n\sqrt{n})$ ，我们又是 $O(1)$ 询问，我们就达到了总体复杂度 $O(n\sqrt{n})$ 。</p>
-</li>
-</ol>
+<p>1.先跑莫队，由于是二元组形式，我们考虑把每一个点的贡献拆分成 <strong>这个点与这个点上一个点的前缀的贡献</strong> 减去 <strong>这个点与一段确定前缀</strong> 的贡献。</p>
+<p>2.弄出一种数据结构，可以 $O(1)$ （或有些情况下稍劣） 查出一个点集与一个点之间的贡献，并可以 $O(\sqrt{n})$ （或有些情况下稍劣） 修改点集内的信息。</p>
+<p>3.那么我们先一遍扫预处理出 <strong>这个点与这个点上一个点的前缀的贡献</strong> 这一部分的贡献，显然是 $O(n\sqrt{n})$ 的。</p>
+<p>4.我们再在莫队的时候把所有需要求出的 <strong>这个点与一段确定前缀</strong> 所对应的 <strong>询问点</strong> 记录下来，由于这些点由第一次莫队处理出来所以点数为 $O(n\sqrt{n})$ 级别，我们可以选择用 <code>std::vector</code> 或其他工具把这些询问存储到对应 <strong>产生贡献</strong> 的前缀上去。</p>
+<p>5.最后由于每一个前缀都要修改一次，总共有 $n$ 个前缀每一次修改 $O(\sqrt{n})$， 所以这一部分 $O(n\sqrt{n})$ ，然后处理出的 <strong>询问点</strong> 的个数也是 $O(n\sqrt{n})$ ，我们又是 $O(1)$ 询问，我们就达到了总体复杂度 $O(n\sqrt{n})$ 。</p>
 <h3 id="5-2-5-%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96">5-2.5 算法优化</h3>
 <p>不难发现，在上面的二次离线过程中，我们存储的是一些 <strong>询问点</strong> ，但其实莫队处理出的询问点还有一个优美的性质，那就是每一次处理出的点显然都是连续的，故在 <strong>产生贡献的前缀</strong> 处，我们考虑把存储 <strong>单点</strong> 改为存储 <strong>区间</strong> ，这样一来总点数不变，但由于区间个数为 $O(n)$ 级别，而这里存点的过程又是原先的空间复杂度瓶颈，所以我们可以通过这个操作把空间减掉一个 $O(\sqrt{n})$ ，从 $O(n\sqrt{n})$ 变为 $O(n)$ 。而且在某一些题目中，若我们可以做到 $O(1)$ 修改（比如预处理），并且这个修改可以通过 $O(1)$ 区间查询的方式进行询问，那么扫完全局的复杂度甚至是 $O(n)$ 的。</p>
 <p>这么干说似乎不太行，举一些栗子吧：</p>
@@ -493,13 +521,9 @@ struct QUEST{
 <h3 id="5-4-%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93">5-4 算法总结</h3>
 <p>总体考虑下来，这个东西复杂度如此优秀的原因可能主要还是在于节省了修改时间，让修改次数变为了 $O(n)$ ，并同时也让空间复杂度变为了 $O(n)$ ，从而解决了询问修改都为 $O(n\sqrt{n})$ 次的普通莫队算法在修改方面的劣势，如果能设计出优秀的数据结构，可以使得总体复杂度下降为 $O(n\sqrt{n})$ 。</p>
 <h3 id="5-5-%E6%8E%A8%E8%8D%90%E4%B9%A0%E9%A2%98">5-5 推荐习题</h3>
-<ol>
-<li><a href="https://www.luogu.com.cn/problem/P5501">P5501 [LnOI2019]来者不拒，去者不追</a></li>
-</ol>
+<p>1.<a href="https://www.luogu.com.cn/problem/P5501">P5501 [LnOI2019]来者不拒，去者不追</a></p>
 <p>二次离线莫队简单题</p>
-<ol>
-<li><a href="https://www.luogu.com.cn/problem/P5398">P5398 [Ynoi2018]GOSICK</a></li>
-</ol>
+<p>2.<a href="https://www.luogu.com.cn/problem/P5398">P5398 [Ynoi2018]GOSICK</a></p>
 <p>第十四分块</p>
 
       

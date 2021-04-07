@@ -1,0 +1,426 @@
+ 
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 20px;"> 
+
+DPair の 非自制 blog
+
+  </p>
+  <div class="saying" id="saying"> </div>
+</div>
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <HR align="center">
+      <div style="margin: 2 auto; width: min-content">
+          <img class="avatar" alt="DPair" src="/images/avatar.png">
+        </div>
+    <ul class="sidebar-links">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/66511" class="friend-link"> 
+      luogu home page 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://gitee.com/DPair" class="friend-link"> 
+      gitee 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link"> 
+      github 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="mailto:DPair2005@163.com" class="friend-link"> 
+      mail 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://dev.xjoi.net/user/profile/DPair__" class="friend-link"> 
+      XJOI 
+    </a>
+  </li>
+
+    </ul>
+  </div>
+
+  <ul class="sidebar-links">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/140572" class="friend-link"> 
+      DSair
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link"> 
+      Jacderzhang's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.gitee.io/" class="friend-link"> 
+      xYix's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Flying2018/" class="friend-link"> 
+      Flying2018's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/-Wallace-/" class="friend-link"> 
+      _Wallace_'s blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Point-King/" class="friend-link"> 
+      Point_King's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/c2522943959/" class="friend-link"> 
+      OIerwanglong's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://endless1936.blog.luogu.org/" class="friend-link"> 
+      Krimson's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/daniu/" class="friend-link"> 
+      Leap_Frog's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://programming.blog.luogu.org/" class="friend-link"> 
+      serverkiller's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/wlzhouzhuan/" class="friend-link"> 
+      wlzhouzhuan(win)'s blog
+    </a>
+  </li>
+
+  </ul>
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+
+      <h1 id="%E6%95%B4%E4%BD%93%E4%BA%8C%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">整体二分学习笔记</h1>
+<p>爬了，都这个时间点了才刚刚开始学整体二分，还学了两个晚上才会。</p>
+<p>言归正传，开始理解一下整体二分。</p>
+<p>个人理解：整体二分，顾名思义就是把多次二分答案合并到一次完成的一种技巧。需要离线。</p>
+<p>先看一道例题：</p>
+<p><a href="https://www.luogu.com.cn/problem/P2617">Dyanmic Rankings</a></p>
+<p>（<del>某神仙：这不是一道树套树裸题吗？</del>）</p>
+<p>然而由于这道题可以离线。整体二分也可做。</p>
+<p>（<del>请旁边的zy等我写完了再来我博客D我，现在先别看了好伐</del>）</p>
+<p>首先顾名思义，整体二分基于二分，我们先看看这道题二分怎么做。</p>
+<p>二分做法：对于每一个询问进行一次二分答案，每一次 $check$ 一遍当前区间内比 $mid$ 小的数的个数。直到最后范围缩小到 $k$ 。</p>
+<p>复杂度发现是 $O(nmloga_i)$ 的。</p>
+<p>我们发现，这么做的劣势在于进行了过多的二分与过多有重叠的 $check$ ，因此考虑把这一些东西优化掉。</p>
+<p>我们考虑把所有询问一起二分。</p>
+<p>每一次二分这么操作：把每一次 $check$ 把所有区间都扫一遍，并把它们分为两类，一类是答案 $\le mid$ 的，另一类是答案 $&gt; mid$ 的。</p>
+<p>然后最后还是一样的不断缩小，就能离线得到每一个询问的答案。</p>
+<p>比如这道题。</p>
+<p>等等，这道题不是有修改吗？</p>
+<p>那就把修改也丢进去就行了啊。</p>
+<p>我们大可以把修改也看做询问，我们会发现修改也分为了两部分，一部分 $\le mid$ 的对这一次二分有影响，对后面 $\le mid$ 的 $check$ 可能有影响，且对 $&gt; mid$ 的 $check$ 必有影响，另一类 $&gt; mid$ 的对这一次和其他所有 $\le mid$ 的 $check$ 都显然没有影响，又可以分两类。</p>
+<p>然后，我们就得到了一个 $O(mlog^2a)$ 的离线做法，稍微带一点常数。</p>
+<p>而且有一个好处，你的每一个操作都是按时间戳加入询问的，换言之，所有询问和修改的先后顺序是不变的。</p>
+<h2 id="%E3%80%90%E4%BB%A3%E7%A0%81%E3%80%91">【代码】</h2>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+template &lt;typename T&gt;
+inline void read(T &amp;x){
+    x = 0;int fu = 1;
+    char c = getchar();
+    while(c &gt; 57 || c &lt; 48){
+        if(c == 45) fu = -1;
+        c = getchar();
+    }
+    while(c &lt;= 57 &amp;&amp; c &gt;= 48){
+        x = (x &lt;&lt; 3) + (x &lt;&lt; 1) + c - 48;
+        c = getchar();
+    }
+    x *= fu;
+}
+template &lt;typename T&gt;
+inline void fprint(T x){
+    if(x &lt; 0) putchar(45), x = -x;
+    if(x &gt; 9) fprint(x / 10);
+    putchar(x % 10 + 48);
+}
+template &lt;typename T&gt;
+inline void fprint(T x, char ch){
+    fprint(x);putchar(ch);
+}
+inline char next_char(){
+    char ch = getchar();
+    while(!isalpha(ch)) ch = getchar();
+    return ch;
+}
+
+
+int n, m, cnt;
+struct Que{
+    int l, r, k;
+    int opt, id;
+}q[600005], q1[600005], q2[600005];
+int ans[200005];
+inline Que make(int tmp1, int tmp2, int tmp3, int tmp4, int tmp5){
+    Que ret;
+    ret.l = tmp1;ret.r = tmp2;ret.k = tmp3;
+    ret.opt = tmp4;ret.id = tmp5;
+    return ret;
+}
+
+int c[200005];
+inline int lowbit(int x){return x &amp; (-x);}
+inline int query(int x){int ret = 0;for (register int i = x;i;i -= lowbit(i)) ret += c[i];return ret;}
+inline void modify(int x, int val){for (register int i = x;i &lt;= n;i += lowbit(i)) c[i] += val;}
+
+
+int a[200005];
+void solve(int l, int r, int L, int R){
+    if(L &gt; R) return ;
+    if(l == r){
+        for (register int i = L;i &lt;= R;i ++){
+            if(q[i].opt == 2){
+                ans[q[i].id] = l;
+            }
+        }
+        return ;
+    }
+    int cnt1 = 0, cnt2 = 0, mid = (l + r) &gt;&gt; 1;
+    for (register int i = L;i &lt;= R;i ++){
+        if(q[i].opt == 1){
+            if(q[i].l &lt;= mid) q1[++ cnt1] = q[i], modify(q[i].id, q[i].r);
+            else q2[++ cnt2] = q[i];
+        }
+        else{
+            int num = query(q[i].r) - query(q[i].l - 1);
+            if(num &gt;= q[i].k) q1[++ cnt1] = q[i];
+            else q[i].k -= num, q2[++ cnt2] = q[i];
+        }
+    }
+    for (register int i = 1;i &lt;= cnt1;i ++){
+        if(q1[i].opt == 1) modify(q1[i].id, -q1[i].r);
+    }
+    for (register int i = L;i &lt;= L + cnt1 - 1;i ++) q[i] = q1[i - L + 1];
+    for (register int i = L + cnt1;i &lt;= R;i ++) q[i] = q2[i - L - cnt1 + 1];
+    solve(l, mid, L, L + cnt1 - 1);
+    solve(mid + 1, r, L + cnt1, R);
+}
+
+
+int main(){
+    read(n);read(m);
+    for (register int i = 1;i &lt;= n;i ++) read(a[i]), q[++ cnt] = make(a[i], 1, 0, 1, i);
+    int tot = 0;
+    for (register int i = 1;i &lt;= m;i ++){
+        int l, r, k;
+        char opt = next_char();read(l);read(r);
+        if(opt == &#39;Q&#39;) read(k), q[++ cnt] = make(l, r, k, 2, ++ tot);
+        else q[++ cnt] = make(a[l], -1, 0, 1, l), q[++ cnt] = make(a[l] = r, 1, 0, 1, l);
+    }
+    solve(-1000000000, 1000000000, 1, cnt);
+    for (register int i = 1;i &lt;= tot;i ++) fprint(ans[i], 10);
+    return 0;
+}
+</code></pre>
+<p>例题2：<a href="https://www.luogu.com.cn/problem/P3332">K大数查询</a></p>
+<p>和之前那道题其实也没什么区别了，只要能掌握二分的思路就行。</p>
+<p>唯二不同的是需要区间修改，还有 $k$ 小变成了 $k$ 大。</p>
+<p>把树状数组改成线段树，然后把每一个元素取相反数第 $k$ 小就变成第 $k$ 大了。</p>
+<p>（<del>其实线段树直接推平也很方便，当我懒得写还是一个一个删的</del>）</p>
+<h1 id="dpair-%E9%87%8D%E5%BA%A6%E6%87%92%E7%99%8C%E6%82%A3%E8%80%85">DPair &lt;- 重度懒癌患者</h1>
+<pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+template &lt;typename T&gt;
+inline void read(T &amp;x){
+    x = 0;int fu = 1;
+    char c = getchar();
+    while(c &gt; 57 || c &lt; 48){
+        if(c == 45) fu = -1;
+        c = getchar();
+    }
+    while(c &lt;= 57 &amp;&amp; c &gt;= 48){
+        x = (x &lt;&lt; 3) + (x &lt;&lt; 1) + c - 48;
+        c = getchar();
+    }
+    x *= fu;
+}
+template &lt;typename T&gt;
+inline void fprint(T x){
+    if(x &lt; 0) putchar(45), x = -x;
+    if(x &gt; 9) fprint(x / 10);
+    putchar(x % 10 + 48);
+}
+template &lt;typename T&gt;
+inline void fprint(T x, char ch){
+    fprint(x);putchar(ch);
+}
+inline char next_char(){
+    char ch = getchar();
+    while(!isalpha(ch)) ch = getchar();
+    return ch;
+}
+#define int long long 
+
+int n, m, cnt;
+struct Que{
+    int l, r, k;
+    int opt, id;
+}q[600005], q1[600005], q2[600005];
+int ans[200005];
+inline Que make(int tmp1, int tmp2, int tmp3, int tmp4, int tmp5){
+    Que ret;
+    ret.l = tmp1;ret.r = tmp2;ret.k = tmp3;
+    ret.opt = tmp4;ret.id = tmp5;
+    return ret;
+}
+
+#define LSON rt &lt;&lt; 1, l, mid
+#define RSON rt &lt;&lt; 1 | 1, mid + 1, r
+int t[200005], lazy[200005];
+
+inline void pushup(int rt){t[rt] = t[rt &lt;&lt; 1] + t[rt &lt;&lt; 1 | 1];}
+inline void update(int rt, int l, int r, int val){
+    t[rt] += (r - l + 1) * val;
+    lazy[rt] += val;
+}
+inline void pushdown(int rt, int l, int r){
+    if(lazy[rt]){
+        int mid = (l + r) &gt;&gt; 1;
+        update(LSON, lazy[rt]);
+        update(RSON, lazy[rt]);
+        lazy[rt] = 0;
+    }
+}
+void modify(int rt, int l, int r, int x, int y, int z){
+    if(x &lt;= l &amp;&amp; r &lt;= y) return update(rt, l, r, z);
+    pushdown(rt, l, r);
+    int mid = (l + r) &gt;&gt; 1;
+    if(x &lt;= mid) modify(LSON, x, y, z);
+    if(y &gt; mid) modify(RSON, x, y, z);
+    pushup(rt);
+}
+int query(int rt, int l, int r, int x, int y){
+    if(x &lt;= l &amp;&amp; r &lt;= y) return t[rt];
+    pushdown(rt, l, r);
+    int mid = (l + r) &gt;&gt; 1, ret = 0;
+    if(x &lt;= mid) ret += query(LSON, x, y);
+    if(y &gt; mid) ret += query(RSON, x, y);
+    return ret;
+}
+void solve(int l, int r, int L, int R){
+    if(L &gt; R) return ;
+    if(l == r){
+        for (register int i = L;i &lt;= R;i ++){
+            if(q[i].opt == 2){
+                ans[q[i].id] = l;
+            }
+        }
+        return ;
+    }
+    int cnt1 = 0, cnt2 = 0, mid = (l + r) &gt;&gt; 1;
+    for (register int i = L;i &lt;= R;i ++){
+        if(q[i].opt == 1){
+            if(q[i].k &lt;= mid) q1[++ cnt1] = q[i], modify(1, 1, n, q[i].l, q[i].r, 1ll);
+            else q2[++ cnt2] = q[i];
+        }
+        else{
+            int num = query(1, 1, n, q[i].l, q[i].r);
+            if(num &gt;= q[i].k) q1[++ cnt1] = q[i];
+            else q[i].k -= num, q2[++ cnt2] = q[i];
+        }
+    }
+    for (register int i = 1;i &lt;= cnt1;i ++) if(q1[i].opt == 1) modify(1, 1, n, q1[i].l, q1[i].r, -1ll);
+    for (register int i = L;i &lt;= L + cnt1 - 1;i ++) q[i] = q1[i - L + 1];
+    for (register int i = L + cnt1;i &lt;= R;i ++) q[i] = q2[i - L - cnt1 + 1];
+    solve(l, mid, L, L + cnt1 - 1);
+    solve(mid + 1, r, L + cnt1, R);
+}
+
+
+signed main(){
+    read(n);read(m);
+    int tot = 0;
+    for (register int i = 1;i &lt;= m;i ++){
+        int opt, l, r, x;
+        read(opt);read(l);read(r);read(x);
+        if(opt == 1) q[++ cnt] = make(l, r, -x, 1, 0ll);
+        else q[++ cnt] = make(l, r, x, 2, ++ tot);
+    }
+    solve(-n, n, 1, cnt);
+    for (register int i = 1;i &lt;= tot;i ++) fprint(-ans[i], 10);
+    return 0;
+}
+</code></pre>
+
+      
+
+    </div>
+
+  </div>
+</body>
