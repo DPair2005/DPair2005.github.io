@@ -67,11 +67,6 @@ DPairの非自制 blog
     <ul class="sidebar-links">
 
 <li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/user/66511" class="friend-link"> 
-      luogu home page 
-    </a>
-  </li>
-<li class="sidebar-links-item">
     <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
       luogu blog 
     </a>
@@ -99,11 +94,6 @@ DPairの非自制 blog
 <li class="sidebar-links-item">
     <a href="mailto:DPair2005@163.com" class="friend-link"> 
       mail 
-    </a>
-  </li>
-<li class="sidebar-links-item">
-    <a href="https://dev.xjoi.net/user/profile/DPair__" class="friend-link"> 
-      XJOI 
     </a>
   </li>
 
@@ -145,23 +135,8 @@ DPairの非自制 blog
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/blog/c2522943959/" class="friend-link"> 
-      OIerwanglong's blog
-    </a>
-  </li>
-<li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/Guts/" class="friend-link"> 
-      Krimson's blog
-    </a>
-  </li>
-<li class="sidebar-links-item">
     <a href="https://www.luogu.com.cn/blog/daniu/" class="friend-link"> 
       Leap_Frog's blog
-    </a>
-  </li>
-<li class="sidebar-links-item">
-    <a href="https://programming.blog.luogu.org/" class="friend-link"> 
-      serverkiller's blog
     </a>
   </li>
 <li class="sidebar-links-item">
@@ -284,14 +259,28 @@ O({n\over b}\log p + {n\over bq}\log b + b + {bq\over p})</script><p>不难发�
 <p>而且不难发现空间复杂度是 $O(n)$ 的。</p>
 <p><del>但总感觉这东西常数会挺大的（（</del></p>
 <h3 id="2-2-%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4%E6%9C%80%E5%A4%A7%E5%80%BC%E5%B0%8F%E4%BA%8E%E6%9F%90%E6%95%B0%E7%9A%84%E5%AD%90%E5%8C%BA%E9%97%B4%E4%B8%AA%E6%95%B0">2.2 区间加区间最大值小于某数的子区间个数</h3>
-<p>你会发现这东西加强了<a href="https://www.luogu.com.cn/problem/P6578">第十分块</a>。</p>
+<p>你会发现这东西严格加强了<a href="https://www.luogu.com.cn/problem/P6578">第十分块</a>。</p>
 <p><del>然而我连第十分块都不会</del></p>
 <p>不过这道题还是可以做的。</p>
 <p>首先我们发现这种 “大于、小于” 的操作像极了二分可以处理的东西，因此我们考虑怎么二分，然后再用分散层叠算法去优化掉一只 $\log$ 。</p>
-<p>然后我们考虑一些奇怪的</p>
+<p>首先我们必然要分块，设块长为 $b$ ，我们首先考虑不带修怎么做：</p>
+<p>显然答案为 <strong>相邻两个 $&gt; x$ 的数之间的区间</strong> 中的所有子区间个数之和，于是我们维护出一个 <strong>后缀信息</strong> ，表示对于一个 <strong>后缀</strong> 的块内答案和左右两边剩余部分的信息，这部分的空间显然是 $O(n)$ 的。</p>
+<p>那么这种多块的二分我们就可以用 <strong>线段树套分散层叠</strong> 优化到一只根号。</p>
+<p>然后考虑修改，显然除了散块重构都与上面同理，然后不难发现散块的重构可以做到 $O(b)$ 。具体怎么对于一个排序的数组 $O(b)$ 维护其有序性就不赘述了，我们只需要考虑怎么 $O(b)$ 根据一个块排好序之后的数组来重构后缀信息。</p>
+<p>这个用类似链表的结构可以比较方便地维护，最终显然取 $b=\sqrt{n}$ ，时间复杂度 $O(n\sqrt{n})$ ，空间复杂度 $O(n)$ 。</p>
+<p><del>常数过大显然无法通过第十分块。</del></p>
 <h3 id="2-3-%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C">2.3 区间加区间最大子段和</h3>
 <p>你会发现这东西似乎就是<a href="https://www.luogu.com.cn/problem/P4118">第六分块</a>的非<a href="https://www.luogu.com.cn/problem/P5693">EI</a>版本。</p>
 <p><del>然而我也不会第六分块</del></p>
+<p>同样先考虑第六分块的<del>点名被卡的</del>带 $\log$ 做法。</p>
+<p>首先我们设 $f(x)$ 表示对于一个序列，其 <strong>整体</strong> $+x$ 之后的答案，不难发现这是一个分段函数形成的凸包。</p>
+<p>然后我们对序列分块，块长为 $b$ ，然后 <strong>对于一个块建线段树</strong> ，显然这里可以用闵可夫斯基和来合并，一次合并复杂度为这个节点的序列长度 $O(len)$ 。</p>
+<p>不难发现每一个块的贡献为 $\log b$ ，所以对于一个块来说，预处理复杂度 $O(b\log b)$ 。</p>
+<p>不难发现我们可以非常方便地通过打 tag 对线段树上的被 <strong>完全覆盖</strong> 的点进行修改（因为其结构不变）。</p>
+<p>然后考虑散块修改的部分，我们用暴力重构一个块的 $O(b\log n)$ 的复杂度就太逊了，我们需要优化这个过程。不难发现我们事实上是对于散块进行了一次区间加，那么每一层被修改的点数都是 $O(1)$ ，于是散块修改复杂度就是 $O(b\sum_i ({1\over 2})^i=O(b)$ 。</p>
+<p>然后查询的部分其实也比较容易处理，不难发现我们也是对于多个块二分，故我们直接套用 <strong>2.1节</strong> 的解法或者用 <strong>基排+单调性+离线</strong> 就可以做到 $O(\sqrt{n})$ 单次。</p>
+<p>不难发现 <strong>基排+单调性+离线</strong> 的解法中每一个块互相独立，故最终空间复杂度为 $O(n+b\log b)$ ，但是在线做法中无法把所有块离线下来处理，故空间复杂度只能做到 $O(n\log n)$ 。</p>
+<p>于是我们解决了这道题（<del>话说这种东西真的会有人去写吗</del>）。</p>
 <h3 id="2-4-bonus">2.4 Bonus</h3>
 <p>提供一道论文里没有写的，但是可以利用分散层叠算法实现的分块题：<a href="https://www.luogu.com.cn/problem/P5356">P5356 [Ynoi2017] 由乃打扑克</a></p>
 <p>简要题意其实就是区间加区间 $kth$ 。</p>
@@ -311,11 +300,12 @@ O({n\over b}\log p + {n\over bq}\log b + b + {bq\over p})</script><p>不难发�
 <hr>
 <h3 id="2-5-%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93">2.5 部分总结</h3>
 <p>可见分散层叠算法在分块中的应用还是比较广的，不难发现，带二分的分块似乎基本上都可以通过 <strong>分散层叠算法配合线段树</strong> 优化掉一只 $\log$ 或至少优化成 $\log\log$ 。可见其实用性。</p>
+<p>个人感觉如果考虑常数的话那个 $O(n\sqrt{n\log \log n})$ 的写法不见得比 $O(n\sqrt{n})$ 慢（（</p>
 <p>但至少这些题目里看下来，感觉这个优化可能仅限于理论复杂度，真正的 OI 比赛中这个算法似乎不太能提升程序的运行效率。而且须知这个算法极度难写。</p>
 <h2 id="3-%E6%80%BB%E7%BB%93">3 总结</h2>
 <p>分散层叠算法虽然在 OI 中并不普及，但从它对这几道分块题的优化中就可以看出 <del>分块在 OI 中仍有很好的前途</del> 分散层叠算法在 OI 中还有很广的可探索空间，比如2021年集训队论文中就谈到了分散层叠算法维护二维平面的一些运用（这个暂时咕咕咕，以后可能会写）。而且其运用到的思想也十分优秀，值得一学，一定能起到提升思维水平的作用。</p>
 <p>但就出题而言，至少我个人认为这个算法不太好出题，主要是因为这个算法的实现存在大量细节，真的写起来会非常恶心（你看我上面的题 $100\%$ 是在口胡，一道题都没有实现过就知道了）。</p>
-<p><del>不过说句题外话：这篇论文的作者蒋明润现在好像进入了清华大学，我为什么要说这个想必你们都懂。</del></p>
+<p><del>不过说句题外话：这篇论文的作者蒋明润现在进入了清华大学（以及MIT），我为什么要说这个想必你们都懂。</del></p>
 
       
 

@@ -3,6 +3,8 @@ function rand( n ) {
 }
 function drawSaying() {
     let says = [
+        '你的生命已如风中残烛',
+        '所列瓦多卡纳',
         '这个菜菜的 DPair 正在学习怎么搞出一言',
         '如果你看到了这行字说明 DPair 可能成功实现了一言的功能',
         '繁星流动的痕迹纺织出所有的心愿，与希望一起充满这个世界吧！',
@@ -88,6 +90,8 @@ function drawSaying() {
         'The game is afoot.',
         'Elementary!',
         '“很遗憾，被我卡掉了。” —— lxl',
+        '意☆义☆不☆明的卡牌',
+        'I am iron man.',
     ]
     document.getElementById("saying").innerText = says[rand(says.length)]
 }
