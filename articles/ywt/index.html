@@ -22,12 +22,17 @@
 
   <div class="content">
     <div class="sidebar" id="sidebar">
+      <title>
+          压位 Trie 学习笔记
+      </title>
       <div class="sidebar-title">
-  <p style="font-weight: bold; font-size: 20px;"> 
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';"> 
 
-DPair の 非自制 blog
-
+DPairの非自制 blog
+    <HR align="center" style="width: 200px;">
   </p>
+    <div font="" style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';"> 一言 (hitokoto) </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
   <div class="saying" id="saying"> </div>
 </div>
 <div class="sidebar-body">
@@ -54,7 +59,7 @@ DPair の 非自制 blog
   </div>
 
   <div class="sidebar-about">
-    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <div style="text-align: center; font-size: 16px;"> About DPair </div>
     <HR align="center">
       <div style="margin: 2 auto; width: min-content">
           <img class="avatar" alt="DPair" src="/images/avatar.png">
@@ -69,6 +74,16 @@ DPair の 非自制 blog
 <li class="sidebar-links-item">
     <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
       luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link"> 
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link"> 
+      AtCoder 
     </a>
   </li>
 <li class="sidebar-links-item">
@@ -96,7 +111,7 @@ DPair の 非自制 blog
   </div>
 
   <ul class="sidebar-links">
-    <div style="text-align: center; font-size: 16px;"> links </div>
+    <div style="text-align: center; font-size: 16px;"> Friend Links </div>
     <HR align="center">
 
 <li class="sidebar-links-item">
@@ -135,7 +150,7 @@ DPair の 非自制 blog
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://endless1936.blog.luogu.org/" class="friend-link"> 
+    <a href="https://www.cnblogs.com/Guts/" class="friend-link"> 
       Krimson's blog
     </a>
   </li>
@@ -162,7 +177,6 @@ DPair の 非自制 blog
     </div>
 
     <div class="post" id="post">
-
       <h1 id="%E5%8E%8B%E4%BD%8D-trie-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">压位 Trie 学习笔记</h1>
 <h2 id="0-%E5%89%8D%E8%A8%80">0 前言</h2>
 <p><strong>本文学习自 @skip2004 的集训队论文 《浅谈亚 log 数据结构在 OI 中的应用》。本文将按论文顺序介绍笔者的个人理解和思考。</strong></p>
@@ -183,12 +197,12 @@ DPair の 非自制 blog
 <p><img src="https://cdn.luogu.com.cn/upload/image_hosting/uav897in.png" alt=""></p>
 <p>上图事实上维护了一个值域为 $[0, 2^4)$ 的问题，取 $w=4$ ，所以总层数为 $\log_42^4=2$ 。每一个结点维护的是自己的子树中 <strong>有哪几个有值</strong> 。例如图中维护的数字集合就是 ${0, 2, 9, 10, 11, 12, 13, 14, 15}$ ，所有有数的点为深色。</p>
 <p>至于为什么 ￥gg 的论文里面 root 没有标深色，<del>我也不知道</del>，但按我个人的理解是要标的。可能是没必要标（毕竟你这个数集里面有没有元素全局维护即可）。</p>
-<p>并且，这里我们也可以初步看出，对于一个压位 Trie ，我们一方面不能动态开点（不然要记录儿子）。</p>
+<p>并且，这里我们也可以初步看出，对于一个压位 Trie ，我们不能动态开点（不然要记录儿子）。</p>
 <h3 id="2-2-%E6%93%8D%E4%BD%9C%E5%A4%84%E7%90%86">2-2 操作处理</h3>
 <p>回归正题，不难发现我们可以把这棵树看做一棵 leafytree ，当然也可以理解成线段树。这对我们处理修改和询问有一定的帮助。</p>
 <p><strong>注：接下来我们认为值域是 $2^k$ 即卡满，至于为什么这么写。。。这是因为 DPair 写挂了一个地方然后不想改了（（</strong></p>
 <h4 id="2-2-1-%E6%8F%92%E5%85%A5">2-2-1 插入</h4>
-<p>首先我们考虑插入操作，不难发现我们和普通 Trie 的插入方式一致是可以做到的。考虑从根节点开始，往我们插入的方向一直走，沿途打标记即可。复杂度 $O(\log_w 2^k)$ 。</p>
+<p>首先我们考虑插入操作，不难发现我们和普通 Trie 的插入方式一致，是可以做到的。考虑从根节点开始，往我们插入的方向一直走，沿途打标记即可。复杂度 $O(\log_w 2^k)$ 。</p>
 <h4 id="2-2-2-%E5%88%A0%E9%99%A4">2-2-2 删除</h4>
 <p>与插入同理，最后把空的子树标记清除一下即可，同样也是沿途修改。复杂度 $O(\log_w 2^k)$ 。</p>
 <h4 id="2-2-3-%E5%89%8D%E9%A9%B1%E5%90%8E%E7%BB%A7">2-2-3 前驱后继</h4>
@@ -219,8 +233,10 @@ DPair の 非自制 blog
 <h3 id="2-5-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">2-5 代码实现</h3>
 <p>基本完全搬的 @skip2004 的，因为实现的真的太好了我感觉改哪里都亏（（</p>
 <p>实现了 <a href="https://www.luogu.com.cn/problem/U156719">这道题</a>。</p>
-<pre><code class="lang-cpp">//强韧无敌最强！粉碎玉碎大喝彩！
-#include &lt;cstdio&gt;
+<hr>
+<details>
+<summary> <strong> 点此展开代码 </strong> </summary>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
 
 namespace BITWISE{
     inline int clz(unsigned long long x){return __builtin_clzll(x);}//这个函数是查询开头几个零
@@ -230,8 +246,8 @@ using namespace BITWISE;
 namespace GenHelper{
     unsigned z3, z4, b;
     inline unsigned rand_(){
-        z3 = ((z3 &amp; 4294967280U) &lt;&lt; 7) ^ ((z3 &lt;&lt; 13) ^ z3) &gt;&gt; 21;
-        z4 = ((z4 &amp; 4294967168U) &lt;&lt; 13) ^ ((z4 &lt;&lt; 3) ^ z4) &gt;&gt; 12;
+        z3 = ((z3 & 4294967280U) &lt;&lt; 7) ^ ((z3 &lt;&lt; 13) ^ z3) &gt;&gt; 21;
+        z4 = ((z4 & 4294967168U) &lt;&lt; 13) ^ ((z4 &lt;&lt; 3) ^ z4) &gt;&gt; 12;
         return (z3 ^ z4);
     }
 }
@@ -259,18 +275,18 @@ struct Trie{
     }
     inline void ins(int x){
         for (int i = 0;i &lt; dep;++ i){//自下而上遍历的
-            ull p = 1ull &lt;&lt; (x &gt;&gt; i * g &amp; mod); //判断我们这个 x 在当前这一层要走哪一条边，并且直接左移好方便压位的处理
-            if(a[i][x &gt;&gt; (i + 1) * g] &amp; p) return ;//剪枝，上面有就可以弹出了
+            ull p = 1ull &lt;&lt; (x &gt;&gt; i * g & mod); //判断我们这个 x 在当前这一层要走哪一条边，并且直接左移好方便压位的处理
+            if(a[i][x &gt;&gt; (i + 1) * g] & p) return ;//剪枝，上面有就可以弹出了
             a[i][x &gt;&gt; (i + 1) * g] |= p;
         }
     }
     inline void del(int x){
         for (int i = 0;i &lt; dep;++ i)
-            if(a[i][x &gt;&gt; (i + 1) * g] &amp;= ~(1ull &lt;&lt; (x &gt;&gt; i * g &amp; mod))) return ;//删除一个位置，同样是删完还有就不删了的剪枝
+            if(a[i][x &gt;&gt; (i + 1) * g] &= ~(1ull &lt;&lt; (x &gt;&gt; i * g & mod))) return ;//删除一个位置，同样是删完还有就不删了的剪枝
     }
     inline int succ(int x){
         for (int i = 0;i &lt; dep;++ i){
-            int cur = (x &gt;&gt; i * g) &amp; mod;ull v = a[i][x &gt;&gt; (i + 1) * g];//当前是哪一条边，由于这里只需要知道是哪一条边所以我们不需要左移
+            int cur = (x &gt;&gt; i * g) & mod;ull v = a[i][x &gt;&gt; (i + 1) * g];//当前是哪一条边，由于这里只需要知道是哪一条边所以我们不需要左移
             if(v &gt;&gt; cur &gt; 1){//如果存在前驱，也可以写成 v &gt;&gt; (cur + 1)，后者更好理解但前者似乎更快
                 int res = x &gt;&gt; (i + 1) * g &lt;&lt; (i + 1) * g;
                 res += (ctz(v &gt;&gt; (cur + 1)) + cur + 1) &lt;&lt; i * g;//先把这一层的贡献加上，注意是不完整的
@@ -282,10 +298,10 @@ struct Trie{
     }
     inline int pre(int x){//与上面同理，不赘述
         for (int i = 0;i &lt; dep;++ i){
-            int cur = (x &gt;&gt; i * g) &amp; mod;ull v = a[i][x &gt;&gt; (i + 1) * g];
-            if(v &amp; ((1ull &lt;&lt; cur) - 1)){
+            int cur = (x &gt;&gt; i * g) & mod;ull v = a[i][x &gt;&gt; (i + 1) * g];
+            if(v & ((1ull &lt;&lt; cur) - 1)){
                 int res = x &gt;&gt; (i + 1) * g &lt;&lt; (i + 1) * g;
-                res += (mod - clz(v &amp; ((1ull &lt;&lt; cur) - 1))) &lt;&lt; i * g;
+                res += (mod - clz(v & ((1ull &lt;&lt; cur) - 1))) &lt;&lt; i * g;
                 for (int j = i - 1;~j;-- j) res += (mod - clz(a[j][res &gt;&gt; (j + 1) * g])) &lt;&lt; j * g;
                 return res;
             }
@@ -298,7 +314,7 @@ struct Trie{
 int ans;
 Trie s(1 &lt;&lt; 30);
 inline void work(){
-    int x = GenHelper :: rand_() &amp; ((1 &lt;&lt; 30) - 1), op = (x &gt;&gt; 15) &amp; 3;
+    int x = GenHelper :: rand_() & ((1 &lt;&lt; 30) - 1), op = (x &gt;&gt; 15) & 3;
       /* Your code begins here */
     if(op == 0) s.ins(x);
     else if(op == 1) s.del(x);
@@ -307,12 +323,15 @@ inline void work(){
 }
 int n, seed;
 int main(){
-    scanf(&quot;%d%d&quot;, &amp;n, &amp;seed);
+    scanf("%d%d", &n, &seed);
     srand_(seed);
     while(n --) work();
-    printf(&quot;%d\n&quot;, ans);
-}
-</code></pre>
+    printf("%d\n", ans);
+}</code></pre>
+</details>
+
+
+<hr>
 <h2 id="3-%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93">3 个人总结</h2>
 <p>这个数据结构似乎都基于值域，而且似乎使用起来有比较大的限制，所以感觉在我目前能够涉及到的 OI 范围中不太能用上，比如论文里面给出的 <strong>[ZJOI2019] 语言</strong> 这一例子，我们完全可以使用线段树合并来进行直接处理，代码难度更低的同时同样可以通过这道题。故个人感觉除了卡常需要，这个数据结构一般不太会用上。不过这个思想还是很值得学习的。</p>
 

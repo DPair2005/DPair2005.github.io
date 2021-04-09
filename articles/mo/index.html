@@ -22,12 +22,17 @@
 
   <div class="content">
     <div class="sidebar" id="sidebar">
+      <title>
+          浅谈一类 “暴力” 在 OI 中的应用——莫队
+      </title>
       <div class="sidebar-title">
-  <p style="font-weight: bold; font-size: 20px;"> 
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';"> 
 
-DPair の 非自制 blog
-
+DPairの非自制 blog
+    <HR align="center" style="width: 200px;">
   </p>
+    <div font="" style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';"> 一言 (hitokoto) </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
   <div class="saying" id="saying"> </div>
 </div>
 <div class="sidebar-body">
@@ -54,7 +59,7 @@ DPair の 非自制 blog
   </div>
 
   <div class="sidebar-about">
-    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <div style="text-align: center; font-size: 16px;"> About DPair </div>
     <HR align="center">
       <div style="margin: 2 auto; width: min-content">
           <img class="avatar" alt="DPair" src="/images/avatar.png">
@@ -69,6 +74,16 @@ DPair の 非自制 blog
 <li class="sidebar-links-item">
     <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
       luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link"> 
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link"> 
+      AtCoder 
     </a>
   </li>
 <li class="sidebar-links-item">
@@ -96,7 +111,7 @@ DPair の 非自制 blog
   </div>
 
   <ul class="sidebar-links">
-    <div style="text-align: center; font-size: 16px;"> links </div>
+    <div style="text-align: center; font-size: 16px;"> Friend Links </div>
     <HR align="center">
 
 <li class="sidebar-links-item">
@@ -135,7 +150,7 @@ DPair の 非自制 blog
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://endless1936.blog.luogu.org/" class="friend-link"> 
+    <a href="https://www.cnblogs.com/Guts/" class="friend-link"> 
       Krimson's blog
     </a>
   </li>
@@ -162,7 +177,6 @@ DPair の 非自制 blog
     </div>
 
     <div class="post" id="post">
-
       <h1 id="%E6%B5%85%E8%B0%88%E4%B8%80%E7%B1%BB-%E2%80%9C%E6%9A%B4%E5%8A%9B%E2%80%9D-%E5%9C%A8-oi-%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E8%8E%AB%E9%98%9F">浅谈一类 “暴力” 在 OI 中的应用——莫队</h1>
 <p>//20210206update：树上莫队中关于欧拉序的描述出现偏差，修锅。</p>
 <p>//20201225update：更改了一些不必要的或错误的言论，感谢神仙lxl的指出。</p>
@@ -195,10 +209,10 @@ DPair の 非自制 blog
 <h3 id="0-2-%E4%BE%8B%E9%A2%98%E5%88%86%E6%9E%90">0-2 例题分析</h3>
 <h4 id="%E4%BE%8B1%EF%BC%9A">例1：</h4>
 <p><a href="https://www.luogu.com.cn/problem/P2709">P2709 小B的询问</a></p>
-<p><strong>【题意简述】</strong>
-给你一个长度为 $n$ 的序列 $a$ ，$a[i] \in [1,k]$，有 $m$ 次询问，每一次询问一个区间 $[l,r]$ 中 $\sum_{i=1}^k c_i^2$ 的值， $c_i$ 表示 $i$ 在 $[l,r]$ 中的出现次数。</p>
-<p><strong>【思路】</strong>
-考虑暴力枚举，每一次暴力扫一遍整个区间，对于遇到的每一个 $a_i$ ，我们使得 $c_{a_i} ++$ ，最后暴力求出 $\sum_{i=1}^k c_i^2$ 即可。</p>
+<h5 id="%E3%80%90%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0%E3%80%91">【题意简述】</h5>
+<p>给你一个长度为 $n$ 的序列 $a$ ，$a[i] \in [1,k]$，有 $m$ 次询问，每一次询问一个区间 $[l,r]$ 中 $\sum_{i=1}^k c_i^2$ 的值， $c_i$ 表示 $i$ 在 $[l,r]$ 中的出现次数。</p>
+<h5 id="%E3%80%90%E6%80%9D%E8%B7%AF%E3%80%91">【思路】</h5>
+<p>考虑暴力枚举，每一次暴力扫一遍整个区间，对于遇到的每一个 $a_i$ ，我们使得 $c_{a_i} ++$ ，最后暴力求出 $\sum_{i=1}^k c_i^2$ 即可。</p>
 <p>复杂度 $O(m(n+k))$ 。<del>非常优秀</del></p>
 <p>显然过不去。</p>
 <p>我们考虑怎么优化这个算法。</p>
@@ -227,10 +241,10 @@ while(r &gt; q[i].r) del(a[r --]);
 <h4 id="%E4%BE%8B1%EF%BC%9A">例1：</h4>
 <p><a href="https://www.luogu.com.cn/problem/P2709">P2709 小B的询问</a></p>
 <p><del>没错我又回来了</del></p>
-<p><strong>【题意简述】</strong>
-给你一个长度为 $n$ 的序列 $a$ ，$a[i] \in [1,k]$，有 $m$ 次询问，每一次询问一个区间 $[l,r]$ 中 $\sum_{i=1}^k c_i^2$ 的值， $c_i$ 表示 $i$ 在 $[l,r]$ 中的出现次数。</p>
-<p><strong>【思路】</strong>
-刚才我们已经学会了这道题暴力怎么做，并且我们也明白了怎么暴力移动区间端点。</p>
+<h5 id="%E3%80%90%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0%E3%80%91">【题意简述】</h5>
+<p>给你一个长度为 $n$ 的序列 $a$ ，$a[i] \in [1,k]$，有 $m$ 次询问，每一次询问一个区间 $[l,r]$ 中 $\sum_{i=1}^k c_i^2$ 的值， $c_i$ 表示 $i$ 在 $[l,r]$ 中的出现次数。</p>
+<h5 id="%E3%80%90%E6%80%9D%E8%B7%AF%E3%80%91">【思路】</h5>
+<p>刚才我们已经学会了这道题暴力怎么做，并且我们也明白了怎么暴力移动区间端点。</p>
 <p>那么怎样我们才能使得复杂度正确呢？</p>
 <p>首先，我们把这个序列分成很多长度相同的块，每一块长度设为 $b$ 。</p>
 <p>然后对于所有 <strong>左端点在同一个块里的询问</strong> ，我们按它们的 <strong>右端点升序排序</strong> ， 否则我们按它们的 <strong>左端点升序排序</strong> ，具体为什么这么写一会儿会讲。</p>
@@ -301,9 +315,9 @@ struct QUEST{
 <h3 id="2-2-%E4%BE%8B%E9%A2%98%E5%88%86%E6%9E%90">2-2 例题分析</h3>
 <h4 id="%E4%BE%8B2%EF%BC%9A">例2：</h4>
 <p><a href="https://www.luogu.com.cn/problem/P1903">P1903 [国家集训队]数颜色 / 维护队列</a></p>
-<p><strong>【题意简述】</strong></p>
+<h5 id="%E3%80%90%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0%E3%80%91">【题意简述】</h5>
 <p>给你一个长度为 $n$ 的序列 $a$ ，$a[i] \in [1,k]$，有 $m$ 次询问或修改，每一次询问一个区间 $[l,r]$ 中出现过多少不同的数，每一次单点修改一个数。</p>
-<p><strong>【思路】</strong></p>
+<h5 id="%E3%80%90%E6%80%9D%E8%B7%AF%E3%80%91">【思路】</h5>
 <p>如果没有修改的话，一般的莫队其实就是看端点上的数在修改后出现状态会不会发生变化，显然 “有” -&gt; “无” 会使得答案 $-1$ ，“无” -&gt; “有” 会使得答案 $+1$ 。</p>
 <p>那么。。。加上修改呢？</p>
 <p>我们考虑对于每一次询问记录一个时间戳 $t$ ，表示这个询问之前进行了 $t$ 次修改，那么由于修改顺序是不会变的，进行过哪些修改一目了然。</p>
@@ -366,19 +380,19 @@ struct QUEST{
 <h3 id="3-3-%E4%BE%8B%E9%A2%98%E5%BC%95%E5%85%A5">3-3 例题引入</h3>
 <h4 id="%E4%BE%8B3%EF%BC%9A">例3：</h4>
 <p><a href="https://www.luogu.com.cn/problem/SP10707">SP10707 COT2 - Count on a tree II</a></p>
-<p><strong>【题意简述】</strong></p>
+<h5 id="%E3%80%90%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0%E3%80%91">【题意简述】</h5>
 <p>给你一棵 $n$ 个节点的树，每一个点有一个颜色，每一次询问一条路径上的节点的不同颜色数。</p>
-<p><strong>【思路】</strong></p>
+<h5 id="%E3%80%90%E6%80%9D%E8%B7%AF%E3%80%91">【思路】</h5>
 <p>首先，我们已经学会了怎么在一个序列上处理这个问题。</p>
 <p>现在我们考虑怎么让莫队上树。</p>
 <p>先拿刚才那一棵树来说吧。</p>
 <p>这需要分类讨论：（假设我们询问的是 $(u,v)$）</p>
-<p><strong>1、$u$ 在 $v$ 的子树中：</strong></p>
+<h6 id="1%E3%80%81-u-%E5%9C%A8-v-%E7%9A%84%E5%AD%90%E6%A0%91%E4%B8%AD%EF%BC%9A">1、$u$ 在 $v$ 的子树中：</h6>
 <p>比如 $v=2, u=5$ ，我们考虑截取区间 $[dfn[v],dfn[u]]$ 即 $[dfn[2],dfn[5]]$ 。</p>
 <p>这一段区间是 ${2,5,5,4}$ 。</p>
 <p>其中 $5$ 出现了 $2$ 次，这是因为 $5$ 不属于这条路径，它已经进了一次搜索栈然后又出去了，这启示我们在莫队的时候要对出现两次的数进行去重，使得其没有贡献，这个我们在它出现过时 $del()$ ，未出现时 $add()$ 即可。</p>
 <p>由于 $u$ 在 $v$ 的子树中，所以所有出现过两次的必然已经进过搜索栈又出了搜索栈，不在这条路径上，而剩下的只出现一次的点仍在搜索栈中，故在路径上。</p>
-<p><strong>2、$u,v$ 没有祖孙关系</strong></p>
+<h6 id="2%E3%80%81-u-v-%E6%B2%A1%E6%9C%89%E7%A5%96%E5%AD%99%E5%85%B3%E7%B3%BB">2、$u,v$ 没有祖孙关系</h6>
 <p>刚才的结论有一个前提，就是 $u$ 在 $v$ 的子树中，那么对于 $u,v$ 没有祖孙关系的呢？</p>
 <p>我们同样可以这么取 $[low[v],dfn[u]]$，而此时我们需要保证的是 $low[v] &lt; dfn[u]$ 。</p>
 <p>为什么这是对的呢？</p>
@@ -434,10 +448,10 @@ struct QUEST{
 <p>这里只举只删不增的例子</p>
 <h4 id="%E4%BE%8B4%EF%BC%9A">例4：</h4>
 <p><a href="https://www.luogu.com.cn/problem/P4137">P4137 Rmq Problem / mex</a></p>
-<p><strong>【题意简述】</strong></p>
+<h5 id="%E3%80%90%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0%E3%80%91">【题意简述】</h5>
 <p>有一个长度为 $n$ 的序列 $a$。</p>
 <p>$m$ 次询问，每次询问一个区间内最小没有出现过的自然数。</p>
-<p><strong>【思路】</strong></p>
+<h5 id="%E3%80%90%E6%80%9D%E8%B7%AF%E3%80%91">【思路】</h5>
 <p>我们先考虑普通莫队怎么做。</p>
 <p>删除操作可显然了，我们删掉一个数之后看看它的出现次数是不是 $0$ ，如果是，再和当前答案去个最小值就行了。</p>
 <p>那么增加操作呢？</p>
@@ -473,9 +487,9 @@ struct QUEST{
 <h3 id="5-3-%E4%BE%8B%E9%A2%98%E5%88%86%E6%9E%90">5-3 例题分析</h3>
 <h4 id="%E4%BE%8B5%EF%BC%9A">例5：</h4>
 <p><a href="https://www.luogu.com.cn/problem/P5047">P5047 [Ynoi2019模拟赛]Yuno loves sqrt technology II</a></p>
-<p><strong>【题意简述】</strong></p>
+<h5 id="%E3%80%90%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0%E3%80%91">【题意简述】</h5>
 <p>给你一个长为 $n$ 的序列 $a$，$m$ 次询问，每次查询一个区间的逆序对数。</p>
-<p><strong>【思路】</strong></p>
+<h5 id="%E3%80%90%E6%80%9D%E8%B7%AF%E3%80%91">【思路】</h5>
 <p>显然一种很 naive 的写法是用树状数组加一个莫队去维护这个东西，然后你就得到了一个 $O(n\sqrt{n} \log n)$ 的优秀暴力。</p>
 <p>然后你必然会 $\text{TLE}$ 。</p>
 <p>那么我们考虑怎么给它二次离线。</p>
@@ -499,10 +513,10 @@ struct QUEST{
 <p>十分优秀，真的十分优秀。</p>
 <h4 id="%E4%BE%8B6%EF%BC%9A">例6：</h4>
 <p><a href="https://www.luogu.com.cn/problem/P4887">P4887 【模板】莫队二次离线（第十四分块(前体)）</a></p>
-<p><strong>【题意简述】</strong></p>
+<h5 id="%E3%80%90%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0%E3%80%91">【题意简述】</h5>
 <p>给你一个长度为 $n$ 的序列 $a$，每次查询给一个区间 $[l,r]$ 。</p>
 <p>查询 $l \leq i&lt; j \leq r$ ,且 $a_i \oplus a_j$ 的二进制表示下有 $k$ 个 $1$ 的二元组 $(i,j)$ 的个数。$\oplus$ 是指按位异或。</p>
-<p><strong>【思路】</strong></p>
+<h5 id="%E3%80%90%E6%80%9D%E8%B7%AF%E3%80%91">【思路】</h5>
 <p>同样考虑怎么二次离线</p>
 <p>首先我们知道 $k$ 是固定的。</p>
 <p>然后发现值域很小，为 $2^{17}$ 的样子（后文的 $17$ 就是这么来的）。 </p>

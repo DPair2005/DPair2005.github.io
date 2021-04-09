@@ -1,0 +1,194 @@
+ 
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <title>
+          测试博客
+      </title>
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';"> 
+
+DPairの非自制 blog
+    <HR align="center" style="width: 200px;">
+  </p>
+    <div font="" style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';"> 一言 (hitokoto) </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+  <div class="saying" id="saying"> </div>
+</div>
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+    <div style="text-align: center; font-size: 16px;"> About DPair </div>
+    <HR align="center">
+      <div style="margin: 2 auto; width: min-content">
+          <img class="avatar" alt="DPair" src="/images/avatar.png">
+        </div>
+    <ul class="sidebar-links">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/66511" class="friend-link"> 
+      luogu home page 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link"> 
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link"> 
+      AtCoder 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://gitee.com/DPair" class="friend-link"> 
+      gitee 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link"> 
+      github 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="mailto:DPair2005@163.com" class="friend-link"> 
+      mail 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://dev.xjoi.net/user/profile/DPair__" class="friend-link"> 
+      XJOI 
+    </a>
+  </li>
+
+    </ul>
+  </div>
+
+  <ul class="sidebar-links">
+    <div style="text-align: center; font-size: 16px;"> Friend Links </div>
+    <HR align="center">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/140572" class="friend-link"> 
+      DSair
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link"> 
+      Jacderzhang's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.gitee.io/" class="friend-link"> 
+      xYix's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Flying2018/" class="friend-link"> 
+      Flying2018's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/-Wallace-/" class="friend-link"> 
+      _Wallace_'s blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Point-King/" class="friend-link"> 
+      Point_King's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/c2522943959/" class="friend-link"> 
+      OIerwanglong's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Guts/" class="friend-link"> 
+      Krimson's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/daniu/" class="friend-link"> 
+      Leap_Frog's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://programming.blog.luogu.org/" class="friend-link"> 
+      serverkiller's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/wlzhouzhuan/" class="friend-link"> 
+      wlzhouzhuan(win)'s blog
+    </a>
+  </li>
+
+  </ul>
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+      <h1 id="%E6%B5%8B%E8%AF%95%E5%8D%9A%E5%AE%A2">测试博客</h1>
+<h1 id="%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98">一级标题</h1>
+<h2 id="%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98">二级标题</h2>
+<h3 id="%E4%B8%89%E7%BA%A7%E6%A0%87%E9%A2%98">三级标题</h3>
+<h4 id="%E5%9B%9B%E7%BA%A7%E6%A0%87%E9%A2%98">四级标题</h4>
+<h5 id="%E4%BA%94%E7%BA%A7%E6%A0%87%E9%A2%98">五级标题</h5>
+<h6 id="%E5%85%AD%E7%BA%A7%E6%A0%87%E9%A2%98">六级标题</h6>
+<p>正文</p>
+
+      
+
+    </div>
+
+  </div>
+</body>

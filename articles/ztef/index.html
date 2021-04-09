@@ -22,12 +22,17 @@
 
   <div class="content">
     <div class="sidebar" id="sidebar">
+      <title>
+          整体二分学习笔记
+      </title>
       <div class="sidebar-title">
-  <p style="font-weight: bold; font-size: 20px;"> 
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';"> 
 
-DPair の 非自制 blog
-
+DPairの非自制 blog
+    <HR align="center" style="width: 200px;">
   </p>
+    <div font="" style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';"> 一言 (hitokoto) </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
   <div class="saying" id="saying"> </div>
 </div>
 <div class="sidebar-body">
@@ -54,7 +59,7 @@ DPair の 非自制 blog
   </div>
 
   <div class="sidebar-about">
-    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <div style="text-align: center; font-size: 16px;"> About DPair </div>
     <HR align="center">
       <div style="margin: 2 auto; width: min-content">
           <img class="avatar" alt="DPair" src="/images/avatar.png">
@@ -69,6 +74,16 @@ DPair の 非自制 blog
 <li class="sidebar-links-item">
     <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
       luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link"> 
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link"> 
+      AtCoder 
     </a>
   </li>
 <li class="sidebar-links-item">
@@ -96,7 +111,7 @@ DPair の 非自制 blog
   </div>
 
   <ul class="sidebar-links">
-    <div style="text-align: center; font-size: 16px;"> links </div>
+    <div style="text-align: center; font-size: 16px;"> Friend Links </div>
     <HR align="center">
 
 <li class="sidebar-links-item">
@@ -135,7 +150,7 @@ DPair の 非自制 blog
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://endless1936.blog.luogu.org/" class="friend-link"> 
+    <a href="https://www.cnblogs.com/Guts/" class="friend-link"> 
       Krimson's blog
     </a>
   </li>
@@ -162,7 +177,6 @@ DPair の 非自制 blog
     </div>
 
     <div class="post" id="post">
-
       <h1 id="%E6%95%B4%E4%BD%93%E4%BA%8C%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">整体二分学习笔记</h1>
 <p>爬了，都这个时间点了才刚刚开始学整体二分，还学了两个晚上才会。</p>
 <p>言归正传，开始理解一下整体二分。</p>
@@ -292,7 +306,7 @@ int main(){
 <p>唯二不同的是需要区间修改，还有 $k$ 小变成了 $k$ 大。</p>
 <p>把树状数组改成线段树，然后把每一个元素取相反数第 $k$ 小就变成第 $k$ 大了。</p>
 <p>（<del>其实线段树直接推平也很方便，当我懒得写还是一个一个删的</del>）</p>
-<h1 id="dpair-%E9%87%8D%E5%BA%A6%E6%87%92%E7%99%8C%E6%82%A3%E8%80%85">DPair &lt;- 重度懒癌患者</h1>
+<h2 id="%E3%80%90%E4%BB%A3%E7%A0%81%E3%80%91">【代码】</h2>
 <pre><code class="lang-cpp">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 

@@ -22,12 +22,17 @@
 
   <div class="content">
     <div class="sidebar" id="sidebar">
+      <title>
+          关于卡常技巧
+      </title>
       <div class="sidebar-title">
-  <p style="font-weight: bold; font-size: 20px;"> 
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';"> 
 
-DPair の 非自制 blog
-
+DPairの非自制 blog
+    <HR align="center" style="width: 200px;">
   </p>
+    <div font="" style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';"> 一言 (hitokoto) </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
   <div class="saying" id="saying"> </div>
 </div>
 <div class="sidebar-body">
@@ -54,7 +59,7 @@ DPair の 非自制 blog
   </div>
 
   <div class="sidebar-about">
-    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <div style="text-align: center; font-size: 16px;"> About DPair </div>
     <HR align="center">
       <div style="margin: 2 auto; width: min-content">
           <img class="avatar" alt="DPair" src="/images/avatar.png">
@@ -69,6 +74,16 @@ DPair の 非自制 blog
 <li class="sidebar-links-item">
     <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
       luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link"> 
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link"> 
+      AtCoder 
     </a>
   </li>
 <li class="sidebar-links-item">
@@ -96,7 +111,7 @@ DPair の 非自制 blog
   </div>
 
   <ul class="sidebar-links">
-    <div style="text-align: center; font-size: 16px;"> links </div>
+    <div style="text-align: center; font-size: 16px;"> Friend Links </div>
     <HR align="center">
 
 <li class="sidebar-links-item">
@@ -135,7 +150,7 @@ DPair の 非自制 blog
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://endless1936.blog.luogu.org/" class="friend-link"> 
+    <a href="https://www.cnblogs.com/Guts/" class="friend-link"> 
       Krimson's blog
     </a>
   </li>
@@ -162,18 +177,18 @@ DPair の 非自制 blog
     </div>
 
     <div class="post" id="post">
-
       <h1 id="%E5%85%B3%E4%BA%8E%E5%8D%A1%E5%B8%B8%E6%8A%80%E5%B7%A7">关于卡常技巧</h1>
 <p>我也不知道我为啥要写这东西，可能单纯是因为没什么做题动力又不想浪费时间。</p>
 <h2 id="0-%E7%AE%80%E4%BB%8B">0 简介</h2>
 <p>首先我们要知道 <strong>卡常</strong> 到底是什么。</p>
 <blockquote>
-<p>卡常数，又称底层常数优化，是信息学竞赛中一种针对程序基本操作进行空间或时间上优化的行为，与时间复杂度或剪枝有别。——百度百科</p>
+<p>卡常数，又称底层常数优化，是信息学竞赛中一种针对程序基本操作进行空间或时间上优化的行为，与时间复杂度或剪枝有别。</p>
+<p>——百度百科</p>
 </blockquote>
 <p>虽然这段文字来源于百度百科，但是不得不承认卡常数就是这么个简单的东西（（</p>
 <p>它虽然无法优化时间复杂度，但往往可能可以使得错误的复杂度松过一些题目。同时，过大的常数也可能导致一些复杂度正确的程序发生超时。可见，养成一个小常数的代码习惯是十分重要的。</p>
 <p>那么就从几个方面来简单讲一下如何减小自己的常数。</p>
-<p><strong>注：本文前半部分默认已经开启 O2 优化，故一些显然会被编译器优化掉的东西我们不去考虑，一些冷门或容易被优化掉的卡常手段会在偏文末的地方讨论。</strong></p>
+<p><strong>注：本文默认已经开启 O2 优化，故一些显然会被编译器优化掉的东西我们不去考虑，一些冷门或容易被优化掉的卡常手段会在偏文末的地方讨论。</strong></p>
 <h2 id="1-%E5%AF%BB%E6%89%BE%E5%8D%A1%E5%B8%B8%E7%82%B9">1 寻找卡常点</h2>
 <p>在卡常之前，我们要先知道我们什么地方常数大会影响复杂度。</p>
 <p>比如说这样一段代码：</p>
@@ -196,7 +211,7 @@ for (int i = 1;i &lt;= n;++ i){
 <p>在传统的 OI 比赛中，题目往往有输入和输出。</p>
 <p>所以对这种必然存在的东西进行优化不仅能提升代码效率，还可以十分方便地在代码之间进行迁移。</p>
 <p>一般我们最常见的输入输出方式是 <code>scanf()</code> 和 <code>printf()</code> 。</p>
-<p>或者厉害一点，我们用更快的 <code>getchar()</code> 和 <code>putchar</code> 写快输快读。</p>
+<p>或者厉害一点，我们用更快的 <code>getchar()</code> 和 <code>putchar()</code> 写快输快读。</p>
 <pre><code class="lang-cpp">template &lt;typename T&gt;
 inline void read(T &amp;x){
     x = 0;int fu = 1;
@@ -310,16 +325,12 @@ inline int alloc(int siz){return ed -= siz;}
 <p>我们用常量来定义它们也可以达到优化常数的效果（而且据说这个东西编译器没法帮你优化）。</p>
 <p>而且开常量有一个好处：要是我们什么地方手残，一个不小心把常量给改了，编译器还会直接报错帮你搞定。</p>
 <p><del>而且这东西比什么宏高到不知道哪里去了</del></p>
-<p>其实一切定义以后不变的东西应该都可以开成常量（反正开不了的编译器也会报错），用常量写代码必然是一个不错的选择。</p>
 <p>一些常见的开常量的地方如下：</p>
 <pre><code class="lang-cpp">const int MOD = 998244353;//模数
 const int block = 114514;//块长（当然大概率不会有这么长的块长）
 const double alpha = 0.75;//替罪羊树（或其他东西）的阈值
-void build(const int rt, const int l, const int r){//线段树的 rt, l, r 这些不变量
-    const int mid = l + r &gt;&gt; 1;//线段树、二分等分治算法的 mid 也是不变量
-}
 </code></pre>
-<p>这些东西开成常量绝对是一个不错的卡常方法，最好能养成习惯。</p>
+<p>其他东西开成常量可能反而会变慢的说，还是别乱开，只开开常用常量比较好。</p>
 <h2 id="5-%E5%BE%AA%E7%8E%AF%E5%B1%95%E5%BC%80">5 循环展开</h2>
 <blockquote>
 <p>“你影响它循环展开了。”</p>
@@ -363,7 +374,7 @@ for (int i = 1;i &lt;= N;++ i){
 }
 </code></pre>
 <p>乍看之下第二份代码还少循环一次，应该会更快。</p>
-<p>但事实上第一份代码更快。</p>
+<p>但事实上第一份代码反而可能会更快。</p>
 <p>因为你影响第二份代码循环展开了。</p>
 <p>所以编译器只能优化第一份代码，更小的常数导致了第一份代码更快。</p>
 <p><del>这也启示我们要尊重编译器</del></p>
@@ -404,7 +415,35 @@ int main(){
 </code></pre>
 <p>要快到不知道哪里去了。</p>
 <p>也是同一个道理。</p>
-<p><strong>持续更新中～～</strong></p>
+<p>这也解释了为什么有些时候优化了空间也会优化时间：因为提高了缓存命中率。</p>
+<h2 id="7-%E4%BD%8D%E8%BF%90%E7%AE%97">7 位运算</h2>
+<p><strong>这部分编译器会帮你优化掉所以在开了 O2 的情况下没什么必要，不过对于不开 O2 的比赛来说用位运算会快不少。</strong></p>
+<p>位运算，就是 <code>&gt;&gt;</code> ，<code>&lt;&lt;</code> ，和 <code>| &amp; ^ ~</code> 这些东西。</p>
+<p>它们的作用就是把一个东西转成二进制之后进行运算然后再转回来，比如 <code>1 &lt;&lt; 1</code> ，假设我们这里左边那个 <code>1</code> 是 <code>int</code> 类型，那么它就会像这样：</p>
+<pre><code class="lang-cpp">00000000 00000000 00000000 00000001
+</code></pre>
+<p>然后左移一位：</p>
+<pre><code class="lang-cpp">00000000 00000000 00000000 00000010
+</code></pre>
+<p>就变成了 <code>2</code> 。</p>
+<p>所以左移一般用来乘上一个二的次幂，同理，右移一般用来除以一个二的次幂，而且是整除，所以一般我们会用在这种地方：</p>
+<pre><code class="lang-cpp">const int mid = l + r &gt;&gt; 1;
+</code></pre>
+<p>而且位运算全部都是 $O(1)$ 的，所以在状压的时候也十分常用。</p>
+<p>而且位运算很快。</p>
+<p>比如对一个形如 $2^k-1$ 的数取模时，就可以直接用 <code>&amp;</code> 来优化常数，原因读者自证不难。</p>
+<p>然后 <code>!=</code> 其实有时可以写成 <code>^</code> 。</p>
+<p>对于一个偶数加一可以直接用 <code>| 1</code> 。</p>
+<p>但是这东西优先级对初学者比较不友好，不要乱用。</p>
+<h2 id="8-%E6%9D%82%E9%A1%B9">8 杂项</h2>
+<ul>
+<li><code>inline</code> ：开了 O2 的话编译器应该会帮你优化掉，把这个加在一些 <strong>非递归</strong> 的函数前面可以一定程度上提升运行效率。</li>
+<li><code>i ++</code> 与 <code>++ i</code> ：据说是 <code>++ i</code> 快一些，但显然编译器会帮你优化掉</li>
+<li>取模优化：你只需要知道 <code>%</code> 运算挺慢的，具体怎么优化自行理解，常用的方式是重载带模数加法什么的。</li>
+<li>压缩空间：能不用 <code>long long</code> 的 <strong>大数组</strong> 最好用 <code>int</code> ，能不用 <code>int</code> 的 <strong>大数组</strong> 最好用 <code>short</code> ，甚至可以考虑压缩信息，<strong>最典型（<del>在当时</del>）</strong> 就是<a href="../ywt">压位</a> （这可能甚至可以优化复杂度），但是自己乱用然后溢出了我不负责。</li>
+<li>手写数据结构：有些东西手写 <strong>可能</strong> 会比 STL 快一些，但是除非你想手写红黑树，否则用 <code>std :: set</code> 什么的还是不错的。</li>
+<li>递归改迭代？：不一定会变快，因为编译器会帮你优化掉。</li>
+</ul>
 
       
 

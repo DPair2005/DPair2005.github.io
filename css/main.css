@@ -3,6 +3,9 @@
 body {
   color: #3d3d3d;
   background-color: #efefef;
+  /* background-image: url(../images/bgp2.png); */
+  background-size:cover;
+  background-attachment:fixed;
   font-family: monospace;
   padding: 0;
   margin: 0;
@@ -18,7 +21,7 @@ body {
 
 .friend-link {
   text-decoration: unset;
-  border-bottom: 1px solid #999;
+  /* border-bottom: 1px solid #999; */
   color: #4d4d4d;
   transition-duration: 0.2s;
 }
@@ -39,7 +42,7 @@ body {
 }
 
 .sidebar-title {
-  font-family: "Dancing Script";
+  font-family: "";
   text-align: center;
   background-color: #222222;
   color: eaefec;
@@ -50,7 +53,7 @@ body {
 }
 
 .saying {
-  font-size: 11px;
+  font-size: 13px;
   margin: 0 30px;
 }
 
@@ -147,7 +150,7 @@ body {
 }
 
 .sidebar-links-item {
-  font-family: "Dancing Script";
+  font-family: "ZCOOL XiaoWei";
   margin: 10;
   text-align: center;
   font-size: 13px;

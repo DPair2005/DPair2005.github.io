@@ -7,6 +7,38 @@
   font-family: 'ZCOOL XiaoWei';
 }
 
+.post blockquote {
+    border-left: 5px rgb(160, 172, 172) solid;
+    padding: 0 20px;
+    margin-left: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.post h1 {
+    font-size: 42px;
+}
+
+.post h2 {
+    font-size: 29px;
+}
+
+.post h3 {
+    font-size: 25px;
+}
+
+.post h4 {
+    font-size: 21px;
+}
+
+.post h5 {
+    font-size: 18px;
+}
+
+.post h6 {
+    font-size: 16px;
+}
+
 .post HR {
   height: 4px;
   background-image: repeating-linear-gradient(-45deg, rgb(43, 47, 49), rgb(43, 47, 49) 4px, rgba(0, 0, 0, 0) 4px, rgba(0, 0, 0, 0) 8px);
