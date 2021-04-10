@@ -92,7 +92,9 @@ function drawSaying() {
         '“很遗憾，被我卡掉了。” —— lxl',
         '意☆义☆不☆明的卡牌',
         'I am iron man.',
-        '“基本上所有单点修改都可以强化成区间推平。” —— lxl'
+        '“基本上所有单点修改都可以强化成区间推平。” —— lxl',
+        '“分块需要带活？” —— lxl',
+        '“哦对了忘了说题解了” —— lxl',
     ]
     document.getElementById("saying").innerText = says[rand(says.length)]
 }

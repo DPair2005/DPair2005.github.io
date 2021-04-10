@@ -140,6 +140,11 @@ DPairの非自制 blog
     </a>
   </li>
 <li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/xyr2005/" class="friend-link"> 
+      xyr2005's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
     <a href="https://www.luogu.com.cn/blog/wlzhouzhuan/" class="friend-link"> 
       wlzhouzhuan(win)'s blog
     </a>
@@ -288,7 +293,7 @@ inline void fprint(T x){
 <p>比如我们算下来，所有数组长度之和为 <code>N</code> 。</p>
 <p>那么我们直接这么写：（这东西是在学 <a href="../ywt">压位 Trie</a> 的时候看 skip2004 的代码学到的）</p>
 <pre><code class="lang-cpp">int buff[N + 5], *ed = buf + sizeof(buff) / sizeof(int);
-inline int alloc(int siz){return ed -= siz;}
+inline int *alloc(int siz){return ed -= siz;}
 </code></pre>
 <p>这样子相当于一开始就开好了一个大小为 <code>N</code> 的大内存池，那么我们进行后续的内存分配就只需要确定 <strong>起点</strong> 了，就会快一些。</p>
 <p>具体来说，这么写：</p>
