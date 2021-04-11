@@ -95,6 +95,7 @@ function drawSaying() {
         '“基本上所有单点修改都可以强化成区间推平。” —— lxl',
         '“分块需要带活？” —— lxl',
         '“哦对了忘了说题解了” —— lxl',
+        '真正的决斗者，连抽卡都可以由自己决定！',
     ]
     document.getElementById("saying").innerText = says[rand(says.length)]
 }
