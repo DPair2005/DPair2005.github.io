@@ -3,6 +3,8 @@ function rand( n ) {
 }
 function drawSaying() {
     let says = [
+        '一飞冲天啊，我！',
+        'They aren\'t even super soilders.',
         '你的生命已如风中残烛',
         '所列瓦多卡纳',
         '这个菜菜的 DPair 正在学习怎么搞出一言',
