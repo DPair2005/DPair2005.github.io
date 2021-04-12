@@ -1,0 +1,200 @@
+ 
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <title>
+          2021联合省选题解
+      </title>
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';"> 
+
+DPairの非自制 blog
+    <HR align="center" style="width: 200px;">
+  </p>
+    <div font="" style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';"> 一言 (hitokoto) </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+  <div class="saying" id="saying"> </div>
+</div>
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+    <div style="text-align: center; font-size: 16px;"> About DPair </div>
+    <HR align="center">
+      <div style="margin: 2 auto; width: min-content">
+          <img class="avatar" alt="DPair" src="/images/avatar.png">
+        </div>
+    <ul class="sidebar-links">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link"> 
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link"> 
+      AtCoder 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://gitee.com/DPair" class="friend-link"> 
+      gitee 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link"> 
+      github 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="mailto:DPair2005@163.com" class="friend-link"> 
+      mail 
+    </a>
+  </li>
+
+    </ul>
+  </div>
+
+  <ul class="sidebar-links">
+    <div style="text-align: center; font-size: 16px;"> Friend Links </div>
+    <HR align="center">
+
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/user/140572" class="friend-link"> 
+      DSair
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link"> 
+      Jacderzhang's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.gitee.io/" class="friend-link"> 
+      xYix's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Flying2018/" class="friend-link"> 
+      Flying2018's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/-Wallace-/" class="friend-link"> 
+      _Wallace_'s blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Point-King/" class="friend-link"> 
+      Point_King's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/daniu/" class="friend-link"> 
+      Leap_Frog's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/xyr2005/" class="friend-link"> 
+      xyr2005's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/wlzhouzhuan/" class="friend-link"> 
+      wlzhouzhuan(win)'s blog
+    </a>
+  </li>
+
+  </ul>
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+      <h1 id="2021%E8%81%94%E5%90%88%E7%9C%81%E9%80%89%E9%A2%98%E8%A7%A3">2021联合省选题解</h1>
+<h2 id="d1t1-%E6%89%93%E7%89%8C">D1T1 打牌</h2>
+<p>首先不难发现，我们翻面的必然是一段前缀和一段后缀。</p>
+<p>其实也很好证明。我们假设有三张卡牌 $(a_i, b_i)$, $(a_j, b_j)$ $(a_k, b_k)$ ，其中 $i &lt; j &lt; k$ 。</p>
+<p>那么假设 $i, k$ 均不被翻面，则答案必然不小于 $a_k-a_i$ ，也就是说，翻 $j$ 必然起不到减小答案的作用。</p>
+<p>所以必然是选一段前缀和一段后缀。</p>
+<p>然后我们考虑枚举前缀快速求出最优后缀。</p>
+<p>我们设 $b$ 的后缀最大值和最小值分别为 $c, d$ ，然后设当前前缀的最大值与最小值为 $mn, mx$ 。</p>
+<p>那么每一次我们要求的就是</p>
+<script type="math/tex; mode=display">
+\min\_i \{\max\(mx, a\[i-1\], c\[i\]\) - \min\(mn, a\[cur\], d\[i\]\)\}</script><p>这里 $i$ 表示后缀的位置且默认满足 $m$ 的限制， $cur$ 表示当前枚举到的前缀的位置。</p>
+<p>显然这里面有很多常量，我们把这些常量与 $mn, mx$ 合并。</p>
+<p>那么最终要求的就是这么个式子</p>
+<script type="math/tex; mode=display">
+\min\_i \{\max\(mx, a\[i-1\], c\[i\]\) - \min\(mn, d\[i\]\)\}</script><p>然后我们再合并与 $i$ 有关的项，得到</p>
+<script type="math/tex; mode=display">
+\min\_i \{\max\(mx, c\[i\]\) - \min\(mn, d\[i\]\)\}</script><p>不难 $d$ 有单调性，<strong>现在的</strong> $c$ 先减后增。</p>
+<p>那么我们考虑找出 $c$ 先减后增的分界点，那么前后两部分都可以二分处理。</p>
+<p>这样是 $O(n\log n)$ ，已经可以通过本题。</p>
+<h2 id="d2t1-%E5%AE%9D%E7%8E%89%E5%85%BD">D2T1 宝玉兽</h2>
+<p>首先，这个 $p$ 数组直接给他离散化掉，显然没有问题，那么现在每一个数的下一个就是它自己 $+1$ 。</p>
+<p>然后这东西可以树分块，但是我懒得写。</p>
+<p>然后这东西可以主席树但是我懒得写。</p>
+<p>然后这东西甚至可以点分治但是我不想写。</p>
+<p>然后这东西可以倍增，诶这个好写写这个。</p>
+<p>具体来说就是扫一遍整棵树然后实时记录每一个权值当前的最低位置，然后每一个点维护出它往上的第一个 $1$ 和第一个 $a[i]+1$ ，类似一个子序列自动机。</p>
+<p>然后就可以倍增了。</p>
+<p>但是不难发现这样只能处理上行路径。</p>
+<p>因此我们考虑怎么处理下行路径。</p>
+<p>注意到这道题可以离线，因此我们把每一个询问转化成 $(x, id)$ 的二元组，表示这个询问当前数为 $x$ ，为第 $id$ 组询问，然后在结束点打一个对应编号的标记。</p>
+<p>然后我们用类似第二分块的并查集，同一个并查集表示答案为 $x$ 的所有点，这个显然很好维护。</p>
+<p>但是需要可撤销并查集，多一只 $\log$ 。</p>
+<p>因此最终复杂度 $O(n\log n)$ ，<del>我们为了方便认为所有东西都同阶。</del></p>
+<p>赛后和 Jacderzhang 胡了一下发现这个做法很有前途，把可撤销并查集改成 $\text{log Tree}$ 似乎可以把复杂度变成 $O(n\log n \log \log n + q\log\log n)$ ？</p>
+
+      
+
+    </div>
+
+  </div>
+</body>
