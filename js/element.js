@@ -3,6 +3,7 @@ function rand( n ) {
 }
 function drawSaying() {
     let says = [
+        '海马のspecial规则',
         '一飞冲天啊，我！',
         'They aren\'t even super soilders.',
         '你的生命已如风中残烛',
