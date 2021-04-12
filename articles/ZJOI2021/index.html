@@ -167,13 +167,13 @@ DPairの非自制 blog
 <p>我们设 $b$ 的后缀最大值和最小值分别为 $c, d$ ，然后设当前前缀的最大值与最小值为 $mn, mx$ 。</p>
 <p>那么每一次我们要求的就是</p>
 <script type="math/tex; mode=display">
-\min\_i \{\max\(mx, a\[i-1\], c\[i\]\) - \min\(mn, a\[cur\], d\[i\]\)\}</script><p>这里 $i$ 表示后缀的位置且默认满足 $m$ 的限制， $cur$ 表示当前枚举到的前缀的位置。</p>
+\min_i \{\max(mx, a[i-1], c[i]) - \min(mn, a[cur], d[i])\}</script><p>这里 $i$ 表示后缀的位置且默认满足 $m$ 的限制， $cur$ 表示当前枚举到的前缀的位置。</p>
 <p>显然这里面有很多常量，我们把这些常量与 $mn, mx$ 合并。</p>
 <p>那么最终要求的就是这么个式子</p>
 <script type="math/tex; mode=display">
-\min\_i \{\max\(mx, a\[i-1\], c\[i\]\) - \min\(mn, d\[i\]\)\}</script><p>然后我们再合并与 $i$ 有关的项，得到</p>
+\min_i \{\max(mx, a[i-1], c[i]) - \min(mn, d[i])\}</script><p>然后我们再合并与 $i$ 有关的项，得到</p>
 <script type="math/tex; mode=display">
-\min\_i \{\max\(mx, c\[i\]\) - \min\(mn, d\[i\]\)\}</script><p>不难 $d$ 有单调性，<strong>现在的</strong> $c$ 先减后增。</p>
+\min_i \{\max(mx, c[i]) - \min(mn, d[i])\}</script><p>不难 $d$ 有单调性，<strong>现在的</strong> $c$ 先减后增。</p>
 <p>那么我们考虑找出 $c$ 先减后增的分界点，那么前后两部分都可以二分处理。</p>
 <p>这样是 $O(n\log n)$ ，已经可以通过本题。</p>
 <h2 id="d2t1-%E5%AE%9D%E7%8E%89%E5%85%BD">D2T1 宝玉兽</h2>
