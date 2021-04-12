@@ -3,6 +3,7 @@ function rand( n ) {
 }
 function drawSaying() {
     let says = [
+        '“你要用 AK 证明自己行，那太逊了。我用 AK 证明我自己不行。” —— MYY',
         '海马のspecial规则',
         '一飞冲天啊，我！',
         'They aren\'t even super soilders.',
