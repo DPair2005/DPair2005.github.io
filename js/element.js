@@ -100,6 +100,8 @@ function drawSaying() {
         '“分块需要带活？” —— lxl',
         '“哦对了忘了说题解了” —— lxl',
         '真正的决斗者，连抽卡都可以由自己决定！',
+        '在黑暗中闪耀的银河啊，化为希望之光寄宿于吾仆之身！光之化身，在此降临！',
+        "翻涌的银河，现在在此化作怒涛之光现出身姿吧！",
     ]
     document.getElementById("saying").innerText = says[rand(says.length)]
 }
@@ -146,4 +148,16 @@ function loadMath() {
         script.defer = true;
         document.head.appendChild(script);
     })();
+}
+
+function ChangeBackground( x ) {
+    if (x == 0) {
+        document.body.style.backgroundImage="none"
+        return
+    }
+    document.body.style.backgroundImage="url(../bgp/bgp" + x + ".png)"
+}
+
+function RandomBackground( x ) {
+    ChangeBackground(rand(2) + 1)
 }
