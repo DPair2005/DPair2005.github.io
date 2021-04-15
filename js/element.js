@@ -137,7 +137,8 @@ function drawSaying() {
         '“我跟你讲，这一只 log 是跑不过两只 log 的。” —— MYY',
         '“D 人的本质就是要被 D。” —— MYY',
         '“被 D 不需要本质” —— MYY',
-        '“人天生就是要被 D 的，所以要学会 D 人。” —— MYY'
+        '“人天生就是要被 D 的，所以要学会 D 人。” —— MYY',
+        '“我无事不晓，只会 AK，快记下来！” —— MYY',
     ]
     document.getElementById("saying").innerText = says[rand(says.length)]
 }

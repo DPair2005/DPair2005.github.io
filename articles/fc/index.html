@@ -311,9 +311,271 @@ O({n\over b}\log p + {n\over bq}\log b + b + {bq\over p})</script><p>不难发�
 <p>可见分散层叠算法在分块中的应用还是比较广的，不难发现，带二分的分块似乎基本上都可以通过 <strong>分散层叠算法配合线段树</strong> 优化掉一只 $\log$ 或至少优化成 $\log\log$ 。可见其实用性。</p>
 <p>个人感觉如果考虑常数的话那个 $O(n\sqrt{n\log \log n})$ 的写法不见得比 $O(n\sqrt{n})$ 慢（（</p>
 <p>但至少这些题目里看下来，感觉这个优化可能仅限于理论复杂度，真正的 OI 比赛中这个算法似乎不太能提升程序的运行效率。而且须知这个算法极度难写。</p>
-<h2 id="3-%E6%80%BB%E7%BB%93">3 总结</h2>
+<h2 id="3-%E5%AE%9E%E7%8E%B0%E6%8A%80%E5%B7%A7">3 实现技巧</h2>
+<p><strong>这部分完全是我自己写的，所以可能会有错误或者疏漏的地方，欢迎各位神仙来 D 我。</strong></p>
+<h3 id="3-1-%E5%BC%95%E5%85%A5">3.1 引入</h3>
+<p>很多人在使用分散层叠算法解决问题时，可能会出现 <strong>常数大代码难实现</strong> 之类的问题，所以我在此简单阐述一种 <strong>个人认为比较方便实现</strong> ，并且 <strong>常数较小</strong> 的实现方式。</p>
+<p>由于实际运用中，分散层叠算法似乎主要以 <strong>线段树分散层叠</strong> 的形式出现（当然也可能是我做题太少），故下面主要对线段树分散层叠的实现进行一些说明。</p>
+<h3 id="3-2-%E8%BF%AD%E4%BB%A3%E7%BA%BF%E6%AE%B5%E6%A0%91">3.2 迭代线段树</h3>
+<p>我们不难发现，在使用分散层叠进行区间查询时，我们要对线段树上的 <strong>多棵子树</strong> 进行遍历。</p>
+<p>此时使用常规的 <strong>递归式遍历</strong> 就显得有些不够优秀了，而且显然这一部分是复杂度瓶颈，如果能优化这一部分的常数那么会对我们程序的运行效率有一个不错的提升。</p>
+<p>一种常见的方式便是递归变迭代，但是这样还有一个问题，常规的线段树中左右儿子的下标为 $rt\times 2$ 和 %rt \times 2 + 1% ，但是这样子的话一棵子树中的下标是不连续的，不太行。</p>
+<p>我们考虑这样一个事情（注入塔玛希），我们现在的线段树可以理解为 <strong>bfs建树</strong> 。然后我们要求的是子树信息，而我们在树上维护子树信息一个常用工具就是 dfs 序。</p>
+<p>于是我们考虑 dfs 建树来达到方便的迭代。</p>
+<h3 id="3-3-dfs-%E5%BB%BA%E6%A0%91">3.3 dfs 建树</h3>
+<p>其实很简单。</p>
+<p>我们只需要建出的树编号为 dfs 序就行。 </p>
+<p>一种 naive 的想法是动态开点，但是这太逊了。</p>
+<p>不难发现，线段树是一棵二叉树，那么它左儿子的编号就是当前节点编号 $+ 1$ ，而右儿子的编号就是左儿子的编号加上左儿子的子树大小。</p>
+<p>那么我们维护一个子树大小就行了。</p>
+<p>接下来我们的迭代就和 dfs 序上的迭代一样了，对于一棵我们要搜完的子树，我们直接对它的根节点迭代，然后一直扫它的子树大小个就行了。</p>
+<p>这样实测会快很多，而且不难写。</p>
+<p>对于一些要打 tag 的题目另开数组存就行了，这个不难实现。</p>
+<p>而且这样线段树数组开 $2$ 倍即可。</p>
+<h3 id="3-4-%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98">3.4 动态分配内存</h3>
+<p>我们的线段树上面每个节点都维护了一个序列，以及它在两个子树中对应的后继，但是不同的节点上序列长度是不同的。</p>
+<p>因此我们考虑用指针动态分配内存。</p>
+<p>具体来说就是先开一个大的内存池，利用指针实现动态长度的数组。</p>
+<p>显然一个节点上的序列长度是固定的，因此我们静态分配一次即可，十分方便而且常数较小。</p>
+<p>而且不难发现我们这么做的话线段树的最底下一层是不用存 <strong>子树中对应后继</strong> 的，可以省一半空间。</p>
+<h3 id="3-5-%E9%98%88%E5%80%BC%E7%9A%84%E8%AE%BE%E7%BD%AE">3.5 阈值的设置</h3>
+<p>虽然理论上，每一个儿子取出 $1\over 3$ 送入父亲中是最优的，但实测这个阈值取 $6$ 很优秀，我也不知道为什么。</p>
+<p>块长似乎要略开大一些。</p>
+<h3 id="3-6-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">3.6 代码实现</h3>
+<p>放一下我在 <a href="https://www.luogu.com.cn/problem/P6578">P6578</a> 中获得最优解的代码。</p>
+<hr>
+<details>
+<summary> <strong> 点此展开代码 </strong> </summary>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;cmath&gt;
+#define rep(i,s,t) for(int i=(s);i&lt;=(t);++i)
+#define per(i,t,s) for(int i=(t);i&gt;=(s);--i)
+#define REP(i,s,t) for(int i=(s);i&lt;(t);++i)
+#define PER(i,t,s) for(int i=(t);i&gt;(s);--i)
+#define elif else if
+#define gup(x) return puts(#x), 0
+const double pi = 3.141592653589793238462643383279;
+namespace MyMinMax{
+template &lt;typename T&gt;
+inline T mn(const T x, const T y) {return x &lt; y ? x : y;}
+template &lt;typename T&gt;
+inline T mx(const T x, const T y) {return x &gt; y ? x : y;}
+template &lt;typename T&gt;
+inline void chmin(T &x, const T y) {(x &gt; y) && (x = y);}
+template &lt;typename T&gt;
+inline void chmax(T &x, const T y) {(x &lt; y) && (x = y);}
+}
+using namespace MyMinMax;
+
+//省略了不重要的快读
+
+typedef long long LL;
+const int INF = 0x3f3f3f3f;
+const LL INFll = 0x3f3f3f3f3f3f3f3fll;
+/* My Code begins here */
+
+const int MAXN = 3e5 + 5;
+const int block = 750;//600
+const int B = MAXN / block + 5;
+int n, m, a[MAXN], bel[MAXN], lst[B];
+template &lt;int SZ, typename T = int&gt;
+struct Buffer{
+    T BUFF[SZ], *ED = BUFF + sizeof(BUFF) / sizeof(T);
+    inline T *alloc(int siz){return ED -= siz;}
+};
+
+struct NODE{
+    int x, y;
+    NODE (int x = 0, int y = 0) : x(x), y(y){}
+};
+
+Buffer &lt; MAXN &lt;&lt; 2 &gt; buf1;
+Buffer &lt; MAXN &lt;&lt; 1, NODE &gt; buf2;
+
+struct DPair{
+    int val, pos;
+    DPair(){}
+    DPair(int val, int pos) : val(val), pos(pos) {}
+    inline bool operator &lt; (const DPair & tmp) const{return val &lt; tmp.val;}
+}b[MAXN];
+inline void swap(DPair &x, DPair &y){
+    x.val ^= y.val ^= x.val ^= y.val;
+    x.pos ^= y.pos ^= x.pos ^= y.pos;
+}
+int *t[B &lt;&lt; 1], sz[B &lt;&lt; 1], siz[B &lt;&lt; 1], key[B &lt;&lt; 1];
+NODE *p[B &lt;&lt; 1];
+const int pim = 6;
+inline int lc(int x){return x + 1;}
+inline int rc(int x){return x + 1 + siz[lc(x)];}
+inline void merge(int *const rt, NODE *const drt, const int *const l, const int *const r, const int ls, const int rs){
+    int i = 0, j = 0, k = 0;
+    while(i &lt; ls && j &lt; rs){
+        if(l[i] &lt; r[j]){rt[k] = l[i];drt[k ++] = NODE(i, j);i += pim;}
+        else{rt[k] = r[j];drt[k ++] = NODE(i, j);j += pim;}
+    }
+    while(i &lt; ls){rt[k] = l[i];drt[k ++] = NODE(i, rs);i += pim;}
+    while(j &lt; rs){rt[k] = r[j];drt[k ++] = NODE(ls, j);j += pim;}
+    drt[k] = NODE(ls, rs);
+}
+void build(int rt, int l, int r){
+    if(l == r){
+        sz[rt] = lst[l] - lst[l - 1];
+        t[rt] = buf1.alloc(sz[rt] + 1);p[rt] = buf2.alloc(sz[rt] + 1);
+        rep(i, lst[l - 1] + 1, lst[l]) t[rt][i - lst[l - 1] - 1] = b[i].val;
+        siz[rt] = 1;return ;
+    }
+    int mid = (l + r) &gt;&gt; 1;
+    build(lc(rt), l, mid);build(rc(rt), mid + 1, r);
+    siz[rt] = siz[lc(rt)] + siz[rc(rt)] + 1;
+    sz[rt] = (sz[lc(rt)] - 1) / pim + 1 + (sz[rc(rt)] - 1) / pim + 1;
+    t[rt] = buf1.alloc(sz[rt] + 1);p[rt] = buf2.alloc(sz[rt] + 1);
+    merge(t[rt], p[rt], t[lc(rt)], t[rc(rt)], sz[lc(rt)], sz[rc(rt)]);
+}
+int bl[MAXN], br[MAXN], bm[MAXN];
+int Bl[B], Br[B], Bm[B];
+int pre[MAXN], suc[MAXN];
+bool tag[B];
+inline void rebuild(int x){
+    const int l = lst[x - 1] + 1, r = lst[x];
+    rep(i, l, r) suc[i] = i + 1, pre[i] = i - 1;
+    rep(i, l + 1, r){
+        int x = b[i - 1].pos;
+        const int pr = pre[x], sc = suc[x];
+        bl[i] = bl[i - 1];br[i] = br[i - 1];bm[i] = bm[i - 1]; 
+        if(pr &lt; l) bl[i] = sc - l;
+        else bm[i] -= ((x - pr - 1) * (x - pr) &gt;&gt; 1);
+        if(sc &gt; r) br[i] = r - pr;
+        else bm[i] -= ((sc - x - 1) * (sc - x) &gt;&gt; 1);
+        if(pr &gt;= l && sc &lt;= r) bm[i] += ((sc - pr - 1) * (sc - pr) &gt;&gt; 1);
+        suc[pr] = sc;pre[sc] = pr;
+    }
+}
+
+inline void change(int pos, int x){
+    int it = 0;
+    const int id = bel[pos], l = lst[id - 1] + 1, r = lst[id];
+    rep(i, l, r) if(b[i].pos == pos){it = i;break;}
+    bool ck = (x &gt; b[it].val);
+    b[it].val = x;
+    if(ck) while(it &lt; r && b[it + 1].val &lt; b[it].val) swap(b[it], b[it + 1]), ++ it;
+    else while(it &gt; l && b[it - 1].val &gt; b[it].val) swap(b[it], b[it - 1]), -- it;
+    rebuild(id);
+}
+
+void modify(int rt, int l, int r, int x){
+    if(l == r){rep(i, lst[l - 1] + 1, lst[l]) t[rt][i - lst[l - 1] - 1] = b[i].val;return ;}
+    int mid = (l + r) &gt;&gt; 1;
+    if(x &lt;= mid) modify(lc(rt), l, mid, x);
+    else modify(rc(rt), mid + 1 , r, x);
+    merge(t[rt], p[rt], t[lc(rt)], t[rc(rt)], sz[lc(rt)], sz[rc(rt)]);
+}
+inline bool bruhforce(int l, int r, int &le, int &me, int &re, int x){
+    le = re = me = 0;int it = l;
+    while(it &lt;= r && a[it] &lt;= x) ++ it;
+    if(it &gt; r) return le = r - l + 1, 1;
+    le = it - l;int itt = r;
+    while(a[itt] &lt;= x) -- itt;
+    re = r - itt;int cnt = 0;
+    rep(i, it, itt){
+        if(a[i] &gt; x) me += ((cnt + 1) * cnt &gt;&gt; 1), cnt = 0;
+        else ++ cnt;
+    }
+    return 0;
+}
+
+void work(int rt, int x, int id, int ioi){
+    // key[rt] = std :: upper_bound(t[rt], t[rt] + sz[rt], x) - t[rt];
+    key[rt] = ioi;
+    rep(i, rt, rt + siz[rt] - 1){
+        int q = key[i];
+        per(j, pim - 1, 1) if(q &gt;= j && t[i][q - j] &gt; x){q -= j;break;}
+        if(siz[i] == 1){
+            if(q == sz[i]) {
+                tag[id] = 1;Bl[id] = lst[id] - lst[id - 1];
+                Bm[id ++] = 0;
+            }
+            else{
+                const int base = lst[id - 1] + q + 1;
+                tag[id] = 0;Bl[id] = bl[base];Br[id] = br[base];
+                Bm[id ++] = bm[base];
+            }
+            continue;
+        }
+        key[lc(i)] = p[i][q].x;
+        key[rc(i)] = p[i][q].y;
+    }
+}
+
+void query(int rt, int l, int r, int x, int y, int z, int q){
+    per(j, pim - 1, 1) if(q &gt;= j && t[rt][q - j] &gt; z){q -= j;break;}
+    if(x &lt;= l && r &lt;= y) return work(rt, z, l, q);
+    int mid = (l + r) &gt;&gt; 1;
+    if(x &lt;= mid) query(lc(rt), l, mid, x, y, z, p[rt][q].x);
+    if(y &gt; mid) query(rc(rt), mid + 1, r, x, y, z, p[rt][q].y);
+}
+const int lim = 300;
+inline void init(){
+    if(n &lt;= (lim &lt;&lt; 1)) {
+        rep(i, 1, n){
+            bel[i] = (i - 1) / block + 1;
+            lst[bel[i]] = i;
+        }
+        return;
+    }
+    rep(i, 1, lim) bel[i] = 1;
+    lst[1] = lim;
+    rep(i, lim + 1, n - lim){
+        bel[i] = (i - lim - 1) / block + 2;
+        lst[bel[i]] = i;
+    }
+    rep(i, n - lim + 1, n) bel[i] = bel[n - lim] + 1;
+    lst[bel[n]] = n;
+    rep(i, 1, n) lst[bel[i]] = i;
+}
+
+signed main(){
+    read(n, m);read(a + 1, a + n + 1);
+    rep(i, 1, n) b[i] = DPair(a[i], i);
+    init();
+    rep(i, 1, bel[n]) std :: sort(b + lst[i - 1] + 1, b + lst[i] + 1), rebuild(i);
+    build(1, 1, bel[n]);
+    while(m --){
+        int opt, l, r, x;read(opt, l, r);
+        if(opt == 1){
+            if(a[l] == r) continue;
+            a[l] = r;change(l, r);
+            modify(1, 1, bel[n], bel[l]);
+        }
+        else{
+            read(x);int L = bel[l], R = bel[r];
+            if(L == R){
+                int le = 0, re = 0, me = 0;
+                if(bruhforce(l, r, le, me, re, x)) print((r - l + 1) * (r - l + 2) &gt;&gt; 1);
+                else print(me + (le * (le + 1) &gt;&gt; 1) + (re * (re + 1) &gt;&gt; 1));
+                continue;
+            }
+            LL ans = 0;
+            if(L &lt; R - 1) query(1, 1, bel[n], L + 1, R - 1, x, std :: upper_bound(t[1], t[1] + sz[1], x) - t[1]);
+            tag[L] = bruhforce(l, lst[L], Bl[L], Bm[L], Br[L], x);
+            tag[R] = bruhforce(lst[R - 1] + 1, r, Bl[R], Bm[R], Br[R], x);
+            int cnt = 0;
+            rep(i, L, R){
+                ans += Bm[i];cnt += Bl[i];
+                if(!tag[i]) ans += (1ll * (cnt + 1) * cnt &gt;&gt; 1), cnt = Br[i];
+            }
+            print(ans += (1ll * (cnt + 1) * cnt &gt;&gt; 1));
+        }
+    }
+}</code></pre>
+</details>
+
+
+<hr>
+<h2 id="4-%E6%80%BB%E7%BB%93">4 总结</h2>
 <p>分散层叠算法虽然在 OI 中并不普及，但从它对这几道分块题的优化中就可以看出 <del>分块在 OI 中仍有很好的前途</del> 分散层叠算法在 OI 中还有很广的可探索空间，比如2021年集训队论文中就谈到了分散层叠算法维护二维平面的一些运用（这个暂时咕咕咕，以后可能会写）。而且其运用到的思想也十分优秀，值得一学，一定能起到提升思维水平的作用。</p>
-<p>但就出题而言，至少我个人认为这个算法不太好出题，主要是因为这个算法的实现存在大量细节，真的写起来会非常恶心（你看我上面的题 $100\%$ 是在口胡，一道题都没有实现过就知道了）。</p>
+<p>但就出题而言，至少我个人认为这个算法不太好出题，你会发现这个算法有较大的局限性。</p>
 <p><del>不过说句题外话：这篇论文的作者蒋明润现在进入了清华大学（以及MIT），我为什么要说这个想必你们都懂。</del></p>
 
       
