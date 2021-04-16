@@ -187,14 +187,37 @@ function loadMath() {
     })();
 }
 
+
+const total = 4
+const constid = 3
 function ChangeBackground( x ) {
     if (x == 0) {
         document.body.style.backgroundImage="none"
         return
     }
-    document.body.style.backgroundImage="url(../bgp/bgp" + x + ".png)"
+    document.body.style.backgroundImage="url(/bgp/bgp" + x + ".png)"
 }
 
 function RandomBackground( x ) {
-    ChangeBackground(rand(4) + 1)
+    ChangeBackground(rand(total) + 1)
+}
+
+function SaveBackground( x ){
+    var Storage = window.localStorage;
+    var cur = Number(Storage.getItem('Background'))
+    if ((typeof(cur) != "number" || cur > total || cur < 1)) cur = constid
+    ChangeBackground(cur)
+}
+
+function NextBackground() {
+    var Storage = window.localStorage;
+    var cur = Number(Storage.getItem('Background'))
+    // console.log(cur, typeof(cur))
+    if ((typeof(cur) != "number" || cur > total || cur < 1)) cur = constid
+    cur = Number(cur) + 1
+    // console.log(cur)
+    // cur = Number(cur) + 1
+    if (cur > total) cur -= total
+    ChangeBackground(cur)
+    Storage.setItem('Background', cur);
 }
