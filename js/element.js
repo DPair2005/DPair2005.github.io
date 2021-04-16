@@ -100,6 +100,9 @@ function drawSaying() {
         '真正的决斗者，连抽卡都可以由自己决定！',
         '在黑暗中闪耀的银河啊，化为希望之光寄宿于吾仆之身！光之化身，在此降临！',
         "翻涌的银河，现在在此化作怒涛之光现出身姿吧！",
+        '“这个算法是一只log的！”',
+        '“凭什么点分比边分多一只log？”',
+        //马语
         '“一个好的 OI 选手，目标一定是要拿到 IOI 金牌。” —— MYY',
         '“你要用 AK 证明自己行，那太逊了。我用 AK 证明我自己不行。” —— MYY',
         '“我疯掉了也比你强。” —— MYY',
@@ -139,6 +142,8 @@ function drawSaying() {
         '“被 D 不需要本质” —— MYY',
         '“人天生就是要被 D 的，所以要学会 D 人。” —— MYY',
         '“我无事不晓，只会 AK，快记下来！” —— MYY',
+        
+
     ]
     document.getElementById("saying").innerText = says[rand(says.length)]
 }
@@ -188,7 +193,7 @@ function loadMath() {
 }
 
 
-const total = 4
+const total = 6
 const constid = 3
 function ChangeBackground( x ) {
     if (x == 0) {
