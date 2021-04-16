@@ -215,8 +215,6 @@ function NextBackground() {
     // console.log(cur, typeof(cur))
     if ((typeof(cur) != "number" || cur > total || cur < 1)) cur = constid
     cur = Number(cur) + 1
-    // console.log(cur)
-    // cur = Number(cur) + 1
     if (cur > total) cur -= total
     ChangeBackground(cur)
     Storage.setItem('Background', cur);
