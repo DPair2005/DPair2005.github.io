@@ -196,5 +196,5 @@ function ChangeBackground( x ) {
 }
 
 function RandomBackground( x ) {
-    ChangeBackground(rand(5) + 1)
+    ChangeBackground(rand(4) + 1)
 }
