@@ -1,17 +1,30 @@
- <html>
-<title>
-  DPairの做题记录
-</title>
+ 
+
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
   <link rel="icon" type="images/png" href="/images/favicon.png">
   <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
 </head>
 
 <body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
   <div class="content">
     <div class="sidebar" id="sidebar">
+      <title>
+          AGC 做题记录
+      </title>
       <script>
     SaveBackground()
   </script>
@@ -134,83 +147,15 @@
   </div>
   
     </div>
-    <div class="art-list-container">
-      <ul class="art-list">
 
-<a href="/transit/Ynoi/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      Ynoi 做题记录
-    </div>
-    <div class="list-item-tag">
-      data_structures
-sqrt_technology
-wys
-lxl
-    </div>
-  </li>
-</a>
-<a href="/transit/ARC/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      ARC 做题记录
-    </div>
-    <div class="list-item-tag">
-      Atcoder
-    </div>
-  </li>
-</a>
-<a href="/transit/AGC/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      AGC 做题记录
-    </div>
-    <div class="list-item-tag">
-      Atcoder
-    </div>
-  </li>
-</a>
-<a href="/transit/ZJOI2021/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      2021联合省选题解
-    </div>
-    <div class="list-item-tag">
+    <div class="post" id="post">
+      <h1 id="agc-%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95">AGC 做题记录</h1>
+<p>你看这个 Krimson 都把 AGC A 穿了，我才做了那么点题。</p>
+<p>由于 AGC 比较毒瘤，可能会做的很散（（（</p>
+
       
-    </div>
-  </li>
-</a>
-<a href="/transit/nwf/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      网络流 23 题做题记录
-    </div>
-    <div class="list-item-tag">
-      network_flows
-graphs
-    </div>
-  </li>
-</a>
-<a href="/transit/rdlis/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      【题解】 区间删除全局最长上升子序列
-    </div>
-    <div class="list-item-tag">
-      data_structures
-sqrt_technology
-XJOI
-    </div>
-  </li>
-</a>
 
-      </ul>
     </div>
+
   </div>
-
-  <script>
-    drawSaying()
-  </script>
 </body>
-
-</html>
