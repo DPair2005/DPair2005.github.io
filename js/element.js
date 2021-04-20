@@ -190,6 +190,7 @@ function drawSaying() {
             '“一个 simple 一个 naive 叫什么叫”',
             '“今天爆零的是你，明天爆零的还是你！”',
             '“那卷王只能形容我，不能形容别人”',
+            '“小丑还吃纸？嘿嘿。”',
         ],
     }
     let sayingtype = rand(Object.keys(says).length)
