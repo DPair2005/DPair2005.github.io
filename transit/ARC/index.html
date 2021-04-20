@@ -224,6 +224,57 @@
 </details>
 
 <hr>
+<h2 id="arc-102">ARC 102</h2>
+<h4 id="a-at4360-arc102a-triangular-relationship-https-www-luogu-com-cn-problem-at4360">A <a href="https://www.luogu.com.cn/problem/AT4360">AT4360 [ARC102A] Triangular Relationship</a></h4>
+<p>给你 $n, k$ ，问你有多少个正整数形成的有序可重三元组 $(a,b,c)$ 满足 $a, b, c \in [1, n]$ 且 $a+b, b+c, a+c$ 都为 $k$ 的倍数。</p>
+<hr>
+<details>
+<summary><strong> 具体解法 </strong></summary>
+<p></p>
+<p>分奇偶讨论一下就好了，复杂度 $O(1)$ 。</p>
+</details>
+
+<hr>
+<h4 id="b-at4361-arc102b-all-your-paths-are-different-lengths-https-www-luogu-com-cn-problem-at4361">B <a href="https://www.luogu.com.cn/problem/AT4361">AT4361 [ARC102B] All Your Paths are Different Lengths</a></h4>
+<p>给你一个数 $L$， 构造一个有向图使得从 $1$ 到 $n$ 恰好有 $L$ 条路径且路径长度恰好为 $0$ 到 $L−1$。边有边权。点数小于等于 $20$， 边数小于等于$60$ 。</p>
+<p>$1 \le L \le 1e6$</p>
+<hr>
+<details>
+<summary><strong> 具体解法 </strong></summary>
+<p></p>
+<p>首先这个数据范围不难想到二进制，消耗 $n$ 个点 $2n$ 条边可以处理出 $[0, 2^{n-1})$ 的问题。</p>
+<p>但是由于每一种路径恰好出现一次，而我们单单处理这部分问题就已经基本耗尽了点数，所以我们需要改进我们的算法。</p>
+<p>不难发现我们剩下来的边数是比较多的，而且 $V:E=1:3$ ，考虑均摊.</p>
+<p>因此我们考虑 $k$ 进制，这样可以处理 $[0, k^{n-1})$ 的问题，并且耗费边数为 $kn$ 。</p>
+<p>然后考虑剩下的部分<strong> 的大小 </strong>也在 $[0, k^{n-1})$ 范围内，但是这部分是不完整的。</p>
+<p>然而边权全部是我们自己定的，能多大就多大，因此我们考虑从起点直接连一些边出去到一段后缀上就可以表示出一段 $[0, k^{q-1})$ 长度的区间。</p>
+<p>我们发现其实取 $k=2$ 是可以的，我们消耗 $20$ 个点构造出序列，然后通过第一个点大量连出边即可，可以用递归的方法建图。</p>
+<p>发现点数边数都卡满，但确实能通过本题。</p>
+</details>
+
+<hr>
+<h4 id="c-at4362-arc102c-stop-otherwise-https-www-luogu-com-cn-problem-at4362">C <a href="https://www.luogu.com.cn/problem/AT4362">AT4362 [ARC102C] Stop. Otherwise...</a></h4>
+<p>你有 $n$ 个有 $k$ 面写着 $[1, k]$ 中整数的均匀骰子。你要求出对于 $[2, 2k]$ 中的每一个数 $x$ ，任意两个骰子朝上的点数之和不为 $x$ 的方案数。</p>
+<p>$1 \le n, k \le 2e3$</p>
+<hr>
+<details>
+<summary><strong> 具体解法 </strong></summary>
+<p></p>
+<p>我爪巴了，连 dp 都不会了。</p>
+<p>其实是一个非常简单的 dp。</p>
+<p>首先我们考虑对于每一个 $x$ 分别求。</p>
+<p>不难发现骰子被分成了三类。</p>
+<p>第一类为 $\ge x$ 的，这部分可以任选。</p>
+<p>第二类为 $< x$ 的，这部分显然一一对应地被分为了若干组，每一组要么不选要么只能选一种。</p>
+<p>第三类为 $2|x$ 且 $= {x\over 2}$ 的，这部分可能不存在，但若存在要么不选要么只选一个，拿出来单独考虑。</p>
+<p>那么现在只剩下了一二两类的关系。</p>
+<p>第一类的贡献可以大力 dp ，考虑 $dp[i][j][0/1]$ 表示选了 $i$ 种数，$j$ 个数，第 $i$ 种选或不选的方案数，这东西很好转移。而且不难发现这部分对于所有 $x$ 是通用的，可以预处理出来，复杂度 $O(nk)$ 。</p>
+<p>第二类的可以用类似插板法的方法用组合数算出来。</p>
+<p>然后把两部分乘一乘就好了，注意一组 $dp[i][j]$ 的总方案数中 $dp[i][j][1]$ 要乘个 $2$ 表示选两种数中的任意一种。</p>
+<p>最终复杂度 $O(nk)$ 可以通过本题。</p>
+</details>
+
+<hr>
 
       
 
