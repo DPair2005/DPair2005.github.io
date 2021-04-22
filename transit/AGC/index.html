@@ -181,6 +181,52 @@
 </details>
 
 <hr>
+<h2 id="agc-009">AGC 009</h2>
+<h4 id="e-at2294-agc009e-eternal-average-https-www-luogu-com-cn-problem-at2294">E <a href="https://www.luogu.com.cn/problem/AT2294">AT2294 [AGC009E] Eternal Average</a></h4>
+<p>给你 $n$ 个 $1$ 和 $m$ 个 $0$ 还有一个常数 $k$ ，每一次你可以删去 $k$ 个数然后加入它们的平均数，保证 $k-1|n+m-1$ ，显然最后只会剩下一个数，问这个数有多少种可能性。</p>
+<p>$n, m \le 2000$ </p>
+<hr>
+<details>
+<summary><strong> 具体解法 </strong></summary>
+<p></p>
+<p>$n, m$ 混乱警告，但是能看懂就行。</p>
+<p>我们考虑把合并的过程转成一棵 $k$ 叉树的形式，设最后的结果为 $z$ ，那么有</p>
+$$
+z=\sum_{i\in leaf} a_i\times ({1\over k})^{d_i}
+$$
+<p>其中 $a_i$ 表示某个叶子节点的权值，$d_i$ 表示深度。</p>
+<p>然后当所有叶子都为 $1$ 时，我们有</p>
+$$
+\sum_{i\in leaf} ({1\over k})^{d_i}=1
+$$
+<p>于是我们把问题转化为 “问有多少个数 $z$ 可以被表示成 $\sum ({1\over k}) y$ 的形式，并且 $1-k$ 可以被表示成类似的形式” 。</p>
+<p>而且这个问题是有限制条件的，考虑分析出这些限制条件然后 $dp$ 。</p>
+<p>首先不难发现我们可以把这些 $z$ 表示成一个 $k$ 进制下的小数的形式，设 $z=\sum c_i({1\over k})^i$ ，显然其位数有限。</p>
+<p>我们假设 $c_i$ 未进位，那么有 $\sum c_i = m$ 。</p>
+<p>但是考虑设 $b$ 为 $c$ 进位后的形式，那么一方面 $z=\sum b_i({1\over k})^i$ 仍成立，另一方面，我们发现进位本质上是一位 $-k$ 一位 $+1$ ，故得到 $\sum b_i \equiv m \mod (k - 1)$ 。</p>
+<p>而且 $b_i$ 要满足 $b_i\in [0, k)$ 。</p>
+<p>然后考虑 $1-z$ 的限制，一方面它要满足 $1 + \sum (k-1-b_i) \le n$ （至于为什么 $m$ 不判这个条件应该是因为 $\sum b_i \le \sum c_i = m$），另一方面，它要类似的满足 $1 + \sum (k-1-b_i) \equiv n \mod (k-1)$ 。这里大概理解成按位减（也就是高精的写法）。</p>
+<p>考虑设 $f[i][j]$ 表示最大深度为 $i$ ， $\sum b_i$ 为 $j$ 的方案数，然后把满足条件的加到答案中去。这里还需要考虑最大深度上的 $b_i$ 是否为 $0$ 的情况（为 $0$ 也不合法），故加一维 $[0/1]$ 表示是否为 $0$ 。</p>
+<p>复杂度 $O(n^2)$ ，可以通过本题。</p>
+</details>
+
+<hr>
+<h2 id="agc-034">AGC 034</h2>
+<h4 id="d-at4994-agc034d-manhattan-max-matching-https-www-luogu-com-cn-problem-at4994">D <a href="https://www.luogu.com.cn/problem/AT4994">AT4994 [AGC034D] Manhattan Max Matching</a></h4>
+<p>有两种颜色，每种颜色有 $n$ 个点，每个点上面有 $a_i$ 个球，且两种颜色的总球数相同。</p>
+<p>你需要对于第一种颜色的每一个球匹配第二个颜色的一个球，产生的权值为两个球的曼哈顿距离，最大化这个距离。</p>
+<p>$1\le n \le 10000, a_i \le 10$ 。</p>
+<hr>
+<details>
+<summary><strong> 具体解法 </strong></summary>
+<p></p>
+<p>我以为这道题是个模拟费用流，没想到是优化费用流。</p>
+<p>首先一种 naive 的想法是暴力跑二分图匹配，但是边数太多，复杂度显然会炸。</p>
+<p>然后我们考虑拆绝对值，不难发现两个点的匹配中，两个点的权值是互相独立的，且只有四种可能。</p>
+<p>新建 $4$ 个中间点然后跑费用流就行了，由于绝对值一定大于绝对值的相反数，所以两个点一旦匹配上就会自动取到绝对值，保证了正确性。</p>
+</details>
+
+<hr>
 
       
 
