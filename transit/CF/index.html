@@ -223,6 +223,7 @@
 <hr>
 <h4 id="-cf1117g-recursive-queries-https-www-luogu-com-cn-problem-cf1117g"><a href="https://www.luogu.com.cn/problem/CF1117G">CF1117G Recursive Queries</a></h4>
 <p>给你一个排列， $q$ 次强制离线的询问，每一次询问一段区间 $[l, r]$ 形成的笛卡尔树上每一棵子树大小的和。</p>
+<p>数据范围 $10^6$ 级别。</p>
 <hr>
 <details>
 <summary><strong> 具体解法 </strong></summary>
@@ -231,6 +232,21 @@
 <p>那么每一次询问要求的就是 $\sum\_{i=l}^r \min(R_i, r) - \max(L_i, l)$ ，不难发现前后两部分无关，可以拆开来做。</p>
 <p>那么离线下来扫一遍即可，每一次两个树状数组实现单点修改区间查询即可。</p>
 <p>最终复杂度 $O(n \log n)$ 。</p>
+</details>
+
+<hr>
+<h4 id="-cf526g-cf526g-spiders-evil-plan-https-www-luogu-com-cn-problem-cf526g"><a href="https://www.luogu.com.cn/problem/CF526G">CF526G CF526G Spiders Evil Plan</a></h4>
+<p>给你一棵有边权的树， $q$ 次询问，每次给定一个二元组 $(x, y)$ ，问你在树上选出 $y$ 条路径，要求这 $y$ 条路径组成的连通块中的边权和最大且 $x$ 属于这个连通块，输出这个最大值，强制在线。</p>
+<p>所有数 $\in [1, 10^5]$ 并保证不爆 <code>int</code> 。</p>
+<hr>
+<details>
+<summary><strong> 具体解法 </strong></summary>
+<p></p>
+<p>首先我们注意到 $k$ 条路径一定可以覆盖一棵有 $2k$ 个叶子节点的树，证明略，可以感性理解或当做结论背下来。</p>
+<p>然后我们不难发现答案一定带一个直径的端点，故以两个直径的端点为根分别处理问题，然后每次询问取一个 $\max$ 即可，由于这个点一定是一个叶子，问题就转化为了选 $2k-1$ 个叶子然后使得这些叶子到根的路径的并集所组成的连通块中边权和最大，并且要包含 $x$ 。</p>
+<p>我们考虑对这棵树进行有边权的长链剖分，不难发现我们选择的一定是最长的前 $2k-1$ 条链，而这些链是不交的。</p>
+<p>但是这样不一定包含 $x$ ，那么我们此时有两种选择，一种是把 $x$ 直接并到连通块当中然后删掉当前连通块中最短的链，另一种是直接把 $x$ 往上倍增后跳到的链一直到叶子都删掉，然后改接 $x$ ，显然最优解一定出现在这两种情况之一中。</p>
+<p>那么直接分讨一下然后按上面所说的处理即可，复杂度为倍增和排序的 $O(n\log n)$ 。</p>
 </details>
 
 <hr>

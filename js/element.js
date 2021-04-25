@@ -202,6 +202,7 @@ function drawSaying() {
             '“我怎么 Rank 1 了？”',
             '“那卷王只能形容我，不能形容别人”',
             '“小丑还吃纸？嘿嘿。”',
+            '“我可以猜想答案。”',
         ],
     }
     let sayingtype = rand(Object.keys(says).length)
