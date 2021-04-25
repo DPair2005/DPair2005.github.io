@@ -29,7 +29,7 @@
     SaveBackground()
   </script>
   <div class="sidebar-title">
-    <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';"> 
+    <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
   
   DPairの非自制 blog
       <HR align="center" style="width: 200px;">
@@ -218,6 +218,19 @@
 <p>我们设答案的三元组升序排序后为 $(a, b, c)$ ，我们考虑枚举 $c$ ，那么就是要使得 $b$ 与 $c$ 的异或值 $a$ 尽可能大，同时 $c$ 尽可能小，然后均出现在 $[l, r]$ 之中。</p>
 <p>不难发现最优的情况一定是 $c=2^{x} + 2^{y}$ 的形式，然后 $b=c-1$ 。</p>
 <p>那么枚举即可。</p>
+</details>
+
+<hr>
+<h4 id="-cf1117g-recursive-queries-https-www-luogu-com-cn-problem-cf1117g"><a href="https://www.luogu.com.cn/problem/CF1117G">CF1117G Recursive Queries</a></h4>
+<p>给你一个排列， $q$ 次强制离线的询问，每一次询问一段区间 $[l, r]$ 形成的笛卡尔树上每一棵子树大小的和。</p>
+<hr>
+<details>
+<summary><strong> 具体解法 </strong></summary>
+<p></p>
+<p>我们先用一个单调栈处理出每一个点向左和向右第一个比它大的位置，分别记作 $L_i, R_i$ 。</p>
+<p>那么每一次询问要求的就是 $\sum\_{i=l}^r \min(R_i, r) - \max(L_i, l)$ ，不难发现前后两部分无关，可以拆开来做。</p>
+<p>那么离线下来扫一遍即可，每一次两个树状数组实现单点修改区间查询即可。</p>
+<p>最终复杂度 $O(n \log n)$ 。</p>
 </details>
 
 <hr>
