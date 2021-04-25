@@ -6,11 +6,10 @@ function drawSaying() {
         "一言 (hitokoto)" : [
             '海马のspecial规则',
             '一飞冲天啊，我！',
+            '船马上就要开了，这次就不玩了',
             'They aren\'t even super soilders.',
             '你的生命已如风中残烛',
             '所列瓦多卡纳',
-            '这个菜菜的 DPair 正在学习怎么搞出一言',
-            '如果你看到了这行字说明 DPair 可能成功实现了一言的功能',
             '繁星流动的痕迹纺织出所有的心愿，与希望一起充满这个世界吧！',
             '王者的鼓动，现在降临于此，看这天地鸣动的力量吧！',
             '聚集的祈愿化作新生的闪耀之星，成为光明闪耀的道路吧！',
@@ -63,7 +62,10 @@ function drawSaying() {
             'You get lost...again...',
             'You backed...again...',
             'Knives to meet you. =)',
-            'It\'s a beautiful day outside.\nBirds are singing, flowers are blooming.\nOn days like this, kids like you...\nSHOULD BE BURNING IN HELL.',
+            'It\'s a beautiful day outside.',
+            'Birds are singing, flowers are blooming.',
+            'On days like this, kids like you...',
+            'SHOULD BE BURNING IN HELL.',
             'Get dunked on!!!',
             '我将一切，都赌在这次抽卡上！',
             '闪光抽卡！',
@@ -102,7 +104,8 @@ function drawSaying() {
             '我今天就要让王的灵魂再临！',
             '王只有一个！那就是我！',
             '王的决斗必须是娱乐！',
-            '我要向你挥下名为完全败北的鞭子！,'
+            '我要向你挥下名为完全败北的鞭子！',
+            '你下个月的工资评定可有好戏看了',
         ],
         /* '毒瘤 (lxl)' : [
             '“他 们 都 得 死。”',
@@ -134,6 +137,8 @@ function drawSaying() {
         ], */
         '马语 (analects)' : [
             '“今天你膜拜的是我，明天我膜拜的是大家”',
+            '“搞得好像我拿不了 IOI 金牌一样”',
+            '“我发现你们这些人断章取义，不懂得语言艺术”',
             '“一个好的 OI 选手，目标一定是要拿到 IOI 金牌。” ',
             '“你要用 AK 证明自己行，那太逊了。我用 AK 证明我自己不行。” ',
             '“我疯掉了也比你强。” ',
