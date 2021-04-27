@@ -250,6 +250,38 @@
 </details>
 
 <hr>
+<h4 id="-cf1062f-upgrading-cities-https-www-luogu-com-cn-problem-cf1062f"><a href="https://www.luogu.com.cn/problem/CF1062F">CF1062F Upgrading Cities</a></h4>
+<p>给你一幅 DAG ，问你有多少个点 $x$ 满足至多有一个点 $y$ 满足 $y$ 不能被 $x$ 到达且 $x$ 不能被 $y$ 到达。</p>
+<p>$|V|, |E| \le 3\times 10^5$</p>
+<hr>
+<details>
+<summary><strong> 具体解法 </strong></summary>
+<p></p>
+<p>不难发现，我们要求的应该是每一个点能到达的点数。</p>
+<p>考虑建正反图然后拓扑排序。</p>
+<p>不难发现，若一个时刻队列中点数 $\ge 3$ ，那么这些点显然互不到达，故全部无解不需要考虑，我们只需要讨论队列中点数 $< 3$ 的情况。</p>
+<p>首先若队列中只有一个点，显然剩下所有没被访问到的点都要经过这个点。</p>
+<p>然后若队列中有 $2$ 个点，考虑另一个点是否可以到达一个度为 $1$ 的点，若可以，则说明当前点除了另一个点以外还有不能到达的点，故直接无解，否则统计贡献。</p>
+<p>然后根据一个点能到达和能被到达的点数判断是否成立即可，一种实现技巧是不合法的情况不统计贡献，那么显然这些不合法的点一定在贡献上亦不合法。</p>
+<p>复杂度 $O(n)$ 。</p>
+</details>
+
+<hr>
+<h4 id="-cf1311e-construct-the-binary-tree-https-www-luogu-com-cn-problem-cf1311e"><a href="https://www.luogu.com.cn/problem/CF1311E">CF1311E Construct the Binary Tree</a></h4>
+<p>让你构造一棵 $n$ 个节点深度和为 $d$ 的二叉树，并判断有没有解。</p>
+<hr>
+<details>
+<summary><strong> 具体解法 </strong></summary>
+<p></p>
+<p>首先有无解很好判，显然最小值为完全二叉树的情况，这个堆式建树即可。</p>
+<p>判完之后考虑从最后一个点开始换父亲，考虑记录最后一个没有儿子的节点，若能连（即深度符合条件）则连到这个节点上。</p>
+<p>显然每一层要至少留一个节点，考虑留 $2^k$ 的节点。</p>
+<p>那么此时所有节点必然满足最多只有一个儿子。</p>
+<p>考虑最后一个节点换父亲时深度不满足题意了，由于其祖先深度连续且最多只有一个儿子，故暴力往上跳直到深度符合条件为止。</p>
+<p>正确性显然，复杂度 $O(n)$ 。</p>
+</details>
+
+<hr>
 
       
 
