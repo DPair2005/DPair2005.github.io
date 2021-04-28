@@ -204,6 +204,9 @@ function drawSaying() {
             '“小丑还吃纸？嘿嘿。”',
             '“我可以猜想答案。”',
             '“欸这样说话是对我 MYY 的不尊重。”',
+            '“IOI 金牌要制哒？ IOI 金牌我发！”',
+            '下雨归下雨，光还是要为我 MYY 闪耀！',
+            
         ],
     }
     let sayingtype = rand(Object.keys(says).length)
