@@ -405,6 +405,7 @@ fa=\{1,3,6,12\}</script><p>其中 $1, 6$ 来自第一个序列， $3, 12$ 来自
 <p>不过对于 $b \le w$ 的询问， <code>bitset</code> 难以完全发挥优化效果，即我们手写的 <code>bitset</code> 压不了位。比如 $b=1$ 时 <code>bitset</code> 会退化到 $O(V)$ ，因此我们考虑对于这部分另外处理。</p>
 <p>不难发现这部分数比较少而且比较小，因此我们考虑分开另外处理。</p>
 <p>我们对于每一个 $\le w$ 的 $b$ 跑一次莫队（注意块长要变），然后每一 <strong>组</strong> 询问我们开 $b$ 个 <code>bitset</code> ，令 $t_{i, j}$ 表示模 $b$ 意义下结果为 $i$ 且除以 $b$ 后结果为 $j$ 的数是否存在，然后对于每一个 <code>bitset</code> 求 <code>mex</code> 然后取最大值即可，不难发现这部分的总复杂度仍是 $O({V\over w})$ 。</p>
+<p>当然你想直接回滚莫队求 <code>mex</code> 也不是不可以，不过不会优化整体复杂度，没有太大的必要。</p>
 <p>但是这部分要求动态的 <code>bitset</code> 空间，故照样要手写 <code>bitset</code> 。</p>
 <p>最终如果块长合理的话，复杂度应该是 $O(n\sum \sqrt{m_i} + m{V\over w})$ 。</p>
 
