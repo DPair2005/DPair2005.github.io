@@ -414,6 +414,24 @@
 </details>
 
 <hr>
+<h4 id="-cf914f-substrings-in-a-string-https-www-luogu-com-cn-problem-cf914f"><a href="https://www.luogu.com.cn/problem/CF914F">CF914F Substrings in a String</a></h4>
+<p>给你一个字符串，支持单点修改区间询问某个串的出现次数。</p>
+<p>保证所有询问串长度之和不超过 $10^5$ ，其他数据范围也都是 $10^5$</p>
+<hr>
+<details>
+<summary><strong> 具体解法 </strong></summary>
+<p></p>
+<p>首先有一个 $O(n\sqrt{n})$ 的做法。</p>
+<p>我们传统艺能对询问串根号分治，然后 $> \sqrt{n}$ 的暴力建 SAM 匹配。</p>
+<p>$<\sqrt{n}$ 的部分对序列分块，不难发现一个串最多跨两个块，那么把块间和块内分别建 SAM 即可。</p>
+<p>那么修改的时候重构 SAM ，这样修改查询都是 $O(\sqrt{n})$ 的，但是这个做法显然常数极大。</p>
+<p>考虑用其他方式来进行字符串匹配，比如 bitset 。</p>
+<p>我们先用一个 bitset 维护所有可行位置，初始为全 $1$ ，然后对于字符集中的每一个字符建 bitset ，通过按位与可以方便的求出所有可行的位置。</p>
+<p>然后用差分或者手写 bitset 的方法求 bitset 上的区间和即可。</p>
+<p>复杂度 $O({nq\over w})$ 。</p>
+</details>
+
+<hr>
 <h4 id="-cf587f-duff-is-mad-https-www-luogu-com-cn-problem-cf587f"><a href="https://www.luogu.com.cn/problem/CF587F">CF587F Duff is Mad</a></h4>
 <p>给你 $n$ 个串 $s_i$ ，$q$ 次询问，每次问你 $\sum_{i=l}^r occur(s_i, s_k)$ ，其中 $l, r, k$ 是给定的常数， $occur(s, t)$ 表示 $s$ 在 $t$ 中的出现次数。</p>
 <p>$1 \le n, \sum|s_i|, q \le 10^5$ 。</p>
