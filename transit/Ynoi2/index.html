@@ -468,10 +468,9 @@
 <p>考虑先化一下方差公式：</p>
 <script type="math/tex; mod = display">
 \begin{aligned}
-{1\over n} \sum_{i=1}^n(a_i-\overline{a})^2
-\\={1\over n} \sum_{i=1}^na_i^2+\overline{a}^2-2a_i\overline{a}
-\\=\overline{a}^2+{1\over n} \sum_{i=1}^na_i^2-2a_i\overline{a}
-\\=\left({1\over n} \sum_{i=1}^na_i^2\right)-\overline{a}^2
+{1\over n} \sum_{i=1}^n(a_i-\overline{a})^2&={1\over n} \sum_{i=1}^na_i^2+\overline{a}^2-2a_i\overline{a}\\
+&=\overline{a}^2+{1\over n} \sum_{i=1}^na_i^2-2a_i\overline{a}\\
+&=\left({1\over n} \sum_{i=1}^na_i^2\right)-\overline{a}^2
 \end{aligned}
 </script>
 <p>不难发现由于是子序列，每一个位置的贡献都是相同的，因此前面这一部分可以写作 </p>
@@ -490,13 +489,13 @@ k = \sum_{i=1}^n {{n-1\choose i-1}\over i}
 <p>后面这个式子太难看了，我们改一改</p>
 <script type="math/tex; mod = display">
 \begin{aligned}
-k = \sum_{i=1}^n {{n-1\choose i-1}\over i}
-\\ = \sum_{i=0}^{n-1} {{n-1\choose i}\over i+1}
-\\ = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)\times i! \times (n-i-1)!}
-\\ = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!}
-\\ = {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!}
-\\ = {1\over n}\sum_{i=1}^{n} {n\choose i}
-\\ = {{2^n-1} \over n}
+k &= \sum_{i=1}^n {{n-1\choose i-1}\over i}\\
+&= \sum_{i=0}^{n-1} {{n-1\choose i}\over i+1}\\
+&= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)\times i! \times (n-i-1)!}\\
+&= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!}\\
+&= {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!}\\
+&= {1\over n}\sum_{i=1}^{n} {n\choose i}\\
+&= {{2^n-1} \over n}
 \end{aligned}
 </script>
 <p>然后就可以求了</p>
@@ -504,30 +503,30 @@ k = \sum_{i=1}^n {{n-1\choose i-1}\over i}
 <p>发现对于一个子序列，这玩意儿其实就是 </p>
 <script type="math/tex; mod = display">
 \begin{aligned}
-\left(\sum a_i\right)^2\over n^2
-\\={1\over n^2}\left(\sum_{i=1}^n a_i^2\right)+{1\over n^2}\left(\sum_{i=1}^n\sum_{j=1}^n a_ia_j[i\ne j]\right)
+\left(\sum a_i\right)^2\over n^2\\
+&={1\over n^2}\left(\sum_{i=1}^n a_i^2\right)+{1\over n^2}\left(\sum_{i=1}^n\sum_{j=1}^n a_ia_j[i\ne j]\right)
 \end{aligned}
 </script>
 <p>前面一部分略显眼熟，考虑用类似的方法化简</p>
 <script type="math/tex; mod = display">
 \begin{aligned}
-k = \sum_{i=1}^n {{n-1\choose i-1}\over i^2}
-\\ = \sum_{i=0}^{n-1} {{n-1\choose i}\over (i+1)^2}
-\\ = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)^2\times i! \times (n-i-1)!}
-\\ = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!\times (i+1)}
-\\ = {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!\times i}
-\\ = {1\over n}\sum_{i=1}^{n} {{n\choose i}\over i}
+k &= \sum_{i=1}^n {{n-1\choose i-1}\over i^2}\\
+&= \sum_{i=0}^{n-1} {{n-1\choose i}\over (i+1)^2}\\
+&= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)^2\times i! \times (n-i-1)!}\\
+&= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!\times (i+1)}\\
+&= {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!\times i}\\
+&= {1\over n}\sum_{i=1}^{n} {{n\choose i}\over i}
 \end{aligned}
 </script>
 <p>考虑递推， 设</p>
 <script type="math/tex; mod = display">
 \begin{aligned}
-f(n)=\sum_{i=1}^n{1\over i} {n\choose i}
-\\={1\over n}+\sum_{i=1}^{n-1}{1\over i} \left({n-1\choose i}+{n-1\choose i-1}\right)
-\\={1\over n}+f(n-1)+\sum_{i=1}^{n-1}{(n-1)!\over i!(n-i)!}
-\\={1\over n}+f(n-1)+{1\over n}\sum_{i=1}^{n-1} {n\choose i}
-\\=f(n-1)+{1\over n}\sum_{i=1}^{n} {n\choose i}
-\\=f(n-1)+{{2^n-1} \over n}
+f(n)&=\sum_{i=1}^n{1\over i} {n\choose i}\\
+&={1\over n}+\sum_{i=1}^{n-1}{1\over i} \left({n-1\choose i}+{n-1\choose i-1}\right)\\
+&={1\over n}+f(n-1)+\sum_{i=1}^{n-1}{(n-1)!\over i!(n-i)!}\\
+&={1\over n}+f(n-1)+{1\over n}\sum_{i=1}^{n-1} {n\choose i}\\
+&=f(n-1)+{1\over n}\sum_{i=1}^{n} {n\choose i}\\
+&=f(n-1)+{{2^n-1} \over n}
 \end{aligned}
 </script>
 <p>因此这部分的系数就是 ${1\over n} f(n)$ ，预处理即可</p>
@@ -535,11 +534,11 @@ f(n)=\sum_{i=1}^n{1\over i} {n\choose i}
 <p>还是考虑枚举，那么就是每次选两个数，由于 $n=1$ 时这个式子显然为 $0$ ，因此从 $2$ 开始枚举，发现每一对数的贡献为：</p>
 <script type="math/tex; mod = display">
 \begin{aligned}
-k=\sum_{i=2}^n {1\over i^2} {n-2\choose i-2}
-\\=\sum_{i=2}^{n} {(n-2)!\times (i-1)\over i\times i!\times (n-i)!}
-\\=\sum_{i=1}^{n} {(i-1)\over i}\times {(n-2)!\over i!\times (n-i)!}
-\\={1\over n(n-1)} \sum_{i=1}^{n} {i-1\over i}{n\choose i}
-\\={1\over n(n-1)} \left(2^n-1-f(n)\right)
+k&=\sum_{i=2}^n {1\over i^2} {n-2\choose i-2}\\
+&=\sum_{i=2}^{n} {(n-2)!\times (i-1)\over i\times i!\times (n-i)!}\\
+&=\sum_{i=1}^{n} {(i-1)\over i}\times {(n-2)!\over i!\times (n-i)!}\\
+&={1\over n(n-1)} \sum_{i=1}^{n} {i-1\over i}{n\choose i}\\
+&={1\over n(n-1)} \left(2^n-1-f(n)\right)
 \end{aligned}
 </script>
 <p>根据其意义，得到</p>
