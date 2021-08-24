@@ -207,8 +207,7 @@
 <p>这道题对数据结构要求为 $0$ 。。。</p>
 <p>首先连续取幂考虑扩展欧拉定理。</p>
 <p>可以直接理解为 </p>
-<script type="math/tex; mode=display">
-a^p=a^{p\mod \phi(m)+[p\ge \phi(m)]\times \phi(m)} \mod m</script><p>然后不难发现每一次取 $\phi()$ 都至少减少二分之一。</p>
+<script type="math/tex; mode=display">a^p=a^{p\mod \phi(m)+[p\ge \phi(m)]\times \phi(m)} \mod m</script><p>然后不难发现每一次取 $\phi()$ 都至少减少二分之一。</p>
 <p>所以可以直接暴力，从 $[l, r]$ 开始递归处理，那么我们需要做的就是判断 $f(l + 1, r)$ 是否 $\ge \phi(m)$ 。</p>
 <p>显然若出现 $1$ 则可以直接返回。</p>
 <p>若没有 $1$ ，则往后 $5$ 个以内必然超过 $\phi(m)$ ，因为 $2^{2^{2^{2^2}}}$ 是很大的（自己算算）。</p>
@@ -231,18 +230,14 @@ a^p=a^{p\mod \phi(m)+[p\ge \phi(m)]\times \phi(m)} \mod m</script><p>然后不�
 <p>不难发现我们散块是很好处理的，所以接下来所有东西 <strong>都以块为单位</strong> 。</p>
 <p>首先二元组对数即 ：
 （ <code>cnt[x]</code> 表示区间内 <code>x</code> 的个数）</p>
-<script type="math/tex; mode=display">
-\sum_x cnt[x](cnt[x]-1)/2</script><p>这个东西显然可以转化成：</p>
-<script type="math/tex; mode=display">
-((\sum_x cnt[x]^2)-len)/2</script><p><del>自证不难</del></p>
+<script type="math/tex; mode=display">\sum_x cnt[x](cnt[x]-1)/2</script><p>这个东西显然可以转化成：</p>
+<script type="math/tex; mode=display">((\sum_x cnt[x]^2)-len)/2</script><p><del>自证不难</del></p>
 <p>那么我们维护这个式子即可：</p>
-<script type="math/tex; mode=display">
-\sum_x cnt[x]^2</script><p>这样一来就阳间多了。</p>
+<script type="math/tex; mode=display">\sum_x cnt[x]^2</script><p>这样一来就阳间多了。</p>
 <p>接下来我们考虑用一个前缀和之差的形式表示这个值。</p>
 <p>显然为 ：
 （ <code>b</code> 表示前缀和）</p>
-<script type="math/tex; mode=display">
-(b[r]-b[l-1])^2=b[r]^2+b[l-1]^2-2b[r]b[l-1]</script><p>于是我们需要维护一个前缀和的平方。</p>
+<script type="math/tex; mode=display">(b[r]-b[l-1])^2=b[r]^2+b[l-1]^2-2b[r]b[l-1]</script><p>于是我们需要维护一个前缀和的平方。</p>
 <p>不难发现这很容易做到，并且这东西对于每一个 $x$ 互相独立，故可以 <strong>直接维护其和</strong>，设为 $s[]$ 数组。</p>
 <p>然后我们就只需要维护 $-2b[r]b[l-1]$ 这个东西就行了。</p>
 <p>不妨设 $f(i, j)=\sum_{x} b[i]b[j]$</p>
@@ -365,10 +360,8 @@ a^p=a^{p\mod \phi(m)+[p\ge \phi(m)]\times \phi(m)} \mod m</script><p>然后不�
 <p>我们使用分散层叠算法在线段树上的应用（其实哪怕不知道这个东西往下看也能看懂），即先对于所有 <strong>块</strong> 建立线段树，每一个节点维护一个 <strong>有序序列</strong> 便于二分，其中所有叶子节点（即我们分好的块）维护的就是块内的元素 <strong>带信息排序</strong> 后的结果。</p>
 <p>然后对于每一个父亲节点，维护的信息为两个儿子的序列 <strong>每隔 p 个取出一个后形成的序列</strong> 归并排序后的结果，并且对于每一个位置维护其在两个儿子中对应的后继。这里 $p$ 是一个我们自由选取的阈值。</p>
 <p>举个例子，假设</p>
-<script type="math/tex; mode=display">
-p=3, lson=\{1, 2, 5, 6, 7, 9\}, rson=\{3, 6, 7, 12, 15, 18\}</script><p>那么</p>
-<script type="math/tex; mode=display">
-fa=\{1,3,6,12\}</script><p>其中 $1, 6$ 来自第一个序列， $3, 12$ 来自第二个序列。</p>
+<script type="math/tex; mode=display">p=3, lson=\{1, 2, 5, 6, 7, 9\}, rson=\{3, 6, 7, 12, 15, 18\}</script><p>那么</p>
+<script type="math/tex; mode=display">fa=\{1,3,6,12\}</script><p>其中 $1, 6$ 来自第一个序列， $3, 12$ 来自第二个序列。</p>
 <p>这样子的话，我们在区间查询的时候可以对于这一个区间的根节点二分，然后得到两个儿子中的后继，不难发现这里得到的后继与 $x$ 在其儿子中的真实后继差距不超过 $p$ ，这部分暴力即可。由于 $p$ 是常数，复杂度 $O(1)$ 。</p>
 <p>然后线段树节点个数为 $O({n\over b})$ ，故一次查询的复杂度变为 $O(\log {n\over b} \log b+{n\over b})$ 。</p>
 <p>取 $b=\sqrt{n}$ 得到复杂度 $O(n\sqrt{n})$ 。</p>
@@ -473,69 +466,60 @@ fa=\{1,3,6,12\}</script><p>其中 $1, 6$ 来自第一个序列， $3, 12$ 来自
 <p>标签：数学、推式子</p>
 <p>这道题和数据结构基本没有关系</p>
 <p>考虑先化一下方差公式：</p>
-<script type="math/tex; mod = display">
-{1\over n} \sum_{i=1}^n(a_i-\overline{a})^2
-</script><script type="math/tex; mod = display">={1\over n} \sum_{i=1}^na_i^2+\overline{a}^2-2a_i\overline{a}
-</script><script type="math/tex; mod = display">=\overline{a}^2+{1\over n} \sum_{i=1}^na_i^2-2a_i\overline{a}
-</script><script type="math/tex; mod = display">=\left({1\over n} \sum_{i=1}^na_i^2\right)-\overline{a}^2
+<script type="math/tex; mod = display">{1\over n} \sum_{i=1}^n(a_i-\overline{a})^2</script>
+<script type="math/tex; mod = display">={1\over n} \sum_{i=1}^na_i^2+\overline{a}^2-2a_i\overline{a}</script>
+<script type="math/tex; mod = display">=\overline{a}^2+{1\over n} \sum_{i=1}^na_i^2-2a_i\overline{a}</script>
+<script type="math/tex; mod = display">=\left({1\over n} \sum_{i=1}^na_i^2\right)-\overline{a}^2
 </script>
 <p>不难发现由于是子序列，每一个位置的贡献都是相同的，因此前面这一部分可以写作 </p>
-<script type="math/tex; mod = display">
-k\sum a_i^2
+<script type="math/tex; mod = display">k\sum a_i^2
 </script>
 <p>的形式，因此我们要算这个 $k$</p>
 <p>那么考虑枚举长度，然后判断贡献，</p>
-<script type="math/tex; mod = display">
-k = \sum_{i=1}^n {{n-1\choose i-1}\over i}
+<script type="math/tex; mod = display">k = \sum_{i=1}^n {{n-1\choose i-1}\over i}
 </script>
 <p>后面这个式子太难看了，我们改一改</p>
-<script type="math/tex; mod = display">
-k = \sum_{i=1}^n {{n-1\choose i-1}\over i}
-</script><script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {{n-1\choose i}\over i+1}
-</script><script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)\times i! \times (n-i-1)!}
-</script><script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!}
-</script><script type="math/tex; mod = display"> = {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!}
-</script><script type="math/tex; mod = display"> = {1\over n}\sum_{i=1}^{n} {n\choose i}
-</script><script type="math/tex; mod = display"> = {{2^n-1} \over n}
+<script type="math/tex; mod = display">k = \sum_{i=1}^n {{n-1\choose i-1}\over i}</script>
+<script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {{n-1\choose i}\over i+1}</script>
+<script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)\times i! \times (n-i-1)!}</script>
+<script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!}</script>
+<script type="math/tex; mod = display"> = {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!}</script>
+<script type="math/tex; mod = display"> = {1\over n}\sum_{i=1}^{n} {n\choose i}</script>
+<script type="math/tex; mod = display"> = {{2^n-1} \over n}
 </script>
 <p>然后就可以求了</p>
 <p>考虑后者的求法，就是给你一个序列，求出每一个子序列的平均数的平方之和</p>
 <p>发现对于一个子序列，这玩意儿其实就是 </p>
-<script type="math/tex; mod = display">
-\left(\sum a_i\right)^2\over n^2
-</script><script type="math/tex; mod = display">={1\over n^2}\left(\sum_{i=1}^n a_i^2\right)+{1\over n^2}\left(\sum_{i=1}^n\sum_{j=1}^n a_ia_j[i\ne j]\right)
+<script type="math/tex; mod = display">\left(\sum a_i\right)^2\over n^2</script>
+<script type="math/tex; mod = display">={1\over n^2}\left(\sum_{i=1}^n a_i^2\right)+{1\over n^2}\left(\sum_{i=1}^n\sum_{j=1}^n a_ia_j[i\ne j]\right)
 </script>
 <p>前面一部分略显眼熟，考虑用类似的方法化简</p>
-<script type="math/tex; mod = display">
-k = \sum_{i=1}^n {{n-1\choose i-1}\over i^2}
-</script><script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {{n-1\choose i}\over (i+1)^2}
-</script><script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)^2\times i! \times (n-i-1)!}
-</script><script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!\times (i+1)}
-</script><script type="math/tex; mod = display"> = {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!\times i}
-</script><script type="math/tex; mod = display"> = {1\over n}\sum_{i=1}^{n} {{n\choose i}\over i}
+<script type="math/tex; mod = display">k = \sum_{i=1}^n {{n-1\choose i-1}\over i^2}</script>
+<script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {{n-1\choose i}\over (i+1)^2}</script>
+<script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)^2\times i! \times (n-i-1)!}</script>
+<script type="math/tex; mod = display"> = \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!\times (i+1)}</script>
+<script type="math/tex; mod = display"> = {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!\times i}</script>
+<script type="math/tex; mod = display"> = {1\over n}\sum_{i=1}^{n} {{n\choose i}\over i}
 </script>
 <p>考虑递推， 设</p>
-<script type="math/tex; mod = display">
-f(n)=\sum_{i=1}^n{1\over i} {n\choose i}
-</script><script type="math/tex; mod = display">={1\over n}+\sum_{i=1}^{n-1}{1\over i} \left({n-1\choose i}+{n-1\choose i-1}\right)
-</script><script type="math/tex; mod = display">={1\over n}+f(n-1)+\sum_{i=1}^{n-1}{(n-1)!\over i!(n-i)!}
-</script><script type="math/tex; mod = display">={1\over n}+f(n-1)+{1\over n}\sum_{i=1}^{n-1} {n\choose i}
-</script><script type="math/tex; mod = display">=f(n-1)+{1\over n}\sum_{i=1}^{n} {n\choose i}
-</script><script type="math/tex; mod = display">=f(n-1)+{{2^n-1} \over n}
+<script type="math/tex; mod = display">f(n)=\sum_{i=1}^n{1\over i} {n\choose i}</script>
+<script type="math/tex; mod = display">={1\over n}+\sum_{i=1}^{n-1}{1\over i} \left({n-1\choose i}+{n-1\choose i-1}\right)</script>
+<script type="math/tex; mod = display">={1\over n}+f(n-1)+\sum_{i=1}^{n-1}{(n-1)!\over i!(n-i)!}</script>
+<script type="math/tex; mod = display">={1\over n}+f(n-1)+{1\over n}\sum_{i=1}^{n-1} {n\choose i}</script>
+<script type="math/tex; mod = display">=f(n-1)+{1\over n}\sum_{i=1}^{n} {n\choose i}</script>
+<script type="math/tex; mod = display">=f(n-1)+{{2^n-1} \over n}
 </script>
 <p>因此这部分的系数就是 ${1\over n} f(n)$ ，预处理即可</p>
 <p>然后考虑第二部分</p>
 <p>还是考虑枚举，那么就是每次选两个数，由于 $n=1$ 时这个式子显然为 $0$ ，因此从 $2$ 开始枚举，发现每一对数的贡献为：</p>
-<script type="math/tex; mod = display">
-k=\sum_{i=2}^n {1\over i^2} {n-2\choose i-2}
-</script><script type="math/tex; mod = display">=\sum_{i=2}^{n} {(n-2)!\times (i-1)\over i\times i!\times (n-i)!}
-</script><script type="math/tex; mod = display">=\sum_{i=1}^{n} {(i-1)\over i}\times {(n-2)!\over i!\times (n-i)!}
-</script><script type="math/tex; mod = display">={1\over n(n-1)} \sum_{i=1}^{n} {i-1\over i}{n\choose i}
-</script><script type="math/tex; mod = display">={1\over n(n-1)} \left(2^n-1-f(n)\right)
+<script type="math/tex; mod = display">k=\sum_{i=2}^n {1\over i^2} {n-2\choose i-2}</script>
+<script type="math/tex; mod = display">=\sum_{i=2}^{n} {(n-2)!\times (i-1)\over i\times i!\times (n-i)!}</script>
+<script type="math/tex; mod = display">=\sum_{i=1}^{n} {(i-1)\over i}\times {(n-2)!\over i!\times (n-i)!}</script>
+<script type="math/tex; mod = display">={1\over n(n-1)} \sum_{i=1}^{n} {i-1\over i}{n\choose i}</script>
+<script type="math/tex; mod = display">={1\over n(n-1)} \left(2^n-1-f(n)\right)
 </script>
 <p>根据其意义，得到</p>
-<script type="math/tex; mod = display">
-k\sum_{i=1}^n\sum_{j=1}^na_ia_j[i\ne j]=k\left(\sum a\right)^2-k\sum a^2
+<script type="math/tex; mod = display">k\sum_{i=1}^n\sum_{j=1}^na_ia_j[i\ne j]=k\left(\sum a\right)^2-k\sum a^2
 </script>
 <p>而后面两个我们都是能求的</p>
 <p>然后就做完了</p>
