@@ -1,5 +1,5 @@
 ---
-title: 标准 RMQ 算法简记
+title: 标准 RMQ 算法瞎写
 tags:
   - ds
   - sqrt
