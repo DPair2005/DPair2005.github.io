@@ -1,14 +1,26 @@
-<html>
-
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
   <link rel="icon" type="images/png" href="/images/favicon.png">
   <script src="/js/element.js"></script>
-  <title> Tag tricks - DPairの非自制 blog </title>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <title>
+    全局平衡二叉树瞎写 - DPairの非自制 blog
+  </title>
 </head>
 
 <body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
   <div class="content">
     <div class="sidebar" id="sidebar">
       <div class="sidebar-title">
@@ -36,13 +48,13 @@
         </li>
       </a>
       <a href="/articles">
-        <li class="list-item sidebar-menu-item" id="sidebar-content-articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
           Articles
         </li>
       </a>
       <a href="/tags">
-        <li class="list-item sidebar-menu-item" id="sidebar-content-tags"
-            style="background: #e5e5e5">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
           Tags
         </li>
       </a>
@@ -103,65 +115,23 @@
 </div>
 
     </div>
-    <div class="art-list-container">
-      <ul class="art-list">
 
-<a href="/articles/tricks/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      一些有意思的解法技巧 
-    </div>
-  </li>
-</a>
-<a href="/articles/wystricks/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      一些卡常技巧 
-    </div>
-  </li>
-</a>
-<a href="/articles/stdRMQ/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      标准 RMQ 算法瞎写 
-    </div>
-  </li>
-</a>
-<a href="/articles/LAono1/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      Level Ancestor 的 O(n)-O(1) 解法瞎写 
-    </div>
-  </li>
-</a>
-<a href="/articles/skiplist/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      跳表瞎写 
-    </div>
-  </li>
-</a>
-<a href="/articles/blbt/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      全局平衡二叉树瞎写 
-    </div>
-  </li>
-</a>
+    <div class="post" id="post">
+      <h1>全局平衡二叉树瞎写</h1>
+      <p>其实就是 LCT + 重剖</p>
+<p>考虑我们 LCT 的时候干的是什么（好吧其实我并不是很会 LCT）</p>
+<p>我们是不是拿 Splay 出来维护链了</p>
+<p>然后全局平衡二叉树处理的问题不需要什么 Link-Cut ，换言之树的形态不变</p>
+<p>那么用 Splay 就很浪费了，我们直接上 BST </p>
+<p>先对原树重剖，这条链（没说哪个点）照旧连向链顶原树上的父亲，显然在原树上这是轻边</p>
+<p>然后就是 BST 怎么建树的问题了</p>
+<p>我们考虑以轻儿子 size 之和为权值建树，然后带权重心拿出来连向链顶的父亲</p>
+<p>不难发现这样暴力跳一次最多走 $\log$ 条轻边，每在重边上跳一次轻儿子大小至少减半，因此也是 $O(\log)$ （先毛估估他是对的，我还没严格想过）</p>
+<p>于是最终复杂度 $O(\log n)$</p>
 
-      </ul>
+      
+
     </div>
+
   </div>
-
-  <script>
-    drawSaying()
-  </script>
 </body>
-
-</html>

@@ -1,0 +1,181 @@
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <title>
+    跳表瞎写 - DPairの非自制 blog
+  </title>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+  DPairの非自制 blog
+  </p>
+  <hr align="center" style="width: 200px;">
+  <p></p>
+  <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+  <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+  <div class="saying" id="saying"> </div>
+</div>
+
+<script>
+  SaveBackground()
+</script>
+
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+  <div style="text-align: center; font-size: 16px;"> About me </div>
+  <HR align="center">
+  <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+    <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
+  </div>
+
+  <ul class="sidebar-links">
+  <li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link">
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link">
+      AtCoder 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link">
+      github 
+    </a>
+  </li>
+  </ul>
+
+</div>
+
+<ul class="sidebar-links">
+  <div style="text-align: center; font-size: 16px;"> links </div>
+  <HR align="center">
+
+  <li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link">
+      Jacder's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.github.io/" class="friend-link">
+      xYix's blog
+    </a>
+  </li>
+
+</ul>
+
+
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+      <h1>跳表瞎写</h1>
+      <p>我看其他人都已经卷成什么样了就我还在颓这种无意义的东西（（</p>
+<p>感觉在复读 OI-wiki</p>
+<hr>
+<p>初中的时候好像谁跟我提到过这玩意儿？</p>
+<hr>
+<p>先引一段 OI-wiki 上的话：</p>
+<blockquote>
+<p>跳表（Skip List）是由 William Pugh 发明的一种查找数据结构，支持对数据的快速查找，插入和删除。</p>
+</blockquote>
+<p>是不是感觉和平衡树挺像的</p>
+<p>优势在于简单好写好想不容易写错</p>
+<p>不过这玩意儿应该做不了文艺平衡树那套东西，顶多当个 <code>std::map</code></p>
+<p>但现在都 1202 年了， STL 早就能用了</p>
+<p>所以这玩意儿更没用了</p>
+<hr>
+<p>接下来我们都认为跳表干的就是 <code>std::map</code> 干的事，因此有一个 $(index, value)$ 的 <code>std::pair</code> 的说法</p>
+<p>首先得知道这东西是怎么建出来的</p>
+<p>我们先看看我们平时支持插入删除的东西是什么</p>
+<p>假设我们不会平衡树，那就用链表！</p>
+<p>但是链表的各种东西似乎都是 $O(n)$ 的？（大悲</p>
+<p>考虑链表的劣势在于我们没有合并多个信息</p>
+<p>那就合并嘛，直接倍增就好了嘛</p>
+<p>不过这个序列是动态的，插入删除什么的倍增怎么处理？</p>
+<p>处理不了吧，很蓝的啦</p>
+<p><del>当然这东西要是能定期重构那我也没话说</del></p>
+<p>不过思路显然还是对的，我们确实需要找一种这样的方法，跳表就提供了一种合并信息而且支持动态的方法，挺高妙的</p>
+<hr>
+<p>跳表在有序链表的基础上，引入了一个 “分层” 的概念</p>
+<p>就是说一个节点可能有很多层，每一层存储它该层的后继（可能还有前驱）</p>
+<p>换言之就是有若干层有序链表，每一层都在下一层有所对应</p>
+<p><del>感觉和分散层叠那家伙有点像（（</del></p>
+<p>然后分层的方式是随机化</p>
+<p>对于一个点，每一次都有 $p$ 的概率向上加一层</p>
+<p>显然建表的时候每一层的最后一个节点都是可以维护的，所以每一层按一个普通链表建就行</p>
+<p>那么此时，我们对跳表进行修改查询等操作时，就可以从最高层开始，不断和倍增一样看看下一跳是否会超，不会超就直接在这一层跳，会超就往下一层走</p>
+<p>这种带随机化的东西毛估估感觉复杂度是对的（（</p>
+<hr>
+<p>首先是空间复杂度，考虑对于一个节点，其层数为 $i$ 的概率是 $p^{i-1}(1-p)$</p>
+<p>那么对于该节点的期望层数就是 $\sum_{i=1} ip^{i-1}(1-p)={1\over {1-p}}$</p>
+<p>考虑 $p$ 是一个我们定下来的常数，总的期望空间复杂度就是 $O(n)$ 的</p>
+<p>由于我们是随机化的，应该一般都能到达这个复杂度</p>
+<p>另外显然 $O(\log n)$ 层以上其实用处不大，所以我们完全可以设个阈值表示大于这个阈值的层我们不要，这个阈值看起来一副取 $O(\log n)$ 的样子，那么空间复杂度就是 $O(n\log n)$ 的</p>
+<hr>
+<p>然后是时间复杂度</p>
+<p>我们直接考虑查询一个 $index \ge x$ 的节点，或者说 $x$ 的非严格后继</p>
+<p>OI-wiki 中的说法是要不断往上爬爬到某一层，个人感觉直接把 head 节点赋一个最高的层数就行了，而且 OI-wiki 上的代码好像也是这么实现的？</p>
+<p>考虑从最高层开始查，如果其后继节点 $index &lt; x$ 显然可以直接跳，否则考虑下降一层</p>
+<p>OI-wiki 上给了一个看不懂的东西</p>
+<p>但是我们考虑这么跳的话，每一层节点个数期望减半，所以期望复杂度和倍增应该是相同的</p>
+<p>于是复杂度就是 $O(\log n)$ </p>
+<p>插入同理</p>
+<p>删除同理</p>
+<p>好像就好了</p>
+<p>看起来常数挺小的样子</p>
+
+      
+
+    </div>
+
+  </div>
+</body>
