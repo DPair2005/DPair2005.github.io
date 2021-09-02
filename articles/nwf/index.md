@@ -3,6 +3,7 @@ title: 网络流 23 题做题记录
 tags:
   - graphs
   - flows
+  - solution
 ---
 
 1、[P1251 餐巾计划问题](https://www.luogu.com.cn/problem/P1251)

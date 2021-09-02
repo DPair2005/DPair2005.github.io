@@ -5,6 +5,7 @@ tags:
   - wys
   - sqrt
   - lxl
+  - solution
 ---
 
 >“Ynoi难度低，联赛前选学。”

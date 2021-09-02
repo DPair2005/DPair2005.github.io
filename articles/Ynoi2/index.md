@@ -5,6 +5,7 @@ tags:
   - wys
   - sqrt
   - lxl
+  - solution
 ---
 
 21、[P6105 [Ynoi2010] y-fast trie](https://www.luogu.com.cn/problem/P6105)
