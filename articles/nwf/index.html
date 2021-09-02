@@ -1,5 +1,3 @@
- 
-
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -8,6 +6,9 @@
   <script src="/js/element.js"></script>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
   <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <title>
+    网络流 23 题做题记录 - DPairの非自制 blog
+  </title>
 </head>
 
 <body>
@@ -22,22 +23,21 @@
 
   <div class="content">
     <div class="sidebar" id="sidebar">
-      <title>
-          网络流 23 题做题记录
-      </title>
-      <script>
-  SaveBackground()
-</script>
-<div class="sidebar-title">
-  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';"> 
-
-DPairの非自制 blog
-    <HR align="center" style="width: 200px;">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+  DPairの非自制 blog
   </p>
-    <div font="" style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';"> 一言 (hitokoto) </div>
-    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+  <hr align="center" style="width: 200px;">
+  <p></p>
+  <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+  <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
   <div class="saying" id="saying"> </div>
 </div>
+
+<script>
+  SaveBackground()
+</script>
+
 <div class="sidebar-body">
 
   <div class="sidebar-content">
@@ -58,100 +58,67 @@ DPairの非自制 blog
           Tags
         </li>
       </a>
-      <a href="/friends">
-        <li class="list-item sidebar-menu-item" id="sidebar-content-friends">
-          friends
-        </li>
-      </a>
     </ul>
   </div>
 
   <div class="sidebar-about">
-    <div style="text-align: center; font-size: 16px;"> About DPair </div>
-    <HR align="center">
-      <div style="margin: 2 auto; width: min-content">
-          <img class="avatar" alt="DPair" src="/images/avatar.png" onclick="NextBackground()">
-        </div>
-    <ul class="sidebar-links">
+  <div style="text-align: center; font-size: 16px;"> About me </div>
+  <HR align="center">
+  <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+    <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
+  </div>
 
-<li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
+  <ul class="sidebar-links">
+  <li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
       luogu blog 
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://codeforces.com/profile/DPair" class="friend-link"> 
+    <a href="https://codeforces.com/profile/DPair" class="friend-link">
       Codeforces 
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://atcoder.jp/users/DPair" class="friend-link"> 
+    <a href="https://atcoder.jp/users/DPair" class="friend-link">
       AtCoder 
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://gitee.com/DPair" class="friend-link"> 
-      gitee 
-    </a>
-  </li>
-<li class="sidebar-links-item">
-    <a href="https://github.com/DPair2005" class="friend-link"> 
+    <a href="https://github.com/DPair2005" class="friend-link">
       github 
     </a>
   </li>
-<li class="sidebar-links-item">
-    <a href="mailto:DPair2005@163.com" class="friend-link"> 
-      mail 
-    </a>
-  </li>
+  </ul>
 
-    </ul>
-  </div>
+</div>
 
-  <ul class="sidebar-links">
-    <div style="text-align: center; font-size: 16px;"> Friend Links </div>
-    <HR align="center">
+<ul class="sidebar-links">
+  <div style="text-align: center; font-size: 16px;"> links </div>
+  <HR align="center">
 
-<li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/user/140572" class="friend-link"> 
-      DSair
+  <li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link">
+      Jacder's blog
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://coderoj.gitee.io/" class="friend-link"> 
-      Jacderzhang's blog
-    </a>
-  </li>
-<li class="sidebar-links-item">
-    <a href="https://xyix.gitee.io/" class="friend-link"> 
+    <a href="https://xyix.github.io/" class="friend-link">
       xYix's blog
     </a>
   </li>
-<li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/Flying2018/" class="friend-link"> 
-      Flying2018's blog
-    </a>
-  </li>
-<li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/-Wallace-/" class="friend-link"> 
-      _Wallace_'s blog
-    </a>
-  </li>
-<li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/Point-King/" class="friend-link"> 
-      Point_King's blog
-    </a>
-  </li>
 
-  </ul>
+</ul>
+
+
 
 </div>
 
     </div>
 
     <div class="post" id="post">
-      <h1 id="%E7%BD%91%E7%BB%9C%E6%B5%81-23-%E9%A2%98%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95">网络流 23 题做题记录</h1>
-<p>1、<a href="https://www.luogu.com.cn/problem/P1251">P1251 餐巾计划问题</a></p>
+      <h1>网络流 23 题做题记录</h1>
+      <p>1、<a href="https://www.luogu.com.cn/problem/P1251">P1251 餐巾计划问题</a></p>
 <p>所以网络流是毒瘤建模题吗？</p>
 <p>爱了爱了。</p>
 <p>单价，显然是最小费用最大流。</p>
@@ -186,10 +153,8 @@ DPairの非自制 blog
 <p>那么我们认为一次 <strong>割</strong> 是一次 <strong>亏损</strong> ，然后那么 <strong>最小割</strong> 就是 <strong>最小亏损</strong> 了，此时我们用所有 <strong>实验的贡献之和</strong> 减去最小割就是答案。</p>
 <p>那么考虑亏损会怎样产生。</p>
 <ol>
-<li><p>不做某一个实验，但可以不买某一些仪器</p>
-</li>
-<li><p>买必须买的仪器，但可以少不做一些实验。</p>
-</li>
+<li>不做某一个实验，但可以不买某一些仪器</li>
+<li>买必须买的仪器，但可以少不做一些实验。</li>
 </ol>
 <p>于是考虑建立超源超汇，源点向每一个实验连边，每一个仪器向汇点连边，边权均为其权值。</p>
 <p>然后对应的实验向仪器连容量为 $\inf$ 的边。</p>
@@ -224,10 +189,8 @@ DPairの非自制 blog
 <p>那么这道题就做完了。</p>
 <p>首先我们每一次扔一个新的点进去，那么它必然只会有两种情况。</p>
 <ol>
-<li><p>放在一根新的 <strong>柱子</strong> 上</p>
-</li>
-<li><p>放在已有的球上</p>
-</li>
+<li>放在一根新的 <strong>柱子</strong> 上</li>
+<li>放在已有的球上</li>
 </ol>
 <p>首先我们不考虑第一种情况。</p>
 <p>那么对于第二种情况，我们需要保证每一个球上面最多只有一个球，显然要套路拆点，一个点提供贡献一个点收集贡献。然后每一个出现过的，能与当前新点产生关联的点连一条边。</p>

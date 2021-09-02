@@ -1,5 +1,3 @@
- 
-
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -8,6 +6,9 @@
   <script src="/js/element.js"></script>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
   <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <title>
+    分块的一些技巧 - DPairの非自制 blog
+  </title>
 </head>
 
 <body>
@@ -22,22 +23,21 @@
 
   <div class="content">
     <div class="sidebar" id="sidebar">
-      <title>
-          各类分块技巧の总结
-      </title>
-      <script>
-  SaveBackground()
-</script>
-<div class="sidebar-title">
+      <div class="sidebar-title">
   <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
-
-DPairの非自制 blog
-    <HR align="center" style="width: 200px;">
+  DPairの非自制 blog
   </p>
-    <div font="" style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
-    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+  <hr align="center" style="width: 200px;">
+  <p></p>
+  <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+  <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
   <div class="saying" id="saying"> </div>
 </div>
+
+<script>
+  SaveBackground()
+</script>
+
 <div class="sidebar-body">
 
   <div class="sidebar-content">
@@ -53,11 +53,6 @@ DPairの非自制 blog
           Articles
         </li>
       </a>
-      <a href="/transit">
-        <li class="list-item sidebar-menu-item" id="sidebar-content-Transit">
-          Transit
-        </li>
-      </a>
       <a href="/tags">
         <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
           Tags
@@ -67,97 +62,69 @@ DPairの非自制 blog
   </div>
 
   <div class="sidebar-about">
-    <div style="text-align: center; font-size: 16px;"> About DPair </div>
-    <HR align="center">
-      <div style="margin: 2 auto; width: min-content">
-          <img class="avatar" alt="DPair" src="/images/avatar.png" onclick="NextBackground()">
-        </div>
-    <ul class="sidebar-links">
+  <div style="text-align: center; font-size: 16px;"> About me </div>
+  <HR align="center">
+  <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+    <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
+  </div>
 
-<li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link"> 
+  <ul class="sidebar-links">
+  <li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
       luogu blog 
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://codeforces.com/profile/DPair" class="friend-link"> 
+    <a href="https://codeforces.com/profile/DPair" class="friend-link">
       Codeforces 
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://atcoder.jp/users/DPair" class="friend-link"> 
+    <a href="https://atcoder.jp/users/DPair" class="friend-link">
       AtCoder 
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://gitee.com/DPair" class="friend-link"> 
-      gitee 
-    </a>
-  </li>
-<li class="sidebar-links-item">
-    <a href="https://github.com/DPair2005" class="friend-link"> 
+    <a href="https://github.com/DPair2005" class="friend-link">
       github 
     </a>
   </li>
-<li class="sidebar-links-item">
-    <a href="mailto:DPair2005@163.com" class="friend-link"> 
-      mail 
-    </a>
-  </li>
+  </ul>
 
-    </ul>
-  </div>
+</div>
 
-  <ul class="sidebar-links">
-    <div style="text-align: center; font-size: 16px;"> Friend Links </div>
-    <HR align="center">
+<ul class="sidebar-links">
+  <div style="text-align: center; font-size: 16px;"> links </div>
+  <HR align="center">
 
-<li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/user/140572" class="friend-link"> 
-      DSair
+  <li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link">
+      Jacder's blog
     </a>
   </li>
 <li class="sidebar-links-item">
-    <a href="https://coderoj.gitee.io/" class="friend-link"> 
-      Jacderzhang's blog
-    </a>
-  </li>
-<li class="sidebar-links-item">
-    <a href="https://xyix.gitee.io/" class="friend-link"> 
+    <a href="https://xyix.github.io/" class="friend-link">
       xYix's blog
     </a>
   </li>
-<li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/Flying2018/" class="friend-link"> 
-      Flying2018's blog
-    </a>
-  </li>
-<li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/-Wallace-/" class="friend-link"> 
-      _Wallace_'s blog
-    </a>
-  </li>
-<li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/Point-King/" class="friend-link"> 
-      Point_King's blog
-    </a>
-  </li>
 
-  </ul>
+</ul>
+
+
 
 </div>
 
     </div>
 
     <div class="post" id="post">
-      <h1 id="%E5%90%84%E7%B1%BB%E5%88%86%E5%9D%97%E6%8A%80%E5%B7%A7%E3%81%AE%E6%80%BB%E7%BB%93">各类分块技巧の总结</h1>
-<p>不是很想写题，所以就来随便总结一下前段时间做 Ynoi 的经验，算是对数据结构的一个收尾。</p>
-<h2 id="-3-%E5%89%8D%E8%A8%80">-3 前言</h2>
-<p>本文中可能会存在学术性或表述性错误，若有请一定要指出，本人会立刻改正。</p>
+      <h1>分块的一些技巧</h1>
+      <p>不是很想写题，所以就来随便总结一下前段时间做 Ynoi 的经验，算是对数据结构的一个收尾。</p>
+<p><del>真香</del></p>
 <h2 id="-2-%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E">-2 一些说明</h2>
+<p><strong>本文中可能会存在学术性或表述性错误，若有请一定要指出，本人会立刻改正。</strong></p>
 <p>本文中若无特殊说明认为每一道题中的序列长度与查询次数同阶，即 $n, m$ 同阶。</p>
 <p>当然特殊情况特殊处理，本文不作赘述。</p>
-<p>另外，本文不讨论莫队与树分块，前者可以看这篇<a href="../mo">博客</a>，后者可以另外学习。</p>
+<p>另外，本文不讨论莫队与树分块，前者可以看这篇<a href="https://www.luogu.com.cn/blog/DPair2005/talk-talk-bruh-forces-in-oi">博客</a>，后者可以另外学习。</p>
 <p>操作分块由于不多见（<del>主要是第十分块我自己也没切掉</del>），所以暂时咕咕咕。</p>
 <p>本文讨论根号分治并认为这是配合分块的一种重要思想（技巧）。</p>
 <p>顺便宣传一下一个<a href="https://www.luogu.com.cn/training/62596">分块入门题单</a> 。</p>
@@ -178,12 +145,12 @@ DPairの非自制 blog
 <p>这种题目一般会给我们一个序列，然后让我们执行一些区间操作。</p>
 <h3 id="1-1-%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B">1-1 算法流程</h3>
 <p>首先我们把整个序列分成若干长度为 $b$ 的块，比如对于一个这样的序列</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/qfm5sttn.png" alt="pic1"></p>
+<p><img src="./pic1.png" alt="pic1"></p>
 <p>我们考虑以 $b=3$ 为块长对这个序列分块，那么它就会长这样：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/5c4grqne.png" alt="pic2"></p>
+<p><img src="./pic2.png" alt="pic2"></p>
 <p>（注意实际操作中，最后一个块不一定完整）</p>
 <p>那么比如说我们要操作一段区间 $[2,7]$ 时，我们实际上操作的是这样一段区间：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/7d559lrj.png" alt="pic3"></p>
+<p><img src="./pic3.png" alt="pic3"></p>
 <p>不难发现这里面涉及到两个不完整的块和一个完整的块，那么我们对于每一个完整的块进行整体操作，对于不完整的块进行暴力操作，显然一次操作只会涉及到 $O({n\over b})$ 个整块， $O(b)$ 个 <strong>散块中的单点</strong> ，于是我们一般取 $b=\sqrt{n}$ 以达到复杂度的平衡，当然具体情况具体讨论。</p>
 <p>下面给一个具体的例子进行说明。</p>
 <h3 id="1-2-%E4%BE%8B%E9%A2%98%E8%AE%B2%E8%A7%A3">1-2 例题讲解</h3>
@@ -197,7 +164,7 @@ DPairの非自制 blog
 <h4 id="%E5%88%86%E6%9E%90">分析</h4>
 <p>这是一道区间修改区间询问的基础数据结构题，可以用线段树、树状数组等数据结构解决，但这里我们考虑序列分块的做法。</p>
 <p>首先我们还是以刚才那一张图为例，有一个长度为 $n=12$ 的序列。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/qfm5sttn.png" alt="pic1"></p>
+<p><img src="./pic1.png" alt="pic1"></p>
 <p>此时我们先不取块长，等到分析完复杂度之后再取块长。</p>
 <p>我们先处理修改。</p>
 <p>单点修改我相信大家都会，对于一个散块中的散点 $a_i$ ，我们暴力执行 $a_i=a_i+k$ 就行。</p>
@@ -225,7 +192,7 @@ DPairの非自制 blog
 <h2 id="1-5-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86">1.5 前置知识</h2>
 <p>后面的部分由于基本上都是技巧，一般配合其他算法使用而不单独成题，故可能需要更多的前置知识，下面再次进行列举。</p>
 <ul>
-<li>各种莫队（可以看这篇<a href="../mo">博客</a>）</li>
+<li>各种莫队（可以看这篇<a href="https://www.luogu.com.cn/blog/DPair2005/talk-talk-bruh-forces-in-oi">博客</a>）</li>
 <li>序列分块（可以看看上面的东西）</li>
 </ul>
 <h2 id="2-%E5%80%BC%E5%9F%9F%E5%88%86%E5%9D%97">2 值域分块</h2>
@@ -268,9 +235,13 @@ DPairの非自制 blog
 <p>复杂度带 $\sqrt{n}$ 而不是 $\log$ ，相对较慢，无法处理 $10^6$ 级别的数据。</p>
 <p>（不过这个劣势由于值域分块的适用范围基本可以忽略不计）</p>
 <h3 id="2-4-%E4%B9%A0%E9%A2%98%E6%8E%A8%E8%8D%90">2-4 习题推荐</h3>
-<p>1. <a href="https://www.luogu.com.cn/problem/P4867">P4867 Gty的二逼妹子序列</a></p>
+<ol>
+<li><a href="https://www.luogu.com.cn/problem/P4867">P4867 Gty的二逼妹子序列</a></li>
+</ol>
 <p>双倍经验。</p>
-<p>2. <a href="https://www.luogu.com.cn/problem/P4119">P4119 [Ynoi2018]未来日记</a></p>
+<ol>
+<li><a href="https://www.luogu.com.cn/problem/P4119">P4119 [Ynoi2018]未来日记</a></li>
+</ol>
 <p><strong>望月悲叹最初分块</strong> ，略卡常。</p>
 <h2 id="3-%E6%A0%B9%E5%8F%B7%E5%88%86%E6%B2%BB">3 根号分治</h2>
 <p>严格来说这应该不是分块</p>
@@ -286,28 +257,46 @@ DPairの非自制 blog
 <h3 id="3-3-%E7%89%B9%E6%AE%8A%E6%80%A7%E8%B4%A8">3-3 特殊性质</h3>
 <p>根号分治在某一些题目里会存在一些优美的特殊性质，这一些性质对解题会有很大帮助，下面简单说几种我见过的常见性质。</p>
 <p>我们先考虑 $\le limit$ 的那一部分。</p>
-<p>1. 若考虑对值域根号分治，这一部分数最多有 $limit$ <strong>种</strong></p>
+<ol>
+<li>若考虑对值域根号分治，这一部分数最多有 $limit$ <strong>种</strong></li>
+</ol>
 <p>这个性质可以用于对于每一 <strong>种</strong> $\le limit$ 的数进行 $O(n)$ 的预处理，然后就可以使得后面的一些操作忽略这一部分。</p>
 <p>一般是 $&gt; limit$ 的部分可以在值域上暴力的时候会把这一部分分离出来处理，另一部分的处理见后文、</p>
-<p>2. 若考虑对值域根号分治，这一部分数值最大为 $limit$ </p>
+<ol>
+<li>若考虑对值域根号分治，这一部分数值最大为 $limit$ </li>
+</ol>
 <p>这是显然的吧。。。但仍然有一些作用。</p>
 <p>比如说我们有些题目可能要存形如 $a[i \in[1,V]][j \in[0,i-1]]$ （其中 $V$ 为值域）的信息。那么我们就可以暴力存 $i \le limit$ 的信息，另一部分后面再考虑。</p>
 <p>然后再考虑 $&gt; limit$ 的那一部分。</p>
-<p>1. 若考虑对出现次数根号分治，则这一类数最多有 $n \over limit$ 个</p>
+<ol>
+<li>若考虑对出现次数根号分治，则这一类数最多有 $n \over limit$ 个</li>
+</ol>
 <p>这是显然的，但是在 <a href="https://www.luogu.com.cn/problem/P5397">P5397 [Ynoi2018] 天降之物</a> 的根号分治做法中有很重要的意义。</p>
-<p>2. 若考虑对值域根号分治，则这一类数在值域中的倍数最多有 $V \over limit$ 个。</p>
+<ol>
+<li>若考虑对值域根号分治，则这一类数在值域中的倍数最多有 $V \over limit$ 个。</li>
+</ol>
 <p>于是我们做一些和 “取模” “倍数” 有关的题目时，这一部分暴力的复杂度是对的。</p>
 <h3 id="3-4-%E4%B9%A0%E9%A2%98%E6%8E%A8%E8%8D%90">3-4 习题推荐</h3>
 <p>这里就不提供例题了，因为这个东西太思路化。</p>
-<p>0. <a href="https://www.luogu.com.cn/problem/P3396">P3396 哈希冲突</a></p>
+<ol>
+<li><a href="https://www.luogu.com.cn/problem/P3396">P3396 哈希冲突</a></li>
+</ol>
 <p>根号分治板子题，这个东西重在应用所以板子认为是 “第 0 题”。</p>
-<p>1. <a href="https://www.luogu.com.cn/problem/P5355">P5355 [Ynoi2017] 由乃的玉米田</a></p>
+<ol>
+<li><a href="https://www.luogu.com.cn/problem/P5355">P5355 [Ynoi2017] 由乃的玉米田</a></li>
+</ol>
 <p><a href="https://www.luogu.com.cn/problem/P3674">P3674 小清新人渣的本愿</a> 的加强版，需要根号分治。</p>
-<p>2. <a href="https://www.luogu.com.cn/problem/P5397">P5397 [Ynoi2018] 天降之物</a></p>
+<ol>
+<li><a href="https://www.luogu.com.cn/problem/P5397">P5397 [Ynoi2018] 天降之物</a></li>
+</ol>
 <p>存在序列分块做法，但会被卡常。</p>
-<p>3. <a href="https://www.luogu.com.cn/problem/P5309">P5309 [Ynoi2011] 初始化</a></p>
+<ol>
+<li><a href="https://www.luogu.com.cn/problem/P5309">P5309 [Ynoi2011] 初始化</a></li>
+</ol>
 <p>序列分块套根号分治。</p>
-<p>4. <a href="https://www.luogu.com.cn/problem/P5398">P5398 [Ynoi2018] GOSICK</a></p>
+<ol>
+<li><a href="https://www.luogu.com.cn/problem/P5398">P5398 [Ynoi2018] GOSICK</a></li>
+</ol>
 <p>需要二次离线莫队科技，不会的可以看我上面给的博客链接，需要根号分治。</p>
 
       

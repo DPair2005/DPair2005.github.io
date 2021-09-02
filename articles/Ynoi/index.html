@@ -1,0 +1,525 @@
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <title>
+    Ynoi 做题记录 I - DPairの非自制 blog
+  </title>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+  DPairの非自制 blog
+  </p>
+  <hr align="center" style="width: 200px;">
+  <p></p>
+  <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+  <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+  <div class="saying" id="saying"> </div>
+</div>
+
+<script>
+  SaveBackground()
+</script>
+
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+  <div style="text-align: center; font-size: 16px;"> About me </div>
+  <HR align="center">
+  <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+    <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
+  </div>
+
+  <ul class="sidebar-links">
+  <li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link">
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link">
+      AtCoder 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link">
+      github 
+    </a>
+  </li>
+  </ul>
+
+</div>
+
+<ul class="sidebar-links">
+  <div style="text-align: center; font-size: 16px;"> links </div>
+  <HR align="center">
+
+  <li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link">
+      Jacder's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.github.io/" class="friend-link">
+      xYix's blog
+    </a>
+  </li>
+
+</ul>
+
+
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+      <h1>Ynoi 做题记录 I</h1>
+      <blockquote>
+<p>“Ynoi难度低，联赛前选学。”</p>
+<p>—— XXY</p>
+</blockquote>
+<p>我做过的 $\text{Ynoi}$ 题似乎不少了？</p>
+<p>虽然我现在学会了折叠代码的科技，但是我就是不放代码。</p>
+<p>1、<a href="https://www.luogu.com.cn/problem/P4688">P4688 [Ynoi2016]掉进兔子洞</a></p>
+<p>标签：莫队、$\text{bitset}$、询问分块优化空间、莫队拆询问。</p>
+<p>其实就是每个询问拆成 $3$ 个，然后维护 $\text{bitset}$ 求区间并即可。</p>
+<p>两个细节：</p>
+<ul>
+<li><p>第一，重复元素假装它是不同元素，放在不同的位置上。</p>
+</li>
+<li><p>第二，空间过大需要优化，考虑把询问分块多次莫队。</p>
+</li>
+</ul>
+<p>2、<a href="https://www.luogu.com.cn/problem/P5309">P5309 [Ynoi2011]初始化</a></p>
+<p>标签：分块、根号分治、值域分块</p>
+<p>晚上刚做的，稍微写写。</p>
+<p>显然对于这种 “对所有 $\mod x=y$ 的位置操作” 的题目大概率根号分治。</p>
+<p>$x\ge \sqrt{n}$ 时必然可以直接乱搞，一个一个跳然后处理。</p>
+<p>$x\le \sqrt{n}$ 时。。。整块似乎可以处理，散块比较麻烦。</p>
+<p>整块的处理方法有点类似于儒略历里面处理闰年的那种方法，其实就是问你 “一个区间内有多少个位置满足 $\mod x=y$ ”。</p>
+<p>考虑散块怎么处理。</p>
+<p>不难发现每一次询问最多出现两个散块，而每个散块都是连续的（<del>废话</del>）。</p>
+<p>于是显然，它们的位置在值域上也是连续的，模意义下的值域也是连续的（可能会有循环）。</p>
+<p>那么我们设置一个阀值 $Block$，对于每一个 $x\le Block$ ，考虑暴力处理出它的每一次修改的前缀和，这样我们就可以在询问时扫描每一个 $x\le Block$ ，然后通过这个前缀和 $O(1)$ 查询出散块的真实值。</p>
+<p>这样子的复杂度是 $O(n\sqrt{n})$ 的。</p>
+<p>3、<a href="https://www.luogu.com.cn/problem/P5071">P5071 [Ynoi2015]此时此刻的光辉</a></p>
+<p>标签：$\text{Pollard-Rho}$、莫队</p>
+<p>乘积的约数个数？显然是要分解质因数。</p>
+<p>然后质因数全部搞出来了约数个数就易如反掌了。</p>
+<p>于是我们可以直接莫队，这部分复杂度是 $O(kn\sqrt{n})$ 的，其中 $k$ 为每一个数的质因数个数，而 $k\le 10$ 。</p>
+<p>但是还有一个瓶颈在于一开始预处理质因数。</p>
+<p>显然，一开始 $n\sqrt{V}$ 的复杂度是无法接受的。</p>
+<p>然而我们不难发现，对于每一个数 $x$， $&gt; x^{\frac{1}{3}}$ 的质因数最多两个。</p>
+<p>因此我们先筛出 $10^3$ 以下的所有质数拿去除，那么剩下的质因数最多两个，用 $\text{Pollard-Rho}$ 找最大质因数，然后除一下就行了。</p>
+<p>4、<a href="https://www.luogu.com.cn/problem/P5356">P5356 [Ynoi2017]由乃打扑克</a></p>
+<p>标签：分块、二分、归并排序</p>
+<p>首先第 $k$ 小不难想到二分。</p>
+<p>由于要二分，显然我们要尽可能保证每一个块内有序。</p>
+<p>这个可以在区间加的时候，发现整块显然不需要重构，对于散块，我们发现它当中恰有一部分是被加了而一部分是没被加的，因此用类似归并排序的方法就可以 $O(\sqrt{n})$ 重构一整个块。</p>
+<p>然后二分的时候剪剪枝就能过了。</p>
+<p>复杂度似乎是假的（需要二分套二分），但是似乎很难直接卡的样子？反正能过。</p>
+<p>有分散层叠的低复杂度做法，但是被二分吊起来打我也不知道为什么。</p>
+<p>5、<a href="https://www.luogu.com.cn/problem/P5355">P5355 [Ynoi2017]由乃的玉米田</a></p>
+<p>标签：莫队、$\text{bitset}$ 、根号分治</p>
+<p>显然加、减、乘都能用 $\text{bitset}$ 搞，主要是除怎么处理。</p>
+<p>考虑根号分治。</p>
+<p>显然对于询问中的 $x$ ，若 $x &gt; $ 某一个阀值，那么暴力跑复杂度是对的。</p>
+<p>我们考虑怎么处理小于此阀值的东西、</p>
+<p>显然对于一个位置，只有两种数可能与其产生贡献：</p>
+<ol>
+<li>$a_i \mod x = 0$ 时 的 $a_i \div x$ 。</li>
+<li>$a_i \times x$</li>
+</ol>
+<p>那么只要顺序扫一遍，预处理出每一个位置的每一个 $x\le limit$ 对应的这两种数的 <strong>在此之前的最晚出现位置</strong> 即可。</p>
+<p>然后对于这一部分询问，如果在莫队过程中碰到了，那么用预处理出的信息维护即可。</p>
+<p>6、<a href="https://www.luogu.com.cn/problem/P5048">P5048 [Ynoi2019模拟赛]Yuno loves sqrt technology III</a></p>
+<p>标签：分块</p>
+<p>真的就是一个分块。</p>
+<p>首先每一个块处理出其中每一个数的出现次数。</p>
+<p>然后对此取一个前缀和，因此我们就知道了每两个块之间每一个数的出现次数。</p>
+<p>然后对于每两个预处理出它们的众数，这个显然是可以 $O(n\sqrt{n})$ 解决的，因为你可以认为这是 “一堆整块+一个散块”，要是你这都处理不了那底下的询问就更处理不了了。</p>
+<p>然后考虑对于每一个询问，显然整块的众数是确定的，而且由于散块大小为 $\sqrt{n}$ 级别，最多 $2\sqrt{n}$ 个数的出现次数会发生改变，考虑这些数的出现次数是否超过了众数即可。</p>
+<p>然后这题空间要求线性，还不让你离线。</p>
+<p>我们发现我们其实只需要判断两个散块中的数出现次数是否会超过现有答案。</p>
+<p>一般的思想是块尾对于每一个数都存一下前缀出现次数，但这样空间会炸。</p>
+<p>考虑存每一个数的所有出现位置，这里显然是 $O(n)$ 的。</p>
+<p>那么我们向左扫散块的时候，考虑这个散块向后答案个是否还在区间 $[l, r]$ 内，若还在则更新答案。</p>
+<p>不难发现这样的更新最多 $O(\sqrt{n})$ 次，所以复杂度还是对的，并且做到了线性空间。</p>
+<p>7、<a href="https://www.luogu.com.cn/problem/P5068">P5068 [Ynoi2015]我回来了</a></p>
+<p>标签：线段树、树状数组</p>
+<p>首先每一个点都可以表示成一堆块，$i$ 的每一个块包含了 $i$ 个元素。</p>
+<p>要求的就是每一个 $i\in[l, r]$ 中 $i$ 有合法元素的块的一个前缀长度。</p>
+<p>长这样：</p>
+<pre><code>1 [1][0][0][1]
+2 [1  0][0  1]
+3 [1  0  0][1]
+</code></pre><p>这样子的块数应该是 $O(n\log n)$ 的。</p>
+<p>我们不妨把有随从的块全部删掉。</p>
+<p>那么只要我们每一次能 <strong>恰好</strong> 找到所有 <strong>需要被删除的块</strong> 并删除之，这样每一个块都只会被删除一次，我们的复杂度就基本是 $O(n\log n)$ 级别的。</p>
+<p>不难发现，我们每在某个数的 <strong>前缀</strong> 中删块，它的贡献就会 $+1$ ，不难想到暴力删块并用树状数组维护这个 <strong>单点修改，区间查询</strong> 的结构。</p>
+<p>那么难处理的只剩下 “找需要删除的块” 这一部分了。</p>
+<p>其实也并不是很难。</p>
+<p>我们对于每一个左节点开一个大根堆，堆内元素为所有该左节点对应的右节点的编号，然后对于所有左节点建一个线段树，每一次删除 $x$ 时，就查询 $[1, x]$ 区间内最右的那一个编号，若 $r\ge x$ 则删除它所对应的块。这样一来每一个块确实只会被删一次。</p>
+<p>然后这个堆其实可以用栈代替。</p>
+<p>最后复杂度 $O(n\log^2 n)$ 。</p>
+<p>8、<a href="https://www.luogu.com.cn/problem/P5072">P5072 [Ynoi2015]盼君勿忘</a></p>
+<p>标签：莫队、光速幂、根号分治</p>
+<p>首先不难发现我们要求的东西是这个：</p>
+<script type="math/tex; mode=display">
+\sum_{x\in\{a[i]|i\in[l,r]\}} x\times (2^{r-l+1}-2^{r-l+1-cnt[x]})</script><p>显然对于所有 $cnt[x]$ 相同的，后面那一堆东西都是相同的。</p>
+<p>计数，可离线，我们想到莫队。</p>
+<p>于是我们对每一个 $cnt[x]$ ，设 $tot[k]$ 表示当前区间中的这个</p>
+<script type="math/tex; mode=display">
+\sum_{x\in\{x|cnt[x]=k\}}x</script><p>那么这个区间的答案显然就是</p>
+<script type="math/tex; mode=display">
+\sum_{k=1}^n tot[k]\times (2^{r-l+1}-2^{r-l+1-k})</script><p><del>做完了</del></p>
+<p>然而显然这样子是 $O(nm)$ 的。</p>
+<p>我们不难发现，如果我们最后只需要求 $k\in[1,\sqrt{n}]$ 的和，那么复杂度是对的。</p>
+<p>这时我们惊奇地发现， $k$ 可能 $&gt;\sqrt{n}$ 的居然最多只有 $\sqrt{n}$ 个。</p>
+<p>我们考虑把这一部分分离出来暴力处理，这样复杂度都是 $O(\sqrt{n})$ 的，总复杂度就降下来了。</p>
+<p>然后由于快速幂要带一只 $、log$ ，而底数模数全部相同，考虑使用光速幂。</p>
+<p>做完了。</p>
+<p>预处理复杂度 $O(n)$ ，然后莫队转移复杂度 $O(1)$ 所以总复杂度 $O(n\sqrt{n})$ ，然后询问每一次处理结果和预处理光速幂要 $O(\sqrt{n})$ 所以总复杂度 $O(n\sqrt{n})$ ，可以过。</p>
+<p>9、<a href="https://www.luogu.com.cn/problem/P4689">P4689 [Ynoi2016]这是我自己的发明</a></p>
+<p>标签：莫队、dfs序、莫队拆询问。</p>
+<p>这道题其实就是 <a href="https://www.luogu.com.cn/problem/P5268">P5268</a> 上树了而已。</p>
+<p>（<del>我感觉复杂度不太对，但就是能过</del>）</p>
+<p>首先给了我们两个操作，一个是换根，一个是子树查询。</p>
+<p>显然这种换根都是假的，直接在原树的 <strong>dfs序</strong> 上处理即可。</p>
+<p>下面 $dfn[x],low[x]$ 分别表示 $x$ 入、出搜索栈的时间戳。</p>
+<p>我们只需要传统艺能分三类讨论。</p>
+<ol>
+<li><p>当前节点就是根：此时管辖的区间为 $[1, n]$</p>
+</li>
+<li><p>根在当前节点子树内：此时管辖的区间为 $[1,n]-[dfn[son],low[son]]$ ， $son$ 表示当前节点到“根”路径上的第一个节点，这个显然可以倍增解决。</p>
+</li>
+<li><p>根在当前子树外：没有影响，管辖的区间为 $[dfn[x],low[x]]$</p>
+</li>
+</ol>
+<p>然后我们就获得了一个序列上的问题。</p>
+<p>不妨设</p>
+<script type="math/tex; mode=display">
+g(l,r,x)</script><p>表示 $[l,r]$ 中 $x$ 出现的次数。</p>
+<p>由于我们每一次最多可能涉及到 $4$ 个区间，不妨第一个节点有关的两个区间为 $[l_1,r_1],[l_3,r_3]$ ，第二个为 $[l_2,r_2],[l_4,r_4]$ 。</p>
+<p>那么我们每一次询问要求的就是：</p>
+<script type="math/tex; mode=display">
+\sum_{x=1}(g(l_1,r_1,x)-g(l_3,r_3,x))\times (g(l_2,r_2,x)-g(l_4,r_4,x))</script><p>转化为前缀和形式：</p>
+<script type="math/tex; mode=display">
+\sum_{x=1}(s(r_1)-s(l_1-1)-s(r_3)+s(l_3-1))\times (s(r_2)-s(l_2-1)-s(r_4)+s(l_4-1))</script><p>然后暴力拆即可，拆出来的 $16$ 项都能表示成两个东西之积的形式且只 <strong>涉及两个变量</strong>，会发现全都可以莫队求解。</p>
+<p>特殊的，这其中有一些询问是负的，考虑打一个 $tag$ 处理其“负贡献”。</p>
+<p>然后全部加起来输出即可。</p>
+<p>复杂度 $O(n\sqrt{n})$，常数还很大但就是过了。</p>
+<p>2021/02/25update：其实可以考虑改一改块长什么的，说不定会快一点。</p>
+<p>10、<a href="https://www.luogu.com.cn/problem/P5607">P5607 [Ynoi2013]无力回天NOI2017</a></p>
+<p>标签：线性基、线段树、树状数组、差分</p>
+<p>emm，应该是我目前做过的 Ynoi 里最水的一道。</p>
+<p>首先区间异或很难受，一种方法是拆位，这道题显然难搞。</p>
+<p>于是我们考虑差分。</p>
+<p>因此我们要用一个树状数组来维护每一个数的真实值。</p>
+<p>然后异或最大考虑使用线性基。</p>
+<p>而这东西是可加的。</p>
+<p>合并两个线性基的话，把其中一个的元素全部暴力插入另一个中即可。</p>
+<p>于是我们考虑开一棵线段树，维护一个区间的线性基。</p>
+<p>然后我们又发现这东西的区间异或也很难搞。</p>
+<p>同样考虑使用差分，对于一个数组，差分异或数组与原数组的线性基不难发现是完全一样的。</p>
+<p>于是可以把区间修改改为单点修改。</p>
+<p>。。。然后就好了</p>
+<p>复杂度 $O(m\log n\log^2 V)$ ，其中第一只 $\log$ 出现于线段树后面两只是线性基合并。</p>
+<p>11、<a href="https://www.luogu.com.cn/problem/P5610">P5610 [Ynoi2013]大学</a></p>
+<p>标签：平衡树、<del>并查集</del>、树状数组、<strong>卡常</strong></p>
+<p>平衡树是永远也卡不掉的！！！</p>
+<p>平衡树是永远也卡不掉的！！！</p>
+<p>平衡树是永远也卡不掉的！！！</p>
+<p>mt19937不行！手写 rand() yyds！！！</p>
+<p>mt19937不行！手写 rand() yyds！！！</p>
+<p>mt19937不行！手写 rand() yyds！！！</p>
+<p>好了回归正题。</p>
+<p>这道题正解应该是并查集，然而我用平衡树过去了。</p>
+<p><del>最慢点500ms/500ms</del></p>
+<p>我们从初步的思路开始</p>
+<p>首先对于每一个因数开一个 $set$ ，内容是“有这个因数的所有位置的 <strong>下标</strong> ” 。</p>
+<p>那么每一次询问的时候把 $[l,r]$ 之间的下标找出来暴力修改即可，若此时对应位置上的数已经不是该因数的倍数那么就从这个 $set$ 中删掉。</p>
+<p>然后由于我们单点修改区间求值，用树状数组维护。</p>
+<p>复杂度是对的，因为每一个数最多被除的次数是 $\log$ 次。</p>
+<p>那么加上 $set$ 的一只 $\log$ 以及一开始的质因数分解应该是 $O(n\sqrt{n}+n\log^2 n)$ 的。</p>
+<p>然后喜提 $62pts$，常数太大要卡。</p>
+<ol>
+<li>$set$ $O(n)$ 建树：快了不知道多少</li>
+<li>$set$ 改 $\text{FHQTreap}$ ：快了不知道多少</li>
+<li>分解质因数时筛出最小质因数然后不断去除：不知道快了多少（<del>注意语序</del>）</li>
+<li>二分内存池大小，开到 $2.3\times 10^7$：缓存命中率高了不少，直接多 A 一个点\</li>
+<li>用张扬的神奇快读板子：快了大概 <code>10ms</code></li>
+<li>不要用 <code>mt19937</code> 用手写 <code>rand</code> ：快了 <code>50ms</code> 多，然后压线过。</li>
+</ol>
+<p>12、<a href="https://www.luogu.com.cn/problem/P5046">P5046 [Ynoi2019模拟赛]Yuno loves sqrt technology I</a></p>
+<p>标签：树状数组、归并排序、逆序对、分块</p>
+<p>不算太毒瘤的一道大分块。</p>
+<p>首先我们考虑我们一般都是怎么求逆序对的。</p>
+<p>归并排序、树状数组。</p>
+<p>然后我们考虑我们分完块之后要求什么。</p>
+<p>假设我们分成了这么几块：</p>
+<pre><code>[-1-][--2--][--3--][--4--][5]
+</code></pre><p>那么我们要求的就是每一个块自己与自己产生的逆序对以及两两之间产生的逆序对之和。</p>
+<p>由于 $1,5$ 两个是散块，我们考虑处理出每一个块逆序对个数的 <strong>前缀和以及后缀和</strong> ，这个每一个块可以用两遍树状数组搞定，复杂度 $O(nlogn)$</p>
+<p>然后不难发现归并排序可以 $O(len)$ 求出两个长度和为 $len$ 的 <strong>有序数组</strong> <strong>之间</strong> 的逆序对个数，考虑给每一个块块内带下标排序，这样子每次取出 <strong>真实下标</strong> 在某两段区间内的数去归并就可以求出两个区间之间的逆序对个数。</p>
+<p>于是我们处理完了这些：<code>1, 2, 3, 4, 5, 1-5</code></p>
+<p>考虑整块怎么处理。</p>
+<p>我们考虑使用前缀和的思想。</p>
+<p>对于每一个块，我们记录 $dat[i][j]$ 表示第 $i$ 个块与原序列中的前 $j$ 个数能产生多少逆序对。</p>
+<p>这个其实也可以归并排序每一个块 $O(n)$ 实现。</p>
+<p>最后前缀和做一下差就可以求出来一堆东西。</p>
+<p>然后我们就又处理完了这些： <code>2-1, 3-1, 3-2, 4-1, 4-2, 4-3</code></p>
+<p>现在还剩 <code>2, 3, 4</code> 和 <code>5</code> 的关系。</p>
+<p>不难发现这个和前面那个前缀和是很像的，考虑类似的求一个后缀和。</p>
+<p>然后就做完了。</p>
+<p>特殊的，对于长这样的散块：</p>
+<pre><code>[-1-|-2-|-3-]
+</code></pre><p>考虑容斥一下即可，我们求出 <code>1</code> 的前缀和以及 <code>1-2</code> 的逆序对个数，用 <code>2</code> 的前缀和去减就是单独一个 <code>2</code> 散块的逆序对个数了。</p>
+<p>预处理的话前后缀和是 $O(n\log n)$ 的，$dat$ 数组是 $O(n\sqrt{n})$ 的，然后每一次询问都是 $O(\sqrt{n})$ 的。</p>
+<p>总复杂度 $O(n\sqrt{n})$</p>
+<p>13、<a href="https://www.luogu.com.cn/problem/P5354">P5354 [Ynoi2017]由乃的OJ</a></p>
+<p>标签：树剖、位运算</p>
+<p>我收回 “无力回天NOI2017全Ynoi最水” 的言论，这道题更简单。</p>
+<p>显然一个初始的数的每一位到最后都只有 $3$ 种可能：</p>
+<ol>
+<li>取反</li>
+<li>不变</li>
+<li>被确定</li>
+</ol>
+<p>其中 $3$ 包括被确定为 $1/0$ 两种情况。</p>
+<p>显然一种暴力的思路是顺推，但是显然可以优化。</p>
+<p>因为显然，如果后面有确定操作，那么会覆盖，如果后面有取反，那么取反即可，如果后面不变，那么就不变，可以类比为一个 “有先后顺序的加法运算”。</p>
+<p>故操作可以合并。</p>
+<p>由于这里是一条下往上一条上往下，所以我们往上往下都要维护。</p>
+<p>这个改变一下加法的先后顺序即可。</p>
+<p>然后每一位分类讨论得出合并的结果即可。</p>
+<p>所以直接树剖。建两棵线段树一棵维护上行路径一棵维护下行路径即可。</p>
+<p>由于单点修改，所以可以直接重构一整条线段树上的链。</p>
+<p>复杂度应该是 $O(n\log^2n\log V)$ 。</p>
+<p>空间限制上可能会出问题，除此之外一遍 A</p>
+<p>然而这道题似乎有更好的做法，我们不能仅仅满足于通过一道题。</p>
+<p>算了算了会卡常就行。</p>
+<p>14、<a href="https://www.luogu.com.cn/problem/P5047">P5047 [Ynoi2019模拟赛]Yuno loves sqrt technology II</a></p>
+<p>标签：二次离线莫队</p>
+<p>（以下是直接从<a href="../mo">学习笔记</a>搬的）</p>
+<p>显然一种很 naive 的写法是用树状数组去维护这个东西，然后你就得到了一个 $O(n\sqrt{n} \log n)$ 的优秀暴力。</p>
+<p>然后你必然会 $\text{TLE}$ 。</p>
+<p>那么我们考虑怎么给它二次离线。</p>
+<p>比如我们要向右移动一个区间 $[l,r]$ 的右端点直到 $[l,r&#39;]$ 。</p>
+<p>一般来说，我们是不断地去 $add(++r)$ ，然而这里 $add$ 复杂度比较大会很不优秀。</p>
+<p>我们考虑把这一堆 $add$ 全部存下来。</p>
+<p>不难发现，每一个 $r$ 经过的位置（记为 &quot;$R$&quot;）产生的贡献为 $[l,R-1],R$ 产生的逆序对个数。</p>
+<p>我们差分一下，就变成了 $[1,R-1],R$ 的逆序对个数减去 $[1,l-1], R$的逆序对个数 </p>
+<p>显然前面那一项直接树状数组跑一遍就行了。</p>
+<p>后面的，我们考虑全部离线下来，把这些 $R$ 全部扔到对应的 $l-1$ 里面。</p>
+<p>由于这些 $R$ 是连续的，我们直接扔一段 $[r + 1, r&#39;]$ 的区间就行了。</p>
+<p>那么我们再考虑怎么预处理这一块。</p>
+<p>树状数组？显然不行。</p>
+<p>我们不难发现由于我们这些点都是用莫队离线出来的，点数是 $O(n\sqrt{n})$ 级别的。</p>
+<p>而我们每一个 $l$ 只需要修改一次，总共是 $O(n)$ 的。</p>
+<p>于是我们需要一个 $O(\sqrt{n})$ 修改， $O(1)$ 查询前缀和的东西，这个值域分块可以搞定。</p>
+<p>其他三种移动应该以此类推就行了。</p>
+<p>分析一下复杂度：</p>
+<p>还是用刚才的例子，瓶颈显然在于 $[1,l-1],R$ 的处理上，然后第二次离线时我们修改是 $O(n\sqrt{n})$ 的，查询是 $O(n\sqrt{n})$ 的。</p>
+<p>再看空间，显然每一次只会多出来 $O(1)$ 级别的连续段个数，然后值域分块也是 $O(n)$ 的，所以总空间复杂度 $O(n)$。</p>
+<p>十分优秀，真的十分优秀。</p>
+<p>15、<a href="https://www.luogu.com.cn/problem/P4117">P4117 [Ynoi2018]五彩斑斓的世界</a></p>
+<p>标签：分块、并查集</p>
+<p>$\color{red}{\text{「突刺贯穿第二分块」}}$</p>
+<p>大毒瘤lxl为了卡掉一些错误的复杂度卡了常。</p>
+<p>然后我这个菜鸡人傻常数大。。。</p>
+<p>结果你们都懂得。</p>
+<p>言归正传，我们看一看这道题怎么做。</p>
+<p>首先这道题这种修改大概率花神题，我们大胆猜测暴力复杂度是对的。</p>
+<p>然而这道题不一样，裸暴力复杂度其实是错的。</p>
+<p>我们先考虑最 naive 的暴力怎么写。</p>
+<p>显然我们可以开并查集，把所有值相同的位置扔到同一个集合里，这个集合的权值即为集合内数的值。</p>
+<p>散块重构，然后暴力修改，不难发现复杂度显然是对的。</p>
+<p>考虑整块询问，显然只要查询某一个值的并查集集合大小即可。</p>
+<p>那么现在考虑如何修改。</p>
+<p>最 naive 的想法是暴力把所有 $&gt; x$ 的并查集合并到小的上面去。</p>
+<p>这样子复杂度显然是错的。</p>
+<p>但我们不难发现，如果要卡掉这个，那么对应的 $\le x$ 的并查集是比较少的。</p>
+<p>所以我们分类讨论：</p>
+<p>我们设区间最大值为 $R$ 。</p>
+<p>$2x \le R$ 时，显然是小的更少，我们考虑把小的合并到大的里面，然后打区间减的 $tag$ 。</p>
+<p>否则直接 naive 暴力即可。</p>
+<p>然后重构其实也就是暴力重构，不难发现复杂度是对的。</p>
+<p>然后由于这道题卡空间，我们需要逐块处理询问，由于各个块互不干扰所以并没有什么问题。</p>
+<p>16、<a href="https://www.luogu.com.cn/problem/P5398">P5398 [Ynoi2018]GOSICK</a></p>
+<p>标签：二次离线莫队、根号分治、<strong>卡常</strong></p>
+<p>$\color{red}{\text{「点缀光辉十四分块」}}$</p>
+<p>二元组，不难想到二次离线莫队。</p>
+<p>每一个数因数个数是 $O(\sqrt{n})$ 级别的，可以暴力修改计算贡献。</p>
+<p>一个数的倍数则可以根号分治， $x \ge \sqrt{n}$ 的暴力修改。</p>
+<p>但是另一部分似乎不行。</p>
+<p>注意到这一部分 $\le \sqrt{n}$ ，最多 $\sqrt{n}$ 个。</p>
+<p>考虑对于这一些数预处理出其倍数个数的前缀和。</p>
+<p>那么就可以直接通过存入的区间修改了。</p>
+<p>因为这样的区间个数是 $O(n)$ 的，而总共修改 $O(\sqrt{n})$ 次，所以复杂度还是 $O(n\sqrt{n})$ 。</p>
+<p>然后其他的修改都是 $O(\sqrt{n})$ 修改 $O(1)$ 询问还是 $O(n\sqrt{n})$ 的。</p>
+<p>最后加一个区间长度就行了。</p>
+<p>注意几个卡常点：</p>
+<ol>
+<li>vector 严重不行！！！</li>
+<li>因数分解的时候可以用一个 vector 来存所有因数，下一次分解就是严格 $O(\text{因数个数})$ 的，而且这里由于只查询 vector 会很快。</li>
+<li>根号分治的阈值不一定要严格 $O(\sqrt{n})$ ，调参就能过。</li>
+<li>张扬的快读板子。</li>
+</ol>
+<p>17、<a href="https://www.luogu.com.cn/problem/P5397">P5397 [Ynoi2018]天降之物</a></p>
+<p>标签：分块（$\times$）、根号分治（$\sqrt{}$）</p>
+<p>$\color{red}{\text{「拭尽破净第四分块」}}$</p>
+<p>这里提供序列分块和根号分治两种做法。</p>
+<p>首先 $x$ 变成 $y$ 十分眼熟，而且强制在线，那么我们就不用去考虑离线什么的了</p>
+<p>而且这道题没有区间操作，只有全局操作，所以比较好搞</p>
+<p>考虑序列分块</p>
+<p>对于每一个块维护其第一个 $x$ 最后一个 $x$ 以及块内两两之间的块内关系</p>
+<p>那么就是 $x$ 扫一遍 $y$ 扫一遍</p>
+<p>这个东西合并也好合并</p>
+<p>然后 $0$ 表示块里没这个东西</p>
+<p>对于每一个块开一个离散化数组，然后就很好合并了，举例 $u \rightarrow v$ 。</p>
+<p>假设 $u$ 没有，那么直接退出。</p>
+<p>$u$ 有 $v$ 没有，交换一下离散化值就行了，其他信息不变。</p>
+<p>$v$ 有 $u$  也有，那么暴力合并，由于这是 $O(\sqrt{n})$ 的而每个块最多这样 $O(\sqrt{n})$ 次，所以还是对的。</p>
+<p>分析一下复杂度</p>
+<p>首先预处理 $O(n\sqrt{n})$ 显然。</p>
+<p>其次查询为 $O(\sqrt{n})$ 的。</p>
+<p>然后是修改的话，$O(\sqrt{n})$ 的操作每一个块最多 $O(\sqrt{n})$ 次，其他的都是 $O(1)$ ，所以还是 $O(\sqrt{n})$ 的。</p>
+<p>然而。。。这道题序列分块被卡了，我们需要更小常数的做法。</p>
+<p>所以为什么要卡序列分块呢？根号分治那么难写。。。</p>
+<p>下面考虑根号分治。</p>
+<p>首先我们对于每一个数维护其出现的所有位置。</p>
+<p>那么假设一个数出现了 $sz[x]$ 次。</p>
+<p>则询问 $x, y$ 是 $O(sz[x]+sz[y])$ 的。</p>
+<p>考虑根号分治， $\ge lim$ 的最多 $n \over lim$ 个。</p>
+<p>所以这一部分 $O(n)$ 预处理，$lim$ 取 $\sqrt{n}$ ，就很方便了。</p>
+<p>考虑修改。</p>
+<p>首先 $sz[x], sz[y] \le lim$ ，可以暴力合并。</p>
+<p>$sz[x], sz[y] \ge lim$ ，则可以暴力 $O(n)$ 重构，由于最多 $O(\sqrt{n})$ 个这样的数复杂度还是对的。</p>
+<p>然后是一个大一个小。</p>
+<p>这一部分我们考虑把小的暴力合并到大的当中，若合并进去的位置数 $\ge lim$ 则暴力重构，这样复杂度还是对的。</p>
+<p>然后考虑询问。</p>
+<p>首先 $sz[x],sz[y]\le lim$ ，那么就暴力“合并”。</p>
+<p>$sz[x],sz[y] \ge lim$ 则看看相互之间的距离，然后对于每一个未合并的位置也互相“合并”，还是 $O(\sqrt{n})$ 的。</p>
+<p>然后一大一小就更显然了。</p>
+<p>复杂度各种摊，最后 $O(n\sqrt{n})$ ，常数似乎很小？</p>
+<p>18、<a href="https://www.luogu.com.cn/problem/P5527">P5527 [Ynoi2012]NOIP2016人生巅峰</a></p>
+<p>标签：结论题</p>
+<p>我千算万算就是没算到Ynoi也会出结论题。</p>
+<p>和华莱士的互测题其实挺像的。</p>
+<p>我们大力假设一个区间无解。</p>
+<p>那么不难发现，它的 $2^{r-l+1}-1$ 个非空子集的权值都要不同，而它的值最大 $v\times (r-l+1)$ 级别。</p>
+<p>那么设 $len=r-l+1$ ，考虑不等式</p>
+<script type="math/tex; mode=display">
+2^{len}-1>len\times v</script><p>成立时必然有解</p>
+<p>我们不妨设 $v=1000$</p>
+<p>实测 $len &gt; 13$ 时必然有解</p>
+<p>那么。。。就可以暴力判断了</p>
+<p>先折半，那么两边都是 $3^7$ 种可能的数</p>
+<p>然后 <code>bitset</code> 一下就行了</p>
+<p>然而这样子可能会被卡常</p>
+<p>然后学习了一下题解的处理方法。</p>
+<p>是这样的，首先显然有解当且仅当存在 $b_{i-a_j-1}$ 且 $b_i$ 。</p>
+<p>那么就用一个 <code>bitset</code> 维护 dp 然后不断扫就行了。</p>
+<p>然后就能过了。</p>
+<p>19、<a href="https://www.luogu.com.cn/problem/P4119">P4119 [Ynoi2018]未来日记</a></p>
+<p>标签：序列分块，值域分块， <strong>卡常</strong></p>
+<p>$\color{red}{\text{「望月悲叹最初分块」}}$</p>
+<p>显然要对于每一个块维护值域上的每一个数。</p>
+<p>然后这道题需要在值域上搞一些大新闻，所以我们对于每一个序列上的块再值域分块。</p>
+<p>首先操作一已经很套路了，并查集乱搞就行。</p>
+<p>而且值域上最多两个数+两个块会被改变。</p>
+<p>那么每一次修改时暴力重构整个序列的值域上的前缀和就行了。</p>
+<p>复杂度是 $O(\sqrt{n})$ 的。</p>
+<p>考虑操作二怎么搞。</p>
+<p>我们值域分块并前缀和，每一次从下往上扫。</p>
+<p>扫到一个块过大了就弹出，然后改为扫值域上的散块。</p>
+<p>不要忘了一开始，序列上的散块也要加上去。</p>
+<p>那么查询就可以 $O(\sqrt{n})$ 完成。</p>
+<p>然后就做完了，并不是很毒瘤啊。。。然而被卡常哩（（</p>
+<p>然后不难发现这道题目有些地方是可以把 <code>int</code> 改成 <code>short</code> 的。</p>
+<p>改了之后优化似乎很大的样子，就能过。</p>
+<p>20、<a href="https://www.luogu.com.cn/problem/P5312">P5312 [Ynoi2011]竞赛实验班</a></p>
+<p>标签：Trie</p>
+<p>显然一个序列由一段有序 + 一段无序构成</p>
+<p>首先考虑怎么维护有序段</p>
+<p>那么考虑建一棵01Trie</p>
+<p>然后由于是全局异或，考虑打全局 tag</p>
+<p>插入先不管他</p>
+<p>排序也先不管他</p>
+<p>先考虑怎么在有序段中查询</p>
+<p>对于Trie树上每一个节点，维护这个节点子树中叶子节点的个数，类似一棵leafytree</p>
+<p>然后对于每一位，根据有没有被异或过来确定其真实值</p>
+<p>然而这样复杂度就假掉了</p>
+<p>所以要对于每一个节点维护该子树中每一个二进制位上 $1$ 的个数。</p>
+<p>那么区间查询就是 $O(\log^2 V)$ 的。</p>
+<p>考虑无序段怎么实现</p>
+<p>每一次插入一个数，是加在了最后一个</p>
+<p>那么对于每一个二进制位维护一个前缀和，显然这个东西是不会改变的</p>
+<p>于是可以 $O(\log V)$ 实现</p>
+<p>然后区间查询和插入都搞定了</p>
+<p>最后看排序</p>
+<p>首先要先把所有未插入的插入到有序 Trie 当中，这一部分每一个数需要 $O(\log^2 V)$</p>
+<p>然后这里排序显然是要清除 tag</p>
+<p>不难发现排序可以类比于区间交换</p>
+<p>那么就再打一个永久化的标记 rev 记录每一层是否经过了交换即可</p>
+<p>不过这会对插入产生一定的影响，注意细节</p>
+<p>不难发现 tag 修改的是贡献而 rev 修改的是树的结构，理解了这一点这道题就不难了</p>
+<p>复杂度：</p>
+<p>查询是 $O(\log^2  V)$ 的。</p>
+<p>插入是 $O(\log^2 V)$ 的。</p>
+<p>全局异或是 $O(1)$ 的。</p>
+<p>全局排序是均摊 $O(\log^2 V)$ 的。</p>
+<p>所以总复杂度 $O(Q\log^2 V)$ 。</p>
+<p>没摊满不像 Ynoi 的风格啊。。。</p>
+
+      
+
+    </div>
+
+  </div>
+</body>
