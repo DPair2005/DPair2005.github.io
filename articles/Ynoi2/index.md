@@ -650,7 +650,7 @@ $$
 
 $$
 \begin{aligned}
-k &= \sum_{i=1}^n {{n-1\choose i-1}\over i}
+k &= \sum_{i=1}^n \frac{\binom{n-1}{i-1}}{i}
 \end{aligned}
 $$
 
@@ -658,13 +658,13 @@ $$
 
 $$
 \begin{aligned}
-k &= \sum_{i=1}^n {{n-1\choose i-1}\over i}
-\\ &= \sum_{i=0}^{n-1} {{n-1\choose i}\over i+1}
+k &= \sum_{i=1}^n { {n-1\choose i-1}\over i}
+\\ &= \sum_{i=0}^{n-1} { {n-1\choose i}\over i+1}
 \\ &= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)\times i! \times (n-i-1)!}
 \\ &= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!}
 \\ &= {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!}
 \\ &= {1\over n}\sum_{i=1}^{n} {n\choose i}
-\\ &= {{2^n-1} \over n}
+\\ &= { {2^n-1} \over n}
 \end{aligned}
 $$
 
@@ -684,12 +684,12 @@ $$
 
 $$
 \begin{aligned}
-k &= \sum_{i=1}^n {{n-1\choose i-1}\over i^2}
-\\ &= \sum_{i=0}^{n-1} {{n-1\choose i}\over (i+1)^2}
+k &= \sum_{i=1}^n { {n-1\choose i-1}\over i^2}
+\\ &= \sum_{i=0}^{n-1} { {n-1\choose i}\over (i+1)^2}
 \\ &= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)^2\times i! \times (n-i-1)!}
 \\ &= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!\times (i+1)}
 \\ &= {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!\times i}
-\\ &= {1\over n}\sum_{i=1}^{n} {{n\choose i}\over i}
+\\ &= {1\over n}\sum_{i=1}^{n} { {n\choose i}\over i}
 \end{aligned}
 $$
 
@@ -702,7 +702,7 @@ f(n) &=\sum_{i=1}^n{1\over i} {n\choose i}
 \\ &={1\over n}+f(n-1)+\sum_{i=1}^{n-1}{(n-1)!\over i!(n-i)!}
 \\ &={1\over n}+f(n-1)+{1\over n}\sum_{i=1}^{n-1} {n\choose i}
 \\ &=f(n-1)+{1\over n}\sum_{i=1}^{n} {n\choose i}
-\\ &=f(n-1)+{{2^n-1} \over n}
+\\ &=f(n-1)+{ {2^n-1} \over n}
 \end{aligned}
 $$
 

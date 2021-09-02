@@ -447,17 +447,17 @@ k\sum a_i^2</script><p>的形式，因此我们要算这个 $k$</p>
 <p>那么考虑枚举长度，然后判断贡献，</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-k &= \sum_{i=1}^n {{n-1\choose i-1}\over i}
+k &= \sum_{i=1}^n \frac{\binom{n-1}{i-1}}{i}
 \end{aligned}</script><p>后面这个式子太难看了，我们改一改</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-k &= \sum_{i=1}^n {{n-1\choose i-1}\over i}
-\\ &= \sum_{i=0}^{n-1} {{n-1\choose i}\over i+1}
+k &= \sum_{i=1}^n { {n-1\choose i-1}\over i}
+\\ &= \sum_{i=0}^{n-1} { {n-1\choose i}\over i+1}
 \\ &= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)\times i! \times (n-i-1)!}
 \\ &= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!}
 \\ &= {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!}
 \\ &= {1\over n}\sum_{i=1}^{n} {n\choose i}
-\\ &= {{2^n-1} \over n}
+\\ &= { {2^n-1} \over n}
 \end{aligned}</script><p>然后就可以求了</p>
 <p>考虑后者的求法，就是给你一个序列，求出每一个子序列的平均数的平方之和</p>
 <p>发现对于一个子序列，这玩意儿其实就是 </p>
@@ -467,12 +467,12 @@ k &= \sum_{i=1}^n {{n-1\choose i-1}\over i}
 \end{aligned}</script><p>前面一部分略显眼熟，考虑用类似的方法化简</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
-k &= \sum_{i=1}^n {{n-1\choose i-1}\over i^2}
-\\ &= \sum_{i=0}^{n-1} {{n-1\choose i}\over (i+1)^2}
+k &= \sum_{i=1}^n { {n-1\choose i-1}\over i^2}
+\\ &= \sum_{i=0}^{n-1} { {n-1\choose i}\over (i+1)^2}
 \\ &= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)^2\times i! \times (n-i-1)!}
 \\ &= \sum_{i=0}^{n-1} {(n-1)!\over (i+1)! \times (n-i-1)!\times (i+1)}
 \\ &= {1\over n}\sum_{i=1}^{n} {n!\over i! \times (n-i)!\times i}
-\\ &= {1\over n}\sum_{i=1}^{n} {{n\choose i}\over i}
+\\ &= {1\over n}\sum_{i=1}^{n} { {n\choose i}\over i}
 \end{aligned}</script><p>考虑递推， 设</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
@@ -481,7 +481,7 @@ f(n) &=\sum_{i=1}^n{1\over i} {n\choose i}
 \\ &={1\over n}+f(n-1)+\sum_{i=1}^{n-1}{(n-1)!\over i!(n-i)!}
 \\ &={1\over n}+f(n-1)+{1\over n}\sum_{i=1}^{n-1} {n\choose i}
 \\ &=f(n-1)+{1\over n}\sum_{i=1}^{n} {n\choose i}
-\\ &=f(n-1)+{{2^n-1} \over n}
+\\ &=f(n-1)+{ {2^n-1} \over n}
 \end{aligned}</script><p>因此这部分的系数就是 ${1\over n} f(n)$ ，预处理即可</p>
 <p>然后考虑第二部分</p>
 <p>还是考虑枚举，那么就是每次选两个数，由于 $n=1$ 时这个式子显然为 $0$ ，因此从 $2$ 开始枚举，发现每一对数的贡献为：</p>
