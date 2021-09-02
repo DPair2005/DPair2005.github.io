@@ -653,6 +653,7 @@ $$
 k &= \sum_{i=1}^n {{n-1\choose i-1}\over i}
 \end{aligned}
 $$
+
 后面这个式子太难看了，我们改一改
 
 $$
@@ -728,6 +729,7 @@ $$
 k\sum_{i=1}^n\sum_{j=1}^na_ia_j[i\ne j]=k\left(\sum a\right)^2-k\sum a^2
 \end{aligned}
 $$
+
 而后面两个我们都是能求的
 
 然后就做完了
