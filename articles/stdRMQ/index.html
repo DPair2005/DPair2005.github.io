@@ -1,0 +1,150 @@
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <title>
+    标准 RMQ 算法简记 - DPairの非自制 blog
+  </title>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+  DPairの非自制 blog
+  </p>
+  <hr align="center" style="width: 200px;">
+  <p></p>
+  <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+  <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+  <div class="saying" id="saying"> </div>
+</div>
+
+<script>
+  SaveBackground()
+</script>
+
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+  <div style="text-align: center; font-size: 16px;"> About me </div>
+  <HR align="center">
+  <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+    <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
+  </div>
+
+  <ul class="sidebar-links">
+  <li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link">
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link">
+      AtCoder 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link">
+      github 
+    </a>
+  </li>
+  </ul>
+
+</div>
+
+<ul class="sidebar-links">
+  <div style="text-align: center; font-size: 16px;"> links </div>
+  <HR align="center">
+
+  <li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link">
+      Jacder's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.github.io/" class="friend-link">
+      xYix's blog
+    </a>
+  </li>
+
+</ul>
+
+
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+      <h1>标准 RMQ 算法简记</h1>
+      <p><strong>upd:感觉之前写的有点问题，于是把所有准确数都加上了 O 符号</strong></p>
+<p>瞎写的，有什么问题赶紧来喷我</p>
+<p>学习自 <a href="https://ljt12138.blog.uoj.ac/blog/4874">https://ljt12138.blog.uoj.ac/blog/4874</a> ，写的比我不知道高到哪里去了</p>
+<p>就是一个严格 $O(n)-O(1)$ RMQ 的东西，不过 OI 中应该没什么用（（</p>
+<p>期望 $O(n)-O(1)$ 那个就够了，常数又小又好写又没人卡你</p>
+<p>算法流程大概是这样的</p>
+<p>首先我们给序列整一个笛卡尔树，这样就把 RMQ 转化成了 LCA 问题</p>
+<p>然后我们知道我们可以 RMQ 求 LCA</p>
+<p>看到这里你可能觉得建树是意☆义☆不☆明的操作</p>
+<p>不过我们看看 LCA 跑 RMQ 的性质，发现我们 RMQ 求 LCA 时是拉出了树的欧拉序</p>
+<p>然后发现这东西相邻两个数的差距最多为 $1$</p>
+<p>这东西叫做 ±1 RMQ</p>
+<p>看到这里你可能觉得这还是意☆义☆不☆明的操作</p>
+<p>不过我们发现差分之后，序列本质不同的区间减少了</p>
+<p>想想我们期望 $O(n)-O(1)$ RMQ 的做法？那个救爷爷的套路？</p>
+<p>不会也不要紧，反正你往下看也能看懂</p>
+<p>我们序列分块，块长先整个 $B$</p>
+<p>然后我们直接整块序列建 ST表，复杂度 $O(\frac{n}{B}\log n)$</p>
+<p>然后我们刚才不是说了？本质不同区间减少了？</p>
+<p>发现长度为 $B$ 的本质不同区间就 $O(2^B)$ 个</p>
+<p>因此这部分枚举+存在表里面，就可以处理散块查询，配合整块查询可以做到 $O(1)$ 查询</p>
+<p>取 $B=O(\log n)$ ，发现上面那一堆都是 $O(n)$</p>
+<p>然后我们就得到了 $O(n)-O(1)$ 的 ±1 RMQ，得到了 $O(n)-O(1)$ 的 LCA，得到了 $O(n)-O(1)$ 的标准 RMQ 算法</p>
+
+      
+
+    </div>
+
+  </div>
+</body>

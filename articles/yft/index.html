@@ -1,14 +1,26 @@
-<html>
-
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
   <link rel="icon" type="images/png" href="/images/favicon.png">
   <script src="/js/element.js"></script>
-  <title> Tag wys - DPairの非自制 blog </title>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <title>
+    圆方树学习简记 - DPairの非自制 blog
+  </title>
 </head>
 
 <body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
   <div class="content">
     <div class="sidebar" id="sidebar">
       <div class="sidebar-title">
@@ -36,13 +48,13 @@
         </li>
       </a>
       <a href="/articles">
-        <li class="list-item sidebar-menu-item" id="sidebar-content-articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
           Articles
         </li>
       </a>
       <a href="/tags">
-        <li class="list-item sidebar-menu-item" id="sidebar-content-tags"
-            style="background: #e5e5e5">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
           Tags
         </li>
       </a>
@@ -103,65 +115,23 @@
 </div>
 
     </div>
-    <div class="art-list-container">
-      <ul class="art-list">
 
-<a href="/articles/ywt/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      压位 Trie 学习笔记 
-    </div>
-  </li>
-</a>
-<a href="/articles/wystricks/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      一些卡常技巧 
-    </div>
-  </li>
-</a>
-<a href="/articles/stdRMQ/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      标准 RMQ 算法简记 
-    </div>
-  </li>
-</a>
-<a href="/articles/catt/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      猫树瞎写 
-    </div>
-  </li>
-</a>
-<a href="/articles/Ynoi/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      Ynoi 做题记录 I 
-    </div>
-  </li>
-</a>
-<a href="/articles/Ynoi2/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      Ynoi 做题记录 II 
-    </div>
-  </li>
-</a>
+    <div class="post" id="post">
+      <h1>圆方树学习简记</h1>
+      <blockquote>
+<p>万老爷：“这都十几年前的东西没什么难的。”</p>
+</blockquote>
+<p>圆方树大概是一种可以处理仙人掌上问题的结构</p>
+<p>其实就是给每一个环建一个点，然后对于环特殊处理</p>
+<p>然后想个办法转成树，然后就可以用树的方法来做了</p>
+<p>具体来说就是每一个环建一个方点，原树上的环中的所有点向方点连边，如果有边权的话特殊考虑一下边权，反正就是要方便最后的做题</p>
+<p>然后有一些性质，大概来说就是每一个方点一定不会和另一个方点连边，还有就是选的根不同圆方树相同</p>
+<p>所以这东西也就名字听起来 NB 一点罢了（（</p>
+<p>据说还有什么广义圆方树，好像是处理无向图的，先咕着</p>
 
-      </ul>
+      
+
     </div>
+
   </div>
-
-  <script>
-    drawSaying()
-  </script>
 </body>
-
-</html>
