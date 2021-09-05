@@ -56,7 +56,7 @@ tags:
 
 目前的配置如图：
 
-![](https://cdn.luogu.com.cn/upload/image_hosting/j98eukrf.png)
+![](./pic1.png)
 
 其中前 5 个 `C++` 是系统推荐的，就装了，也不知道有什么用
 
