@@ -49,7 +49,7 @@ tags:
 
 那么通过移项就可以轻易解出后面这一部分，因此我们链上数颜色的复杂度如果是 $O(nx)$ 的话（即单次是 $O(x)$），那么我们就可以在 $O(nx)$ 的时间内完成一个 $\sqrt{\frac n 2} \times \sqrt{\frac n 2}$ 的矩阵乘法
 
-因此这个问题不弱于 $\sqrt{\frac n 2} \times \sqrt{\frac n 2}$ 的矩阵乘法，而这个东西暂时是只能做到 $O(n\sqrt{n})$ 的
+因此这个问题不弱于 $\sqrt{\frac n 2} \times \sqrt{\frac n 2}$ 的矩阵乘法
 
 ***
 
