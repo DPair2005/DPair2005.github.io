@@ -182,7 +182,7 @@
 <p>懒得更洛谷的了</p>
 <p>感谢叉姐友情赠送的论文链接 <a href="https://cs.au.dk/~larsen/papers/linear_mode.pdf">https://cs.au.dk/~larsen/papers/linear_mode.pdf</a></p>
 <p>考虑建立矩阵乘法 $C=A\times B$ ，但是这里特殊一些，我们让 $C_{i,j}=\text{or}_{k} [A_{i,k}=1][B_{k,j}=1]$ 即把原先的加法换成或运算</p>
-<p>然后考虑构造若干个可重集 $S_i, T_j$ 其中 $S_i={k|A_{i,k}=1},T_i={k|B_{k,j}=1}$ </p>
+<p>然后考虑构造若干个可重集 $S_i, T_j$ 其中 $S_i=\{k|A_{i,k}=1\},T_i=\{k|B_{k,j}=1\}$ </p>
 <p>那么就有 $C_{i,j}=[S_i \cap T_j \neq \emptyset]$</p>
 <p>然后我们考虑把这两个集合合并成一个 <strong>可重集</strong> ，发现对这个可重集跑众数出现次数之后，如果答案是 $2$ 那么这两个集合就有交，答案为 $1$ 则没有交</p>
 <p>那么我们传统艺能分块然后分成两部分，不过显然整块查询已经不能满足我们了</p>
