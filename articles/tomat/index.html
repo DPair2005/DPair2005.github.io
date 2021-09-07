@@ -1,0 +1,182 @@
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <title>
+    归约矩乘学习笔记 - DPairの非自制 blog
+  </title>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+  DPairの非自制 blog
+  </p>
+  <hr align="center" style="width: 200px;">
+  <p></p>
+  <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+  <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+  <div class="saying" id="saying"> </div>
+</div>
+
+<script>
+  SaveBackground()
+</script>
+
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+  <div style="text-align: center; font-size: 16px;"> About me </div>
+  <HR align="center">
+  <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+    <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
+  </div>
+
+  <ul class="sidebar-links">
+  <li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link">
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link">
+      AtCoder 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link">
+      github 
+    </a>
+  </li>
+  </ul>
+
+</div>
+
+<ul class="sidebar-links">
+  <div style="text-align: center; font-size: 16px;"> links </div>
+  <HR align="center">
+
+  <li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link">
+      Jacder's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.github.io/" class="friend-link">
+      xYix's blog
+    </a>
+  </li>
+
+</ul>
+
+
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+      <h1>归约矩乘学习笔记</h1>
+      <p><del>归约矩乘好啊，这样就能第一时间知道谁是嘴巴怪了（（</del></p>
+<p><del>其实主要是自己出题的时候可以随时用很高大上的语言毙掉别人的 idea</del></p>
+<p>学习自 <a href="https://www.luogu.com.cn/blog/Ynoi/qian-tan-gui-yue-ju-cheng">https://www.luogu.com.cn/blog/Ynoi/qian-tan-gui-yue-ju-cheng</a> ，树剖姐姐 /se</p>
+<p>说人话就是把某个问题转化成矩阵乘法，以此来证明它的复杂度不低于多少多少的一个东西，如果你经常做 Ynoi 那你分析理论最低复杂度的时候可能会用到</p>
+<p><del>当然你也可以利用这玩意儿提出一个 polylog 的区间逆序对然后去捧一个图灵奖，这我拦不住你</del></p>
+<p><strong>本文全部假设 $n, q$ 同阶</strong></p>
+<hr>
+<p>1、给你一棵树，问一条链上颜色数</p>
+<p>第一眼看下来，这玩意儿和矩乘似乎没有任何关系</p>
+<p>没有关系也要给他构造出关系来</p>
+<p>我们假设有两个 $\sqrt{\frac n 2} \times \sqrt{\frac n 2}$ 的01矩阵 $A, B$ ，我们要对这两个东西做矩阵乘法</p>
+<p>然后我们构造一棵树，我们考虑取一个根，挂下来 $2\sqrt{\frac n 2}$ 条链，每条链长度 $\sqrt{\frac n 2}$</p>
+<p>发现我们矩阵乘法的结果 $C$ ，应该要满足 $C_{i,j}=\sum_{k}[A_{i,k}=1][B_{k,j}=1]$</p>
+<p>考虑这东西建立联系的方法，我们把所有链分为两部分，然后对于 $A_{i,k}=1$ 的，我们在第一部分的第 $i$ 条链上挂一个颜色为 $k$ 的节点，同理，对于 $B_{k,j}=1$ 的，我们在第二部分的第 $j$ 条链上挂一个颜色为 $k$ 的节点</p>
+<p>剩下的节点与根节点同色就可以当做无色处理</p>
+<p>然后我们考虑一个 $C_{i,j}$ 怎么求</p>
+<p>我们发现，如果我们对 $i, j$ 这两条链进行询问，那么只要能让每一个同时在 $i, j$ 上出现过的 $k$ 都会产生 $1$ 的贡献，就可以通过 $O(n)$ 次询问求出 $C$ </p>
+<p>我们发现对 $i,j$ 数颜色的话，贡献可以拆成是 “$i$ 上颜色数 + $j$ 上颜色数 - $i, j$ 公有颜色数 + 根的颜色”</p>
+<p>前两部分我们都可以在预处理的时候 $O(n)$ 一起求，甚至于我们发现我们把矩阵转化为树的时候可以直接考虑贡献</p>
+<p>甚至于可以把没有颜色的点看成不存在，然后把这两段数颜色理解成链长度，显然是可以 $O(n)$ 预处理 $O(1)$ 求的</p>
+<p>那么通过移项就可以轻易解出后面这一部分，因此我们链上数颜色的复杂度如果是 $O(nx)$ 的话（即单次是 $O(x)$），那么我们就可以在 $O(nx)$ 的时间内完成一个 $\sqrt{\frac n 2} \times \sqrt{\frac n 2}$ 的矩阵乘法</p>
+<p>因此这个问题不弱于 $\sqrt{\frac n 2} \times \sqrt{\frac n 2}$ 的矩阵乘法，而这个东西暂时是只能做到 $O(n\sqrt{n})$ 的</p>
+<hr>
+<p>2、给一个序列，假设每个颜色贡献为颜色出现次数的平方，求区间贡献和</p>
+<p>我们考虑上面那道题是怎么归约的：</p>
+<p>分成 $O(\sqrt{n})$ 份，构造矩乘与问题的关系，然后把询问转化成矩乘的单点询问</p>
+<p>考虑这是序列问题，因此我们对序列分块，分成 $\sqrt{n}$ 块大小为 $\sqrt{n}$ 的</p>
+<p>考虑构造一个 $O(\sqrt{n}) \times O(\sqrt{n})$ 的矩阵乘法 $C=A\times B$， $A, B$ 还是01矩阵</p>
+<p>然后说一句废话 $C_{i,j}=\sum_{k}[A_{i,k}=1][B_{k,j}=1]$</p>
+<p>考虑还是分两部分，然后传统艺能对于 $A_{i,k}=1$ 的，我们在第一部分的第 $i$ 个块上塞一个颜色为 $k$ 的节点，同理，对于 $B_{k,j}=1$ 的，我们在第二部分的第 $j$ 个块上塞一个颜色为 $k$ 的节点</p>
+<p>考虑对于一次第 $l$ 个块到第 $r$ 个块的查询，我们假设答案是 $f(l,r)$</p>
+<p>然后我们考虑 $f(l - 1, r + 1)$ 与 $f(l, r)$ 的区别，在于 $l-1$ 到 $[l, r]$ 的贡献，以及 $r + 1$ 到 $[l, r]$ 的贡献，还有 $l-1, r+1$ 两个块间的贡献</p>
+<p>发现最后一部分就是我们要求的</p>
+<p>而前两部分可以通过 $f(l-1, r)-f(l, r)$ 与 $f(l, r + 1)-f(l, r)$ 的容斥算出来</p>
+<p>考虑我们这样的话还是 $O(n)$ 次询问可以得出 $C$ 矩阵，因此这个问题是不弱于 $O(\sqrt{n}) \times O(\sqrt{n})$ 的矩乘的</p>
+<hr>
+<p>3、区间逆序对</p>
+<p>我们先求一个区间逆序对，再用相同的复杂度求一个区间顺序对，简单容斥下，大家看看剩下的是什么？</p>
+<hr>
+<p>4、区间加区间 rank</p>
+<p>其实就是 $\le k$ 的数的个数</p>
+<p>还是传统艺能 $C=A\times B$</p>
+<p>说句废话 $C_{i,j}=\sum_{k}[A_{i,k}=1][B_{k,j}=1]$</p>
+<p>发现不太好一通构造之后 $O(n)$ 次查询了，怎么办？</p>
+<p>我们考虑利用修改的性质，边修改边查询</p>
+<p>因此这次我们不把序列分块分两部分，我们通过一部分查询一部分修改来区分 $A, B$</p>
+<p>我们考虑若 $B_{k,j}=1$ ，我们在块 $k$ 塞一个 $j$</p>
+<p>然后我们枚举 $i$ ，然后对于 $A_{i, k}=1$ 的块 $k$ 我们加上一个相同的极大数 $x$</p>
+<p>这里我们可以通过一些手段使得每一层独立，这样子的话我们可以只对于一层分析</p>
+<p>那么对于这一层，我们相当于问出 $x+j$ 的个数，就能得到 $C_{i,j}$ 了，可以理解为 $+x$ 的操作满足了 $A_{i,k}=1$ ，$j$ 满足了 $B_{k,j}=1$</p>
+<p>这个可以用差分配合区间 rank 很快求出，然后发现修改查询都是 $O(n)$ 的</p>
+<p>因此这道题不弱于 $O(\sqrt{n})\times O(\sqrt{n})$ 的矩阵乘法</p>
+<hr>
+<p>既然 DS 题可以归约到矩乘，那么我们想个办法把矩乘归约到 DS 题</p>
+<p>还是先咕着，该吃饭了</p>
+
+      
+
+    </div>
+
+  </div>
+</body>
