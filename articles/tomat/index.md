@@ -126,7 +126,7 @@ tags:
 
 感谢叉姐友情赠送的论文链接 https://cs.au.dk/~larsen/papers/linear_mode.pdf
 
-考虑建立矩阵乘法 $C=A\times B$ ，但是这里特殊一些，我们让 $C_{i,j}=\text{or}\_{k} [A\_{i,k}=1][B\_{k,j}=1]$ 即把原先的加法换成或运算
+考虑建立矩阵乘法 $C=A\times B$ ，但是这里特殊一些，我们让 $C\_{i,j}=\text{or}\_{k} [A\_{i,k}=1][B\_{k,j}=1]$ 即把原先的加法换成或运算
 
 然后考虑构造若干个可重集 $S\_i, T\_j$ 其中 $S\_i=\{k|A\_{i,k}=1\},T\_i=\{k|B\_{k,j}=1\}$ 
 
