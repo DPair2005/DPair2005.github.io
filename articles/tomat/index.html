@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
   <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
   <title>
-    归约矩乘学习笔记 - DPairの非自制 blog
+    规约矩乘学习笔记 - DPairの非自制 blog
   </title>
 </head>
 
@@ -117,8 +117,8 @@
     </div>
 
     <div class="post" id="post">
-      <h1>归约矩乘学习笔记</h1>
-      <p><del>归约矩乘好啊，这样就能第一时间知道谁是嘴巴怪了（（</del></p>
+      <h1>规约矩乘学习笔记</h1>
+      <p><del>规约矩乘好啊，这样就能第一时间知道谁是嘴巴怪了（（</del></p>
 <p><del>其实主要是自己出题的时候可以随时用很高大上的语言毙掉别人的 idea</del></p>
 <p>学习自 <a href="https://www.luogu.com.cn/blog/Ynoi/qian-tan-gui-yue-ju-cheng">https://www.luogu.com.cn/blog/Ynoi/qian-tan-gui-yue-ju-cheng</a> ，树剖姐姐 /se</p>
 <p>说人话就是把某个问题转化成矩阵乘法，以此来证明它的复杂度不低于多少多少的一个东西，如果你经常做 Ynoi 那你分析理论最低复杂度的时候可能会用到</p>
@@ -142,7 +142,7 @@
 <p>因此这个问题不弱于 $\sqrt{\frac n 2} \times \sqrt{\frac n 2}$ 的矩阵乘法</p>
 <hr>
 <p>2、给一个序列，假设每个颜色贡献为颜色出现次数的平方，求区间贡献和</p>
-<p>我们考虑上面那道题是怎么归约的：</p>
+<p>我们考虑上面那道题是怎么规约的：</p>
 <p>分成 $O(\sqrt{n})$ 份，构造矩乘与问题的关系，然后把询问转化成矩乘的单点询问</p>
 <p>考虑这是序列问题，因此我们对序列分块，分成 $\sqrt{n}$ 块大小为 $\sqrt{n}$ 的</p>
 <p>考虑构造一个 $O(\sqrt{n}) \times O(\sqrt{n})$ 的矩阵乘法 $C=A\times B$， $A, B$ 还是01矩阵</p>
@@ -178,7 +178,7 @@
 <p>这个可以用差分配合区间 rank 很快求出，然后发现修改查询都是 $O(n)$ 的</p>
 <p>因此这道题不弱于 $O(\sqrt{n})\times O(\sqrt{n})$ 的矩阵乘法</p>
 <hr>
-<p>既然 DS 题可以归约到矩乘，那么我们想个办法把矩乘归约到 DS 题</p>
+<p>既然 DS 题可以规约到矩乘，那么我们想个办法把矩乘规约到 DS 题</p>
 <p>咕了，感觉没什么意思</p>
 
       
