@@ -1,0 +1,199 @@
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <title>
+    skip list 的一些扩展 - DPairの非自制 blog
+  </title>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+  DPairの非自制 blog
+  </p>
+  <hr align="center" style="width: 200px;">
+  <p></p>
+  <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+  <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+  <div class="saying" id="saying"> </div>
+</div>
+
+<script>
+  SaveBackground()
+</script>
+
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+  <div style="text-align: center; font-size: 16px;"> About me </div>
+  <HR align="center">
+  <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+    <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
+  </div>
+
+  <ul class="sidebar-links">
+  <li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link">
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link">
+      AtCoder 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link">
+      github 
+    </a>
+  </li>
+  </ul>
+
+</div>
+
+<ul class="sidebar-links">
+  <div style="text-align: center; font-size: 16px;"> links </div>
+  <HR align="center">
+
+  <li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link">
+      Jacder's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.github.io/" class="friend-link">
+      xYix's blog
+    </a>
+  </li>
+
+</ul>
+
+
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+      <h1>skip list 的一些扩展</h1>
+      <p><del>写这个有啥用啊</del></p>
+<h2 id="0-%E5%88%9B%E4%BD%9C%E8%83%8C%E6%99%AF">0 创作背景</h2>
+<p>最近碰到了一些需要高效实现 <strong>单点删除单点插入区间查询最小值</strong> 的题目，感觉一般的平衡树已经满足不了我了。</p>
+<p>于是决定整点阴间跳表，刚好以前嘴巴过一个区间操作的跳表，上网搜了一下，又在 2009 的冬令营论文里面发现了这玩意儿。</p>
+<p>于是就整合顺便扩展了一下，感觉实现起来会比一般的平衡树简单很多，希望能在 OI 实战中有点用处。</p>
+<p>假装你们都会跳表了，我们直接从扩展开始。</p>
+<h2 id="1-0-%E8%B6%85%E8%B6%8A%E5%B9%B3%E8%A1%A1%E6%A0%91">1-0 超越平衡树</h2>
+<p>首先我们知道，最朴素的跳表能干的事儿基本上就是 <code>std::map</code> 能干的事儿。</p>
+<p>因此首先我们得超越 <code>std::map</code> ，怎么说得和最普通平衡树平起平坐吧。</p>
+<p>发现我们离普通平衡树的差距就在于 kth 和 rank 这两个操作，我们先考虑看起来阳间一点的 rank。</p>
+<p>考虑把每一个点的权值置为 $1$，那么 rank 本质上就是起点到当前点的区间和。</p>
+<p>由于跳表的结构类似于倍增，因此我们先把一个不修改的跳表看作一个倍增的结构。</p>
+<p>而我们带权倍增，来求一些区间信息的时候，一般就是对于一个节点，记录他跳到的终点与当前点之间那些点的贡献。</p>
+<p>仔细想想，发现这里也可以这么搞。</p>
+<p>我们考虑对于每一个节点的每一层维护它到下一个与它高度相同的点之间的信息，这里就是点数。</p>
+<p>然后我们考虑不断去跳，不难发现我们这里顺路把权值加上的话，复杂度和普通的跳表是完全一致的。</p>
+<p>然后我们考虑单点修改，不难发现插入删除的时候都只会修改 $O(\log n)$ 个节点，每层刚好一个。</p>
+<p>其实也就是后继改变了的那些节点，因此复杂度还是 $O(\log n)$ 的。</p>
+<p>然后仔细想想，我们带权倍增的时候可以用类似线段树上二分的写法，实现在一个单调的序列里找到某一个权值的位置，和树上 $k$ 级祖先的倍增解法比较类似。</p>
+<p>因此这里直接在刚才的基础上，看跳完之后到达的节点的 rank 是什么一个情况就行，重合了就可以跳出了。</p>
+<p>于是就实现了 rank 和 kth，复杂度是 $O(\log n)$ 的，已经可以通过普通平衡树了。</p>
+<h2 id="1-1-%E7%BB%B4%E6%8A%A4%E5%8C%BA%E9%97%B4%E4%BF%A1%E6%81%AF">1-1 维护区间信息</h2>
+<p>其实不难发现，上面的 rank 操作的实现过程还顺带实现了单点修改区间查询，和树状数组其实比较类似。</p>
+<p>考虑区间和等可差分的信息已经可以通过类似的方法进行查询了，但是不可差分的信息就比较难搞。</p>
+<p>其实也不要紧。</p>
+<p>假设我们查询的是区间 $[l, r]$ ，干脆以 RMQ 举例好了。</p>
+<p>考虑从最高层开始跳，要是跳一步跳进 $[l, r]$ 了那就以这个节点为起点想两边扩展，不难发现这里就不需要差分了，还是 $O(\log n)$ 的，毕竟前驱后继什么的本来就应该是要维护的。</p>
+<p>考虑如果没跳到，那么就降一层继续试，这么跳的话复杂度应该也是 $O(\log n)$ 的。</p>
+<p>那么就可以实现不用差分的区间查询了。</p>
+<p>感觉其实和猫树的思想比较相似？</p>
+<h2 id="1-1-5-%E7%BB%B4%E6%8A%A4%E5%8C%BA%E9%97%B4%E4%BF%A1%E6%81%AFex">1-1.5 维护区间信息ex</h2>
+<p>然后这个 DPair 就去看了看论文并且得到了一种更为方便的实现方式。</p>
+<p><strong>注：个人根据自己的理解稍微改造了一下，想看原论文写法的可以自己去找，附件当中有参考实现。</strong></p>
+<p>大概是这样的，考虑对于每一次询问 $[l,r]$，首先我们要遍历尽可能少的节点来完整覆盖这个区间，因此我们考虑从 root 节点的最高层开始向右遍历。</p>
+<p>考虑往右遍历时，当前节点可能会有以下几种情况：</p>
+<ul>
+<li>左端点 $&gt; r$，此时显然这个节点及这个节点所有的下层节点都不可能在这个区间内了，因此可以直接弹出。</li>
+<li>右端点 $&lt;l$，此时显然这个节点的后继还可能有前途，因此直接搜当前节点的后继并返回那个节点的搜索结果即可。</li>
+<li>右端点 $&gt; r$，这时我们向下搜索这个节点的下层节点即可，然后返回那个节点的搜索结果。</li>
+<li>左端点 $&lt;l$ 且右端点在 $[l,r]$ 内，考虑这个节点的后继和下层都可能产生贡献，因此把这两部分加起来即可。</li>
+<li>左右端点均在 $[l, r]$ 内，由于我们搜索到了当前节点，那么这个节点一定就是产生贡献的一个节点，因此返回这个节点维护的信息和它的后继维护的信息即可，并且为了避免重复贡献，我们可以考虑在返回结果时，把区间的右端点移动到这个这个节点的前一个位置。</li>
+</ul>
+<p>具体实现时可能不尽如此，但是手推一下然后排除算重的情况的话还是方便的。</p>
+<p>其实仔细思考会发现这个东西和上面查询的具体节点是完全一致的，因此复杂度是相同的，而且好处在于不需要通过前驱来向前跳，而且是单向的，可能会对常数有一定的优化。</p>
+<p><del>不过反正怎么说都要靠维护前驱来完成删除操作，因此上面那个写法并不会逊色太多？</del></p>
+<h2 id="1-2-%E4%B8%80%E4%BA%9B%E5%A5%87%E6%80%AA%E7%9A%84%E4%B8%9C%E8%A5%BF">1-2 一些奇怪的东西</h2>
+<p>我们感性理解一下，假设我们加层的概率是 $\frac{1}{2}$ ，那么就可以考虑把原跳表看成每一个节点期望有两个儿子的一个结构，那么其实这就是一个线段树的结构。</p>
+<p>考虑这个阈值变为 $\frac{1}{4}$，那么这就是一个四叉的线段树。</p>
+<p>考虑把阈值变为 $\frac{1}{\sqrt{n}}$，那么就得到了一个分块，或者说块状链表，甚至可以考虑用 <code>std::vector</code> 实现。</p>
+<p>如果不同层的概率不同，我们可能可以得到类似 sqrt-tree 或者底层分块后的线段树的结构。</p>
+<p>所以仔细想想这东西还是挺 nb 的。</p>
+<h2 id="2-%E4%B9%9F%E8%AE%B8%E5%8F%AF%E4%BB%A5%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9%EF%BC%9F">2 也许可以区间修改？</h2>
+<p>这部分咕了，先把原来那篇口胡的放上来</p>
+<hr>
+<p><strong>警告：前方口胡严重，完全不知道能不能做，大概率就是错的，有什么问题欢迎提出</strong></p>
+<p><del>但是我就是想写你能拿我怎么样？</del></p>
+<p>跳表应该是可以区间修改的</p>
+<p>我们先假设我们是单点查询</p>
+<p>考虑一个点被查询到一定访问过它前面第一个比它高的节点</p>
+<p>因此我们先用区间查询的方式找到区间中的那个最高点，然后同理扩展</p>
+<p>发现扩展到的点刚好覆盖了整个区间</p>
+<p>给这些点打上一个标记，复杂度 $O(\log n)$</p>
+<p>区间查询我还没想清楚，先咕着</p>
+<hr>
+<p>区间翻转</p>
+<p>仔细想想跳表本质上是多条链表</p>
+<p>因此考虑每一层翻转，应该是对的？</p>
+<p>考虑我们可以打标记，然后修改 $O(\log n)$ 个点</p>
+<p>所以应该可以实现？没想清楚，先咕了</p>
+<hr>
+<p>这么看来跳表可能还是有点用的？</p>
+<p>要是真的能实现文艺平衡树就好了，以后就只写跳表了</p>
+
+      
+
+    </div>
+
+  </div>
+</body>
