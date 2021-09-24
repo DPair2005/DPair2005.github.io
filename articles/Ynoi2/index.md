@@ -805,7 +805,7 @@ $$
 
 38、[P7880 [Ynoi2006] rldcot](https://www.luogu.com.cn/problem/P7880)
 
-标签：dsu on tree，扫描线
+标签：dsu on tree，扫描线           
 
 这个憨批 DPair 为了抢一血写了一个下午的根号做法然后卡了一个晚上的常，最终在 **神·zhoukangyang** 秒掉这道题后~~发现他代码里没分块~~才觉悟过来有超级 naive 的 polylog 做法
 
