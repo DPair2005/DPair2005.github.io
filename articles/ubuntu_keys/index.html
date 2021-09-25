@@ -1,14 +1,26 @@
-<html>
-
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
   <link rel="icon" type="images/png" href="/images/favicon.png">
   <script src="/js/element.js"></script>
-  <title> Tag setup - DPairの非自制 blog </title>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <title>
+    ubuntu 个人常用快捷键 - DPairの非自制 blog
+  </title>
 </head>
 
 <body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
   <div class="content">
     <div class="sidebar" id="sidebar">
       <div class="sidebar-title">
@@ -36,13 +48,13 @@
         </li>
       </a>
       <a href="/articles">
-        <li class="list-item sidebar-menu-item" id="sidebar-content-articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
           Articles
         </li>
       </a>
       <a href="/tags">
-        <li class="list-item sidebar-menu-item" id="sidebar-content-tags"
-            style="background: #e5e5e5">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
           Tags
         </li>
       </a>
@@ -113,33 +125,44 @@
 </div>
 
     </div>
-    <div class="art-list-container">
-      <ul class="art-list">
 
-<a href="/articles/ubuntu_setup/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      ubuntu / NOI linux 2.0 个人配置 
-    </div>
-  </li>
-</a>
-<a href="/articles/ubuntu_keys/">
-  <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-    <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-      
-      ubuntu 个人常用快捷键 
-    </div>
-  </li>
-</a>
+    <div class="post" id="post">
+      <h1>ubuntu 个人常用快捷键</h1>
+      <p>本意其实是拿来背各种快捷键的（（</p>
+<p>基本上只有我背不下来的，能背下来的都没写（（</p>
+<h2 id="vim">Vim</h2>
+<p>由于这玩意儿我主要拿来临时在控制台里面用用，应该用不到什么很多的快捷键，把最常用的几个记住就行</p>
+<ul>
+<li>撤销： <code>u</code></li>
+<li>复制： <code>Visual</code> 下 <code>y</code></li>
+<li>剪切： <code>Visual</code> 下 <code>x</code></li>
+<li>粘贴： <code>p</code></li>
+<li>全选： <code>g + g + (shift + v) + (shift + g)</code></li>
+<li>切换到 <code>Visual</code>： <code>v</code></li>
+<li>切换到 <code>Insert</code>： <code>i</code></li>
+</ul>
+<p>不是 vim 选手，啥都不会用（（</p>
+<h2 id="vscode">VScode</h2>
+<p>由于个人喜欢全屏用因此切各种东西只能快捷键。。。</p>
+<ul>
+<li>显示/隐藏 side bar： <code>ctrl + b</code></li>
+<li>side bar 切到文件夹： <code>ctrl + shift + e</code></li>
+<li>side bar 切到扩展程序： <code>ctrl + shift + x</code></li>
+<li>显示/隐藏 panel（就是终端那个东西）： <code>ctrl + j</code></li>
+<li>分裂终端 <code>ctrl + shift + 5</code></li>
+<li>保存： <code>ctrl + s</code></li>
+<li>另存为（估计用不上）： <code>ctrl + shift + s</code></li>
+<li>打开快捷方式面板： <code>ctrl + k</code> + <code>ctrl + s</code></li>
+</ul>
+<h2 id="%E6%90%9C%E7%8B%97%E6%8B%BC%E9%9F%B3">搜狗拼音</h2>
+<ul>
+<li>改中英文标点（似乎仅限中文模式？）： <code>ctrl + .</code></li>
+<li>改中英文输入： <code>ctrl + shift + e</code></li>
+</ul>
 
-      </ul>
+      
+
     </div>
+
   </div>
-
-  <script>
-    drawSaying()
-  </script>
 </body>
-
-</html>
