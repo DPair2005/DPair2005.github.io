@@ -171,16 +171,15 @@
 <h3 id="1-3-%E6%99%AE%E9%81%8D%E6%83%85%E5%86%B5">1.3 普遍情况</h3>
 <p>考虑给你一个 DAG ，每个点度数不超过常数 $d$ ，然后每一个点上有一个序列 $a$ ，每次查询 <strong>一条链上的每一个点所对应的序列中，某个数的后继</strong> 。</p>
 <p>所以我们刚才的问题可以看成 $d=2$ ，然后 DAG 是一条链的特殊情况，那么现在这个问题就是其推广。</p>
-<hr>
 <details>
-<summary> <strong>具体解法</strong> </summary>
-<p></p>
-<p>其实直接把刚才的 “取序列的 $1\over 2$ （也就是所谓偶数位）拿过来归并” 换成 “取 $1\over d$ 拿过来归并” 就行了。这样的话我们每一次查完之后与 <strong>具体位置的差距</strong> 就是一个 $d$ 。由于 $d$ 是一个常数 ，这里仍然是 $O(1)$ 查询的。</p>
+<summary> 具体解法 </summary>
+  <p>其实直接把刚才的 “取序列的 $1\over 2$ （也就是所谓偶数位）拿过来归并” 换成 “取 $1\over d$ 拿过来归并” 就行了。这样的话我们每一次查完之后与 <strong>具体位置的差距</strong> 就是一个 $d$ 。由于 $d$ 是一个常数 ，这里仍然是 $O(1)$ 查询的。</p>
 <p>这样一来对于长度为 $k$ 的路径，单次查询复杂度就是 $O(k+\log n)$ 的，于是解决了这个问题。</p>
 <p>是不是和某些结构有些类似？</p>
+
 </details>
 
-<hr>
+
 <h3 id="1-4-bonus">1.4 Bonus</h3>
 <p><strong>这里是作者的一些思考，可能会出现问题。</strong><del>但是后文中确实用到了（（（</del></p>
 <p>我们不难发现我们主要利用的是一种 <strong>类似于误差或扰动</strong> 的方法来处理这个问题，最初的问题中这个 <strong>扰动</strong> 是 $1$ 。那么我们大胆猜想这个扰动可以更大。</p>
@@ -254,16 +253,15 @@ O({n\over b}\log p + {n\over bq}\log b + b + {bq\over p})</script><p>不难发�
 <p>提供一道论文里没有写的，但是可以利用分散层叠算法实现的分块题：<a href="https://www.luogu.com.cn/problem/P5356">P5356 [Ynoi2017] 由乃打扑克</a></p>
 <p>简要题意其实就是区间加区间 $kth$ 。</p>
 <p>当然这道题同样存在不使用分散层叠算法的解法，但 <strong>就我目前所知</strong> 应该只有分散层叠能够做到 $O(n\sqrt{n\log n})$ 时间 $O(n)$ 空间以及强制在线。</p>
-<hr>
 <details>
-<summary> <strong>具体解法</strong> </summary>
-<p></p>
-<p>其实也并不是很难，我们考虑我们最简单的写法就是 <strong>二分套二分</strong> ，即外层二分答案然后查询 “区间内小于某数的数的个数”，即 “区间 rank”，于是就转化为了 <strong>2.1节</strong> 中解决的问题，那道题的最终单次询问的复杂度应该是 $O({n\over b}+b)$ ，然后这里由于我们需要二分，还需要乘上一只 $\log$，那么我们会发现我们现在多出来了一个 $b\log n$ 的不优秀复杂度。</p>
+<summary> 具体解法 </summary>
+  <p>其实也并不是很难，我们考虑我们最简单的写法就是 <strong>二分套二分</strong> ，即外层二分答案然后查询 “区间内小于某数的数的个数”，即 “区间 rank”，于是就转化为了 <strong>2.1节</strong> 中解决的问题，那道题的最终单次询问的复杂度应该是 $O({n\over b}+b)$ ，然后这里由于我们需要二分，还需要乘上一只 $\log$，那么我们会发现我们现在多出来了一个 $b\log n$ 的不优秀复杂度。</p>
 <p>但是我们不难发现我们查询的散块范围都是一样的，故我们的散块查询可以直接把排好序的部分拉出来，然后其复杂度就是每次查询一只 $\log$ 了，于是我们达到了 $O(({n\over b}+\log b)\log n + b)$ 的复杂度，此时取 $b={\sqrt{n\log n}}$ 显然最优，达到了 $O(n\sqrt{n\log n})$ 的复杂度。</p>
 <p>并且预处理复杂度和空间复杂度与 <strong>2.1节</strong> 中解决的问题并没有差别，为 $O(n)$ ，于是问题得到了解决。</p>
+
 </details>
 
-<hr>
+
 <h3 id="2-5-%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93">2.5 部分总结</h3>
 <p>可见分散层叠算法在分块中的应用还是比较广的，不难发现，带二分的分块似乎基本上都可以通过 <strong>分散层叠算法配合线段树</strong> 优化掉一只 $\log$ 或至少优化成 $\log\log$ 。可见其实用性。</p>
 <p>个人感觉如果考虑常数的话那个 $O(n\sqrt{n\log \log n})$ 的写法不见得比 $O(n\sqrt{n})$ 慢（（</p>
@@ -300,10 +298,9 @@ O({n\over b}\log p + {n\over bq}\log b + b + {bq\over p})</script><p>不难发�
 <p>块长似乎要略开大一些。</p>
 <h3 id="3-6-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">3.6 代码实现</h3>
 <p>放一下我在 <a href="https://www.luogu.com.cn/problem/P6578">P6578</a> 中获得最优解的代码。</p>
-<hr>
 <details>
-<summary> <strong> 点此展开代码 </strong> </summary>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
+<summary> 点此展开代码 </summary>
+  <pre><code class="lang-cpp">#include &lt;cstdio&gt;
 #include &lt;cstring&gt;
 #include &lt;algorithm&gt;
 #include &lt;cmath&gt;
@@ -320,9 +317,9 @@ inline T mn(const T x, const T y) {return x &lt; y ? x : y;}
 template &lt;typename T&gt;
 inline T mx(const T x, const T y) {return x &gt; y ? x : y;}
 template &lt;typename T&gt;
-inline void chmin(T &x, const T y) {(x &gt; y) && (x = y);}
+inline void chmin(T &amp;x, const T y) {(x &gt; y) &amp;&amp; (x = y);}
 template &lt;typename T&gt;
-inline void chmax(T &x, const T y) {(x &lt; y) && (x = y);}
+inline void chmax(T &amp;x, const T y) {(x &lt; y) &amp;&amp; (x = y);}
 }
 using namespace MyMinMax;
 
@@ -355,9 +352,9 @@ struct DPair{
     int val, pos;
     DPair(){}
     DPair(int val, int pos) : val(val), pos(pos) {}
-    inline bool operator &lt; (const DPair & tmp) const{return val &lt; tmp.val;}
+    inline bool operator &lt; (const DPair &amp; tmp) const{return val &lt; tmp.val;}
 }b[MAXN];
-inline void swap(DPair &x, DPair &y){
+inline void swap(DPair &amp;x, DPair &amp;y){
     x.val ^= y.val ^= x.val ^= y.val;
     x.pos ^= y.pos ^= x.pos ^= y.pos;
 }
@@ -368,7 +365,7 @@ inline int lc(int x){return x + 1;}
 inline int rc(int x){return x + 1 + siz[lc(x)];}
 inline void merge(int *const rt, NODE *const drt, const int *const l, const int *const r, const int ls, const int rs){
     int i = 0, j = 0, k = 0;
-    while(i &lt; ls && j &lt; rs){
+    while(i &lt; ls &amp;&amp; j &lt; rs){
         if(l[i] &lt; r[j]){rt[k] = l[i];drt[k ++] = NODE(i, j);i += pim;}
         else{rt[k] = r[j];drt[k ++] = NODE(i, j);j += pim;}
     }
@@ -405,7 +402,7 @@ inline void rebuild(int x){
         else bm[i] -= ((x - pr - 1) * (x - pr) &gt;&gt; 1);
         if(sc &gt; r) br[i] = r - pr;
         else bm[i] -= ((sc - x - 1) * (sc - x) &gt;&gt; 1);
-        if(pr &gt;= l && sc &lt;= r) bm[i] += ((sc - pr - 1) * (sc - pr) &gt;&gt; 1);
+        if(pr &gt;= l &amp;&amp; sc &lt;= r) bm[i] += ((sc - pr - 1) * (sc - pr) &gt;&gt; 1);
         suc[pr] = sc;pre[sc] = pr;
     }
 }
@@ -416,8 +413,8 @@ inline void change(int pos, int x){
     rep(i, l, r) if(b[i].pos == pos){it = i;break;}
     bool ck = (x &gt; b[it].val);
     b[it].val = x;
-    if(ck) while(it &lt; r && b[it + 1].val &lt; b[it].val) swap(b[it], b[it + 1]), ++ it;
-    else while(it &gt; l && b[it - 1].val &gt; b[it].val) swap(b[it], b[it - 1]), -- it;
+    if(ck) while(it &lt; r &amp;&amp; b[it + 1].val &lt; b[it].val) swap(b[it], b[it + 1]), ++ it;
+    else while(it &gt; l &amp;&amp; b[it - 1].val &gt; b[it].val) swap(b[it], b[it - 1]), -- it;
     rebuild(id);
 }
 
@@ -428,9 +425,9 @@ void modify(int rt, int l, int r, int x){
     else modify(rc(rt), mid + 1 , r, x);
     merge(t[rt], p[rt], t[lc(rt)], t[rc(rt)], sz[lc(rt)], sz[rc(rt)]);
 }
-inline bool bruhforce(int l, int r, int &le, int &me, int &re, int x){
+inline bool bruhforce(int l, int r, int &amp;le, int &amp;me, int &amp;re, int x){
     le = re = me = 0;int it = l;
-    while(it &lt;= r && a[it] &lt;= x) ++ it;
+    while(it &lt;= r &amp;&amp; a[it] &lt;= x) ++ it;
     if(it &gt; r) return le = r - l + 1, 1;
     le = it - l;int itt = r;
     while(a[itt] &lt;= x) -- itt;
@@ -447,7 +444,7 @@ void work(int rt, int x, int id, int ioi){
     key[rt] = ioi;
     rep(i, rt, rt + siz[rt] - 1){
         int q = key[i];
-        per(j, pim - 1, 1) if(q &gt;= j && t[i][q - j] &gt; x){q -= j;break;}
+        per(j, pim - 1, 1) if(q &gt;= j &amp;&amp; t[i][q - j] &gt; x){q -= j;break;}
         if(siz[i] == 1){
             if(q == sz[i]) {
                 tag[id] = 1;Bl[id] = lst[id] - lst[id - 1];
@@ -466,8 +463,8 @@ void work(int rt, int x, int id, int ioi){
 }
 
 void query(int rt, int l, int r, int x, int y, int z, int q){
-    per(j, pim - 1, 1) if(q &gt;= j && t[rt][q - j] &gt; z){q -= j;break;}
-    if(x &lt;= l && r &lt;= y) return work(rt, z, l, q);
+    per(j, pim - 1, 1) if(q &gt;= j &amp;&amp; t[rt][q - j] &gt; z){q -= j;break;}
+    if(x &lt;= l &amp;&amp; r &lt;= y) return work(rt, z, l, q);
     int mid = (l + r) &gt;&gt; 1;
     if(x &lt;= mid) query(lc(rt), l, mid, x, y, z, p[rt][q].x);
     if(y &gt; mid) query(rc(rt), mid + 1, r, x, y, z, p[rt][q].y);
@@ -525,10 +522,12 @@ signed main(){
             print(ans += (1ll * (cnt + 1) * cnt &gt;&gt; 1));
         }
     }
-}</code></pre>
+}
+</code></pre>
+
 </details>
 
-<hr>
+
 <h2 id="4-%E6%80%BB%E7%BB%93">4 总结</h2>
 <p>分散层叠算法虽然在 OI 中并不普及，但从它对这几道分块题的优化中就可以看出 <del>分块在 OI 中仍有很好的前途</del> 分散层叠算法在 OI 中还有很广的可探索空间，比如2021年集训队论文中就谈到了分散层叠算法维护二维平面的一些运用（这个暂时咕咕咕，以后可能会写）。而且其运用到的思想也十分优秀，值得一学，一定能起到提升思维水平的作用。</p>
 <p>但就出题而言，至少我个人认为这个算法不太好出题，主要是因为这个算法的实现存在大量细节，真的写起来会非常恶心。</p>

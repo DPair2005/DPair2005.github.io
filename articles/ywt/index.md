@@ -110,12 +110,9 @@ tags:
 基本完全搬的 @skip2004 的，因为实现的真的太好了我感觉改哪里都亏（（
 
 实现了 [这道题](https://www.luogu.com.cn/problem/U156719)。
-
-***
-
-<details>
-<summary> <strong> 点此展开代码 </strong> </summary>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
+[{MDEXPAND 点此展开代码
+```cpp
+#include <cstdio>
 
 namespace BITWISE{
     inline int clz(unsigned long long x){return __builtin_clzll(x);}//这个函数是查询开头几个零
@@ -125,8 +122,8 @@ using namespace BITWISE;
 namespace GenHelper{
     unsigned z3, z4, b;
     inline unsigned rand_(){
-        z3 = ((z3 & 4294967280U) &lt;&lt; 7) ^ ((z3 &lt;&lt; 13) ^ z3) &gt;&gt; 21;
-        z4 = ((z4 & 4294967168U) &lt;&lt; 13) ^ ((z4 &lt;&lt; 3) ^ z4) &gt;&gt; 12;
+        z3 = ((z3 & 4294967280U) << 7) ^ ((z3 << 13) ^ z3) >> 21;
+        z4 = ((z4 & 4294967168U) << 13) ^ ((z4 << 3) ^ z4) >> 12;
         return (z3 ^ z4);
     }
 }
@@ -138,50 +135,50 @@ inline void srand_(unsigned x){
 
 typedef unsigned long long ull;
 const int g = 6;
-const int mod = (1 &lt;&lt; g) - 1;
-ull BUFF[1 &lt;&lt; 25], *BT = BUFF + sizeof(BUFF) / sizeof(ull);//预先开好内存池
+const int mod = (1 << g) - 1;
+ull BUFF[1 << 25], *BT = BUFF + sizeof(BUFF) / sizeof(ull);//预先开好内存池
 inline ull *alloc(int sz){return BT -= sz;}//动态分配空间
 struct Trie{
     int dep;ull *a[5];//动态数组
     Trie(int sz){//初始化
         dep = 1;
         for(;;++ dep){
-            int cnt = (sz + (1ull &lt;&lt; g * dep) - 1) &gt;&gt; g * dep;//表示这一层有多少个点
+            int cnt = (sz + (1ull << g * dep) - 1) >> g * dep;//表示这一层有多少个点
             a[dep - 1] = alloc(cnt);
             if(cnt == 1) return ;
         }
         //注意这里层数越小越深，这样方便我们位运算
     }
     inline void ins(int x){
-        for (int i = 0;i &lt; dep;++ i){//自下而上遍历的
-            ull p = 1ull &lt;&lt; (x &gt;&gt; i * g & mod); //判断我们这个 x 在当前这一层要走哪一条边，并且直接左移好方便压位的处理
-            if(a[i][x &gt;&gt; (i + 1) * g] & p) return ;//剪枝，上面有就可以弹出了
-            a[i][x &gt;&gt; (i + 1) * g] |= p;
+        for (int i = 0;i < dep;++ i){//自下而上遍历的
+            ull p = 1ull << (x >> i * g & mod); //判断我们这个 x 在当前这一层要走哪一条边，并且直接左移好方便压位的处理
+            if(a[i][x >> (i + 1) * g] & p) return ;//剪枝，上面有就可以弹出了
+            a[i][x >> (i + 1) * g] |= p;
         }
     }
     inline void del(int x){
-        for (int i = 0;i &lt; dep;++ i)
-            if(a[i][x &gt;&gt; (i + 1) * g] &= ~(1ull &lt;&lt; (x &gt;&gt; i * g & mod))) return ;//删除一个位置，同样是删完还有就不删了的剪枝
+        for (int i = 0;i < dep;++ i)
+            if(a[i][x >> (i + 1) * g] &= ~(1ull << (x >> i * g & mod))) return ;//删除一个位置，同样是删完还有就不删了的剪枝
     }
     inline int succ(int x){
-        for (int i = 0;i &lt; dep;++ i){
-            int cur = (x &gt;&gt; i * g) & mod;ull v = a[i][x &gt;&gt; (i + 1) * g];//当前是哪一条边，由于这里只需要知道是哪一条边所以我们不需要左移
-            if(v &gt;&gt; cur &gt; 1){//如果存在前驱，也可以写成 v &gt;&gt; (cur + 1)，后者更好理解但前者似乎更快
-                int res = x &gt;&gt; (i + 1) * g &lt;&lt; (i + 1) * g;
-                res += (ctz(v &gt;&gt; (cur + 1)) + cur + 1) &lt;&lt; i * g;//先把这一层的贡献加上，注意是不完整的
-                for (int j = i - 1;~j;-- j) res += ctz(a[j][res &gt;&gt; (j + 1) * g]) &lt;&lt; j * g;//剩下每一层都是完整的
+        for (int i = 0;i < dep;++ i){
+            int cur = (x >> i * g) & mod;ull v = a[i][x >> (i + 1) * g];//当前是哪一条边，由于这里只需要知道是哪一条边所以我们不需要左移
+            if(v >> cur > 1){//如果存在前驱，也可以写成 v >> (cur + 1)，后者更好理解但前者似乎更快
+                int res = x >> (i + 1) * g << (i + 1) * g;
+                res += (ctz(v >> (cur + 1)) + cur + 1) << i * g;//先把这一层的贡献加上，注意是不完整的
+                for (int j = i - 1;~j;-- j) res += ctz(a[j][res >> (j + 1) * g]) << j * g;//剩下每一层都是完整的
                 return res;//直接返回
             }
         }
         return 0;//否则返回零
     }
     inline int pre(int x){//与上面同理，不赘述
-        for (int i = 0;i &lt; dep;++ i){
-            int cur = (x &gt;&gt; i * g) & mod;ull v = a[i][x &gt;&gt; (i + 1) * g];
-            if(v & ((1ull &lt;&lt; cur) - 1)){
-                int res = x &gt;&gt; (i + 1) * g &lt;&lt; (i + 1) * g;
-                res += (mod - clz(v & ((1ull &lt;&lt; cur) - 1))) &lt;&lt; i * g;
-                for (int j = i - 1;~j;-- j) res += (mod - clz(a[j][res &gt;&gt; (j + 1) * g])) &lt;&lt; j * g;
+        for (int i = 0;i < dep;++ i){
+            int cur = (x >> i * g) & mod;ull v = a[i][x >> (i + 1) * g];
+            if(v & ((1ull << cur) - 1)){
+                int res = x >> (i + 1) * g << (i + 1) * g;
+                res += (mod - clz(v & ((1ull << cur) - 1))) << i * g;
+                for (int j = i - 1;~j;-- j) res += (mod - clz(a[j][res >> (j + 1) * g])) << j * g;
                 return res;
             }
         }
@@ -191,10 +188,10 @@ struct Trie{
 };
 
 int ans;
-Trie s(1 &lt;&lt; 30);
+Trie s(1 << 30);
 inline void work(){
-    int x = GenHelper :: rand_() & ((1 &lt;&lt; 30) - 1), op = (x &gt;&gt; 15) & 3;
-  	/* Your code begins here */
+    int x = GenHelper :: rand_() & ((1 << 30) - 1), op = (x >> 15) & 3;
+      /* Your code begins here */
     if(op == 0) s.ins(x);
     else if(op == 1) s.del(x);
     else if(op == 2) ans ^= s.pre(x);
@@ -202,14 +199,13 @@ inline void work(){
 }
 int n, seed;
 int main(){
-	scanf("%d%d", &n, &seed);
+    scanf("%d%d", &n, &seed);
     srand_(seed);
     while(n --) work();
     printf("%d\n", ans);
-}</code></pre>
-</details>
-
-***
+}
+```
+}]
 
 ## 3 个人总结
 

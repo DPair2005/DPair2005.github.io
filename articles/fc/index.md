@@ -75,17 +75,16 @@ $1 \le k \le 100, 1 \le n \le 1e4, 1 \le q \le 5e5$ 。
 
 所以我们刚才的问题可以看成 $d=2$ ，然后 DAG 是一条链的特殊情况，那么现在这个问题就是其推广。
 
-***
 
-<details>
-<summary> <strong>具体解法</strong> </summary>
-<p></p>
-<p>其实直接把刚才的 “取序列的 $1\over 2$ （也就是所谓偶数位）拿过来归并” 换成 “取 $1\over d$ 拿过来归并” 就行了。这样的话我们每一次查完之后与 <strong>具体位置的差距</strong> 就是一个 $d$ 。由于 $d$ 是一个常数 ，这里仍然是 $O(1)$ 查询的。</p>
-<p>这样一来对于长度为 $k$ 的路径，单次查询复杂度就是 $O(k+\log n)$ 的，于是解决了这个问题。</p>
-<p>是不是和某些结构有些类似？</p>
-</details>
+[{MDEXPAND 具体解法
 
-***
+其实直接把刚才的 “取序列的 $1\over 2$ （也就是所谓偶数位）拿过来归并” 换成 “取 $1\over d$ 拿过来归并” 就行了。这样的话我们每一次查完之后与 **具体位置的差距** 就是一个 $d$ 。由于 $d$ 是一个常数 ，这里仍然是 $O(1)$ 查询的。
+
+这样一来对于长度为 $k$ 的路径，单次查询复杂度就是 $O(k+\log n)$ 的，于是解决了这个问题。
+
+是不是和某些结构有些类似？
+
+}]
 
 ### 1.4 Bonus
 **这里是作者的一些思考，可能会出现问题。**~~但是后文中确实用到了（（（~~
@@ -230,17 +229,15 @@ $$
 
 当然这道题同样存在不使用分散层叠算法的解法，但 **就我目前所知** 应该只有分散层叠能够做到 $O(n\sqrt{n\log n})$ 时间 $O(n)$ 空间以及强制在线。
 
-***
+[{MDEXPAND 具体解法
 
-<details>
-<summary> <strong>具体解法</strong> </summary>
-<p></p>
-<p>其实也并不是很难，我们考虑我们最简单的写法就是 <strong>二分套二分</strong> ，即外层二分答案然后查询 “区间内小于某数的数的个数”，即 “区间 rank”，于是就转化为了 <strong>2.1节</strong> 中解决的问题，那道题的最终单次询问的复杂度应该是 $O({n\over b}+b)$ ，然后这里由于我们需要二分，还需要乘上一只 $\log$，那么我们会发现我们现在多出来了一个 $b\log n$ 的不优秀复杂度。</p>
-<p>但是我们不难发现我们查询的散块范围都是一样的，故我们的散块查询可以直接把排好序的部分拉出来，然后其复杂度就是每次查询一只 $\log$ 了，于是我们达到了 $O(({n\over b}+\log b)\log n + b)$ 的复杂度，此时取 $b={\sqrt{n\log n}}$ 显然最优，达到了 $O(n\sqrt{n\log n})$ 的复杂度。</p>
-<p>并且预处理复杂度和空间复杂度与 <strong>2.1节</strong> 中解决的问题并没有差别，为 $O(n)$ ，于是问题得到了解决。</p>
-</details>
+其实也并不是很难，我们考虑我们最简单的写法就是 **二分套二分** ，即外层二分答案然后查询 “区间内小于某数的数的个数”，即 “区间 rank”，于是就转化为了 **2.1节** 中解决的问题，那道题的最终单次询问的复杂度应该是 $O({n\over b}+b)$ ，然后这里由于我们需要二分，还需要乘上一只 $\log$，那么我们会发现我们现在多出来了一个 $b\log n$ 的不优秀复杂度。
 
-***
+但是我们不难发现我们查询的散块范围都是一样的，故我们的散块查询可以直接把排好序的部分拉出来，然后其复杂度就是每次查询一只 $\log$ 了，于是我们达到了 $O(({n\over b}+\log b)\log n + b)$ 的复杂度，此时取 $b={\sqrt{n\log n}}$ 显然最优，达到了 $O(n\sqrt{n\log n})$ 的复杂度。
+
+并且预处理复杂度和空间复杂度与 **2.1节** 中解决的问题并没有差别，为 $O(n)$ ，于是问题得到了解决。
+
+}]
 
 ### 2.5 部分总结
 
@@ -308,30 +305,28 @@ $$
 
 放一下我在 [P6578](https://www.luogu.com.cn/problem/P6578) 中获得最优解的代码。
 
-***
-
-<details>
-<summary> <strong> 点此展开代码 </strong> </summary>
-<pre><code class="language-cpp">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;algorithm&gt;
-#include &lt;cmath&gt;
-#define rep(i,s,t) for(int i=(s);i&lt;=(t);++i)
-#define per(i,t,s) for(int i=(t);i&gt;=(s);--i)
-#define REP(i,s,t) for(int i=(s);i&lt;(t);++i)
-#define PER(i,t,s) for(int i=(t);i&gt;(s);--i)
+[{MDEXPAND 点此展开代码
+```cpp
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+#include <cmath>
+#define rep(i,s,t) for(int i=(s);i<=(t);++i)
+#define per(i,t,s) for(int i=(t);i>=(s);--i)
+#define REP(i,s,t) for(int i=(s);i<(t);++i)
+#define PER(i,t,s) for(int i=(t);i>(s);--i)
 #define elif else if
 #define gup(x) return puts(#x), 0
 
 namespace MyMinMax{
-template &lt;typename T&gt;
-inline T mn(const T x, const T y) {return x &lt; y ? x : y;}
-template &lt;typename T&gt;
-inline T mx(const T x, const T y) {return x &gt; y ? x : y;}
-template &lt;typename T&gt;
-inline void chmin(T &x, const T y) {(x &gt; y) && (x = y);}
-template &lt;typename T&gt;
-inline void chmax(T &x, const T y) {(x &lt; y) && (x = y);}
+template <typename T>
+inline T mn(const T x, const T y) {return x < y ? x : y;}
+template <typename T>
+inline T mx(const T x, const T y) {return x > y ? x : y;}
+template <typename T>
+inline void chmin(T &x, const T y) {(x > y) && (x = y);}
+template <typename T>
+inline void chmax(T &x, const T y) {(x < y) && (x = y);}
 }
 using namespace MyMinMax;
 
@@ -346,7 +341,7 @@ const int MAXN = 3e5 + 5;
 const int block = 750;//600
 const int B = MAXN / block + 5;
 int n, m, a[MAXN], bel[MAXN], lst[B];
-template &lt;int SZ, typename T = int&gt;
+template <int SZ, typename T = int>
 struct Buffer{
     T BUFF[SZ], *ED = BUFF + sizeof(BUFF) / sizeof(T);
     inline T *alloc(int siz){return ED -= siz;}
@@ -357,32 +352,32 @@ struct NODE{
     NODE (int x = 0, int y = 0) : x(x), y(y){}
 };
 
-Buffer &lt; MAXN &lt;&lt; 2 &gt; buf1;
-Buffer &lt; MAXN &lt;&lt; 1, NODE &gt; buf2;
+Buffer < MAXN << 2 > buf1;
+Buffer < MAXN << 1, NODE > buf2;
 
 struct DPair{
     int val, pos;
     DPair(){}
     DPair(int val, int pos) : val(val), pos(pos) {}
-    inline bool operator &lt; (const DPair & tmp) const{return val &lt; tmp.val;}
+    inline bool operator < (const DPair & tmp) const{return val < tmp.val;}
 }b[MAXN];
 inline void swap(DPair &x, DPair &y){
     x.val ^= y.val ^= x.val ^= y.val;
     x.pos ^= y.pos ^= x.pos ^= y.pos;
 }
-int *t[B &lt;&lt; 1], sz[B &lt;&lt; 1], siz[B &lt;&lt; 1], key[B &lt;&lt; 1];
-NODE *p[B &lt;&lt; 1];
+int *t[B << 1], sz[B << 1], siz[B << 1], key[B << 1];
+NODE *p[B << 1];
 const int pim = 6;
 inline int lc(int x){return x + 1;}
 inline int rc(int x){return x + 1 + siz[lc(x)];}
 inline void merge(int *const rt, NODE *const drt, const int *const l, const int *const r, const int ls, const int rs){
     int i = 0, j = 0, k = 0;
-    while(i &lt; ls && j &lt; rs){
-        if(l[i] &lt; r[j]){rt[k] = l[i];drt[k ++] = NODE(i, j);i += pim;}
+    while(i < ls && j < rs){
+        if(l[i] < r[j]){rt[k] = l[i];drt[k ++] = NODE(i, j);i += pim;}
         else{rt[k] = r[j];drt[k ++] = NODE(i, j);j += pim;}
     }
-    while(i &lt; ls){rt[k] = l[i];drt[k ++] = NODE(i, rs);i += pim;}
-    while(j &lt; rs){rt[k] = r[j];drt[k ++] = NODE(ls, j);j += pim;}
+    while(i < ls){rt[k] = l[i];drt[k ++] = NODE(i, rs);i += pim;}
+    while(j < rs){rt[k] = r[j];drt[k ++] = NODE(ls, j);j += pim;}
     drt[k] = NODE(ls, rs);
 }
 void build(int rt, int l, int r){
@@ -392,7 +387,7 @@ void build(int rt, int l, int r){
         rep(i, lst[l - 1] + 1, lst[l]) t[rt][i - lst[l - 1] - 1] = b[i].val;
         siz[rt] = 1;return ;
     }
-    int mid = (l + r) &gt;&gt; 1;
+    int mid = (l + r) >> 1;
     build(lc(rt), l, mid);build(rc(rt), mid + 1, r);
     siz[rt] = siz[lc(rt)] + siz[rc(rt)] + 1;
     sz[rt] = (sz[lc(rt)] - 1) / pim + 1 + (sz[rc(rt)] - 1) / pim + 1;
@@ -410,11 +405,11 @@ inline void rebuild(int x){
         int x = b[i - 1].pos;
         const int pr = pre[x], sc = suc[x];
         bl[i] = bl[i - 1];br[i] = br[i - 1];bm[i] = bm[i - 1]; 
-        if(pr &lt; l) bl[i] = sc - l;
-        else bm[i] -= ((x - pr - 1) * (x - pr) &gt;&gt; 1);
-        if(sc &gt; r) br[i] = r - pr;
-        else bm[i] -= ((sc - x - 1) * (sc - x) &gt;&gt; 1);
-        if(pr &gt;= l && sc &lt;= r) bm[i] += ((sc - pr - 1) * (sc - pr) &gt;&gt; 1);
+        if(pr < l) bl[i] = sc - l;
+        else bm[i] -= ((x - pr - 1) * (x - pr) >> 1);
+        if(sc > r) br[i] = r - pr;
+        else bm[i] -= ((sc - x - 1) * (sc - x) >> 1);
+        if(pr >= l && sc <= r) bm[i] += ((sc - pr - 1) * (sc - pr) >> 1);
         suc[pr] = sc;pre[sc] = pr;
     }
 }
@@ -423,29 +418,29 @@ inline void change(int pos, int x){
     int it = 0;
     const int id = bel[pos], l = lst[id - 1] + 1, r = lst[id];
     rep(i, l, r) if(b[i].pos == pos){it = i;break;}
-    bool ck = (x &gt; b[it].val);
+    bool ck = (x > b[it].val);
     b[it].val = x;
-    if(ck) while(it &lt; r && b[it + 1].val &lt; b[it].val) swap(b[it], b[it + 1]), ++ it;
-    else while(it &gt; l && b[it - 1].val &gt; b[it].val) swap(b[it], b[it - 1]), -- it;
+    if(ck) while(it < r && b[it + 1].val < b[it].val) swap(b[it], b[it + 1]), ++ it;
+    else while(it > l && b[it - 1].val > b[it].val) swap(b[it], b[it - 1]), -- it;
     rebuild(id);
 }
 
 void modify(int rt, int l, int r, int x){
     if(l == r){rep(i, lst[l - 1] + 1, lst[l]) t[rt][i - lst[l - 1] - 1] = b[i].val;return ;}
-    int mid = (l + r) &gt;&gt; 1;
-    if(x &lt;= mid) modify(lc(rt), l, mid, x);
+    int mid = (l + r) >> 1;
+    if(x <= mid) modify(lc(rt), l, mid, x);
     else modify(rc(rt), mid + 1 , r, x);
     merge(t[rt], p[rt], t[lc(rt)], t[rc(rt)], sz[lc(rt)], sz[rc(rt)]);
 }
 inline bool bruhforce(int l, int r, int &le, int &me, int &re, int x){
     le = re = me = 0;int it = l;
-    while(it &lt;= r && a[it] &lt;= x) ++ it;
-    if(it &gt; r) return le = r - l + 1, 1;
+    while(it <= r && a[it] <= x) ++ it;
+    if(it > r) return le = r - l + 1, 1;
     le = it - l;int itt = r;
-    while(a[itt] &lt;= x) -- itt;
+    while(a[itt] <= x) -- itt;
     re = r - itt;int cnt = 0;
     rep(i, it, itt){
-        if(a[i] &gt; x) me += ((cnt + 1) * cnt &gt;&gt; 1), cnt = 0;
+        if(a[i] > x) me += ((cnt + 1) * cnt >> 1), cnt = 0;
         else ++ cnt;
     }
     return 0;
@@ -456,7 +451,7 @@ void work(int rt, int x, int id, int ioi){
     key[rt] = ioi;
     rep(i, rt, rt + siz[rt] - 1){
         int q = key[i];
-        per(j, pim - 1, 1) if(q &gt;= j && t[i][q - j] &gt; x){q -= j;break;}
+        per(j, pim - 1, 1) if(q >= j && t[i][q - j] > x){q -= j;break;}
         if(siz[i] == 1){
             if(q == sz[i]) {
                 tag[id] = 1;Bl[id] = lst[id] - lst[id - 1];
@@ -475,15 +470,15 @@ void work(int rt, int x, int id, int ioi){
 }
 
 void query(int rt, int l, int r, int x, int y, int z, int q){
-    per(j, pim - 1, 1) if(q &gt;= j && t[rt][q - j] &gt; z){q -= j;break;}
-    if(x &lt;= l && r &lt;= y) return work(rt, z, l, q);
-    int mid = (l + r) &gt;&gt; 1;
-    if(x &lt;= mid) query(lc(rt), l, mid, x, y, z, p[rt][q].x);
-    if(y &gt; mid) query(rc(rt), mid + 1, r, x, y, z, p[rt][q].y);
+    per(j, pim - 1, 1) if(q >= j && t[rt][q - j] > z){q -= j;break;}
+    if(x <= l && r <= y) return work(rt, z, l, q);
+    int mid = (l + r) >> 1;
+    if(x <= mid) query(lc(rt), l, mid, x, y, z, p[rt][q].x);
+    if(y > mid) query(rc(rt), mid + 1, r, x, y, z, p[rt][q].y);
 }
 const int lim = 300;
 inline void init(){
-    if(n &lt;= (lim &lt;&lt; 1)) {
+    if(n <= (lim << 1)) {
         rep(i, 1, n){
             bel[i] = (i - 1) / block + 1;
             lst[bel[i]] = i;
@@ -518,26 +513,25 @@ signed main(){
             read(x);int L = bel[l], R = bel[r];
             if(L == R){
                 int le = 0, re = 0, me = 0;
-                if(bruhforce(l, r, le, me, re, x)) print((r - l + 1) * (r - l + 2) &gt;&gt; 1);
-                else print(me + (le * (le + 1) &gt;&gt; 1) + (re * (re + 1) &gt;&gt; 1));
+                if(bruhforce(l, r, le, me, re, x)) print((r - l + 1) * (r - l + 2) >> 1);
+                else print(me + (le * (le + 1) >> 1) + (re * (re + 1) >> 1));
                 continue;
             }
             LL ans = 0;
-            if(L &lt; R - 1) query(1, 1, bel[n], L + 1, R - 1, x, std :: upper_bound(t[1], t[1] + sz[1], x) - t[1]);
+            if(L < R - 1) query(1, 1, bel[n], L + 1, R - 1, x, std :: upper_bound(t[1], t[1] + sz[1], x) - t[1]);
             tag[L] = bruhforce(l, lst[L], Bl[L], Bm[L], Br[L], x);
             tag[R] = bruhforce(lst[R - 1] + 1, r, Bl[R], Bm[R], Br[R], x);
             int cnt = 0;
             rep(i, L, R){
                 ans += Bm[i];cnt += Bl[i];
-                if(!tag[i]) ans += (1ll * (cnt + 1) * cnt &gt;&gt; 1), cnt = Br[i];
+                if(!tag[i]) ans += (1ll * (cnt + 1) * cnt >> 1), cnt = Br[i];
             }
-            print(ans += (1ll * (cnt + 1) * cnt &gt;&gt; 1));
+            print(ans += (1ll * (cnt + 1) * cnt >> 1));
         }
     }
-}</code></pre>
-</details>
-
-***
+}
+```
+}]
 
 ## 4 总结
 分散层叠算法虽然在 OI 中并不普及，但从它对这几道分块题的优化中就可以看出 ~~分块在 OI 中仍有很好的前途~~ 分散层叠算法在 OI 中还有很广的可探索空间，比如2021年集训队论文中就谈到了分散层叠算法维护二维平面的一些运用（这个暂时咕咕咕，以后可能会写）。而且其运用到的思想也十分优秀，值得一学，一定能起到提升思维水平的作用。
