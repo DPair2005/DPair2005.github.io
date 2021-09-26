@@ -69,14 +69,16 @@
   border-left: 4px solid #0ba;
   margin: .6em 0;
   overflow: auto;
+  font-size: 16px;
 }
 
 .post summary {
   display: block;
   position: relative;
-  background-color: rgba(0,200,200,.1);
+  background-color: rgba(0, 200, 200, 0.1);
   margin: 0 -.6rem;
   padding: .4rem .6rem .4rem .8rem;
   cursor: pointer;
   font-family: 'ZCOOL XiaoWei';
+  font-size: 20px;
 }
