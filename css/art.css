@@ -73,7 +73,7 @@
 }
 
 .post summary {
-  display: block;
+  display: flexbox;
   position: relative;
   background-color: rgba(0, 200, 200, 0.1);
   margin: 0 -.6rem;
