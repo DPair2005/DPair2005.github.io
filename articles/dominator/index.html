@@ -1,0 +1,180 @@
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/art.css">
+  <link rel="icon" type="images/png" href="/images/favicon.png">
+  <script src="/js/element.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/styles/atom-one-light.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.4.0/build/highlight.min.js"></script>
+  <title>
+    支配树学习笔记 - DPairの非自制 blog
+  </title>
+</head>
+
+<body>
+  <script>
+    window.onload = function() {
+      loadMath();
+      drawSaying();
+      hljs.configure({ tabReplace: '  ' });
+      hljs.initHighlighting()
+    }
+  </script>
+
+  <div class="content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-title">
+  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+  DPairの非自制 blog
+  </p>
+  <hr align="center" style="width: 200px;">
+  <p></p>
+  <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+  <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+  <div class="saying" id="saying"> </div>
+</div>
+
+<script>
+  SaveBackground()
+</script>
+
+<div class="sidebar-body">
+
+  <div class="sidebar-content">
+    <ul class = "sidebar-menu">
+      <a href="/">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+          Home
+        </li>
+      </a>
+      <a href="/articles">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-articles"
+            style="background: #e5e5e5">
+          Articles
+        </li>
+      </a>
+      <a href="/tags">
+        <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+          Tags
+        </li>
+      </a>
+    </ul>
+  </div>
+
+  <div class="sidebar-about">
+  <div style="text-align: center; font-size: 16px;"> About me </div>
+  <HR align="center">
+  <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+    <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
+  </div>
+
+  <ul class="sidebar-links">
+  <li class="sidebar-links-item">
+    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+      luogu blog 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://codeforces.com/profile/DPair" class="friend-link">
+      Codeforces 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://atcoder.jp/users/DPair" class="friend-link">
+      AtCoder 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://github.com/DPair2005" class="friend-link">
+      github 
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://gitee.com/DPair" class="friend-link">
+      gitee 
+    </a>
+  </li>
+  </ul>
+
+</div>
+
+<ul class="sidebar-links">
+  <div style="text-align: center; font-size: 16px;"> links </div>
+  <HR align="center">
+
+  <li class="sidebar-links-item">
+    <a href="https://coderoj.gitee.io/" class="friend-link">
+      Jacder's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://xyix.github.io/" class="friend-link">
+      xYix's blog
+    </a>
+  </li>
+<li class="sidebar-links-item">
+    <a href="https://www.cnblogs.com/Point-King/" class="friend-link">
+      Point_King's blog
+    </a>
+  </li>
+
+</ul>
+
+
+
+</div>
+
+    </div>
+
+    <div class="post" id="post">
+      <h1>支配树学习笔记</h1>
+      <p>学习自 <a href="https://coderoj.gitee.io/articles/dominator/">Jacder&#39;s blog</a>，<del>妈呀怎么和他写的一模一样。</del></p>
+<h2 id="%E5%AE%9A%E4%B9%89">定义</h2>
+<p>对于一个有向图 $G$ 和起点 $s$，定义 $u$ 支配 $v$ 当且仅当所有从 $s$ 到 $v$ 的路径都经过点 $u$。</p>
+<p>所有支配关系构成的树就是支配树。</p>
+<p>后文中假设所有点都可以被 $s$ 到达。</p>
+<h2 id="dag">DAG</h2>
+<p>DAG 上的支配树还是比较好求的。</p>
+<p>我们考虑直接拓扑排序，由于 $s$ 可以到达其它所有点，所以 $s$ 没有入边一定优先进队。</p>
+<p>然后考虑确定一棵树的方式之一就是确定每一个节点的父亲，显然 $s$ 没有父亲。</p>
+<p>而对于一个节点 $v$，我们不难发现它的父亲一定支配了它在图中所有入边对应的节点。</p>
+<p>考虑若 $v$ 被访问到，则它所有的入边对应的节点也已经被访问到并出现在支配树上，因此这些点的 LCA 就是 $v$ 在支配树上的父亲，这部分倍增处理即可。</p>
+<h2 id="%E4%B8%80%E8%88%AC%E5%9B%BE">一般图</h2>
+<p>我们先对这幅图建出 dfs 树并求出其 dfn 序。</p>
+<p>然后引入一个概念： <strong>“半支配点”</strong> 。</p>
+<p>定义一个点 $u$ 是 $v$ 的半支配点当且仅当存在一条路径 $u\rightarrow u<em>1 \rightarrow u_2 \rightarrow \dots \rightarrow u_k \rightarrow v$，使得 $\forall i\in[1, k], dfn</em>{u<em>i} &gt; dfn</em>{v_i}$。</p>
+<p>首先不难发现半支配点可能有多个，例如 $fa_{v}$ 就一定是 $v$ 的一个半支配点。</p>
+<p>定义 $v$ 的 <strong>“最小半支配点”</strong> 为 $v$ 的所有半支配点中 dfn 最小的一个，设它为 $\text{semi}(v)$，显然是唯一的。</p>
+<p>这东西是有一些性质的。</p>
+<hr>
+<h3 id="1-text-semi-v-%E4%B8%80%E5%AE%9A%E6%98%AF-v-%E7%9A%84%E7%A5%96%E5%85%88">1) $\text{semi}(v)$ 一定是 $v$ 的祖先</h3>
+<p>其实仔细想想也挺显然的。</p>
+<p>由于显然存在一个 dfn 比 $v$ 小的半支配点，因此 $\text{semi}(v)$ 不可能 dfn 比 $v$ 更大。</p>
+<p>因此考虑 $\text{semi}(v)$ 若 dfn 序比 $v$ 更小，考虑它到达 $v$ 一定需要经过一个 $v$ 的祖先，因此除非它本身就是 $v$ 的祖先，否则存在矛盾。</p>
+<h3 id="2-%E5%88%A0%E9%99%A4%E5%8E%9F%E5%9B%BE%E9%9D%9E%E6%A0%91%E8%BE%B9%EF%BC%8C%E5%8A%A0%E5%85%A5%E5%BD%A2%E5%A6%82-text-semi-u-u-%E7%9A%84%E8%BE%B9%EF%BC%8C%E6%94%AF%E9%85%8D%E5%85%B3%E7%B3%BB%E4%B8%8D%E5%8F%98">2) 删除原图非树边，加入形如 $(\text{semi}(u), u)$ 的边，支配关系不变</h3>
+<p>其实就是证明支配关系在原图和新图的中不变。</p>
+<p>首先考虑祖先与后代之间的边的删去对支配关系显然无影响。</p>
+<p>考虑删去一条横杈边 $(u, v)$，首先显然 $v$ 的 dfn 序更小，而且 $u$ 到 $lca(u, v)$ 上的所有点本来就不可能构成支配点，因此只可能导致删去后支配关系增多。</p>
+<p>那么只需要考虑证明这么操作后支配关系不会增多就行。</p>
+<p>不难发现新图中若存在 $(x, u)$ 这一对支配关系，当且仅当 $(x, u)$ 路径上的每一个点 $y$，都有 $dfn_{\text{semi}(y)} \ge dfn_x$。</p>
+<p>考虑如果存在一个 $y$ 不满足该条件，说明存在一个点可以不经过 $x$ 到达 $y$，由于 $y$ 又可以到达 $u$，那么就存在一个点可以不经过 $x$ 到达 $u$，这与 $x$ 支配 $u$ 矛盾。</p>
+<p>然后我们再假设原图中 $(x, u)$ 这对关系不存在，换言之就是有另一条路径可以不经过 $x$ 到达 $u$。</p>
+<p>然后考虑这条不经过 $x$ 的路径上的一个点 $y$，然后假设它的前驱为 $w$，我们要找到一个点使得 $dfn_w &lt; dfn_x &lt; dfn_y$，显然存在一个这样的点。</p>
+<p>我们设 $(y,u)$ 这条路径和 $(x,u)$ 的最初的交点为 $z$（可能与 $u$ 相等）。</p>
+<p>考虑 $dfn<em>{\text{semi}(z)}$ 一定 $\le dfn</em>{w}$，显然出现了矛盾。</p>
+<hr>
+<p>有了这些性质，显然我们可以删掉所有非树边然后加入所有 $(\text{semi}(u), u)$，显然图变为了 DAG，并且原支配关系不变。</p>
+<p>那么最后的问题在于如何求出所有点的 $\text{semi}$</p>
+<p>首先我们对于每一条边 $(u, v)$ 进行讨论：</p>
+<ul>
+<li>若 $dfn_u &lt; dfn_v$，显然 $u$ 是 $v$ 的半支配点，而且显然 $\text{semi}(v)$ 不会超过 $u$</li>
+<li>否则，考虑每一个 dfn 比 $v$ 大的 $u$ 的祖先，这些点的半支配点显然都可以尝试对 $v$ 产生贡献</li>
+</ul>
+<p>因此按 dfn 排序，然后带权并查集优化上述过程即可。</p>
+
+      
+
+    </div>
+
+  </div>
+</body>

@@ -1,3 +1,7 @@
+.post {
+  font-family: '';
+}
+
 .post h1, .post h2 {
   border-bottom: 1px solid #eee;
   padding-top: 10px;
@@ -37,6 +41,11 @@
 
 .post h6 {
     font-size: 15px;
+}
+
+.post img {
+  max-width: -moz-available;
+  max-width: -webkit-fill-available;
 }
 
 .post HR {
