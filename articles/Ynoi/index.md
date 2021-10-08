@@ -1,5 +1,5 @@
 ---
-title: Ynoi 做题记录 I
+title: Ynoi 做题记录
 tags:
   - ds
   - wys
