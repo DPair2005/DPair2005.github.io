@@ -18,8 +18,4 @@ win.Search = AnalyzeSearch(location.search)
 win.Funval = win.Search['funval']
 
 
-
-
-
-
 })(document);
