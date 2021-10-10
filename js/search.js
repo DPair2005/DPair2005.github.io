@@ -1,10 +1,5 @@
 (function (win) {
-
-
-
 'use strict',
-
-
 
 AnalyzeSearch = function (s) {
     let ret = {}, t, r;
