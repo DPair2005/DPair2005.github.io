@@ -887,3 +887,8 @@ $$
 ~~不愧是 DPair，思维瓶颈都这么清新脱俗~~
 
 所以以后还是要少卡常（（
+
+40、[P7712 [Ynoi2077] hlcpq](https://www.luogu.com.cn/problem/P7712)
+
+标签：数据结构优化建图
+
