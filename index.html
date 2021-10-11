@@ -184,7 +184,7 @@
             
             <div class="fun" id="fun"> 
                 <p style="text-align: center; font-size: 100;">MYYAKAK!!!</p>
-                <p style="text-align: center;"><img src="./images/myy_dance.gif" alt=""></p>
+                <p style="text-align: center; opacity: 1.0;"><img src="./images/myy_dance.gif" alt=""></p>
             </div>
         </div>
 
@@ -192,12 +192,15 @@
 
     </div>
     <script>
-        'use strict',
         drawSaying();
-        let winbody = document.body;
-        if (document.Funval == 'MYYAKAK')
-            winbody.style.setProperty("--fun-display", 'default');
-        else 
-            winbody.style.setProperty("--fun-display", 'none');
-    </script>
+        
+        </script>
 </body>
+<script>
+'use strict';
+let winbody = document.body;
+if (document.Funval == 'MYYAKAK')
+    winbody.style.setProperty("--fun-display", 'default');
+else 
+    winbody.style.setProperty("--fun-display", 'none');
+</script>
