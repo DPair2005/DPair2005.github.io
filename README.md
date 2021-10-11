@@ -1,1 +1,1 @@
-# This is my blog
+# Here lies my blog.
