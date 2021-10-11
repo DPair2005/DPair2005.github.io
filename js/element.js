@@ -46,7 +46,7 @@ function loadMath() {
     })();
 }
 
-const total = 10
+const total = 9
 const constid = 3
 function ChangeBackground(x) {
     document.body.style.backgroundImage = "url(/bgp/bgp" + x + ".png)"
