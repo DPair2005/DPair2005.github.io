@@ -2,11 +2,13 @@ function rand(n) {
     return parseInt(n * Math.random());
 }
 const says = {
-    '广告 (advertisement)': [
-        '&?funval=MYYAKAK',
-        'https://www.luogu.com.cn/team/37854'
-    ],
     '一言 (hitokoto)': [
+        '&?funval=MYYAKAK',
+        '&?funval=MYYAKAK',
+        '&?funval=MYYAKAK',
+        '&?funval=MYYAKAK',
+        '&?funval=MYYAKAK',
+        'https://www.luogu.com.cn/team/37854',
         '船马上就要开了，这次就不玩了',
         '希望会不断前进！',
         '用谎言引出真相！',
