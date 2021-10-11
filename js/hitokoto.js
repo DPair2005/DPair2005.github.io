@@ -2,6 +2,10 @@ function rand(n) {
     return parseInt(n * Math.random());
 }
 const says = {
+    '广告 (advertisement)': [
+        '&?funval=MYYAKAK',
+        'https://www.luogu.com.cn/team/37854'
+    ],
     '一言 (hitokoto)': [
         '船马上就要开了，这次就不玩了',
         '希望会不断前进！',
@@ -164,7 +168,10 @@ const says = {
         '破坏神欧贝利斯克，伴随着究极的力量降临于此，成为我绝对的仆人吧！',
     ]
 
+
+
 }
+
 function drawSaying() {
     let sayingtype = rand(Object.keys(says).length)
     let sayingtitle = Object.keys(says)[sayingtype]
