@@ -182,16 +182,22 @@
 <p>如果你觉得我哪里写错了或者有疑问，其实如果你不认识我，你也联系不上我</p>
 
             
+            <div class="fun" id="fun"> 
+                <p style="text-align: center; font-size: 100;">MYYAKAK!!!</p>
+                <p style="text-align: center;"><img src="./images/myy_dance.gif" alt=""></p>
+            </div>
         </div>
 
-        <div class="fun" id="fun"> 
-
-
-        </div>
 
 
     </div>
     <script>
-        drawSaying()
+        'use strict',
+        drawSaying();
+        let winbody = document.body;
+        if (document.Funval == 'MYYAKAK')
+            winbody.style.setProperty("--fun-display", 'default');
+        else 
+            winbody.style.setProperty("--fun-display", 'none');
     </script>
 </body>
