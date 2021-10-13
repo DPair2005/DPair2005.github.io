@@ -165,23 +165,12 @@
 <li>可能是网站出现了一些什么故障</li>
 </ul>
 <p>p.s. 这个页面没有彩蛋捏~</p>
-
-            
-
-            <div class="fun" id="fun"> 
-                <p style="text-align: center; font-size: 70;">恭喜你以 1% 的概率发现了彩蛋！</p>
-                <p style="text-align: center; font-size: 15;">好耶！但是，这个彩蛋有什么特殊的地方呢？</p>
-                <p style="text-align: center; font-size: 70;">然而并没有！</p>
-                <p style="text-align: center; font-size: 15;">（于是 DPair 被打死了）</p>
-            </div>
-        </div>
-
-    </div>
-        <script>
-            document.getElementById("sayingtype").innerText = "一言 (hitokoto) ";
-            document.getElementById("saying").innerText = "李在赣神魔？";
-        </script>
-</body>
+<div class="fun" id="fun"> 
+    <p style="text-align: center; font-size: 70;">恭喜你以 1% 的概率发现了彩蛋！</p>
+    <p style="text-align: center; font-size: 15;">好耶！但是，这个彩蛋有什么特殊的地方呢？</p>
+    <p style="text-align: center; font-size: 70;">然而并没有！</p>
+    <p style="text-align: center; font-size: 15;">（于是 DPair 被打死了）</p>
+</div>
 
 <script>
 'use strict';
@@ -191,6 +180,15 @@ if (rand(100) == 0)
 else 
     winbody.style.setProperty("--fun-display", 'none');
 </script>
+            
+        </div>
+
+    </div>
+        <script>
+            document.getElementById("sayingtype").innerText = "一言 (hitokoto) ";
+            document.getElementById("saying").innerText = "李在赣神魔？";
+        </script>
+</body>
 
 
 
