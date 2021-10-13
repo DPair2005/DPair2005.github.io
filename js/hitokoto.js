@@ -3,11 +3,11 @@ function rand(n) {
 }
 const says = {
     '一言 (hitokoto)': [
-        '&?funval=MYYAKAK',
-        '&?funval=MYYAKAK',
-        '&?funval=MYYAKAK',
-        '&?funval=MYYAKAK',
-        '&?funval=MYYAKAK',
+        '?&funval=MYYAKAK',
+        '?&funval=MYYAKAK',
+        '?&funval=MYYAKAK',
+        '?&funval=MYYAKAK',
+        '?&funval=MYYAKAK',
         'https://www.luogu.com.cn/team/37854',
         '船马上就要开了，这次就不玩了',
         '希望会不断前进！',
@@ -22,7 +22,6 @@ const says = {
         'Never gonna give you up, never gonna let you down.\nNever gonna run around and desert you.',
         'Never gonna make you cry, never gonna say goodbye.\nNever gonna tell a lie and hurt you.',
         '“春游我们是有机会去的。”',
-        '王泥喜法介，没问题的！',
         'Let\'s do this!',
         '異議あり！',
         '異議あり！',
