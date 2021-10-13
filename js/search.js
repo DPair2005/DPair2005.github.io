@@ -8,9 +8,9 @@ AnalyzeSearch = function (s) {
             ret[decodeURIComponent(r[0])] = decodeURIComponent(r[1]);
     return ret;
 }
-
 win.Search = AnalyzeSearch(location.search)
-win.Funval = win.Search['funval']
 
+
+win.Funval = win.Search['funval']
 
 })(document);
