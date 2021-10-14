@@ -3,7 +3,7 @@ function rand(n) {
 }
 
 const NumberOfBGPs = 7
-const constid = 3
+const default_value = 3
 
 function ChangeBackground(x) {
     document.body.style.backgroundImage = "url(/bgp/bgp" + x + ".png)"
@@ -32,7 +32,7 @@ function JudgeBackground(cur) {
         DisableBackground();
         return ;
     }
-    if (JudgeBackground(cur)) cur = constid;
+    if (JudgeBackground(cur)) cur = default_value;
     ChangeBackground(cur);
 } */
 
@@ -40,7 +40,7 @@ function NextBackground() {
     var Storage = window.localStorage;
     var cur = Number(Storage.getItem('Background'));
     
-    if (JudgeBackground(cur)) cur = constid;
+    if (JudgeBackground(cur)) cur = default_value;
     if (cur < 0) {
         cur = Number(cur) - 1;
         if (cur < -NumberOfBGPs) cur += NumberOfBGPs;
@@ -58,7 +58,7 @@ function NextBackground() {
 /* function SwitchBackground() {
     var Storage = window.localStorage;
     var cur = Number(Storage.getItem('Background'))
-    if (JudgeBackground(cur)) cur = constid
+    if (JudgeBackground(cur)) cur = default_value
     if (cur < 0) {
         cur = -cur;
         ChangeBackground(cur);
