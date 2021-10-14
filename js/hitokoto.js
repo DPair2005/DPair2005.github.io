@@ -4,6 +4,8 @@ function rand(n) {
 
 const says = {
     '一言 (hitokoto)': [
+        '愿风神忽悠你',
+        '欲买桂花同载酒，只可惜故人，何日再见啊。',
         '?&funval=MYYAKAK',
         '?&funval=MYYAKAK',
         '?&funval=hhz',
