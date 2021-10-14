@@ -2,7 +2,7 @@ function rand(n) {
     return parseInt(n * Math.random());
 }
 
-const NumberOfBGPs = 7
+const NumberOfBGPs = 6
 const default_value = 3
 
 function ChangeBackground(x) {
