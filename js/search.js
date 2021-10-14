@@ -11,5 +11,6 @@ AnalyzeSearch = function (s) {
 
 win.Search = AnalyzeSearch(location.search)
 win.Funval = win.Search['funval']
+win.Background = win.Search['background']
 
 })(document);
