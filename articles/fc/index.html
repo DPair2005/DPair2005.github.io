@@ -1,45 +1,45 @@
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
-  <link rel="stylesheet" type="text/css" href="/css/art.css">
-  <link rel="icon" type="images/png" href="/images/favicon.png">
-  <script src="/js/search.js"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/art.css">
+    <link rel="icon" type="images/png" href="/images/favicon.png">
+    <script src="/js/search.js"></script>
 <script src="/js/element.js"></script>
 <script src="/js/theme.js"></script>
 <script src="/js/hitokoto.js"></script>
 <script src="/js/jump.js"></script>
 
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
-  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
-  <script src="/js/language.min.js"></script>
-  <title>
-    分散层叠算法学习笔记 - DPairの非自制 blog
-  </title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
+    <script src="/js/language.min.js"></script>
+    <title>
+        分散层叠算法学习笔记 - DPairの非自制 blog
+    </title>
 </head>
 
 <body>
-    <script src="/js/load_theme.js"></script>
+        <script src="/js/load_theme.js"></script>
 
-  <script>
-    window.onload = function() {
-      loadMath();
-      drawSaying();
-      hljs.configure({ tabReplace: '  ' });
-      hljs.highlightAll()
-    }
-  </script>
+    <script>
+        window.onload = function() {
+            loadMath();
+            drawSaying();
+            hljs.configure({ tabReplace: '    ' });
+            hljs.highlightAll()
+        }
+    </script>
 
-  <div class="content">
-    <div class="sidebar" id="sidebar">
-      <div class="sidebar-title">
-  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
-  DPairの非自制 blog
-  </p>
-  <hr align="center" style="width: 200px;">
-  <p></p>
-  <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
-  <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
-  <div class="saying" id="saying"> </div>
+    <div class="content">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-title">
+    <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+    DPairの非自制 blog
+    </p>
+    <hr align="center" style="width: 200px;">
+    <p></p>
+    <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+    <div class="saying" id="saying"> </div>
 </div>
 
 
@@ -71,112 +71,112 @@
     </div>
 
     <div class="sidebar-about">
-  <div style="text-align: center; font-size: 16px;"> About me </div>
-  <HR align="center">
-  <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
-    <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
-  </div>
+    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <HR align="center">
+    <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+        <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
+    </div>
 
-  <ul class="sidebar-links">
-  <li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
-      luogu blog 
-    </a>
-  </li>
+    <ul class="sidebar-links">
+    <li class="sidebar-links-item">
+        <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+            luogu blog 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://codeforces.com/profile/DPair" class="friend-link">
-      Codeforces 
-    </a>
-  </li>
+        <a href="https://codeforces.com/profile/DPair" class="friend-link">
+            Codeforces 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://atcoder.jp/users/DPair" class="friend-link">
-      AtCoder 
-    </a>
-  </li>
+        <a href="https://atcoder.jp/users/DPair" class="friend-link">
+            AtCoder 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://github.com/DPair2005" class="friend-link">
-      github 
-    </a>
-  </li>
+        <a href="https://github.com/DPair2005" class="friend-link">
+            github 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://gitee.com/DPair" class="friend-link">
-      gitee 
-    </a>
-  </li>
-  </ul>
+        <a href="https://gitee.com/DPair" class="friend-link">
+            gitee 
+        </a>
+    </li>
+    </ul>
 
 </div>
 
 <ul class="sidebar-links">
-  <div style="text-align: center; font-size: 16px;"> links </div>
-  <HR align="center">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
 
-  <li class="sidebar-links-item">
-    <a href="https://coderoj.gitee.io/" class="friend-link">
-      Jacder's blog
-    </a>
-  </li>
+    <li class="sidebar-links-item">
+        <a href="https://coderoj.gitee.io/" class="friend-link">
+            Jacder's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://xyix.github.io/" class="friend-link">
-      xYix's blog
-    </a>
-  </li>
+        <a href="https://xyix.github.io/" class="friend-link">
+            xYix's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/flying2018" class="friend-link">
-      flying2018's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/flying2018" class="friend-link">
+            flying2018's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/Point-King/" class="friend-link">
-      Point_King's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/Point-King/" class="friend-link">
+            Point_King's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://cnblogs.com/pealfrog" class="friend-link">
-      xtw's blog
-    </a>
-  </li>
+        <a href="https://cnblogs.com/pealfrog" class="friend-link">
+            xtw's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="http://xyf007.ml/" class="friend-link">
-      xyf007 ak ioi
-    </a>
-  </li>
+        <a href="http://xyf007.ml/" class="friend-link">
+            xyf007 ak ioi
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/zkdxl" class="friend-link">
-      zkdxl's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/zkdxl" class="friend-link">
+            zkdxl's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/guts" class="friend-link">
-      krimson's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/guts" class="friend-link">
+            krimson's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://blog.moonpie.cf/" class="friend-link">
-      moonpie's blog
-    </a>
-  </li>
+        <a href="https://blog.moonpie.cf/" class="friend-link">
+            moonpie's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/blog/wh2005blog/" class="friend-link">
-      wuhao2005's blog
-    </a>
-  </li>
+        <a href="https://www.luogu.com.cn/blog/wh2005blog/" class="friend-link">
+            wuhao2005's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://blog.jasonfan.ml/" class="friend-link">
-      jasonfan's blog
-    </a>
-  </li>
+        <a href="https://blog.jasonfan.ml/" class="friend-link">
+            jasonfan's blog
+        </a>
+    </li>
 
 </ul>
 
 
 
 </div>
-    </div>
+        </div>
 
-    <div class="post" id="post">
-      <h1>分散层叠算法学习笔记</h1>
-      <h2 id="0-%E5%89%8D%E8%A8%80">0 前言</h2>
+        <div class="post" id="post">
+            <h1>分散层叠算法学习笔记</h1>
+            <h2 id="0-%E5%89%8D%E8%A8%80">0 前言</h2>
 <p><strong>本文学习自 蒋明润 的集训队论文 《浅谈利用分散层叠算法对经典分块问题的优化》。具体内容不一定与论文完全有关，可能会穿插自己的理解和其它博客的说明。</strong></p>
 <h2 id="1-%E7%AE%80%E8%A6%81%E6%A6%82%E8%BF%B0">1 简要概述</h2>
 <h3 id="1-1-%E7%AE%80%E4%BB%8B">1.1 简介</h3>
@@ -580,9 +580,9 @@ signed main(){
 <p>分散层叠算法虽然在 OI 中并不普及，但从它对这几道分块题的优化中就可以看出 <del>分块在 OI 中仍有很好的前途</del> 分散层叠算法在 OI 中还有很广的可探索空间，比如2021年集训队论文中就谈到了分散层叠算法维护二维平面的一些运用（这个暂时咕咕咕，以后可能会写）。而且其运用到的思想也十分优秀，值得一学，一定能起到提升思维水平的作用。</p>
 <p>但就出题而言，至少我个人认为这个算法不太好出题，主要是因为这个算法的实现存在大量细节，真的写起来会非常恶心。</p>
 
-      
+            
+
+        </div>
 
     </div>
-
-  </div>
 </body>

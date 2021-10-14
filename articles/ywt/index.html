@@ -1,45 +1,45 @@
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
-  <link rel="stylesheet" type="text/css" href="/css/art.css">
-  <link rel="icon" type="images/png" href="/images/favicon.png">
-  <script src="/js/search.js"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/art.css">
+    <link rel="icon" type="images/png" href="/images/favicon.png">
+    <script src="/js/search.js"></script>
 <script src="/js/element.js"></script>
 <script src="/js/theme.js"></script>
 <script src="/js/hitokoto.js"></script>
 <script src="/js/jump.js"></script>
 
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
-  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
-  <script src="/js/language.min.js"></script>
-  <title>
-    压位 Trie 学习笔记 - DPairの非自制 blog
-  </title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
+    <script src="/js/language.min.js"></script>
+    <title>
+        压位 Trie 学习笔记 - DPairの非自制 blog
+    </title>
 </head>
 
 <body>
-    <script src="/js/load_theme.js"></script>
+        <script src="/js/load_theme.js"></script>
 
-  <script>
-    window.onload = function() {
-      loadMath();
-      drawSaying();
-      hljs.configure({ tabReplace: '  ' });
-      hljs.highlightAll()
-    }
-  </script>
+    <script>
+        window.onload = function() {
+            loadMath();
+            drawSaying();
+            hljs.configure({ tabReplace: '    ' });
+            hljs.highlightAll()
+        }
+    </script>
 
-  <div class="content">
-    <div class="sidebar" id="sidebar">
-      <div class="sidebar-title">
-  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
-  DPairの非自制 blog
-  </p>
-  <hr align="center" style="width: 200px;">
-  <p></p>
-  <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
-  <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
-  <div class="saying" id="saying"> </div>
+    <div class="content">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-title">
+    <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+    DPairの非自制 blog
+    </p>
+    <hr align="center" style="width: 200px;">
+    <p></p>
+    <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+    <div class="saying" id="saying"> </div>
 </div>
 
 
@@ -71,112 +71,112 @@
     </div>
 
     <div class="sidebar-about">
-  <div style="text-align: center; font-size: 16px;"> About me </div>
-  <HR align="center">
-  <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
-    <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
-  </div>
+    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <HR align="center">
+    <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+        <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
+    </div>
 
-  <ul class="sidebar-links">
-  <li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
-      luogu blog 
-    </a>
-  </li>
+    <ul class="sidebar-links">
+    <li class="sidebar-links-item">
+        <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+            luogu blog 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://codeforces.com/profile/DPair" class="friend-link">
-      Codeforces 
-    </a>
-  </li>
+        <a href="https://codeforces.com/profile/DPair" class="friend-link">
+            Codeforces 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://atcoder.jp/users/DPair" class="friend-link">
-      AtCoder 
-    </a>
-  </li>
+        <a href="https://atcoder.jp/users/DPair" class="friend-link">
+            AtCoder 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://github.com/DPair2005" class="friend-link">
-      github 
-    </a>
-  </li>
+        <a href="https://github.com/DPair2005" class="friend-link">
+            github 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://gitee.com/DPair" class="friend-link">
-      gitee 
-    </a>
-  </li>
-  </ul>
+        <a href="https://gitee.com/DPair" class="friend-link">
+            gitee 
+        </a>
+    </li>
+    </ul>
 
 </div>
 
 <ul class="sidebar-links">
-  <div style="text-align: center; font-size: 16px;"> links </div>
-  <HR align="center">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
 
-  <li class="sidebar-links-item">
-    <a href="https://coderoj.gitee.io/" class="friend-link">
-      Jacder's blog
-    </a>
-  </li>
+    <li class="sidebar-links-item">
+        <a href="https://coderoj.gitee.io/" class="friend-link">
+            Jacder's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://xyix.github.io/" class="friend-link">
-      xYix's blog
-    </a>
-  </li>
+        <a href="https://xyix.github.io/" class="friend-link">
+            xYix's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/flying2018" class="friend-link">
-      flying2018's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/flying2018" class="friend-link">
+            flying2018's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/Point-King/" class="friend-link">
-      Point_King's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/Point-King/" class="friend-link">
+            Point_King's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://cnblogs.com/pealfrog" class="friend-link">
-      xtw's blog
-    </a>
-  </li>
+        <a href="https://cnblogs.com/pealfrog" class="friend-link">
+            xtw's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="http://xyf007.ml/" class="friend-link">
-      xyf007 ak ioi
-    </a>
-  </li>
+        <a href="http://xyf007.ml/" class="friend-link">
+            xyf007 ak ioi
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/zkdxl" class="friend-link">
-      zkdxl's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/zkdxl" class="friend-link">
+            zkdxl's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/guts" class="friend-link">
-      krimson's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/guts" class="friend-link">
+            krimson's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://blog.moonpie.cf/" class="friend-link">
-      moonpie's blog
-    </a>
-  </li>
+        <a href="https://blog.moonpie.cf/" class="friend-link">
+            moonpie's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/blog/wh2005blog/" class="friend-link">
-      wuhao2005's blog
-    </a>
-  </li>
+        <a href="https://www.luogu.com.cn/blog/wh2005blog/" class="friend-link">
+            wuhao2005's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://blog.jasonfan.ml/" class="friend-link">
-      jasonfan's blog
-    </a>
-  </li>
+        <a href="https://blog.jasonfan.ml/" class="friend-link">
+            jasonfan's blog
+        </a>
+    </li>
 
 </ul>
 
 
 
 </div>
-    </div>
+        </div>
 
-    <div class="post" id="post">
-      <h1>压位 Trie 学习笔记</h1>
-      <h2 id="0-%E5%89%8D%E8%A8%80">0 前言</h2>
+        <div class="post" id="post">
+            <h1>压位 Trie 学习笔记</h1>
+            <h2 id="0-%E5%89%8D%E8%A8%80">0 前言</h2>
 <p><strong>本文学习自 @skip2004 的集训队论文 《浅谈亚 log 数据结构在 OI 中的应用》。本文将按论文顺序介绍笔者的个人理解和思考。</strong></p>
 <p>由于本人更侧重于 OI 中的 <strong>广泛应用</strong>，所以只考虑 <strong>简单实现</strong> ，过于毒瘤或卡常的实现不 <strong>作</strong>（感谢@Jacderzhang）考虑。</p>
 <h2 id="1-dynamic-predecessor-problem">1 Dynamic Predecessor Problem</h2>
@@ -333,9 +333,9 @@ int main(){
 <h2 id="3-%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93">3 个人总结</h2>
 <p>这个数据结构似乎都基于值域，而且似乎使用起来有比较大的限制，所以感觉在我目前能够涉及到的 OI 范围中不太能用上，比如论文里面给出的 <strong>[ZJOI2019] 语言</strong> 这一例子，我们完全可以使用线段树合并来进行直接处理，代码难度更低的同时同样可以通过这道题。故个人感觉除了卡常需要，这个数据结构一般不太会用上。不过这个思想还是很值得学习的。</p>
 
-      
+            
+
+        </div>
 
     </div>
-
-  </div>
 </body>

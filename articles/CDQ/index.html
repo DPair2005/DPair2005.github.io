@@ -1,45 +1,45 @@
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
-  <link rel="stylesheet" type="text/css" href="/css/art.css">
-  <link rel="icon" type="images/png" href="/images/favicon.png">
-  <script src="/js/search.js"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/art.css">
+    <link rel="icon" type="images/png" href="/images/favicon.png">
+    <script src="/js/search.js"></script>
 <script src="/js/element.js"></script>
 <script src="/js/theme.js"></script>
 <script src="/js/hitokoto.js"></script>
 <script src="/js/jump.js"></script>
 
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
-  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
-  <script src="/js/language.min.js"></script>
-  <title>
-    CDQ 分治学习笔记 - DPairの非自制 blog
-  </title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
+    <script src="/js/language.min.js"></script>
+    <title>
+        CDQ 分治学习笔记 - DPairの非自制 blog
+    </title>
 </head>
 
 <body>
-    <script src="/js/load_theme.js"></script>
+        <script src="/js/load_theme.js"></script>
 
-  <script>
-    window.onload = function() {
-      loadMath();
-      drawSaying();
-      hljs.configure({ tabReplace: '  ' });
-      hljs.highlightAll()
-    }
-  </script>
+    <script>
+        window.onload = function() {
+            loadMath();
+            drawSaying();
+            hljs.configure({ tabReplace: '    ' });
+            hljs.highlightAll()
+        }
+    </script>
 
-  <div class="content">
-    <div class="sidebar" id="sidebar">
-      <div class="sidebar-title">
-  <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
-  DPairの非自制 blog
-  </p>
-  <hr align="center" style="width: 200px;">
-  <p></p>
-  <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
-  <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
-  <div class="saying" id="saying"> </div>
+    <div class="content">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-title">
+    <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+    DPairの非自制 blog
+    </p>
+    <hr align="center" style="width: 200px;">
+    <p></p>
+    <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+    <div class="saying" id="saying"> </div>
 </div>
 
 
@@ -71,112 +71,112 @@
     </div>
 
     <div class="sidebar-about">
-  <div style="text-align: center; font-size: 16px;"> About me </div>
-  <HR align="center">
-  <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
-    <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
-  </div>
+    <div style="text-align: center; font-size: 16px;"> About me </div>
+    <HR align="center">
+    <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+        <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()">
+    </div>
 
-  <ul class="sidebar-links">
-  <li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
-      luogu blog 
-    </a>
-  </li>
+    <ul class="sidebar-links">
+    <li class="sidebar-links-item">
+        <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+            luogu blog 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://codeforces.com/profile/DPair" class="friend-link">
-      Codeforces 
-    </a>
-  </li>
+        <a href="https://codeforces.com/profile/DPair" class="friend-link">
+            Codeforces 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://atcoder.jp/users/DPair" class="friend-link">
-      AtCoder 
-    </a>
-  </li>
+        <a href="https://atcoder.jp/users/DPair" class="friend-link">
+            AtCoder 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://github.com/DPair2005" class="friend-link">
-      github 
-    </a>
-  </li>
+        <a href="https://github.com/DPair2005" class="friend-link">
+            github 
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://gitee.com/DPair" class="friend-link">
-      gitee 
-    </a>
-  </li>
-  </ul>
+        <a href="https://gitee.com/DPair" class="friend-link">
+            gitee 
+        </a>
+    </li>
+    </ul>
 
 </div>
 
 <ul class="sidebar-links">
-  <div style="text-align: center; font-size: 16px;"> links </div>
-  <HR align="center">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
 
-  <li class="sidebar-links-item">
-    <a href="https://coderoj.gitee.io/" class="friend-link">
-      Jacder's blog
-    </a>
-  </li>
+    <li class="sidebar-links-item">
+        <a href="https://coderoj.gitee.io/" class="friend-link">
+            Jacder's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://xyix.github.io/" class="friend-link">
-      xYix's blog
-    </a>
-  </li>
+        <a href="https://xyix.github.io/" class="friend-link">
+            xYix's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/flying2018" class="friend-link">
-      flying2018's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/flying2018" class="friend-link">
+            flying2018's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/Point-King/" class="friend-link">
-      Point_King's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/Point-King/" class="friend-link">
+            Point_King's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://cnblogs.com/pealfrog" class="friend-link">
-      xtw's blog
-    </a>
-  </li>
+        <a href="https://cnblogs.com/pealfrog" class="friend-link">
+            xtw's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="http://xyf007.ml/" class="friend-link">
-      xyf007 ak ioi
-    </a>
-  </li>
+        <a href="http://xyf007.ml/" class="friend-link">
+            xyf007 ak ioi
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/zkdxl" class="friend-link">
-      zkdxl's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/zkdxl" class="friend-link">
+            zkdxl's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.cnblogs.com/guts" class="friend-link">
-      krimson's blog
-    </a>
-  </li>
+        <a href="https://www.cnblogs.com/guts" class="friend-link">
+            krimson's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://blog.moonpie.cf/" class="friend-link">
-      moonpie's blog
-    </a>
-  </li>
+        <a href="https://blog.moonpie.cf/" class="friend-link">
+            moonpie's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://www.luogu.com.cn/blog/wh2005blog/" class="friend-link">
-      wuhao2005's blog
-    </a>
-  </li>
+        <a href="https://www.luogu.com.cn/blog/wh2005blog/" class="friend-link">
+            wuhao2005's blog
+        </a>
+    </li>
 <li class="sidebar-links-item">
-    <a href="https://blog.jasonfan.ml/" class="friend-link">
-      jasonfan's blog
-    </a>
-  </li>
+        <a href="https://blog.jasonfan.ml/" class="friend-link">
+            jasonfan's blog
+        </a>
+    </li>
 
 </ul>
 
 
 
 </div>
-    </div>
+        </div>
 
-    <div class="post" id="post">
-      <h1>CDQ 分治学习笔记</h1>
-      <p><del>没想到吧我刚学CDQ</del></p>
+        <div class="post" id="post">
+            <h1>CDQ 分治学习笔记</h1>
+            <p><del>没想到吧我刚学CDQ</del></p>
 <p>本文只考虑狭义的 CDQ 分治（即处理偏序问题的 CDQ分治 ），广义的推广一下就行了。</p>
 <p>我们先看这样一个问题</p>
 <h3 id="%E4%BE%8B1">例1</h3>
@@ -201,9 +201,9 @@
 <p>我们惊奇的发现，归并排序恰好确定了访问顺序，然后我们套一个树状数组就可以了</p>
 <p>大概的流程就是，我们按照 $a$ 进行归并排序，那么最终序列内的 $a$ 是有序的，然后由于我们只算一边对另一边的贡献所以下标也是有序的，在次基础上我们把右区间中的数放入最终序列时对树状数组进行修改，那么左区间被放入时就可以方便地用树状数组查询得到当前最终序列中 $b$ 这一维 $&lt;$ 该数的数的个数了，不难发现这样的数由于在右区间所以一定满足 $i &lt; j$ ，归并排序由满足 $a_i &gt; a_j$ ，最后树状数组又查出了 $b_i &gt; b_j$ ，问题就解决了。</p>
 
-      
+            
+
+        </div>
 
     </div>
-
-  </div>
 </body>
