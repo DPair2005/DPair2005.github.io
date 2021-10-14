@@ -1,6 +1,7 @@
 function rand(n) {
     return parseInt(n * Math.random());
 }
+
 const says = {
     '一言 (hitokoto)': [
         '?&funval=MYYAKAK',

@@ -1,7 +1,3 @@
-function rand(n) {
-    return parseInt(n * Math.random());
-}
-
 function loadMath() {
     window.MathJax = {
         loader: {
@@ -46,29 +42,3 @@ function loadMath() {
     })();
 }
 
-const total = 7
-const constid = 3
-function ChangeBackground(x) {
-    document.body.style.backgroundImage = "url(/bgp/bgp" + x + ".png)"
-}
-
-function RandomBackground(x) {
-    ChangeBackground(rand(total) + 1)
-}
-
-function SaveBackground(x) {
-    var Storage = window.localStorage;
-    var cur = Number(Storage.getItem('Background'))
-    if ((typeof (cur) != "number" || cur > total || cur < 1)) cur = constid
-    ChangeBackground(cur)
-}
-
-function NextBackground() {
-    var Storage = window.localStorage;
-    var cur = Number(Storage.getItem('Background'))
-    if ((typeof (cur) != "number" || cur > total || cur < 1)) cur = constid
-    cur = Number(cur) + 1
-    if (cur > total) cur -= total
-    ChangeBackground(cur)
-    Storage.setItem('Background', cur);
-}
