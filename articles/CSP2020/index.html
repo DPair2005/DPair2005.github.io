@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -9,19 +10,20 @@
 <script src="/js/element.js"></script>
 <script src="/js/theme.js"></script>
 <script src="/js/hitokoto.js"></script>
-<script src="/js/fun.js"></script>
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
+    <link rel="stylesheet"
+        href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
     <script src="/js/language.min.js"></script>
     <script src="/js/crypto-js.min.js"></script>
 </head>
 
 <body>
-        <script src="/js/load_theme.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/load_theme.js"></script>
 
     <script>
-        window.onload = function() {
+        window.onload = function () {
             hljs.configure({ tabReplace: '    ' });
             drawSaying();
         }
@@ -180,7 +182,7 @@
             
 
             
-            
+
             
 
             <h2> 被加密的内容 </h2>
@@ -189,24 +191,24 @@
                 <span> 输入密码以查看：</span>
                 <input class="underline-input" id="password" type="password">
                 <input class="gradual-button" type="submit" value="submit">
-                <br/>
+                <br />
                 <span> 提示： please input password </span>
             </form>
 
             <script>
                 passwdMd5 = "7503745e20ce593e799507f82fea3825"
-                encryptedBlog = "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"
+                encryptedBlog = "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"
 
                 function verify() {
                     let passwd = document.getElementById("password").value
                     if (passwd == "") {
-                        alert("please enter password!")
-                        return
+                        alert("I guess you should input something...");
+                        return 
                     }
-                    passwd = CryptoJS.MD5(passwd).toString().substr(0,16)
+                    passwd = CryptoJS.MD5(passwd).toString().substr(0, 16)
                     if (CryptoJS.MD5(passwd).toString() !== passwdMd5) {
-                        alert("password incorret")
-                        return
+                        alert("Password incorrect");
+                        return ;
                     }
                     let key = CryptoJS.enc.Utf8.parse(passwd)
                     decrypted = CryptoJS.AES.decrypt(encryptedBlog, key, {

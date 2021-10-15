@@ -10,13 +10,13 @@
 <script src="/js/element.js"></script>
 <script src="/js/theme.js"></script>
 <script src="/js/hitokoto.js"></script>
-<script src="/js/fun.js"></script>
 
     <title> DPairの非自制 blog </title>
 </head>
 
 <body>
-    <script src="/js/load_theme.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/load_theme.js"></script>
 
     <div class="content">
         <div class="sidebar" id="sidebar">
@@ -184,7 +184,12 @@
 'use strict';
 let winbody = document.body;
 if (rand(100) == 0)
-    winbody.style.setProperty("--fun-display", 'default');
+    Swal.fire({
+        icon: 'info',
+        title: '奇迹出现了',
+    }).then(() => {
+        winbody.style.setProperty("--fun-display", 'default');
+    })
 else 
     winbody.style.setProperty("--fun-display", 'none');
 </script>
