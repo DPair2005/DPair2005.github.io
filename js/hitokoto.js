@@ -1,9 +1,6 @@
-function rand(n) {
-    return parseInt(n * Math.random());
-}
-
 const says = {
     '一言 (hitokoto)': [
+        '只愿涤荡四方，护得浮世一隅。',
         '愿风神忽悠你',
         '欲买桂花同载酒，只可惜故人，何日再见啊。',
         '?&funval=MYYAKAK',

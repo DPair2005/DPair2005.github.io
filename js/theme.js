@@ -1,6 +1,3 @@
-function rand(n) {
-    return parseInt(n * Math.random());
-}
 
 const NumberOfBGPs = 6
 const default_value = 3
@@ -17,12 +14,28 @@ function DisableBackground() {
     ChangeBackground(rand(NumberOfBGPs) + 1)
 } */
 
-function JudgeBackground(cur) {
-    if(typeof(cur) == "number"
-        && cur <= NumberOfBGPs 
+function BackgroundAdjust(cur) {
+    if(typeof(cur) != "number") {
+        if(cur == 'xtw') return 'xtw';
+        if(Number(cur) != Number(cur)) return default_value;
+        cur = Number(cur);
+    }
+    if(cur <= NumberOfBGPs 
         && cur >= -NumberOfBGPs 
-        && cur != 0 ) return false;
-    else return true;
+        && cur != 0 ) return cur;
+    else return default_value;
+}
+
+function BackgroundLegal(cur) {
+    if(typeof(cur) != "number") {
+        if(cur == 'xtw') return true;
+        if(Number(cur) != Number(cur)) return false;
+        cur = Number(cur);
+    }
+    if(cur <= NumberOfBGPs 
+        && cur >= -NumberOfBGPs 
+        && cur != 0 ) return true;
+    else return false;
 }
 
 /* function SetBackground() {
@@ -36,11 +49,26 @@ function JudgeBackground(cur) {
     ChangeBackground(cur);
 } */
 
+
+function GetUrlxtw(x) {
+    return "https://pealfrog.gitee.io/images/picture/" + FillZero3(x) + ".png";
+}
+
+function ChangeBackgroundxtw() {
+    var total = 107;
+    var cur = rand(total) + 1;
+    while (cur > 61 && cur < 70) cur = rand(total) + 1;
+    document.body.style.backgroundImage = "url(" + GetUrlxtw(cur) + ")";
+}
+
 function NextBackground() {
     var Storage = window.localStorage;
-    var cur = Number(Storage.getItem('Background'));
-    
-    if (JudgeBackground(cur)) cur = default_value;
+    var cur = Storage.getItem('Background');
+    cur = BackgroundAdjust(cur);
+    if(cur == 'xtw') {
+        ChangeBackgroundxtw();
+        return ;
+    }
     if (cur < 0) {
         cur = Number(cur) - 1;
         if (cur < -NumberOfBGPs) cur += NumberOfBGPs;
