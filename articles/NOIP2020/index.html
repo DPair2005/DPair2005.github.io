@@ -185,8 +185,8 @@
 
             
 
-            <h1> 被加密的内容 </h1>
-            <button onclick="verify()">Click to resubmit</button>
+            <h2> 被加密的内容 </h2>
+            <button onclick="verify()" style="font-size: 20;">点此输入密码</button>
             
             <!-- <form onsubmit="verify()">
                 <span> 输入密码以查看：</span>
@@ -217,7 +217,7 @@
                                 Swal.fire({
                                     title: 'Emm...',
                                     text: 'I guess you should input something...',
-                                    icon: 'info',
+                                    icon: 'warning',
                                 });
                             }
                             else {
