@@ -41,7 +41,6 @@ body {
     width: 260px;
     height: max-content;
     flex: 0 0 260px;
-    background-attachment:inherit;
 }
 
 .sidebar-title {
