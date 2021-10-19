@@ -250,11 +250,10 @@ val= \lceil\frac{sum}{sz}\rceil</script><p>其中 $sz, sum$ 分别表示子树�
 </body>
 
 <script>
-    if (rand(64) == 0) {
+    if (rand(1) == 0) {
         Swal.fire({
             title: '喜欢我的博客吗？',
             icon: 'info',
-            showCloseButton: true,
             showCancelButton: true,
             focusConfirm: false,
             confirmButtonText:
@@ -263,8 +262,11 @@ val= \lceil\frac{sum}{sz}\rceil</script><p>其中 $sz, sum$ 分别表示子树�
             cancelButtonText:
                 '<i class="fa fa-thumbs-down"></i> Dislike',
             cancelButtonAriaLabel: 'Thumbs down'
-        }).then(() => {
-            
+        }).then((result) => {
+            Swal.fire({
+                title: 'Thanks for your feed back!',
+                icon: 'success',
+            });
         })
     }
 </script>

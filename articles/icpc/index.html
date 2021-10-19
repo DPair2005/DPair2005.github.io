@@ -403,11 +403,10 @@ f_i &=\sum_{j=1}^k f_{i-j}\times (j-1)! \times \binom{i-1}{j-1}
 </body>
 
 <script>
-    if (rand(64) == 0) {
+    if (rand(1) == 0) {
         Swal.fire({
             title: '喜欢我的博客吗？',
             icon: 'info',
-            showCloseButton: true,
             showCancelButton: true,
             focusConfirm: false,
             confirmButtonText:
@@ -416,8 +415,11 @@ f_i &=\sum_{j=1}^k f_{i-j}\times (j-1)! \times \binom{i-1}{j-1}
             cancelButtonText:
                 '<i class="fa fa-thumbs-down"></i> Dislike',
             cancelButtonAriaLabel: 'Thumbs down'
-        }).then(() => {
-            
+        }).then((result) => {
+            Swal.fire({
+                title: 'Thanks for your feed back!',
+                icon: 'success',
+            });
         })
     }
 </script>

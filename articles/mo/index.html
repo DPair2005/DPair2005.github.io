@@ -592,11 +592,10 @@ struct QUEST{
 </body>
 
 <script>
-    if (rand(64) == 0) {
+    if (rand(1) == 0) {
         Swal.fire({
             title: '喜欢我的博客吗？',
             icon: 'info',
-            showCloseButton: true,
             showCancelButton: true,
             focusConfirm: false,
             confirmButtonText:
@@ -605,8 +604,11 @@ struct QUEST{
             cancelButtonText:
                 '<i class="fa fa-thumbs-down"></i> Dislike',
             cancelButtonAriaLabel: 'Thumbs down'
-        }).then(() => {
-            
+        }).then((result) => {
+            Swal.fire({
+                title: 'Thanks for your feed back!',
+                icon: 'success',
+            });
         })
     }
 </script>
