@@ -102,7 +102,9 @@ $$
 
 因此最终时空复杂度 $\mathcal{O}(n\log n)$。
 
-~~所以这玩意儿怎么今天还是黑的~~
+然后 lxl 这个毒瘤又卡空间。。。
+
+把序列分成 $\mathcal{O}(\frac{n}{\log n})$ 大小的块然后逐块处理即可，虽然我觉得意义不明。
 
 43、[P7898 [Ynoi2006] wcirq](https://www.luogu.com.cn/problem/P7898)
 
