@@ -227,3 +227,23 @@
 
     </div>
 </body>
+
+<script>
+    if (rand(64) == 0) {
+        Swal.fire({
+            title: '喜欢我的博客吗？',
+            icon: 'info',
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText:
+                '<i class="fa fa-thumbs-up"></i> Like!',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            cancelButtonText:
+                '<i class="fa fa-thumbs-down"></i> Dislike',
+            cancelButtonAriaLabel: 'Thumbs down'
+        }).then(() => {
+            
+        })
+    }
+</script>
