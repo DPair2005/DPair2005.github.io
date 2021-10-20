@@ -261,6 +261,13 @@
                                             icon: 'warning',
                                         });
                                     }
+                                    else if (result.value == '123456' || result.value == '12345678') {
+                                        Swal.fire({
+                                            title: 'Emm...',
+                                            text: '你不会真觉得我会拿这种东西当密码吧',
+                                            icon: 'error',
+                                        });
+                                    }
                                     else if (result.value == 'hehezhouAKIOI2021') {
                                         Swal.fire({
                                             title: '恭喜你发现了宝藏！',
