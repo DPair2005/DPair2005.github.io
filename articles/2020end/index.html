@@ -196,7 +196,7 @@
 
             <h2> 被加密的内容 </h2>
             <button onclick="verify()" style="font-size: 20;">点此输入密码</button>
-            
+
             <!-- <form onsubmit="verify()">
                 <span> 输入密码以查看：</span>
                 <input class="underline-input" id="password" type="password">
@@ -229,20 +229,29 @@
                                     icon: 'warning',
                                 });
                             }
-                            else if(passwd == "dpairbx" || passwd == "dpairbuxin") {
-                                Swal.fire({
-                                    title: 'That\'s right!',
-                                    text: 'But unfortunately it\'s not the password...',
-                                    icon: 'info',
-                                });
-                            }
                             else {
                                 passwd = CryptoJS.MD5(passwd).toString().substr(0, 16)
                                 if (CryptoJS.MD5(passwd).toString() !== passwdMd5) {
-                                    Swal.fire({
-                                        title: 'Password incorrect',
-                                        icon: 'error',
-                                    });
+                                    if (result.value == "dpairbx" || result.value == "dpairbuxin") {
+                                        Swal.fire({
+                                            title: 'That\'s right!',
+                                            text: 'But unfortunately it\'s not the password...',
+                                            icon: 'info',
+                                        });
+                                    }
+                                    else if (result.value == '114514') {
+                                        Swal.fire({
+                                            title: 'Password incorrect',
+                                            text: '哼哼啊啊啊啊啊啊啊啊',
+                                            icon: 'error',
+                                        });
+                                    }
+                                    else {
+                                        Swal.fire({
+                                            title: 'Password incorrect',
+                                            icon: 'error',
+                                        });
+                                    }
                                 }
                                 else {
                                     Swal.fire({
