@@ -232,17 +232,18 @@
                             else {
                                 passwd = CryptoJS.MD5(passwd).toString().substr(0, 16)
                                 if (CryptoJS.MD5(passwd).toString() !== passwdMd5) {
-                                    if (result.value == "dpairbx" || result.value == "dpairbuxin") {
+                                    if (result.value == "dpairbx" || result.value == "dpairbuxin" || result.value == "dpairruo"
+                                    ||  result.value == "DPairbx" || result.value == "DPairbuxin" || result.value == "DPairruo") {
                                         Swal.fire({
-                                            title: 'That\'s right!',
-                                            text: 'But unfortunately it\'s not the password...',
+                                            title: '说得对！',
+                                            text: '但是这并不是密码的说（（',
                                             icon: 'info',
                                         });
                                     }
                                     else if (result.value == '114514' || result.value == '1919810') {
                                         Swal.fire({
-                                            title: 'Password incorrect',
-                                            text: '哼哼啊啊啊啊啊啊啊啊',
+                                            title: '哼哼啊啊啊啊啊啊',
+                                            text: '这么臭的密码有必要试吗……',
                                             icon: 'error',
                                         });
                                     }
@@ -252,7 +253,23 @@
                                             text: '都是要应验的',
                                             icon: 'warning',
                                         });
-                                    } else {
+                                    } 
+                                    else if (result.value == '998244353') {
+                                        Swal.fire({
+                                            title: '膜拜数数大师！',
+                                            text: '但是这并不能改变你密码错了的事实',
+                                            icon: 'warning',
+                                        });
+                                    }
+                                    else if (result.value == 'hehezhouAKIOI2021') {
+                                        Swal.fire({
+                                            title: '恭喜你发现了宝藏！',
+                                            icon: 'info',
+                                        }).then(() => {
+                                            location.href = "/hidden/hhz"
+                                        });
+                                    }
+                                    else {
                                         Swal.fire({
                                             title: 'Password incorrect',
                                             icon: 'error',
@@ -291,26 +308,6 @@
     </div>
 </body>
 
-<script>
-    if (rand(128) == 0) {
-        Swal.fire({
-            title: '喜欢我的博客吗？',
-            icon: 'info',
-            showCancelButton: true,
-            focusConfirm: false,
-            confirmButtonText:
-                '<i class="fa fa-thumbs-up"></i> Like!',
-            confirmButtonAriaLabel: 'Thumbs up, great!',
-            cancelButtonText:
-                '<i class="fa fa-thumbs-down"></i> Dislike',
-            cancelButtonAriaLabel: 'Thumbs down'
-        }).then((result) => {
-            Swal.fire({
-                title: 'Thanks for your feed back!',
-                icon: 'success',
-            });
-        })
-    }
-</script>
+
 
 </html>
