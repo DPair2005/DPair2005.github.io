@@ -92,7 +92,7 @@ tags:
 
 这个装不了可以用 `chromium` 代替
 
-1、 插件（可能都要翻墙所以装不了）
+1、 插件（可能都要梯子所以装不了）
 
 + `extend luogu` ，这个真的是大大提升了洛谷的可用性，建议直接 [github上下载](https://github.com/extend-luogu/extend-luogu)
 + `Competive Companion` ，算法竞赛助手，下载样例用的
