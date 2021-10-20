@@ -229,6 +229,13 @@
                                     icon: 'warning',
                                 });
                             }
+                            else if(passwd == "dpairbx" || passwd == "dpairbuxin") {
+                                Swal.fire({
+                                    title: 'That\'s right!',
+                                    text: 'But unfortunately it\'s not the password...',
+                                    icon: 'info',
+                                });
+                            }
                             else {
                                 passwd = CryptoJS.MD5(passwd).toString().substr(0, 16)
                                 if (CryptoJS.MD5(passwd).toString() !== passwdMd5) {
