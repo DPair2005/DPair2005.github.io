@@ -173,7 +173,12 @@
 
         
         <div class="post" id="post">
-            <h1 id="%E5%85%B3%E4%BA%8E%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2">关于这个博客</h1>
+            <div class="fun" id="fun"> 
+    <p style="text-align: center; font-size: 60;">欢迎大家来参加<a href="./undefined">✗✓OI Round 1</a>！</p>
+    <p style="text-align: center; opacity: 1.0;"><img src="./pics/XJOI.png" alt=""></p>
+</div>
+
+<h1 id="%E5%85%B3%E4%BA%8E%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2">关于这个博客</h1>
 <p>idea 及主要框架来源于 <a href="https://coderoj.ml/">Jacder 的自制博客</a></p>
 <p>然后博客里面的一些 alert 框是调用了 <a href="https://sweetalert2.github.io/">sweetalert2</a></p>
 <p>一开始这玩意儿完全是 Jacder 帮我搞的，后面数据丢失了一两次之后自己在慢慢修的过程中也搭了一点，也算有了一点点的相关知识</p>
@@ -207,15 +212,10 @@
 <li>2021/10/15 梦 幻 联 动，然后加了些 <a href="https://sweetalert2.github.io/">sweetalert2</a> 的东西来美化。</li>
 <li>2021/10/14 开始写更新日志，顺便更新了在地址栏里面输入 <code>?&amp;background=</code> 来更换背景的功能，另外把 About Me 的位置改的阳间了一些。</li>
 </ul>
-<div class="fun" id="fun"> 
-    <p style="text-align: center; font-size: 100;">MYYAKAK!!!</p>
-    <p style="text-align: center; opacity: 1.0;"><img src="./pics/myy_dance.gif" alt=""></p>
-</div>
-
 <script>
 'use strict';
 let winbody = document.body;
-if (document.Funval == 'MYYAKAK')
+if (document.Funval == 'fun')
     winbody.style.setProperty("--fun-display", 'default');
 else 
     winbody.style.setProperty("--fun-display", 'none');
