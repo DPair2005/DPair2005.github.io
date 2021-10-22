@@ -1,20 +1,33 @@
-<html>
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/art.css">
     <link rel="icon" type="images/png" href="/images/favicon.png">
     <script src="/js/header.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/theme.js"></script>
 <script src="/js/hitokoto.js"></script>
 
-    <title> Tag tricks - DPairの非自制 blog </title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
+    <script src="/js/language.min.js"></script>
+    <title>
+        记录一个线段树合并的 trick - DPairの非自制 blog
+    </title>
 </head>
 
 <body>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/load_theme.js"></script>
+
+    <script>
+        window.onload = function() {
+            loadMath();
+            drawSaying();
+            hljs.configure({ tabReplace: '    ' });
+            hljs.highlightAll()
+        }
+    </script>
 
     <div class="content">
         <div class="sidebar" id="sidebar">
@@ -40,12 +53,12 @@
                 </li>
             </a>
             <a href="/articles">
-                <li class="list-item sidebar-menu-item" id="sidebar-content-articles">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-articles" style="background: #e5e5e5">
                     Articles
                 </li>
             </a>
             <a href="/tags">
-                <li class="list-item sidebar-menu-item" id="sidebar-content-tags" style="background: #e5e5e5">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
                     Tags
                 </li>
             </a>
@@ -169,83 +182,23 @@
 
 </div>
         </div>
-        <div class="art-list-container">
-            <ul class="art-list">
 
-<a href="/articles/tricks/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            一些有意思的解法技巧 
-        </div>
-    </li>
-</a>
-<a href="/articles/sgtmrgt/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            记录一个线段树合并的 trick 
-        </div>
-    </li>
-</a>
-<a href="/articles/wystricks/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            一些卡常技巧 
-        </div>
-    </li>
-</a>
-<a href="/articles/stdRMQ/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            标准 RMQ 算法瞎写 
-        </div>
-    </li>
-</a>
-<a href="/articles/LAono1/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            Level Ancestor 的 O(n)-O(1) 解法瞎写 
-        </div>
-    </li>
-</a>
-<a href="/articles/skiplist/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            跳表瞎写 
-        </div>
-    </li>
-</a>
-<a href="/articles/exskiplist/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            skip list 的一些扩展 
-        </div>
-    </li>
-</a>
-<a href="/articles/blbt/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            全局平衡二叉树瞎写 
-        </div>
-    </li>
-</a>
+        <div class="post" id="post">
+            <h1>记录一个线段树合并的 trick</h1>
+            <p>首先众所周知我们朴素的线段树合并空间是 $\mathcal{O}(n\log n)$ 的。</p>
+<p>然后一般不可持久化的线段树合并为了减小空间常数都会选择垃圾回收，就是无用节点进一个回收栈给后面的节点留空间。</p>
+<p>但是这样子的话并没有优化空间复杂度，仍然会被形如毛毛虫的数据卡掉。</p>
+<p>大概就是这样：</p>
+<p><img src="./graph.png" alt=""></p>
+<p>我们只要先遍历编号大的节点再遍历编号小的节点就挂了。</p>
+<p>但是我们注意到先大后小就不会挂。</p>
+<p>于是我们想到重剖，然后每一次先走子树大小最大的那一个儿子。</p>
+<p>据说复杂度是 $\mathcal{O}(n)$ 的，但是我不会证（（</p>
+<p>不过其他剖应该还是错的。</p>
 
-            </ul>
+            
+
         </div>
+
     </div>
-
-    <script>
-        drawSaying()
-    </script>
 </body>
-
-
-
-</html>
