@@ -205,11 +205,10 @@
 <p>那么现在只需要证明后 $\log n - \log x$ 层的节点个数和也是 $\mathcal{O}(n)$。</p>
 <p>相当于求一个这个级别的式子：</p>
 <script type="math/tex; mode=display">
-\sum_{i=0}^{\log n} i\frac{n}{2^i}
-\\
-\le \sum_{i=0}^{\infty} i\frac{n}{2^i}
-\\
-=2n</script><p>所以是 $\mathcal{O}(n)$ 的。</p>
+\begin{aligned}
+\sum_{i=0}^{\log n} i\frac{n}{2^i} &\le \sum_{i=0}^{\infty} i\frac{n}{2^i} \\
+&=2n
+\end{aligned}</script><p>所以是 $\mathcal{O}(n)$ 的。</p>
 <p>世界名画：《 $\mathcal{O}(n)$ 空 间 线 段 树 合 并 》</p>
 
             

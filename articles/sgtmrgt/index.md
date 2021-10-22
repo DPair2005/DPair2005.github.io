@@ -44,11 +44,10 @@ tags:
 相当于求一个这个级别的式子：
 
 $$
-\sum_{i=0}^{\log n} i\frac{n}{2^i}
-\\
-\le \sum_{i=0}^{\infty} i\frac{n}{2^i}
-\\
-=2n
+\begin{aligned}
+\sum_{i=0}^{\log n} i\frac{n}{2^i} &\le \sum_{i=0}^{\infty} i\frac{n}{2^i} \\
+&=2n
+\end{aligned}
 $$
 
 所以是 $\mathcal{O}(n)$ 的。
