@@ -9,7 +9,7 @@
 <script src="/js/theme.js"></script>
 <script src="/js/hitokoto.js"></script>
 
-    <title> Tag setup - DPairの非自制 blog </title>
+    <title> Articles - DPairの非自制 blog </title>
 </head>
 
 <body>
@@ -19,6 +19,10 @@
     <div class="content">
         <div class="sidebar" id="sidebar">
             <script>
+    if(document.heartland == false) location.href = "/404.html";
+</script>
+
+<script>
     document.heartland = false;
     window.localStorage.setItem('heartland', false);
 </script>
@@ -35,23 +39,28 @@
 </div>
 
 
+<script>
+    document.heartland = true;
+    window.localStorage.setItem('heartland', true);
+</script>
+
 <div class="sidebar-body">
 
     <div class="sidebar-content">
         <ul class="sidebar-menu">
-            <a href="/">
+            <a href="/heartland">
                 <li class="list-item sidebar-menu-item" id="sidebar-content-home">
                     Home
                 </li>
             </a>
-            <a href="/articles">
-                <li class="list-item sidebar-menu-item" id="sidebar-content-articles">
+            <a href="/heartland/articles">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-articles" style="background: #e5e5e5">
                     Articles
                 </li>
             </a>
-            <a href="/tags">
-                <li class="list-item sidebar-menu-item" id="sidebar-content-tags" style="background: #e5e5e5">
-                    Tags
+            <a href="/">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-back">
+                    Back
                 </li>
             </a>
         </ul>
@@ -177,19 +186,19 @@
         <div class="art-list-container">
             <ul class="art-list">
 
-<a href="/articles/ubuntu_setup/">
+
+<a href="/heartland/articles/DNA/">
     <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
         <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            ubuntu / NOI linux 2.0 个人配置 
+            一些刻在 DNA 里的操作
         </div>
     </li>
 </a>
-<a href="/articles/ubuntu_keys/">
+
+<a href="/heartland/articles/tuifei/">
     <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
         <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            ubuntu 个人常用快捷键 
+            颓废记录
         </div>
     </li>
 </a>

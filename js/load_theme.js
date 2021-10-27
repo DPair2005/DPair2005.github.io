@@ -1,4 +1,5 @@
 (function(win){
+    // background
     var Storage = window.localStorage;
     var cur = Storage.getItem('Background');
     cur = BackgroundAdjust(cur);
@@ -32,4 +33,19 @@
     }
     Storage.setItem('Background', cur);
     Storage.setItem('Background-Enable', val);
+
+    // heartland
+    win.heartland = false;
+    if (win.Funval == 'heartland') {
+        Storage.setItem('heartland', true);
+        win.heartland = true;
+        location.href = "/heartland";
+    }
+    else {
+        win.heartland = Storage.getItem('heartland');
+        if(typeof(win.heartland) == 'string')  win.heartland = (win.heartland != 'false');
+        else if(typeof(win.heartland) == 'boolean') win.heartland = (win.heartland);
+        else if(typeof(win.heartland) == 'number')  win.heartland = (win.heartland != 0);
+        else win.heartland = false;
+    }
 })(document);
