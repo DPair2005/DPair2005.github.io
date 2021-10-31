@@ -101,7 +101,7 @@ function GetUrlxtw(x) {
 
 
 function ChangeBackgroundxtw() {
-    var total = 114;
+    var total = 116;
     var cur = rand(total) + 1;
     while (cur > 62 && cur < 70) cur = rand(total) + 1;
     document.body.style.backgroundImage = "url(" + GetUrlxtw(cur) + ")";
