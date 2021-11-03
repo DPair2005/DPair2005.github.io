@@ -1,20 +1,33 @@
-<html>
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/art.css">
     <link rel="icon" type="images/png" href="/images/favicon.png">
     <script src="/js/header.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/theme.js"></script>
 <script src="/js/hitokoto.js"></script>
 
-    <title> Tag solution - DPairの非自制 blog </title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
+    <script src="/js/language.min.js"></script>
+    <title>
+        简单计数题选做 - DPairの非自制 blog
+    </title>
 </head>
 
 <body>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/load_theme.js"></script>
+
+    <script>
+        window.onload = function() {
+            loadMath();
+            drawSaying();
+            hljs.configure({ tabReplace: '    ' });
+            hljs.highlightAll()
+        }
+    </script>
 
     <div class="content">
         <div class="sidebar" id="sidebar">
@@ -45,12 +58,12 @@
                 </li>
             </a>
             <a href="/articles">
-                <li class="list-item sidebar-menu-item" id="sidebar-content-articles">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-articles" style="background: #e5e5e5">
                     Articles
                 </li>
             </a>
             <a href="/tags">
-                <li class="list-item sidebar-menu-item" id="sidebar-content-tags" style="background: #e5e5e5">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
                     Tags
                 </li>
             </a>
@@ -174,75 +187,55 @@
 
 </div>
         </div>
-        <div class="art-list-container">
-            <ul class="art-list">
 
-<a href="/articles/count/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            简单计数题选做 
-        </div>
-    </li>
-</a>
-<a href="/articles/icpc/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            ICPC 杂题选做 
-        </div>
-    </li>
-</a>
-<a href="/articles/Ynoi/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            Ynoi 做题记录 
-        </div>
-    </li>
-</a>
-<a href="/articles/Ynoi2/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            Ynoi 做题记录 II 
-        </div>
-    </li>
-</a>
-<a href="/articles/Ynoi3/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            Ynoi 做题记录 III 
-        </div>
-    </li>
-</a>
-<a href="/articles/nwf/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            网络流 23 题做题记录 
-        </div>
-    </li>
-</a>
-<a href="/articles/ZJOI2021/">
-    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
-        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
-            
-            2021联合省选题解 
-        </div>
-    </li>
-</a>
+        <div class="post" id="post">
+            <h1>简单计数题选做</h1>
+            <p><a href="https://www.luogu.com.cn/training/2019#problems">题单</a></p>
+<p>后面的似乎都得生成函数。。。所以就做了对建档的一些</p>
+<h2 id="-p6146-usaco20feb-help-yourself-g-https-www-luogu-com-cn-problem-p6146"><a href="https://www.luogu.com.cn/problem/P6146">P6146 [USACO20FEB]Help Yourself G</a></h2>
+<p>[{MDEXTEND 显示解法</p>
+<p>之前做过，已经忘了怎么做了，再做一次</p>
+<p>假设我们直接做，考虑每一次新加入一条线段会产生怎样的贡献</p>
+<p>发现可能会合并一些段，然后增加一些段，还有原来的贡献</p>
+<p>我们考虑所有线段按左端点排序，那么就不会产生合并</p>
+<p>那么只需要考虑新的贡献，不难发现就是只选所有与当前线段不交的线段的方案数，发现是 $2^k$ 的形式</p>
+<p>这个可以前缀和处理</p>
+<p>复杂度 $\mathcal{O}(n \log n)$，瓶颈在 $\mathcal{O}(n)$ 次快速幂</p>
+<p>所以用光速幂就是 $\mathcal{O}(n)$}]</p>
+<h2 id="-p6075-jsoi2015-%E5%AD%90%E9%9B%86%E9%80%89%E5%8F%96-https-www-luogu-com-cn-problem-p6075"><a href="https://www.luogu.com.cn/problem/P6075">P6075 [JSOI2015]子集选取</a></h2>
+<p>[{MDEXTEND 显示解法 </p>
+<p>只考虑每一个元素在每一个集合中的存在性，显然最后只需按照乘法原理全部乘起来即可。</p>
+<p>考虑对于一个元素，一定存在一条分界线，两边一边全取一边全不取</p>
+<p>可以考虑从左下角开始走，不难发现走 $n$ 步恰好到达边界</p>
+<p>因此答案就是 $2^{nk}$}]</p>
+<h2 id="-p6008-usaco20jan-cave-paintings-p-https-www-luogu-com-cn-problem-p6008"><a href="https://www.luogu.com.cn/problem/P6008">P6008 [USACO20JAN]Cave Paintings P</a></h2>
+<p>[{MDEXTEND 显示解法  </p>
+<p>首先不难发现每一个连通块相互独立</p>
+<p>其次注意到我们若从下往上 DP，那么对于一个连通块，当前层若选，则是只有一种方案，否则就是所有下一层的块按乘法原理算出来的总方案</p>
+<p>因此用并查集维护连通性，合并的时候贡献，最后每一个连通块 +1 即可</p>
+<p>答案就是所有连通块的答案乘起来}]</p>
+<h2 id="-p1350-%E8%BD%A6%E7%9A%84%E6%94%BE%E7%BD%AE-https-www-luogu-com-cn-problem-p1350"><a href="https://www.luogu.com.cn/problem/P1350">P1350 车的放置</a></h2>
+<p>[{MDEXTEND 显示解法</p>
+<p>考虑直接用组合数来放</p>
+<p>先放高的部分，考虑枚举选出 $t$ 列放东西，那么低的部分就要选出 $k-t$ 列，显然这两部分都是可以算的，乘上一个 $\binom{a}{t}$ 和一个 $\binom{c}{k-t}$ 就行了</p>
+<p>然后再枚举额外区域放 $s$ 个，那么我们 $\binom{t}{s}$ 列放高的，然后高的部分选 $b^{\underline{s}}$</p>
+<p>剩下共 $k-s$ 放低的，左边的列已经选好了因此再乘上一个 $d^{\underline{(k-s)}}$ 就行了}]</p>
+<h2 id="-p3205-hnoi2010-%E5%90%88%E5%94%B1%E9%98%9F-https-www-luogu-com-cn-problem-p3205"><a href="https://www.luogu.com.cn/problem/P3205">P3205 [HNOI2010]合唱队</a></h2>
+<p>[{MDEXTEND 显示解法</p>
+<p>根据末尾状态的变化，可以区间 dp</p>
+<p>设 $f_{i,j,0/1}$ 表示区间 $[i,j]$ 还有最后一个人进来的方向</p>
+<p>状态设出来之后转移就比较显然了}]</p>
+<h2 id="-p4071-sdoi2016-%E6%8E%92%E5%88%97%E8%AE%A1%E6%95%B0-https-www-luogu-com-cn-problem-p4071"><a href="https://www.luogu.com.cn/problem/P4071">P4071 [SDOI2016]排列计数</a></h2>
+<p>[{MDEXTEND 显示解法</p>
+<p>发现选出所有匹配位置之后剩下的就是一个全错位排列</p>
+<p>因此递推然后直接乘起来就行}]</p>
+<h2 id="-p3223-hnoi2012-%E6%8E%92%E9%98%9F-https-www-luogu-com-cn-problem-p3223"><a href="https://www.luogu.com.cn/problem/P3223">P3223 [HNOI2012]排队</a></h2>
+<p>[{MDEXTEND 显示解法</p>
+<p>小奥，懒得写}]</p>
 
-            </ul>
+            
+
         </div>
+
     </div>
-
-    <script>
-        drawSaying()
-    </script>
 </body>
-
-
-
-</html>
