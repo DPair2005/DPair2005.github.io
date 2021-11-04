@@ -7,7 +7,7 @@ tags:
 
 [题单](https://www.luogu.com.cn/training/2019#problems)
 
-后面的似乎都得生成函数。。。所以就做了对建档的一些
+后面的似乎都得生成函数。。。所以就做了最简单的一些
 
 ## [P6146 [USACO20FEB]Help Yourself G](https://www.luogu.com.cn/problem/P6146)
 
