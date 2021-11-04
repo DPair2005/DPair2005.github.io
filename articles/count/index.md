@@ -11,7 +11,7 @@ tags:
 
 ## [P6146 [USACO20FEB]Help Yourself G](https://www.luogu.com.cn/problem/P6146)
 
-[{MDEXPEND 显示解法
+[{MDEXPAND 显示解法
 
 之前做过，已经忘了怎么做了，再做一次
 
@@ -33,7 +33,7 @@ tags:
 
 ## [P6075 [JSOI2015]子集选取](https://www.luogu.com.cn/problem/P6075)
 
-[{MDEXPEND 显示解法 
+[{MDEXPAND 显示解法 
 
 只考虑每一个元素在每一个集合中的存在性，显然最后只需按照乘法原理全部乘起来即可。
 
@@ -47,7 +47,7 @@ tags:
 
 ## [P6008 [USACO20JAN]Cave Paintings P](https://www.luogu.com.cn/problem/P6008) 
 
-[{MDEXPEND 显示解法  
+[{MDEXPAND 显示解法  
 
 首先不难发现每一个连通块相互独立
 
@@ -61,7 +61,7 @@ tags:
 
 ## [P1350 车的放置](https://www.luogu.com.cn/problem/P1350)
 
-[{MDEXPEND 显示解法
+[{MDEXPAND 显示解法
 
 考虑直接用组合数来放
 
@@ -76,7 +76,7 @@ tags:
 
 ## [P3205 [HNOI2010]合唱队](https://www.luogu.com.cn/problem/P3205)
 
-[{MDEXPEND 显示解法
+[{MDEXPAND 显示解法
 
 根据末尾状态的变化，可以区间 dp
 
@@ -88,7 +88,7 @@ tags:
 
 ## [P4071 [SDOI2016]排列计数](https://www.luogu.com.cn/problem/P4071)
 
-[{MDEXPEND 显示解法
+[{MDEXPAND 显示解法
 
 发现选出所有匹配位置之后剩下的就是一个全错位排列
 
@@ -98,7 +98,7 @@ tags:
 
 ## [P3223 [HNOI2012]排队](https://www.luogu.com.cn/problem/P3223)
 
-[{MDEXPEND 显示解法
+[{MDEXPAND 显示解法
 
 小奥，懒得写
 
