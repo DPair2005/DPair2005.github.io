@@ -192,7 +192,7 @@
             <h1>杂题选做</h1>
             <p>主要是我觉得做完题还是得写写题解（（</p>
 <h3 id="-cf1025d-recovering-bst-https-www-luogu-com-cn-problem-cf1025d"><a href="https://www.luogu.com.cn/problem/CF1025D">CF1025D Recovering BST</a></h3>
-<p>给你一个序列，问你能否对其构建一棵二叉搜索树，使得有边相连的节点都不互质。</p>
+<p>给你一个序列，问你能否对其构建一棵二叉搜索树，使得有边相连的结点都不互质。</p>
 <p>$n \le 700$</p>
 <details>
 <summary> 具体解法 </summary>
@@ -200,7 +200,7 @@
 <p>注意到它要多次枚举儿子所以多了一个 $\mathcal{O}(n)$，但也导致了重复运算</p>
 <p>因此考虑换一个方向，由儿子确定父亲，或者说在儿子处就确定好一些东西</p>
 <p>具体来说，我们在父亲处的做法是枚举所有可能的根，然后对应这个根枚举所有可能的儿子区间及其对应的根，这样我们要枚举两次根</p>
-<p>但是我们注意到在儿子处枚举时，其父亲节点可能的根不是 $l-1$ 就是 $r+1$，因此可以少枚举一次根</p>
+<p>但是我们注意到在儿子处枚举时，其父亲结点可能的根不是 $l-1$ 就是 $r+1$，因此可以少枚举一次根</p>
 <p>这样子的话就可以省一维</p>
 <p>还是比较有启发性的</p>
 
@@ -249,7 +249,7 @@ f_{i,j}=\min_{k\in[1,i)\land j>(a_k+k)}\{f_{k,i}\}+\sum_{p=i+1}^{j-1}[p+a_p\ge j
 
 
 <h3 id="-cf1085d-minimum-diameter-tree-https-www-luogu-com-cn-problem-cf1085d"><a href="https://www.luogu.com.cn/problem/CF1085D">CF1085D Minimum Diameter Tree</a></h3>
-<p>给你一棵 $n$ 个节点的树，你有一个数 $s$。</p>
+<p>给你一棵 $n$ 个结点的树，你有一个数 $s$。</p>
 <p>你要给每一条边分配一个边权，保证边权为 <strong>正实数</strong>，使得边权之和为 $s$。</p>
 <p>最小化直径。</p>
 <p>$n \le 10^5$</p>

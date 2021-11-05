@@ -7,7 +7,7 @@ tags:
 ### [Escape from the Island](https://codeforces.com/gym/102822/problem/E)
 
 
-有一幅有向图，你一开始在某一个节点上。
+有一幅有向图，你一开始在某一个结点上。
 
 每一次时刻你可以选择移动一步或者原地休息。
 
