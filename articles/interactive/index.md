@@ -7,7 +7,7 @@ tags:
 
 交互题有意思
 
-## [P7824 「RdOI R3」毒水](https://www.luogu.com.cn/problem/P7824)
+### [P7824 「RdOI R3」毒水](https://www.luogu.com.cn/problem/P7824)
 
 交互题。
 
@@ -41,7 +41,7 @@ tags:
 
 }]
 
-## [CF1100D Dasha and Chess](https://www.luogu.com.cn/problem/CF1100D)
+### [CF1100D Dasha and Chess](https://www.luogu.com.cn/problem/CF1100D)
 
 交互题。
 
@@ -69,7 +69,7 @@ tags:
 
 }]
 
-## [CF1592D Hemose in ICPC ?](https://www.luogu.com.cn/problem/CF1592D)
+### [CF1592D Hemose in ICPC ?](https://www.luogu.com.cn/problem/CF1592D)
 
 交互题。
 
@@ -97,7 +97,7 @@ $n \le 10^3$
 
 }]
 
-## [CF1363D Guess The Maximums](https://www.luogu.com.cn/problem/CF1363D)
+### [CF1363D Guess The Maximums](https://www.luogu.com.cn/problem/CF1363D)
 
 交互题。
 
@@ -117,7 +117,7 @@ $n \le 10^3$
 
 }]
 
-## [CF1088D Ehab and another another xor problem](https://www.luogu.com.cn/problem/CF1088D)
+### [CF1088D Ehab and another another xor problem](https://www.luogu.com.cn/problem/CF1088D)
 
 交互题。
 
@@ -153,7 +153,7 @@ $0\le a, b\le 2^{30}$
 
 }]
 
-## [CF1451E2 Bitwise Queries (Hard Version)](https://www.luogu.com.cn/problem/CF1451E2)
+### [CF1451E2 Bitwise Queries (Hard Version)](https://www.luogu.com.cn/problem/CF1451E2)
 
 交互题。
 
@@ -181,7 +181,7 @@ $0\le a, b\le 2^{30}$
 
 }]
 
-## [CF1207E XOR Guessing](https://www.luogu.com.cn/problem/CF1207E)
+### [CF1207E XOR Guessing](https://www.luogu.com.cn/problem/CF1207E)
 
 交互题。
 
@@ -199,7 +199,7 @@ $0 \le x < 2^{14}$
 
 }]
 
-## [CF1370F2 The Hidden Pair (Hard Version)](https://www.luogu.com.cn/problem/CF1370F2)
+### [CF1370F2 The Hidden Pair (Hard Version)](https://www.luogu.com.cn/problem/CF1370F2)
 
 交互题。
 
@@ -223,7 +223,7 @@ $n \le 10^3$
 
 }]
 
-## [CF1392E Omkar and Duck](https://www.luogu.com.cn/problem/CF1392E)
+### [CF1392E Omkar and Duck](https://www.luogu.com.cn/problem/CF1392E)
 
 给你一个 $n$，要求构造一个 $n\times n$ 的矩阵，使得从左上到右下所有长度为 $2n-1$ 的路径上的点权和互不相同。
 
@@ -252,7 +252,7 @@ $n \le 25$
 
 }]
 
-## [CF1364E X-OR](https://www.luogu.com.cn/problem/CF1364E)
+### [CF1364E X-OR](https://www.luogu.com.cn/problem/CF1364E)
 
 交互题。
 

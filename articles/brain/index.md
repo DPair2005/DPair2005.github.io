@@ -6,7 +6,7 @@ tags:
 
 主要是我觉得做完题还是得写写题解（（
 
-## [CF1025D Recovering BST](https://www.luogu.com.cn/problem/CF1025D)
+### [CF1025D Recovering BST](https://www.luogu.com.cn/problem/CF1025D)
 
 给你一个序列，问你能否对其构建一棵二叉搜索树，使得有边相连的节点都不互质。
 
@@ -30,7 +30,7 @@ $n \le 700$
 
 }]
 
-## [CF449D Jzzhu and Numbers](https://www.luogu.com.cn/problem/CF449D)
+### [CF449D Jzzhu and Numbers](https://www.luogu.com.cn/problem/CF449D)
 
 给你一个可重集合，问你有多少个方案选出一个非空子集使得其按位与的结果为 $0$。
 
@@ -63,7 +63,7 @@ $$
 
 }]
 
-## [CF1453F Even Harder](https://www.luogu.com.cn/problem/CF1453F)
+### [CF1453F Even Harder](https://www.luogu.com.cn/problem/CF1453F)
 
 给定数组 $a$，$a_i$ 表示从 $i$ 能走到 $\[i+1, i+a\_i\]$，问至少要把多少个 $a\_i$，改成 $0$，才能使得 $1$ 到 $n$ 有且仅有一条路径。
 
@@ -97,7 +97,7 @@ $$
 
 }]
 
-## [CF1085D Minimum Diameter Tree](https://www.luogu.com.cn/problem/CF1085D)
+### [CF1085D Minimum Diameter Tree](https://www.luogu.com.cn/problem/CF1085D)
 
 给你一棵 $n$ 个节点的树，你有一个数 $s$。
 
@@ -119,7 +119,7 @@ $n \le 10^5$
 
 }]
 
-## [CF1526D Kill Anton](https://www.luogu.com.cn/problem/CF1526D)
+### [CF1526D Kill Anton](https://www.luogu.com.cn/problem/CF1526D)
 
 给定一个字符串a，你可以任意打乱a中字符的顺序，记打乱后的字符串为b。记b的价值为将b转换为a所需的最小交换次数（交换指交换两个相邻元素）。输出b使得b的价值最大。
 
@@ -143,14 +143,30 @@ $$
 
 }]
 
-## [P4747 [CERC2017]Intrinsic Interval](https://www.luogu.com.cn/problem/P4747)
+### [AT2005 [AGC003E] Sequential operations on Sequence](https://www.luogu.com.cn/problem/AT2005)
+
+一串数，初始为 $1\sim n$，现在给 $Q$ 个操作，每次操作把数组长度变为 $q_i$，新增的数为上一个操作后的数组的重复。问 $Q$ 次操作后 $1\sim n$ 每个数出现了多少次。
+
+$n, Q \le 10^5$
+
+[{MDEXPAND 具体解法
+
+首先注意到 $a\_i \ge a\_{i+1}$ 的位置没有意义，因此可以考虑把序列缩成一个上升子序列。
+
+考虑每一项就是上一项翻几倍然后多出来一小节，翻倍可以考虑从后往前逆推，最后求出最后一项到底是第一项翻了几倍。
+
+然后考虑多出来的一小节，我们考虑直接把它截下来然后插入到序列当中，那么只需要找到它的前驱即可，具体实现的时候可以直接暴力递归。
+
+注意到每一次这一小节都是对上一项取模，因此最多 $\mathcal{O}(\log n)$ 次，总复杂度就是 $\mathcal{O}(\log^2 n)$。
+
+}]
+
+### [P4747 [CERC2017]Intrinsic Interval](https://www.luogu.com.cn/problem/P4747)
 
 给定一个长度为 $n$ 的排列，有 $q$ 组询问，每次询问一个区间，求一个最小的区间使得该区间包含询问区间且值域上连续，输出区间长度。
 
 $n, q \le 10^5$
 
 [{MDEXPAND 具体解法
-
-
 
 }]

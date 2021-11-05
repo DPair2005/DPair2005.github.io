@@ -191,7 +191,7 @@
         <div class="post" id="post">
             <h1>杂题选做</h1>
             <p>主要是我觉得做完题还是得写写题解（（</p>
-<h2 id="-cf1025d-recovering-bst-https-www-luogu-com-cn-problem-cf1025d"><a href="https://www.luogu.com.cn/problem/CF1025D">CF1025D Recovering BST</a></h2>
+<h3 id="-cf1025d-recovering-bst-https-www-luogu-com-cn-problem-cf1025d"><a href="https://www.luogu.com.cn/problem/CF1025D">CF1025D Recovering BST</a></h3>
 <p>给你一个序列，问你能否对其构建一棵二叉搜索树，使得有边相连的节点都不互质。</p>
 <p>$n \le 700$</p>
 <details>
@@ -207,7 +207,7 @@
 </details>
 
 
-<h2 id="-cf449d-jzzhu-and-numbers-https-www-luogu-com-cn-problem-cf449d"><a href="https://www.luogu.com.cn/problem/CF449D">CF449D Jzzhu and Numbers</a></h2>
+<h3 id="-cf449d-jzzhu-and-numbers-https-www-luogu-com-cn-problem-cf449d"><a href="https://www.luogu.com.cn/problem/CF449D">CF449D Jzzhu and Numbers</a></h3>
 <p>给你一个可重集合，问你有多少个方案选出一个非空子集使得其按位与的结果为 $0$。</p>
 <p>$n, a \le 10^6$</p>
 <details>
@@ -228,7 +228,7 @@ f_{i,S}&=f_{i-1,S}+\sum_{j \operatorname{and} a_i=S} f_{i-1,j} \\
 </details>
 
 
-<h2 id="-cf1453f-even-harder-https-www-luogu-com-cn-problem-cf1453f"><a href="https://www.luogu.com.cn/problem/CF1453F">CF1453F Even Harder</a></h2>
+<h3 id="-cf1453f-even-harder-https-www-luogu-com-cn-problem-cf1453f"><a href="https://www.luogu.com.cn/problem/CF1453F">CF1453F Even Harder</a></h3>
 <p>给定数组 $a$，$a_i$ 表示从 $i$ 能走到 $[i+1, i+a_i]$，问至少要把多少个 $a_i$，改成 $0$，才能使得 $1$ 到 $n$ 有且仅有一条路径。</p>
 <p>$n \leq 3000$。</p>
 <details>
@@ -248,7 +248,7 @@ f_{i,j}=\min_{k\in[1,i)\land j>(a_k+k)}\{f_{k,i}\}+\sum_{p=i+1}^{j-1}[p+a_p\ge j
 </details>
 
 
-<h2 id="-cf1085d-minimum-diameter-tree-https-www-luogu-com-cn-problem-cf1085d"><a href="https://www.luogu.com.cn/problem/CF1085D">CF1085D Minimum Diameter Tree</a></h2>
+<h3 id="-cf1085d-minimum-diameter-tree-https-www-luogu-com-cn-problem-cf1085d"><a href="https://www.luogu.com.cn/problem/CF1085D">CF1085D Minimum Diameter Tree</a></h3>
 <p>给你一棵 $n$ 个节点的树，你有一个数 $s$。</p>
 <p>你要给每一条边分配一个边权，保证边权为 <strong>正实数</strong>，使得边权之和为 $s$。</p>
 <p>最小化直径。</p>
@@ -263,7 +263,7 @@ f_{i,j}=\min_{k\in[1,i)\land j>(a_k+k)}\{f_{k,i}\}+\sum_{p=i+1}^{j-1}[p+a_p\ge j
 </details>
 
 
-<h2 id="-cf1526d-kill-anton-https-www-luogu-com-cn-problem-cf1526d"><a href="https://www.luogu.com.cn/problem/CF1526D">CF1526D Kill Anton</a></h2>
+<h3 id="-cf1526d-kill-anton-https-www-luogu-com-cn-problem-cf1526d"><a href="https://www.luogu.com.cn/problem/CF1526D">CF1526D Kill Anton</a></h3>
 <p>给定一个字符串a，你可以任意打乱a中字符的顺序，记打乱后的字符串为b。记b的价值为将b转换为a所需的最小交换次数（交换指交换两个相邻元素）。输出b使得b的价值最大。</p>
 <p>若有多种答案，任意输出一种。</p>
 <details>
@@ -279,7 +279,20 @@ f_{i,j}=\min_{k\in[1,i)\land j>(a_k+k)}\{f_{k,i}\}+\sum_{p=i+1}^{j-1}[p+a_p\ge j
 </details>
 
 
-<h2 id="-p4747-cerc2017-intrinsic-interval-https-www-luogu-com-cn-problem-p4747"><a href="https://www.luogu.com.cn/problem/P4747">P4747 [CERC2017]Intrinsic Interval</a></h2>
+<h3 id="-at2005-agc003e-sequential-operations-on-sequence-https-www-luogu-com-cn-problem-at2005"><a href="https://www.luogu.com.cn/problem/AT2005">AT2005 [AGC003E] Sequential operations on Sequence</a></h3>
+<p>一串数，初始为 $1\sim n$，现在给 $Q$ 个操作，每次操作把数组长度变为 $q_i$，新增的数为上一个操作后的数组的重复。问 $Q$ 次操作后 $1\sim n$ 每个数出现了多少次。</p>
+<p>$n, Q \le 10^5$</p>
+<details>
+<summary> 具体解法 </summary>
+  <p>首先注意到 $a_i \ge a_{i+1}$ 的位置没有意义，因此可以考虑把序列缩成一个上升子序列。</p>
+<p>考虑每一项就是上一项翻几倍然后多出来一小节，翻倍可以考虑从后往前逆推，最后求出最后一项到底是第一项翻了几倍。</p>
+<p>然后考虑多出来的一小节，我们考虑直接把它截下来然后插入到序列当中，那么只需要找到它的前驱即可，具体实现的时候可以直接暴力递归。</p>
+<p>注意到每一次这一小节都是对上一项取模，因此最多 $\mathcal{O}(\log n)$ 次，总复杂度就是 $\mathcal{O}(\log^2 n)$。</p>
+
+</details>
+
+
+<h3 id="-p4747-cerc2017-intrinsic-interval-https-www-luogu-com-cn-problem-p4747"><a href="https://www.luogu.com.cn/problem/P4747">P4747 [CERC2017]Intrinsic Interval</a></h3>
 <p>给定一个长度为 $n$ 的排列，有 $q$ 组询问，每次询问一个区间，求一个最小的区间使得该区间包含询问区间且值域上连续，输出区间长度。</p>
 <p>$n, q \le 10^5$</p>
 <details>

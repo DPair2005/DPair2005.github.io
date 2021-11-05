@@ -4,7 +4,7 @@ tags:
   - solution
 ---
 
-## [Escape from the Island](https://codeforces.com/gym/102822/problem/E)
+### [Escape from the Island](https://codeforces.com/gym/102822/problem/E)
 
 
 有一幅有向图，你一开始在某一个节点上。
@@ -41,7 +41,7 @@ $1 \le n \le 10^5, 1 \le k \le 50$
 
 }]
 
-## [Building Blocks](https://codeforces.com/gym/102822/problem/B)
+### [Building Blocks](https://codeforces.com/gym/102822/problem/B)
 
 
 有一个 $n\times m$ 的矩阵，每一个元素都有一个权值。
@@ -70,7 +70,7 @@ $1\le n, m \le 10^5, a\_{i,j}\le 10^9$
 
 }]
 
-## [Hold the Line](https://codeforces.com/gym/102452/problem/H)
+### [Hold the Line](https://codeforces.com/gym/102452/problem/H)
 
 单点修改区间前驱后继
 
@@ -88,7 +88,7 @@ $n \le 5\times 10^5, q \le 10^6$
 
 }]
 
-## [Erasing Numbers](https://codeforces.com/gym/102452/problem/E)
+### [Erasing Numbers](https://codeforces.com/gym/102452/problem/E)
 
 给你一个排列，每一次可以选出三个相邻的数然后删除最大值和最小值放回原位，问有哪些数可能会活到最后。
 
@@ -120,7 +120,7 @@ $-1$ 显然同理。
 
 }]
 
-## [Constructing Ranches](https://codeforces.com/gym/102452/problem/C)
+### [Constructing Ranches](https://codeforces.com/gym/102452/problem/C)
 
 给定一棵树，点有点权，问有多少条路径使得取出其上面的所有点权可以组成一个多边形，必须每一个数值都用上。
 
@@ -154,7 +154,7 @@ $1 \le n \le 2\times 10^5$
 
 }]
 
-## [Incoming Asteroids](https://codeforces.com/gym/102452/problem/I)
+### [Incoming Asteroids](https://codeforces.com/gym/102452/problem/I)
 
 有 $n$ 个点，有一些人在观察这些点，每一个人最多观察 $k$ 个点。
 
@@ -182,7 +182,7 @@ $n, q \le 2\times 10^5, y \le 10^6, k \le 3$
 
 }]
 
-## [Traveling in the Grid World](https://codeforces.com/gym/102900/problem/L)
+### [Traveling in the Grid World](https://codeforces.com/gym/102900/problem/L)
 
 有一幅 $n\times m$ 的网格图，你每一次可以花费两个格点间欧几里得距离的代价从一个格点走到另一个，你需要保证相邻两次行走斜率不同且每次不能经过其他格点，问你 $(0,0)\to (n,m)$ 的最小代价。
 
@@ -206,7 +206,7 @@ $n, q \le 2\times 10^5, y \le 10^6, k \le 3$
 
 }]
 
-## [The Journey of Geor Autumn](https://codeforces.com/gym/102900/problem/E)
+### [The Journey of Geor Autumn](https://codeforces.com/gym/102900/problem/E)
 
 给你 $n, k$，问你有多少个 $1\sim n$ 的排列满足 $\forall i \in \[k+1,n\], a\_i > \min\_{j\in\[i-k,i-1\]}\{a\_j\}$
 
@@ -232,7 +232,7 @@ $$
 
 }]
 
-## [Sky Garden](https://codeforces.com/gym/102900/problem/I)
+### [Sky Garden](https://codeforces.com/gym/102900/problem/I)
 
 有 $n$ 个半径 $1\sim n$ 递增的以原点为圆心的同心圆，被 $m$ 条过原点的直线平均分为 $2m$ 个部分。
 
@@ -254,7 +254,7 @@ $n, m \le 500$
 
 }]
 
-## [Ragdoll](https://codeforces.com/gym/102832/problem/K)
+### [Ragdoll](https://codeforces.com/gym/102832/problem/K)
 
 有 $n$ 个可重集，初始每一个可重集里面只有一个元素。
 
@@ -282,7 +282,7 @@ $n\le 10^5, m \le 2\times 10^5, 1\le a\_i \le 2\times 10^5$
 
 }]
 
-## [Strange Memory](https://codeforces.com/gym/102832/problem/F)
+### [Strange Memory](https://codeforces.com/gym/102832/problem/F)
 
 给定一棵以 $1$ 为根的有根树，点有点权。
 
@@ -308,7 +308,7 @@ $n \le 2\times 10^5, a\_i\le 10^6$
 
 }]
 
-## [Just Another Game of Stones](https://codeforces.com/gym/102992/problem/J)
+### [Just Another Game of Stones](https://codeforces.com/gym/102992/problem/J)
 
 给你一个序列 $a$，两种操作：
 
