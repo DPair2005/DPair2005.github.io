@@ -292,6 +292,23 @@ f_{i,j}=\min_{k\in[1,i)\land j>(a_k+k)}\{f_{k,i}\}+\sum_{p=i+1}^{j-1}[p+a_p\ge j
 </details>
 
 
+<h3 id="-cf1056e-check-transcription-https-www-luogu-com-cn-problem-cf1056e"><a href="https://www.luogu.com.cn/problem/CF1056E">CF1056E Check Transcription</a></h3>
+<p>有两个串 $t,s$，其中 $t$ 是一个 $01$ 串，$s$ 是一个由小写字母构成的字符串。</p>
+<p>问有多少个字符串的二元组 $(r_0, r_1)$ 使得把 $t$ 中所有 $0$ 替换成 $r_0$，$1$ 替换成 $r_1$ 后与 $s$ 相等，且 $r_0 \ne r_1$。</p>
+<p>$|t|\le 10^5, |s| \le 10^6$</p>
+<details>
+<summary> 具体解法 </summary>
+  <p>首先我们不难发现， $t$ 串的开头那个字符一定对应的是 $s$ 串的一个前缀。因此我们只需要枚举这个字符对应串的长度就可以唯一确定它对应的串。</p>
+<p>然后我们注意到 $t$ 串中 $0/1$ 的出现次数我们都可以知道，我们又知道了某个字符的长度，那么另一个字符对应串的长度我们也能确定。</p>
+<p>考虑我们扫一遍 $t$ 串，由于每一个字符对应的字符串长度我们都已知，因此若我们 $\mathcal{O}(|t|)$ 扫一遍 $t$ 串，就可以求出每一个字符在 $s$ 串中对应的 <strong>起始位置</strong>。</p>
+<p>再加上我们确定的长度，每一个字符在 $s$ 中对应的串我们可以通过哈希 $\mathcal{O}(1)$ 求得，因此我们得到了一个 $\mathcal{O}(|t|)$ 判断一组长度是否合法的算法。</p>
+<p>但是这样看起来还是 $\mathcal{O}(|s||t|)$ 的，不过注意到在 $t$ 串中，出现次数更多的那一个字符的出现次数一定 $\ge \frac{|t|}{2}$。</p>
+<p>因此我们枚举这一个字符，显然另一个字符的长度还是可以 $\mathcal{O}(1)$ 求，而且我们枚举的上界只需要达到 $\mathcal{O}(\frac{|s|}{|t|})$。</p>
+<p>因此最终复杂度分析出来是 $\mathcal{O}(\frac{|s|}{|t|})\times\mathcal{O}(|t|)=\mathcal{O}(|s|)$ 的。</p>
+
+</details>
+
+
 <h3 id="-p4747-cerc2017-intrinsic-interval-https-www-luogu-com-cn-problem-p4747"><a href="https://www.luogu.com.cn/problem/P4747">P4747 [CERC2017]Intrinsic Interval</a></h3>
 <p>给定一个长度为 $n$ 的排列，有 $q$ 组询问，每次询问一个区间，求一个最小的区间使得该区间包含询问区间且值域上连续，输出区间长度。</p>
 <p>$n, q \le 10^5$</p>
