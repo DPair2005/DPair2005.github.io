@@ -185,6 +185,8 @@ $n, q \le 1.2\times 10^5$
 ## 5 代码实现
 实现的是 [P4747](https://www.luogu.com.cn/problem/P4747)，为了方便理解增加了一些注释，并删除了快读，因此直接提交这份代码无法通过，不过不影响阅读。
 
+基本上参考了 [oi-wiki](https://oi-wiki.org/ds/divide-combine/#_14) 上的实现，不过这份应该更为容易实现一些。
+
 [{MDEXPAND 展开代码
 
 ```cpp
