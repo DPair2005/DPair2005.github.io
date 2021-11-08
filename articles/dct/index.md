@@ -156,7 +156,7 @@ $n, q \le 10^5$
 考虑求出这两个点的 LCA，然后针对 LCA 是析点还是合点讨论：
 
 + 若是析点，显然包含 $[l, r]$ 的最短连续段就是这个点对应的连续段。
-+ 若是合点，则是其儿子序列中的一段子区间，做一个 $k$ 级祖先即可。
++ 若是合点，则是其儿子序列中的一段子区间，二分或者 $k$ 级祖先都能求出对应的左右端点。
 
 复杂度 $\mathcal{O}(n\log n)$。
 
@@ -182,10 +182,168 @@ $n, q \le 1.2\times 10^5$
 
 }]
 
-## 5 总结
+## 5 代码实现
+实现的是 [P4747](https://www.luogu.com.cn/problem/P4747)，为了方便理解增加了一些注释，并删除了快读，因此直接提交这份代码无法通过，不过不影响阅读。
+
+[{MDEXPAND 展开代码
+
+```cpp
+#include <assert.h>
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+#define debug(...) fprintf(stderr, __VA_ARGS__)
+#define rep(i,s,t) for(int i=(s),i##END=(t);i<=i##END;++i)
+#define per(i,t,s) for(int i=(t),i##END=(s);i>=i##END;--i)
+#define REP(i,s,t) for(int i=(s),i##END=(t);i<i##END;++i)
+#define PER(i,t,s) for(int i=(t),i##END=(s);i>i##END;--i)
+template <typename T>
+inline T mn(const T x, const T y) { return x < y ? x : y; }
+template <typename T>
+inline T mx(const T x, const T y) { return x > y ? x : y; }
+typedef long long LL;
+/* My Code begins here */
+
+const int MAXN = 1e5 + 5;
+
+int n, a[MAXN];
+
+#include <vector>
+
+struct NODE {
+    int l, r; bool type; // 每一个结点的值域区间与类型（析/合）
+    NODE (int l = 0, int r = 0, bool type = 0) : l(l), r(r), type(type) {}
+}t[MAXN << 1]; // 注意点数是 2n-1，因此要开两倍空间
+
+// 每一个结点的儿子序列，其实也就是出边
+std::vector < int > d[MAXN << 1];
+
+// 这里对于每一个结点要多维护一个 M 表示其最右侧的一个儿子的左端点，方便判断当前点是否可以成为栈顶的新儿子，详细的可以看 build() 函数
+int tot = 0, M[MAXN << 1];
+
+struct Segtree {
+    int t[MAXN << 2], tag[MAXN << 2];
+    inline void pushup(int rt) { t[rt] = mn(t[rt << 1], t[rt << 1 | 1]); }
+    inline void update(int rt, int z) { t[rt] += z; tag[rt] += z; }
+    inline void pushdown(int rt) {
+        if(tag[rt]) {
+            update(rt << 1, tag[rt]);
+            update(rt << 1 | 1, tag[rt]);
+            tag[rt] = 0;
+        }
+    }
+    #define LSON rt << 1, l, mid
+    #define RSON rt << 1 | 1, mid + 1, r
+    void build(int rt, int l, int r) {
+        tag[rt] = 0; if(l == r) return t[rt] = l, void();
+        int mid = (l + r) >> 1;
+        build(LSON); build(RSON);
+        pushup(rt);
+    }
+    int query(int rt, int l, int r) { // 找出最左的一个 0
+        if(l == r) return l;
+        int mid = (l + r) >> 1; pushdown(rt);
+        return t[rt << 1]? query(RSON) : query(LSON);
+    }
+    int ask(int rt, int l, int r, int x) { // 单点查询，若是 0 则说明可以形成连续段
+        if(l == r) return t[rt];
+        int mid = (l + r) >> 1; pushdown(rt);
+        return x <= mid? ask(LSON, x) : ask(RSON, x);
+    }
+    void modify(int rt, int l, int r, int x, int y, int z) { // 区间修改
+        if(x <= l && r <= y) return update(rt, z);
+        int mid = (l + r) >> 1; pushdown(rt);
+        if(x <= mid) modify(LSON, x, y, z);
+        if(y > mid) modify(RSON, x, y, z);
+        pushup(rt);
+    }
+}sgt;
+
+int stk1[MAXN], tp1, stk2[MAXN], tp2, s[MAXN], tp;
+
+int id[MAXN], root;
+
+// 树剖求 LCA
+int dep[MAXN << 1], tt[MAXN << 1], fa[MAXN << 1], sz[MAXN << 1], son[MAXN << 1];
+void dfs(int x) {
+    sz[x] = 1; for (auto v : d[x]) {
+        fa[v] = x; dep[v] = dep[x] + 1;
+        dfs(v); sz[x] += sz[v];
+        if(sz[v] > sz[son[x]]) son[x] = v;
+    }
+}
+
+void dfs2(int x, int lt) {
+    tt[x] = lt; if(son[x]) dfs2(son[x], lt);
+    for (auto v : d[x]) if(v != son[x]) dfs2(v, v);
+}
+
+inline int LCA(int x, int y) { // 树剖求 LCA
+    while(tt[x] ^ tt[y]) {
+        if(dep[tt[x]] < dep[tt[y]]) std::swap(x, y);
+        x = fa[tt[x]];
+    }
+    return dep[x] > dep[y]? y : x;
+}
+
+inline void build() {
+    sgt.build(1, 1, n); // 建树，初值为 l
+    rep(i, 1, n) {
+        sgt.update(1, -1); // 右端点移动时全局减
+
+        // 单调栈维护 max/min 常数似乎小一些，注意弹栈时要撤销贡献
+        while(tp1 && a[i] <= a[stk1[tp1]]) { sgt.modify(1, 1, n, stk1[tp1 - 1] + 1, stk1[tp1], a[stk1[tp1]]); -- tp1; }
+        while(tp2 && a[i] >= a[stk2[tp2]]) { sgt.modify(1, 1, n, stk2[tp2 - 1] + 1, stk2[tp2], -a[stk2[tp2]]); -- tp2; }
+        sgt.modify(1, 1, n, stk1[tp1] + 1, i, -a[i]); stk1[++ tp1] = i;
+        sgt.modify(1, 1, n, stk2[tp2] + 1, i, a[i]); stk2[++ tp2] = i;
+
+        // 建立一个新的待插入结点
+        t[id[i] = ++ tot] = NODE(i, i, 0);
+        const int lim = sgt.query(1, 1, n); int u = tot;
+
+        while(tp && t[s[tp]].l >= lim) { // 注意这里要反复进行
+            if(t[s[tp]].type && !sgt.ask(1, 1, n, M[s[tp]])) { // 第一类分讨，看是否能成为儿子
+                t[s[tp]].r = i; M[s[tp]] = t[u].l; d[s[tp]].push_back(u); u = s[tp --];
+            } else if(!sgt.ask(1, 1, n, t[s[tp]].l)) { // 第二类分讨，看是否能合并
+                t[++ tot] = NODE(t[s[tp]].l, i, 1); M[tot] = t[u].l;
+                d[tot].push_back(s[tp --]); d[tot].push_back(u); u = tot;
+            } else { // 第三类分讨，尽可能少的结点合并建立析点
+                d[++ tot].push_back(u);
+                do { d[tot].push_back(s[tp --]); } while(tp && sgt.ask(1, 1, n, t[s[tp]].l));
+                t[tot] = NODE(t[s[tp]].l, i, 0);
+                d[tot].push_back(s[tp --]);
+                u = tot;
+            }
+        }
+
+        s[++ tp] = u; // 最后入栈
+    }
+    dep[root = s[1]] = 1; dfs(root); dfs2(root, root); // 建析合树
+}
+
+signed main() {
+    cin >> n; rep(i, 1, n) cin >> a[i];
+    build();
+    int q; cin >> q; while(q --) {
+        int l, r; cin >> l >> r; l = id[l]; r = id[r];
+        const int lca = LCA(l, r);
+        if(t[lca].type) { // 如果是合点，则在儿子序列中二分
+            int L = *(-- std::upper_bound(d[lca].begin(), d[lca].end(), l, [](int x, int y) { return t[x].l < t[y].l; }));
+            int R = *(-- std::upper_bound(d[lca].begin(), d[lca].end(), r, [](int x, int y) { return t[x].l < t[y].l; }));
+            cout << t[L].l << ' ' << t[R].r << endl;
+        }
+        else // 析点则可以直接输出
+            cout << t[lca].l << ' ' << t[lca].r << endl;
+    }
+}
+```
+
+}]
+
+## 6 总结
 
 ~~今年 CSP 都已经敢把网络流当最短路考了（虽然正解确实是最短路），那 NOIP 把析合树当线段树考不过分吧。~~
 
 反正看起来连续段问题都能套个析合树，而且板子其实不算难背，哪怕现场推也不会耗很多时间。
 
-但是考到概率还是不能呢算大，不过至少比什么分散层叠有用。
+但是考到概率还是不能算大，不过至少比什么分散层叠有用。
