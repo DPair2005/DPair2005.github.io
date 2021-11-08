@@ -1,0 +1,245 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/art.css">
+    <link rel="icon" type="images/png" href="/images/favicon.png">
+    <script src="/js/header.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/hitokoto.js"></script>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
+    <script src="/js/language.min.js"></script>
+    <title>
+        DPair 又不会反演了 - DPairの非自制 blog
+    </title>
+</head>
+
+<body>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/load_theme.js"></script>
+
+    <script>
+        window.onload = function() {
+            loadMath();
+            drawSaying();
+            hljs.configure({ tabReplace: '    ' });
+            hljs.highlightAll()
+        }
+    </script>
+
+    <div class="content">
+        <div class="sidebar" id="sidebar">
+            <script>
+    document.heartland = false;
+    window.localStorage.setItem('heartland', false);
+</script>
+
+<div class="sidebar-title">
+    <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+    DPairの非自制 blog
+    </p>
+    <hr align="center" style="width: 200px;">
+    <p></p>
+    <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+    <div class="saying" id="saying"> </div>
+</div>
+
+
+<div class="sidebar-body">
+
+    <div class="sidebar-content">
+        <ul class="sidebar-menu">
+            <a href="/">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+                    Home
+                </li>
+            </a>
+            <a href="/articles">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-articles" style="background: #e5e5e5">
+                    Articles
+                </li>
+            </a>
+            <a href="/tags">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+                    Tags
+                </li>
+            </a>
+        </ul>
+    </div>
+
+    <div class="sidebar-about">
+    <div style="text-align: center; font-size: 16px;">
+        <a href="/aboutme" style="text-decoration: none; color: currentColor;">
+            About me
+        </a>
+    </div>
+    <HR align="center">
+    <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+        <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()"></img>
+    </div>
+
+    <ul class="sidebar-links">
+    <li class="sidebar-links-item">
+        <a href="https://dpair2005.github.io" class="friend-link">
+            github blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://dpair.gitee.io" class="friend-link">
+            gitee blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+            luogu blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://codeforces.com/profile/DPair" class="friend-link">
+            Codeforces 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://atcoder.jp/users/DPair" class="friend-link">
+            AtCoder 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://github.com/DPair2005" class="friend-link">
+            github 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://gitee.com/DPair" class="friend-link">
+            gitee 
+        </a>
+    </li>
+    </ul>
+
+</div>
+
+<ul class="sidebar-links">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
+
+    <li class="sidebar-links-item">
+        <a href="https://coderoj.gitee.io/" class="friend-link">
+            Jacder's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://xyix.github.io/" class="friend-link">
+            xYix's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/flying2018" class="friend-link">
+            flying2018's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/Point-King/" class="friend-link">
+            Point_King's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://cnblogs.com/pealfrog" class="friend-link">
+            xtw's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="http://xyf007.ml/" class="friend-link">
+            xyf007's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/zkdxl" class="friend-link">
+            zkdxl's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/guts" class="friend-link">
+            krimson's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://blog.moonpie.cf/" class="friend-link">
+            moonpie's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.luogu.com.cn/blog/wh2005blog/" class="friend-link">
+            wuhao2005's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://blog.jasonfan.ml/" class="friend-link">
+            jasonfan's blog
+        </a>
+    </li>
+
+</ul>
+
+
+
+</div>
+        </div>
+
+        <div class="post" id="post">
+            <h1>DPair 又不会反演了</h1>
+            <p>随便写一些式子的推法，这样就不用背了（（</p>
+<h3 id="%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%8F%8D%E6%BC%94-i">二项式反演 I</h3>
+<p>一个最常用的式子，恰好和至少的互相转化：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_i&=\sum_{j=i}^n \binom{j}{i}F_j\\
+F_i&=\sum_{j=i}^{n}(-1)^{j-i}\binom{j}{i}G_j
+\end{aligned}</script><details>
+<summary> 魔术 </summary>
+  <script type="math/tex; mode=display">
+\begin{aligned}
+G_i&=\sum_{k=i}^n \binom{k}{i}F_k\\
+F_i&=\sum_{k=i}^n[k-i=0]\binom{k}{i}F_k\\
+[n=0]&=\sum_{i=0}^n(-1)^i\binom{n}{i}\\
+\therefore F_i&=\sum_{k=i}^n\sum_{j=0}^{k-i}(-1)^j\binom{k-i}{j}\binom{k}{i}F_k\\
+&=\sum_{k=i}^n\sum_{j=0}^{k-i}(-1)^j\binom{k}{j}\binom{k-j}{i}F_k\\
+&=\sum_{j=0}^{n-i}(-1)^j\sum_{k=i+j}^n\binom{k}{j}\binom{k-j}{i}F_k\\
+&=\sum_{j=0}^{n-i}(-1)^j\sum_{k=i+j}^n\frac{k!}{j!(k-j)!}\frac{(k-j)!}{i!(k-j-i)!}F_k\\
+&=\sum_{j=0}^{n-i}(-1)^j\sum_{k=i+j}^n\frac{k!}{j!i!(k-j-i)!}F_k\\
+&=\sum_{j=0}^{n-i}(-1)^j\sum_{k=i+j}^n\frac{(i+j)!k!}{j!i!(k-j-i)!(i+j)!}F_k\\
+&=\sum_{j=0}^{n-i}(-1)^j\binom{i+j}{i}\sum_{k=i+j}^n\binom{k}{i+j}F_k\\
+&=\sum_{j=0}^{n-i}(-1)^j\binom{i+j}{i}G_{i+j}\\
+&=\sum_{j=i}^{n}(-1)^{j-i}\binom{j}{i}G_{j}
+\end{aligned}</script>
+</details>
+
+
+<h3 id="%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%8F%8D%E6%BC%94-ii">二项式反演 II</h3>
+<p>再推个恰好与至多，先上结论：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G_n&=\sum_{i=0}^n \binom{n}{i}F_i\\
+F_n&=\sum_{i=0}^{n}(-1)^{n-i}\binom{n}{i}G_{i}
+\end{aligned}</script><details>
+<summary> 魔术 </summary>
+  <script type="math/tex; mode=display">
+\begin{aligned}
+G_n&=\sum_{i=0}^n \binom{n}{i}F_i\\
+F_n&=\sum_{i=0}^n[n-i=0] \binom{n}{i}F_i\\
+[n=0]&=\sum_{i=0}^n(-1)^i\binom{n}{i}\\
+\therefore F_n&=\sum_{i=0}^n\sum_{j=0}^{n-i}(-1)^j\binom{n-i}{j} \binom{n}{i}F_i\\
+&=\sum_{i=0}^n\sum_{j=0}^{n-i}(-1)^j\binom{n}{j} \binom{n-j}{i}F_i\\
+&=\sum_{j=0}^{n}(-1)^j\binom{n}{j} \sum_{i=0}^{n-j}\binom{n-j}{i}F_i\\
+&=\sum_{j=0}^{n}(-1)^j\binom{n}{j}G_{n-j}\\
+&=\sum_{i=0}^{n}(-1)^{n-i}\binom{n}{i}G_{i}
+\end{aligned}</script>
+</details>
+            
+
+        </div>
+
+    </div>
+</body>
