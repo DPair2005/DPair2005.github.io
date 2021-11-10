@@ -78,10 +78,16 @@ function Generate( leng ) {
     return ret;
 }
 
+
+var ResultText = document.createElement('p');
+
+function NewText() {
+    ResultText.textContent = Generate(50);
+}
+
 (function(win){
     let qwq = win.getElementById('post');
-    let qaq = win.createElement('p');
-    qaq.style = 'font-size: 18px';
-    qaq.textContent = Generate(50);
-    qwq.appendChild(qaq);
+    ResultText.style = 'font-size: 18px';
+    qwq.appendChild(ResultText);
+    NewText();
 })(document);
