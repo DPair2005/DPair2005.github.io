@@ -182,11 +182,12 @@
     let qaq = document.createElement('p');
     qaq.style = 'font-size: 16px; display: inline';
     qaq.textContent = 50;
+    document.LengthOfText = 50;
     tat.appendChild(qaq);
 </script>
 <input id="range" type="range" min="1" max="100" value="50" oninput="ChangeVal()" />
 
-<script type="text/javascript">
+<script>
     function ChangeVal() {
         var value = document.getElementById("range").value;
         document.LengthOfText = value;

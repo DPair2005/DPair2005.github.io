@@ -89,5 +89,5 @@ function NewText() {
     let qwq = win.getElementById('post');
     ResultText.style = 'font-size: 18px';
     qwq.appendChild(ResultText);
-    NewText();
+    // NewText();
 })(document);
