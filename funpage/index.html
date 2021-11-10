@@ -177,8 +177,26 @@
         </div>
 
         <div class="post" id="post">
-            <button onclick="NewText()" style="font-size: 30; font-family: ZCOOL XiaoWei;">Generate!</button>
+            <script>
+    let tat = document.getElementById('post');
+    let qaq = document.createElement('p');
+    qaq.style = 'font-size: 16px; display: inline';
+    qaq.textContent = 50;
+    tat.appendChild(qaq);
+</script>
+<input id="range" type="range" min="1" max="100" value="50" oninput="ChangeVal()" />
+
+<script type="text/javascript">
+    function ChangeVal() {
+        var value = document.getElementById("range").value;
+        document.LengthOfText = value;
+        qaq.textContent = value;
+    }
+</script>
+<button onclick="NewText()" style="font-size: 30; font-family: ZCOOL XiaoWei;">Generate!</button>
+
 <hr></hr>
+
 <script src="./demo.js"></script>
             
         </div>

@@ -82,7 +82,7 @@ function Generate( leng ) {
 var ResultText = document.createElement('p');
 
 function NewText() {
-    ResultText.textContent = Generate(50);
+    ResultText.textContent = Generate(document.LengthOfText);
 }
 
 (function(win){
