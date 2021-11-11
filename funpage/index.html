@@ -177,7 +177,13 @@
         </div>
 
         <div class="post" id="post">
-            <p>该生成器的模板来自 Flamire ，<a href="https://xyix.github.io/posts/?&postname=moonshine-generator">魔改</a> by x义x && Flying2018，DPair 只是把它改了改放到自己的博客上而已。</p>
+            <p>该生成器的模板来自 Flamire ，<a href="https://xyix.github.io/posts/?&postname=moonshine-generator">魔改</a> by x义x && Flying2018，DPair 只是把它改成了 js 然后放到自己的博客上而已。</p>
+
+<form onsubmit="NewText(); return false;">
+<span>输入一些什么：</span>
+<input class="underline-input" id="input" type="input" oninput="ChangeText()" />
+</form>
+
 <p style='font-size: 16px; display: inline'>句子数量：</p>
 <script>
     let tat = document.getElementById('post');
@@ -186,6 +192,11 @@
     qaq.textContent = 50;
     document.LengthOfText = 50;
     tat.appendChild(qaq);
+
+    let ovo = document.createElement('p')
+    ovo.style = 'font-size: 16px';
+    ovo.textContent = '';
+    tat.appendChild(ovo);
 </script>
 <input id="range" type="range" min="1" max="100" value="50" oninput="ChangeVal()" />
 
@@ -194,6 +205,10 @@
         var value = document.getElementById("range").value;
         document.LengthOfText = value;
         qaq.textContent = value;
+    }
+    function ChangeText() {
+        var value = document.getElementById("input").value;
+        ovo.textContent = value;
     }
 </script>
 <button onclick="NewText()" style="font-size: 30; font-family: ZCOOL XiaoWei;">Generate!</button>
