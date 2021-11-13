@@ -65,3 +65,30 @@ $$
 
 }]
 
+### [另一方向的莫比乌斯反演](https://vfleaking.blog.uoj.ac/slide/87#/10)
+
+$$
+\begin{aligned}
+f(n)&=\sum_{n|d}g(d) \\
+g(n)&=\sum_{n|d}\mu(\frac{d}{n})f(d)\\
+\end{aligned}
+$$
+
+[{MDEXPAND 魔术
+
+$$
+\begin{aligned}
+f(n)&=\sum_{n|d}g(d) \\
+\sum_{d|n} \mu(d)&=[n=1] \\
+\therefore g(n)&=\sum_{n|d}[d=n]g(d) \\
+&=\sum_{n|d}\sum_{t|\frac{d}{n}}\mu(t)g(d) \\
+&=\sum_{d=1}\sum_{t|d}\mu(t)g(nd) \\
+&=\sum_{t=1}\sum_{d=1}\mu(t)g(ndt) \\
+&=\sum_{t=1}\mu(t)\sum_{d=1}g(ndt) \\
+&=\sum_{t=1}\mu(t)\sum_{n | d}g(dt) \\
+&=\sum_{t=1}\mu(t)f(nt)\\
+&=\sum_{n|d}\mu(\frac{d}{n})f(d)\\
+\end{aligned}
+$$
+
+}]

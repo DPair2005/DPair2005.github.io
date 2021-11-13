@@ -237,6 +237,29 @@ F_n&=\sum_{i=0}^n[n-i=0] \binom{n}{i}F_i\\
 &=\sum_{i=0}^{n}(-1)^{n-i}\binom{n}{i}G_{i}
 \end{aligned}</script>
 </details>
+
+
+<h3 id="-%E5%8F%A6%E4%B8%80%E6%96%B9%E5%90%91%E7%9A%84%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94-https-vfleaking-blog-uoj-ac-slide-87-10"><a href="https://vfleaking.blog.uoj.ac/slide/87#/10">另一方向的莫比乌斯反演</a></h3>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(n)&=\sum_{n|d}g(d) \\
+g(n)&=\sum_{n|d}\mu(\frac{d}{n})f(d)\\
+\end{aligned}</script><details>
+<summary> 魔术 </summary>
+  <script type="math/tex; mode=display">
+\begin{aligned}
+f(n)&=\sum_{n|d}g(d) \\
+\sum_{d|n} \mu(d)&=[n=1] \\
+\therefore g(n)&=\sum_{n|d}[d=n]g(d) \\
+&=\sum_{n|d}\sum_{t|\frac{d}{n}}\mu(t)g(d) \\
+&=\sum_{d=1}\sum_{t|d}\mu(t)g(nd) \\
+&=\sum_{t=1}\sum_{d=1}\mu(t)g(ndt) \\
+&=\sum_{t=1}\mu(t)\sum_{d=1}g(ndt) \\
+&=\sum_{t=1}\mu(t)\sum_{n | d}g(dt) \\
+&=\sum_{t=1}\mu(t)f(nt)\\
+&=\sum_{n|d}\mu(\frac{d}{n})f(d)\\
+\end{aligned}</script>
+</details>
             
 
         </div>
