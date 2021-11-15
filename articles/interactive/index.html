@@ -397,7 +397,50 @@
 <p>那么其实已经做完了。</p>
 
 <p>&lt;/details&gt;</p>
+<h3 id="-cf1479a-searching-local-minimum-https-www-luogu-com-cn-problem-cf1479a"><a href="https://www.luogu.com.cn/problem/CF1479A">CF1479A Searching Local Minimum</a></h3>
+<p>交互题。</p>
+<p>有一个排列，每次你可以单点查询一个位置的权值，最多问 $100$ 次，然后你需要输出一个位置使得其前一个元素和后一个元素都大于它，认为第 $0, n+1$ 个元素是 $+ \infty$。</p>
+<p>$n \le 10^5$</p>
+<details>
+<summary> 显示解法 </summary>
+  <p>首先考虑答案一定在 $[1, n]$ 里。</p>
+<p>然后询问中点和中点右边那个。</p>
+<p>若中点更小则左区间一定至少有一个答案，否则右区间。</p>
+<p>递归即可。</p>
 
+</details>
+
+
+<h3 id="-cf1407c-chocolate-bunny-https-www-luogu-com-cn-problem-cf1407c"><a href="https://www.luogu.com.cn/problem/CF1407C">CF1407C Chocolate Bunny</a></h3>
+<p>交互题。</p>
+<p>有一个排列，每次你可以给一组 $x, y$ 问 $a_x \mod a_y$，最多问 $2n$ 次输出这个排列。</p>
+<p>$n \le 10^4$</p>
+<details>
+<summary> 显示解法 </summary>
+  <p>考虑我们随便问两个数，正反各问一次。</p>
+<p>显然一次是一个对较小数取模后的数，另一次就是两数中的最小值。</p>
+<p>因此问两次取更大的那个就行。</p>
+<p>最后剩下一个位置就是最大值。</p>
+
+</details>
+
+
+<h3 id="-cf1270d-strange-device-https-www-luogu-com-cn-problem-cf1270d"><a href="https://www.luogu.com.cn/problem/CF1270D">CF1270D Strange Device</a></h3>
+<p>交互题。</p>
+<p>有一个长为 $n$ 数列 $a$，值已确定且值互不相等，但是你不知道。</p>
+<p>现在有个设备，你可以输入长为 $k$ 的上升下标序列 $p_1\sim p_k$，进行询问，它会回答对应数中第 $m$ 小的数在原数列的坐标和具体值。</p>
+<p>现在给你 $n$ 和 $k$，让你在最多询问 $n$ 次后回答 $m$ 的大小。保证一定可以构造出方案。</p>
+<p>$1\le m \le k &lt; n \le 500$</p>
+<details>
+<summary> 显示解法 </summary>
+  <p>首先不难发现，由于一定有解，那么对于 $k+1 &lt; n$ 的问题，我们只需要前 $k+1$ 项仍然一定有解。</p>
+<p>因此我们只需考虑 $n=k+1$ 的极端情况。</p>
+<p>那么问 $n$ 次能问出什么也显而易见了，显然是每一个空掉然后问一次。</p>
+<p>那么问题就是一个序列，每次告诉你随机删掉一个位置后 rank 为 $m$ 的数，保证每次删掉的位置不同。</p>
+<p>注意到删掉 $m$ 以及以前的，返回的就是第 $m+1$ 个数，否则就是第 $m$ 个。</p>
+<p>找更大的返回值的出现次数即可。</p>
+
+</details>
             
 
         </div>

@@ -1,0 +1,334 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/art.css">
+    <link rel="icon" type="images/png" href="/images/favicon.png">
+    <script src="/js/header.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/hitokoto.js"></script>
+
+    <link rel="stylesheet"
+        href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
+    <script src="/js/language.min.js"></script>
+    <script src="/js/crypto-js.min.js"></script>
+</head>
+
+<body>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/load_theme.js"></script>
+
+    <script>
+        window.onload = function () {
+            hljs.configure({ tabReplace: '    ' });
+            drawSaying();
+        }
+    </script>
+
+    <div class="content">
+        <div class="sidebar" id="sidebar">
+            <script>
+    if(document.heartland == false) location.href = "/404.html";
+</script>
+
+<script>
+    document.heartland = false;
+    window.localStorage.setItem('heartland', false);
+</script>
+
+<div class="sidebar-title">
+    <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+    DPairの非自制 blog
+    </p>
+    <hr align="center" style="width: 200px;">
+    <p></p>
+    <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+    <div class="saying" id="saying"> </div>
+</div>
+
+
+<script>
+    document.heartland = true;
+    window.localStorage.setItem('heartland', true);
+</script>
+
+<div class="sidebar-body">
+
+    <div class="sidebar-content">
+        <ul class="sidebar-menu">
+            <a href="/heartland">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+                    Home
+                </li>
+            </a>
+            <a href="/heartland/articles">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-articles" style="background: #e5e5e5">
+                    Articles
+                </li>
+            </a>
+            <a href="/">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-back">
+                    Back
+                </li>
+            </a>
+        </ul>
+    </div>
+
+    <div class="sidebar-about">
+    <div style="text-align: center; font-size: 16px;">
+        <a href="/aboutme" style="text-decoration: none; color: currentColor;">
+            About me
+        </a>
+    </div>
+    <HR align="center">
+    <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+        <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()"></img>
+    </div>
+
+    <ul class="sidebar-links">
+    <li class="sidebar-links-item">
+        <a href="https://dpair2005.github.io" class="friend-link">
+            github blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://dpair.gitee.io" class="friend-link">
+            gitee blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+            luogu blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://codeforces.com/profile/DPair" class="friend-link">
+            Codeforces 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://atcoder.jp/users/DPair" class="friend-link">
+            AtCoder 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://github.com/DPair2005" class="friend-link">
+            github 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://gitee.com/DPair" class="friend-link">
+            gitee 
+        </a>
+    </li>
+    </ul>
+
+</div>
+
+<ul class="sidebar-links">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
+
+    <li class="sidebar-links-item">
+        <a href="https://coderoj.gitee.io/" class="friend-link">
+            Jacder's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://xyix.github.io/" class="friend-link">
+            xYix's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/flying2018" class="friend-link">
+            flying2018's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/Point-King/" class="friend-link">
+            Point_King's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://cnblogs.com/pealfrog" class="friend-link">
+            xtw's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="http://xyf007.ml/" class="friend-link">
+            xyf007's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/zkdxl" class="friend-link">
+            zkdxl's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/guts" class="friend-link">
+            krimson's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://blog.moonpie.cf/" class="friend-link">
+            moonpie's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.luogu.com.cn/blog/wh2005blog/" class="friend-link">
+            wuhao2005's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://blog.jasonfan.ml/" class="friend-link">
+            jasonfan's blog
+        </a>
+    </li>
+
+</ul>
+
+
+
+</div>
+        </div>
+
+        <div class="post" id="post">
+
+            <title> 被加密的文章 - DPairの非自制 blog </title>
+
+            
+            
+            
+
+            
+
+            
+
+            <h2> 被加密的内容 </h2>
+            <button onclick="verify()" style="font-size: 20;">点此输入密码</button>
+
+            <!-- <form onsubmit="verify()">
+                <span> 输入密码以查看：</span>
+                <input class="underline-input" id="password" type="password">
+                <input class="gradual-button" type="submit" value="submit">
+                <br />
+                <span> 提示： N/A </span>
+            </form> -->
+
+            <script>
+                function verify() {
+                    const passwdMd5 = "510d42cf3f1f264c29628f746d5abbcb"
+                    const encryptedBlog = "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"
+                    Swal.fire({
+                        title: '输入密码以查看',
+                        text: '提示： N/A',
+                        input: 'password',
+                        inputAttributes: {
+                            autocapitalize: 'off'
+                        },
+                        confirmButtonText: 'Confirm',
+                        cancelButtonText: 'Cancel',
+                        showLoaderOnConfirm: true,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            var passwd = result.value;
+                            if (passwd == "") {
+                                Swal.fire({
+                                    title: 'Emm...',
+                                    text: 'I guess you should input something...',
+                                    icon: 'warning',
+                                });
+                            }
+                            else {
+                                passwd = CryptoJS.MD5(passwd).toString().substr(0, 16)
+                                if (CryptoJS.MD5(passwd).toString() !== passwdMd5) {
+                                    if (result.value == "dpairbx" || result.value == "dpairbuxin" || result.value == "dpairruo"
+                                    ||  result.value == "DPairbx" || result.value == "DPairbuxin" || result.value == "DPairruo") {
+                                        Swal.fire({
+                                            title: '说得对！',
+                                            text: '但是这并不是密码的说（（',
+                                            icon: 'info',
+                                        });
+                                    }
+                                    else if (result.value == '114514' || result.value == '1919810') {
+                                        Swal.fire({
+                                            title: '哼哼啊啊啊啊啊啊',
+                                            text: '这么臭的密码有必要试吗……',
+                                            icon: 'error',
+                                        });
+                                    }
+                                    else if (result.value == '19260817' || result.value == '19491001') {
+                                        Swal.fire({
+                                            title: '顶头三尺有神明',
+                                            text: '都是要应验的',
+                                            icon: 'warning',
+                                        });
+                                    } 
+                                    else if (result.value == '998244353') {
+                                        Swal.fire({
+                                            title: 'Orz数数大师！',
+                                            text: '但是这并不能改变你密码错了的事实',
+                                            icon: 'warning',
+                                        });
+                                    }
+                                    else if (result.value == '123456' || result.value == '12345678') {
+                                        Swal.fire({
+                                            title: 'Emm...',
+                                            text: '你不会真觉得我会拿这种东西当密码吧',
+                                            icon: 'error',
+                                        });
+                                    }
+                                    else if (result.value == 'hehezhouAKIOI2022') {
+                                        Swal.fire({
+                                            title: '恭喜你发现了宝藏！',
+                                            icon: 'info',
+                                        }).then(() => {
+                                            location.href = "/hidden/hhz"
+                                        });
+                                    }
+                                    else {
+                                        Swal.fire({
+                                            title: 'Password incorrect',
+                                            icon: 'error',
+                                        });
+                                    }
+                                }
+                                else {
+                                    Swal.fire({
+                                        title: 'Password correct',
+                                        text: 'Welcome',
+                                        icon: 'success',
+                                    });
+                                    let key = CryptoJS.enc.Utf8.parse(passwd)
+                                    decrypted = CryptoJS.AES.decrypt(encryptedBlog, key, {
+                                        iv: key,
+                                        mode: CryptoJS.mode.CBC,
+                                        padding: CryptoJS.pad.Pkcs7
+                                    })
+                                    decrypted = CryptoJS.enc.Utf8.stringify(decrypted)
+                                    let DOMPost = document.getElementById("post")
+                                    DOMPost.innerHTML = decrypted
+
+                                    loadMath()
+                                    hljs.highlightAll()
+                                }
+                            }
+                        }
+                    });
+                }
+                (function () {
+                    verify();
+                })();
+            </script>
+        </div>
+
+    </div>
+</body>
+
+
+
+</html>
