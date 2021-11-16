@@ -85,7 +85,7 @@ function BackgroundLegal(cur) {
     else return false;
 }
 
-const jpglist = [2, 3, 4, 5, 7, 8, 9, 10, 61];
+const jpglist = [2, 3, 4, 7, 8, 9, 10, 61];
 
 function GetUrlxtw(x) {
     const len = jpglist.length;
