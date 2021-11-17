@@ -178,11 +178,7 @@
 
         <div class="post" id="post">
             <p>该生成器的模板来自 Flamire ，<a href="https://xyix.github.io/posts/?&postname=moonshine-generator">魔改</a> by x义x && Flying2018，DPair 只是把它改成了 js 然后放到自己的博客上而已。</p>
-
-<form onsubmit="NewText(); return false;">
-<span>输入一些什么：</span>
-<input class="underline-input" id="input" type="input" oninput="ChangeText()" />
-</form>
+<p style="font-weight: bold;">比较推荐全屏使用</p>
 
 <p style='font-size: 16px; display: inline'>句子数量：</p>
 <script>
@@ -192,11 +188,6 @@
     qaq.textContent = 50;
     document.LengthOfText = 50;
     tat.appendChild(qaq);
-
-    let ovo = document.createElement('p')
-    ovo.style = 'font-size: 16px';
-    ovo.textContent = '';
-    tat.appendChild(ovo);
 </script>
 <input id="range" type="range" min="1" max="100" value="50" oninput="ChangeVal()" />
 
@@ -206,12 +197,25 @@
         document.LengthOfText = value;
         qaq.textContent = value;
     }
-    function ChangeText() {
-        var value = document.getElementById("input").value;
-        ovo.textContent = value;
-    }
 </script>
 <button onclick="NewText()" style="font-size: 30; font-family: ZCOOL XiaoWei;">Generate!</button>
+
+<details>
+<summary> Show Advanced </summary>
+
+<form onsubmit="NewText(); return false;">
+Split by commas. </br>
+名词：<input style="width: 700px;" class="input" id="input-n" type="input" value="王子, hehezhou , mayiyang ,叉义叉,小跳蛙,卷王,颓怪, ZK ,高质量好题,世界,人们,现实,小丑, NOI , NOIp "/> </br>
+主语：<input style="width: 700px;" class="input" id="input-suj" type="input" value="王子, hehezhou , mayiyang ,叉义叉,小跳蛙,卷王,颓怪, ZK ,人们,现实,小丑"/> </br>
+谓语：<input style="width: 700px;" class="input" id="input-obj" type="input" value="王子, hehezhou , mayiyang ,叉义叉,小跳蛙,卷王,颓怪, ZK ,高质量好题,世界,人们,现实,小丑, NOI , NOIp "/> </br>
+及物动词：<input style="width: 700px;" class="input" id="input-vt" type="input" value="击杀,愚弄,畏惧,阿鲁巴,膜拜,是,乳,爆切, AK ,歌颂,献祭,模仿,吊打,成为,反对,支持,激烈反对,嘲讽"/> </br>
+评价：<input style="width: 700px;" class="input" id="input-comm" type="input" value="支持,反对,激烈反对,嘲讽,畏惧"/> </br>
+系动词：<input style="width: 700px;" class="input" id="input-linkv" type="input" value="是，不再是，早已是"/> </br>
+
+
+</form>
+
+</details>
 
 <hr></hr>
 
