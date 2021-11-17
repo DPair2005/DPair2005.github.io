@@ -204,14 +204,21 @@
 <summary> Show Advanced </summary>
 
 <form onsubmit="NewText(); return false;">
-Split by commas. </br>
-名词：<input style="width: 700px;" class="input" id="input-n" type="input" value="王子, hehezhou , mayiyang ,叉义叉,小跳蛙,卷王,颓怪, ZK ,高质量好题,世界,人们,现实,小丑, NOI , NOIp "/> </br>
-主语：<input style="width: 700px;" class="input" id="input-suj" type="input" value="王子, hehezhou , mayiyang ,叉义叉,小跳蛙,卷王,颓怪, ZK ,人们,现实,小丑"/> </br>
-宾语：<input style="width: 700px;" class="input" id="input-obj" type="input" value="王子, hehezhou , mayiyang ,叉义叉,小跳蛙,卷王,颓怪, ZK ,高质量好题,世界,人们,现实,小丑, NOI , NOIp "/> </br>
-及物动词：<input style="width: 700px;" class="input" id="input-vt" type="input" value="击杀,愚弄,畏惧,阿鲁巴,膜拜,是,乳,爆切, AK ,歌颂,献祭,模仿,吊打,成为,反对,支持,激烈反对,嘲讽"/> </br>
-评价：<input style="width: 700px;" class="input" id="input-comm" type="input" value="支持,反对,激烈反对,嘲讽,畏惧"/> </br>
-系动词：<input style="width: 700px;" class="input" id="input-linkv" type="input" value="是,不再是,早已是"/> </br>
-不及物动词：<input style="width: 700px;" class="input" id="input-vi" type="input" value="内卷,不行,复辟,爬,爬来爬去,女装,乳叉,搞笑,流泪,叹息,欢呼,爬,怪叫,内卷,颓废,忏悔,在拉莱耶沉睡,嘬题"/> </br>
+关键词用竖线分割，“句式”部分的具体使用说明先咕咕咕 </br>
+名词：<input style="width: 700px;" class="input" id="input-n" type="input" value="王子| hehezhou | mayiyang |叉义叉|小跳蛙|卷王|颓怪| ZK |高质量好题|世界|人们|现实|小丑| NOI | NOIp "/> </br>
+主语：<input style="width: 700px;" class="input" id="input-suj" type="input" value="王子| hehezhou | mayiyang |叉义叉|小跳蛙|卷王|颓怪| ZK |人们|现实|小丑"/> </br>
+宾语：<input style="width: 700px;" class="input" id="input-obj" type="input" value="王子| hehezhou | mayiyang |叉义叉|小跳蛙|卷王|颓怪| ZK |高质量好题|世界|人们|现实|小丑| NOI | NOIp "/> </br>
+及物动词：<input style="width: 700px;" class="input" id="input-vt" type="input" value="击杀|愚弄|畏惧|阿鲁巴|膜拜|是|乳|爆切| AK |歌颂|献祭|模仿|吊打|成为|反对|支持|激烈反对|嘲讽"/> </br>
+评价：<input style="width: 700px;" class="input" id="input-comm" type="input" value="支持|反对|激烈反对|嘲讽|畏惧"/> </br>
+系动词：<input style="width: 700px;" class="input" id="input-linkv" type="input" value="是|不再是|早已是"/> </br>
+不及物动词：<input style="width: 700px;" class="input" id="input-vi" type="input" value="内卷|不行|复辟|爬|爬来爬去|女装|乳叉|搞笑|流泪|叹息|欢呼|爬|怪叫|内卷|颓废|忏悔|在拉莱耶沉睡|嘬题"/> </br>
+评价内容（暂译）：<input style="width: 700px;" class="input" id="input-vc" type="input" value="的不行|的无知|的过于强大|的过于内卷|的毫无素质"/> </br>
+形容词：<input style="width: 700px;" class="input" id="input-adj" type="input" value="不太行的|巨大的|小|丧失理智的|变态的|可怜的|邪恶的|善良的|无敌的|搞笑的|扭曲的|卷疯了的|伟大的|神圣的|奇怪的|奇异的|恐怖的|不可名状的|经常容易在竞赛中出现这样那样问题的"/> </br>
+副词：<input style="width: 700px;" class="input" id="input-adv" type="input" value="狂笑着|堂而皇之地|迅速地|狂怒地|不得不|冷静地|沉着地"/> </br>
+短句格式：<input style="width: 700px;" class="input" id="input-short-sent" type="input" value="%a%s%b%v%a%o|%a%s%b%w"/> </br>
+句尾格式（暂译）：<input style="width: 700px;" class="input" id="input-last-form" type="input" value="%g|%s钦定%g|%a%s%l%a%o|%a%s%l%A|%o被%s%b%v"/> </br>
+小格式（暂译）：<input style="width: 700px;" class="input" id="input-small-form" type="input" value="%L|%a%s%q%a%n%c"/> </br>
+句式框架：<input style="width: 700px;" class="input" id="input-form" type="input" value="%f。|但是，%S|为什么要%b%v%a%o呢？|正因为如此，%f。|由于%f，%a%s才能%b%v%a%o。|尽管%f，但%n还是%A。|真是一个%A%n！|%g。|%g，%g，而%g。|%g，所以%a%s才能%b%v%a%o。|%g的原因在于，%a%s%b%w。|问题的关键在于：%a%s为什么会%b%v%a%o呢？|这真的是%A啊！|换句话说：%S|尽管这样，但%n还是%A。|%a%o被%a%s所%b%v。|"/> </br>
 </form>
 
 </details>

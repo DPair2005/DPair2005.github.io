@@ -2,7 +2,7 @@ function solve(s) {
     var k = s.length;
     let ret = [], tmp = '';
     for (var j = 0; j < k; ++j) {
-        if (s[j] == ',') {
+        if (s[j] == '|') {
             ret.push(tmp);
             tmp = '';
         }
@@ -43,6 +43,8 @@ let form = [
     "尽管这样，但%n还是%A。",
     "%a%o被%a%s所%b%v。",
 ];
+
+
 function print(s) {
     var k = s.length;
     var ret = '';
@@ -99,6 +101,13 @@ function Generate(leng) {
     comm = solve(document.getElementById('input-comm').value);
     linkv = solve(document.getElementById('input-linkv').value);
     vi = solve(document.getElementById('input-vi').value);
+    vc = solve(document.getElementById('input-vc').value);
+    adj = solve(document.getElementById('input-adj').value);
+    adv = solve(document.getElementById('input-adv').value);
+    short_sent = solve(document.getElementById('input-short-sent').value);
+    last_form = solve(document.getElementById('input-last-form').value);
+    small_form = solve(document.getElementById('input-small-form').value);
+    form = solve(document.getElementById('input-form').value);
     for (var i = 1; i <= leng; i++)
         ret = ret + print(form[rand(form.length)]);
     return ret;
