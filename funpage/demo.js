@@ -98,6 +98,7 @@ function Generate(leng) {
     vt = solve(document.getElementById('input-vt').value);
     comm = solve(document.getElementById('input-comm').value);
     linkv = solve(document.getElementById('input-linkv').value);
+    vi = solve(document.getElementById('input-vi').value);
     for (var i = 1; i <= leng; i++)
         ret = ret + print(form[rand(form.length)]);
     return ret;
