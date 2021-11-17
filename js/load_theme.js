@@ -1,6 +1,19 @@
 (function(win){
-    // background
     var Storage = window.localStorage;
+    // funval
+    'use strict';
+    if (win.Funval == 'fun') {
+        Swal.fire({
+            title: '恭喜你发现了宝藏！',
+            icon: 'info',
+        }).then(() => {
+            location.href = "/funpage"
+        });
+        return ;
+    }
+
+
+    // background
     var cur = Storage.getItem('Background');
     cur = BackgroundAdjust(cur);
     var val = BackgroundStatus();
