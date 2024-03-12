@@ -67,6 +67,8 @@ function print(s) {
                 if (rand(2))
                     ret = ret + adv[rand(adv.length)];
             }
+            else if (s[j] == 'B')
+                ret = ret + adv[rand(adv.length)];
             else if (s[j] == 's')
                 ret = ret + suj[rand(suj.length)];
             else if (s[j] == 'o')

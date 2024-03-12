@@ -231,6 +231,12 @@ code {
     transition-timing-function: ease-in-out;
 }
 
+.long-input {
+    width: 800px;
+    height: 20px;
+    font-size: 13px"
+}
+
 .fun {
     display: var(--fun-display);
 }

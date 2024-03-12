@@ -1,0 +1,216 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="icon" type="images/png" href="/images/favicon.png">
+    <script src="/js/header.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/hitokoto.js"></script>
+
+    <title> Tag games - DPairの非自制 blog </title>
+</head>
+
+<body>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/load_theme.js"></script>
+
+    <div class="content">
+        <div class="sidebar" id="sidebar">
+            <script>
+    document.heartland = false;
+    window.localStorage.setItem('heartland', false);
+</script>
+
+<div class="sidebar-title">
+    <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+    DPairの非自制 blog
+    </p>
+    <hr align="center" style="width: 200px;">
+    <p></p>
+    <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+    <div class="saying" id="saying"> </div>
+</div>
+
+<style>
+    .floating-button {
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        z-index: 100;
+        border: none;
+        outline: none;
+        background-color: cadetblue;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 50%;
+    }
+</style>
+<button class="floating-button" style="font-family: ZCOOL XiaoWei; font-size:large" onclick="location.href='/milcubes'"">百</button>
+
+<div class="sidebar-body">
+
+    <div class="sidebar-content">
+        <ul class="sidebar-menu">
+            <a href="/">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+                    Home
+                </li>
+            </a>
+            <a href="/articles">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-articles">
+                    Articles
+                </li>
+            </a>
+            <a href="/tags">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-tags" style="background: #e5e5e5">
+                    Tags
+                </li>
+            </a>
+        </ul>
+    </div>
+
+    <div class="sidebar-about">
+    <div style="text-align: center; font-size: 16px;">
+        <a href="/aboutme" style="text-decoration: none; color: currentColor;">
+            About me
+        </a>
+    </div>
+    <HR align="center">
+    <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+        <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()"></img>
+    </div>
+
+    <ul class="sidebar-links">
+    <li class="sidebar-links-item">
+        <a href="https://dpair2005.github.io" class="friend-link">
+            github blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://dpair.gitee.io" class="friend-link">
+            gitee blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+            luogu blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://codeforces.com/profile/DPair" class="friend-link">
+            Codeforces 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://atcoder.jp/users/DPair" class="friend-link">
+            AtCoder 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://github.com/DPair2005" class="friend-link">
+            github 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://gitee.com/DPair" class="friend-link">
+            gitee 
+        </a>
+    </li>
+    </ul>
+
+</div>
+
+<ul class="sidebar-links">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
+
+    <li class="sidebar-links-item">
+        <a href="https://coderoj.gitee.io/" class="friend-link">
+            Jacder's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://xyix.github.io/" class="friend-link">
+            xYix's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/flying2018" class="friend-link">
+            flying2018's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/Point-King/" class="friend-link">
+            Point_King's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://cnblogs.com/pealfrog" class="friend-link">
+            xtw's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="http://xyf007.ml/" class="friend-link">
+            xyf007's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/zkdxl" class="friend-link">
+            zkdxl's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/guts" class="friend-link">
+            krimson's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://blog.moonpie.cf/" class="friend-link">
+            moonpie's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.luogu.com.cn/blog/wh2005blog/" class="friend-link">
+            wuhao2005's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://blog.jasonfan.ml/" class="friend-link">
+            jasonfan's blog
+        </a>
+    </li>
+
+</ul>
+
+
+
+</div>
+        </div>
+        <div class="art-list-container">
+            <ul class="art-list">
+
+<a href="/articles/surreal_numbers/">
+    <li class="list-item art-list-item" style="display: flex; justify-content: space-between;">
+        <div class="list-item-title" style="font-family: 'ZCOOL XiaoWei'; font-size: 22px;">
+            
+            超现实数与博弈 
+        </div>
+    </li>
+</a>
+
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        drawSaying()
+    </script>
+</body>
+
+
+
+</html>

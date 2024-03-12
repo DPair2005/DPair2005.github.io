@@ -47,6 +47,22 @@
     <div class="saying" id="saying"> </div>
 </div>
 
+<style>
+    .floating-button {
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        z-index: 100;
+        border: none;
+        outline: none;
+        background-color: cadetblue;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 50%;
+    }
+</style>
+<button class="floating-button" style="font-family: ZCOOL XiaoWei; font-size:large" onclick="location.href='/milcubes'"">百</button>
 
 <div class="sidebar-body">
 
@@ -387,16 +403,11 @@
 <p>考虑极端情况，由于至少有两个非 $0$，因此 考虑每次询问 $i$ 和 $[1, i-1]$，注意到枚举 $i=1\sim n$ 的话，第一次出现非 $0$ 结果的位置一定是第二个非 $0$ 元素。</p>
 <p>我们考虑后面的都可以用这个元素处理出来，那么现在就是用 $\lfloor\log_2 n\rfloor + 1$ 次找出前面那个 $1$。</p>
 <p>发现后缀查询就行了，这个直接二分。</p>
-<details>
-<summary> 二分.png </summary>
-  <p><img src="/pics/binary_search.png" alt=""></p>
+<p>那么其实已经做完了。</p>
 
 </details>
 
 
-<p>那么其实已经做完了。</p>
-
-<p>&lt;/details&gt;</p>
 <h3 id="-cf1479a-searching-local-minimum-https-www-luogu-com-cn-problem-cf1479a"><a href="https://www.luogu.com.cn/problem/CF1479A">CF1479A Searching Local Minimum</a></h3>
 <p>交互题。</p>
 <p>有一个排列，每次你可以单点查询一个位置的权值，最多问 $100$ 次，然后你需要输出一个位置使得其前一个元素和后一个元素都大于它，认为第 $0, n+1$ 个元素是 $+ \infty$。</p>
@@ -439,6 +450,35 @@
 <p>那么问题就是一个序列，每次告诉你随机删掉一个位置后 rank 为 $m$ 的数，保证每次删掉的位置不同。</p>
 <p>注意到删掉 $m$ 以及以前的，返回的就是第 $m+1$ 个数，否则就是第 $m$ 个。</p>
 <p>找更大的返回值的出现次数即可。</p>
+
+</details>
+
+
+<h3 id="-cf1028g-guess-the-number-https-www-luogu-com-cn-problem-cf1028g"><a href="https://www.luogu.com.cn/problem/CF1028G">CF1028G Guess the number</a></h3>
+<p>交互题。</p>
+<p>有一个值域为 $[1, 10004205361450474]$ 的未知数，你可以问交互库 $5$ 次，每一次可以问一个长度为 $k$ 的严格上升序列，会有以下结果：</p>
+<ul>
+<li>若 $k &gt; x$，或一次问了超过 $10^4$ 个数，你直接输。</li>
+<li>若不满足第一条且包含了 $x$，你直接赢。</li>
+<li>若都不满足则返回 $x$ 在序列中后继的下标。</li>
+</ul>
+<details>
+<summary> 显示解法 </summary>
+  <p>首先第一次不问一个 $k = 1$ 你就死了，假设我们这一次问的是一个 $x$。</p>
+<p>考虑若 $&lt; x$，那么就是一个范围为 $x$ 的子问题，只不过少一次询问而已。</p>
+<p>这不难想到 dp，不妨设 $f_i$ 表示询问次数为 $i$ 所能问出的最大可行值域。</p>
+<p>显然 $f_1=1$，注意到次数限制为 $2$ 的时候我们第一次只能问 $2$，不然交互库一旦给你一个小于你根本不知道干什么。</p>
+<p>那你考虑第二次应该问什么，很显然答案已经被确定 $&gt; 2$，因此你最优就是 $k=3$，此时你可以问的范围是 $[3,5]$。</p>
+<p>因此得到 $f_2=5$。 </p>
+<p>然后考虑次数限制为 $3$ 的时候，显然第一次应该问 $6$，不然返回小并且剩下两次你确定不出来。</p>
+<p>那么考虑第二次你可以问 $k=7$，考虑枚举边界。</p>
+<p>首先考虑你选取的第一个边界应该满足 “区间内数的个数不超过最后一次能安全问的范围”，注意到这个范围仍然是 $7$。</p>
+<p>因此你最后一次要问 $[7,13]$ 的数，因此你第二次询问应该有 $s_1=14$。</p>
+<p>依此类推，有 $s_2=30, s_3=62, s_4=126, s_5=254, s_6=510,s_7=1022$，发现是指数级增长。</p>
+<p>注意到 $f_3=2045$。</p>
+<p>然后考虑问四次的情况，第一次显然是问 $f_3+1$，第二次就考虑后面两次用类似限制为三时的方案能到达多少，卡着那个上界即可。</p>
+<p>询问五次显然同理。</p>
+<p>实现时直接对这些分界点 dp 即可，那么询问时直接询问对应分界点即可。</p>
 
 </details>
             
