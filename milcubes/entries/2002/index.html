@@ -1,0 +1,74 @@
+<head>
+    
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/art.css">
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
+    <script src="/js/language.min.js"></script>
+
+    <link rel="icon" href="/milcubes/pics/favicon.png">
+    <title>
+        能源模块2——细节设计 - Milcubes
+    </title>
+</head>
+
+<body>
+    <script>
+        window.onload = function() {
+            loadMath();
+            hljs.configure({ tabReplace: '    ' });
+            hljs.highlightAll()
+        }
+    </script>
+
+    <div class="content">
+        <div class="post" id="post">
+            <h1>能源模块2——细节设计</h1>
+            <h2 id="%E4%B8%80%E3%80%81%E6%A0%B8%E8%83%BD">一、核能</h2>
+<h3 id="1-%E5%B0%8F%E5%9E%8B%E5%8F%8D%E5%BA%94%E5%A0%86">1. 小型反应堆</h3>
+<p>由于核能提供的能量是巨大的，为了节省空间并提高能源利用率，我们在反应堆的选择上参考了MoveluX 的先进小型反应堆，额定输出功率（电）可以降低至3MW[i]。</p>
+<p>考虑到核能功能占总能量供应的80%，即1.44×10^7 kWh/yr，则可计算出反应堆的年工作时间为480h，计划每月在固定时间启动40h以满足供能需要。</p>
+<p>其结构见：</p>
+<p><img src="/milcubes/pics/2002_1.jpg" alt=""></p>
+<h3 id="2-%E7%87%83%E6%96%99%E4%BE%9B%E7%BB%99%E5%92%8C%E8%83%BD%E9%87%8F%E5%88%A9%E7%94%A8%EF%BC%9A">2. 燃料供给和能量利用：</h3>
+<p>现行反应堆采用的核燃料一般是含U-235 在3.5%到5%的二氧化铀燃料，我们采用U-235质量分数在4%的二氧化铀燃料。</p>
+<p>相关数据表明一个U-235原子释放的能量大约在200MeV = 3.2x10^(-11)J.</p>
+<p>则可计算出1kg的二氧化铀燃料完全燃烧能释放的能量（热量）大约在787500kWh.</p>
+<p>核弹站的普遍热效率一般在33%，因此1kg二氧化铀燃料的实际发电量在262500kWh</p>
+<p>计算100年内的总能量消耗所对应的燃料质量：1200×1500×100×0.8/262500 = 548.6kg</p>
+<p>考虑到燃料不完全燃烧的可能性，以及为应付紧急情况，保证充足的能源供应，最终携带1t的二氧化铀燃料（4%）。</p>
+<p><img src="/milcubes/pics/2002_2.jpg" alt=""></p>
+<p><img src="/milcubes/pics/2002_3.jpg" alt=""></p>
+<h3 id="3-%E6%A0%B8%E5%BA%9F%E6%96%99%E7%9A%84%E5%A4%84%E7%90%86%EF%BC%9A">3. 核废料的处理：</h3>
+<p>对于核废料，主要是核反应生产出的乏燃料，我们采用深埋的处理方法,利用地质隔绝的方式防止乏燃料造成放射性污染：</p>
+<p>关于乏燃料的包装：考虑使用熔融铅或热压铜粉填料，使燃料棒放入铜容器内的坚实基体中。容器放入空穴后，在其周围放入缓冲材料，例如非常密实的班脱岩粘土。然后用砂和班脱岩粘土的混合物填充所有的通道和井筒，使处置库被封闭。</p>
+<p>这种方法计算得所占的空间大约为40000m^3[ii]。</p>
+<p><img src="/milcubes/pics/2002_4.jpg" alt=""></p>
+<h2 id="%E4%BA%8C%E3%80%81%E5%A4%AA%E9%98%B3%E8%83%BD">二、太阳能</h2>
+<h3 id="1-%E5%85%89%E7%85%A7%E6%9D%A1%E4%BB%B6">1. 光照条件</h3>
+<p>根据Solargis上的数据[iii]，可以得到该区域年 GTI（倾斜全辐射：指特定倾斜面上接收到的直接辐射 （DNI）和散射辐射 （DHI）之和，是计算固定倾角光伏电站产能的重要指标）值约为 1443.9 kWh/m^3，由于该地纬度大约在北纬 30 °附近，所以动态改变光伏板倾斜角可以全年使得太阳垂直辐射到光伏板上的辐射量最大。</p>
+<h3 id="2-%E5%8F%91%E7%94%B5%E9%87%8F">2. 发电量</h3>
+<p>该地区年 PVOUT（光伏系统的输出功率或产量，即一个光伏系统实际产生的电能量，考虑了多种因素，包括太阳辐射强度、光伏面板类型和效率、系统配置（包括大小、方向和角度等）、环境因素（例如天气和温度）以及系统的级联损失等）为 1187.3 kWh/kWp（kWp：指光伏系统在理想条件下，即大概25°C的温度和1000 W/m²的太阳辐射下的峰值功率），考察每平方米光伏板峰值功率大约为 215.2W[iv]，通过每平方米的电力产出量 = PVOUT × 每平方米光伏板峰值功率的公式可以算出，年每平方米光伏发电量约为 255.5kWh/m^3。</p>
+<h3 id="3-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%BC%82">3. 时间差异</h3>
+<p>从一天的角度来看，光伏板发电量白天大，晚上没有（关闭），晴天多，雨天少；从一年的角度来看，该地区气候为亚热带季风气候，夏季高温多雨，冬季低温少雨，且夏季太阳照射时间长，故夏季接收太阳辐射量多于冬季[v]。由于天气特性，该地区光伏板发电量在日维度极不稳定，需要一定的储能设施。实际上，光伏板春秋发电量大于夏季，然后大于冬季，其原因是过高的温度会降低光伏组件的发电量和发电寿命。</p>
+<h3 id="4-%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE">4. 安装位置</h3>
+<p>光伏板的安装位置主要在建筑顶端和部分湖泊水面，将太阳能转化为电能用于生活供电。</p>
+<h3 id="5-%E4%BD%BF%E7%94%A8%E5%B9%B4%E9%99%90">5. 使用年限</h3>
+<p>光伏板的使用寿命大约估计为 30 年[vi]，年均发电衰减量约为 0.5%，故实际年每平方米光伏发电量可能下降到 218kWh/m^3。</p>
+<h3 id="6-%E7%8E%AF%E5%A2%83%E5%BD%B1%E5%93%8D">6. 环境影响</h3>
+<p>光伏板可实现回收循环再利用，降低队环境的污染。</p>
+<h3 id="7-%E5%8D%A0%E5%9C%B0%E9%9D%A2%E7%A7%AF">7. 占地面积</h3>
+<p>根据太阳能发电占比 20% 即 3.6*10^6 kWh 的要求，光伏板总占比面积约为 20000m^3（实际上水面上的光伏板发电量会小很多，总占地面积可能达到 20000m^3~25000m^3）。</p>
+<h2 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</h2>
+<p>[i] 参考链接：<a href="https://aris.iaea.org/PDF/MoveluX_2020.pdf">https://aris.iaea.org/PDF/MoveluX_2020.pdf</a></p>
+<p>[ii] 参考链接：<a href="https://www.iaea.org/sites/default/files/28104681520_tz.pdf">https://www.iaea.org/sites/default/files/28104681520_tz.pdf</a></p>
+<p>[iii] 参考链接：<a href="https://apps.solargis.com/prospect/map?show-registration=1&amp;c=31.137162,120.322781,12&amp;s=31.129327,120.325644&amp;m=solargis-pvout_csi&amp;l=true">https://apps.solargis.com/prospect/map?show-registration=1&amp;c=31.137162,120.322781,12&amp;s=31.129327,120.325644&amp;m=solargis-pvout_csi&amp;l=true</a></p>
+<p>[iv] 参考链接：<a href="http://www.adayo-led.com/id62451217.html">http://www.adayo-led.com/id62451217.html</a></p>
+<p>[v] 参考链接：<a href="http://www.yida-pv.com/211452-18000/248721_202213.html">http://www.yida-pv.com/211452-18000/248721_202213.html</a></p>
+<p>[vi] 参考链接：<a href="https://solar.ofweek.com/2019-03/ART-260008-8420-30311133.html">https://solar.ofweek.com/2019-03/ART-260008-8420-30311133.html</a></p>
+
+        </div>
+    </div>
+</body>
