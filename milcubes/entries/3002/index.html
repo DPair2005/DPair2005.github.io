@@ -1,0 +1,85 @@
+<head>
+    
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/art.css">
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
+    <script src="/js/language.min.js"></script>
+
+    <link rel="icon" href="/milcubes/pics/favicon.png">
+    <title>
+        科技板块2 - Milcubes
+    </title>
+</head>
+
+<body>
+    <script>
+        window.onload = function() {
+            loadMath();
+            hljs.configure({ tabReplace: '    ' });
+            hljs.highlightAll()
+        }
+    </script>
+
+    <div class="content">
+        <div class="post" id="post">
+            <h1>科技板块2</h1>
+            <h2 id="%E4%B8%80%E3%80%81%E6%A6%82%E8%A7%88">一、概览</h2>
+<p>数据中心作为我们世界最为核心的竞争力，拥有着统括性的作用。我们期望通过建立一个大型的数据库，并且配合上技术简化手段，使得一切基础性的技术都可以被一个没有经过任何专业训练的人快速上手使用。通过这种方式，我们的世界可以真正的实现知识共享，也可以大大加快各行各业的工作效率，同时尽可能避免大型科研仪器缺失等问题带来的科技倒退。</p>
+<h2 id="%E4%BA%8C%E3%80%81%E6%9C%BA%E6%9F%9C%E8%AE%BE%E8%AE%A1">二、机柜设计</h2>
+<p>对于单个标准机柜（42U）可以容纳16个服务器（1U）。同时考虑算力和存储的两方面需求，决定分配2个机柜组建计算用群集。每个服务器搭载：</p>
+<ul>
+<li>4 $\times$ AMD Instinct MI300X 加速卡（750W）</li>
+<li>2 $\times$ AMD EPYC（霄龙）9754 处理器（360W）</li>
+<li>1 $\times$ 32G DDR5 4800 RECC RAM（5W）</li>
+<li>5 $\times$ Pure Storage 300TB SSD（15W）</li>
+</ul>
+<p>分配3个机柜组件存储用群集。每个服务器搭载：</p>
+<ul>
+<li>2 $\times$ AMD Instinct MI300X 加速卡（750W）</li>
+<li>1 $\times$ AMD EPYC（霄龙）9754 处理器（360W）</li>
+<li>1 $\times$ 32G DDR5 4800 RECC RAM（5W）</li>
+<li>80 $\times$ Pure Storage 300TB SSD（15W）</li>
+</ul>
+<p>可以计算出总的数据存储量为：</p>
+<script type="math/tex; mode=display">2 \times 16 \times 5 \times 300 \div 1024 + 3 \times 16 \times 80 \times 300 \div 1024 \approx 1172\text{PB}</script><p>这个存储量足以满足存储目前人类绝大部分的多媒体信息知识的需求。</p>
+<h2 id="%E4%B8%89%E3%80%81%E8%83%BD%E6%BA%90%E8%BE%B9%E7%95%8C">三、能源边界</h2>
+<p>计算出机柜组的总功率：</p>
+<p>$2 \times 16 \times (4 \times 750 + 2 \times 360 + 5 + 5 \times 15) + 3 \times 16 \times (2 \times 750 + 360 + 5 + 80 \times 15) = 268720W$</p>
+<p>考虑余量，我们采用的电源功耗控制为$300\text{kW}$.</p>
+<p><strong>考虑到通信系统，在主机房额外安放5个机柜放置交换机，但在本篇的能量计算中暂不考虑，留在通信系统板块中计算。</strong></p>
+<p>目前看来，10个机柜所在的主机房占地面积约在$4.5m^{2}/台 \times 10台 = 45m^{2}$,为了留出充足的余量，主机房的占地面积取$100m^{2}$。</p>
+<p>计算空调总制冷功率：$Q<em>{t} = Q</em>{1} + Q<em>{2}$，其中$Q</em>{1}$为室内设备负荷，$Q<em>{2}$为环境冷负荷。
+>$Q</em>{1} = 250\text{kW} \times 0.8 = 200\text{kW}$
+$Q<em>{2} = 0.15\text{kW}/m^{2} \times 50m^{2} = 7.5\text{kW}$
+$Q</em>{t} = Q<em>{1} + Q</em>{2} = 207.5\text{kW}$
+留出余量，考虑选择$250\text{kW}$的空调制冷系统。</p>
+<p>计算方式参考：<a href="https://www.zhihu.com/question/540342299/answer/3371598736">https://www.zhihu.com/question/540342299/answer/3371598736</a></p>
+<p>同时考虑照明和其他用电，最终确认数据中心的用电功率控制在$P = 600\text{kW}$。同时考虑整个数据中心并不可能一直处于满载运行状态，因此在计算总用电量的时候乘以综合运行系数$k = 0.6$。
+所以计算出数据中心的总年用电量：
+>$600\text{kW} \times 24h \times 365\text{Day} \times 0.6 \approx 3.2 \times 10^{6}\text{kW} \cdot h$
+此即为能量边界。</p>
+<h2 id="%E5%9B%9B%E3%80%81%E7%A9%BA%E9%97%B4%E8%BE%B9%E7%95%8C">四、空间边界</h2>
+<p>根据上个模块的计算，主机房面积控制在$100m^{2}$。一般机柜的高度尺寸为2$m$，则考虑层高为3$m$。
+因此主机房所占用的空间为300$m^{3}$。
+考虑其他各个系统的综合占用空间（实际占用空间都小于主机房所占用空间），并便于后续的详细设计，最终确认数据中心的空间边界为$750m^{3}$。</p>
+<h2 id="%E4%BA%94%E3%80%81%E7%89%A9%E8%B5%84%E8%BE%B9%E7%95%8C">五、物资边界</h2>
+<p>数据中心的物理布局参照如下：
+<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83">https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83</a></p>
+<p>因此在物资上考虑：</p>
+<ul>
+<li>机柜系统：10$\times 800\text{mm} \times 1200\text{mm} \times 2000\text{mm}$</li>
+<li>$42U$ 机柜，450$\times$AMD Instinct MI250X</li>
+<li>加速卡（750W），225$\times$ AMD EPYC（霄龙）9754</li>
+<li>处理器（360W），800$\times$ 32G DDR5 4800 RECC</li>
+<li>RAM（5W），40000$\times$ Pure Storage 300TB</li>
+<li>SSD（15W）.（已考虑设备的使用年限和更换）</li>
+<li>对应的空调制冷系统（配备4个$80\text{kW}$的空调主机，留出备用设备）</li>
+<li>对应的消防系统（包括但不限于：烟雾检测器、自动喷水灭火系统、清除事件灭火气体系统、防火墙以及各类基本灭火器）</li>
+</ul>
+
+        </div>
+    </div>
+</body>
