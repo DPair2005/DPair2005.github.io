@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Image Generator</title>
+</head>
+<body>
+    <h1>IdentityV BP Background Generator</h1>
+    
+    <button onclick="generateImage()">Generate Image</button>
+    <a id="downloadLink" download="generated_image.png" href="#" style="display: none;">Download Image</a>
+    
+    <details>
+        <summary> Show Advanced </summary>
+        
+        <form onsubmit="NewText(); return false;">
+            图片细节（图片大小1920×1080）</br>
+            x坐标（范围0~1920）：<input class="" id="input-x" type="input" value="0"/> </br>
+            y坐标（范围0~1080）：<input class="" id="input-y" type="input" value="0"/> </br>
+            建议图片大小1920×1080，网页图片地址和本地图片都存在时网页图片优先。
+            图片地址：<input class="" id="input-pic" type="input"> </br>
+            上传本地图片：<input type="file" id="input-file" accept="image/*">
+        </form>
+        
+    </details>
+        
+    
+    <canvas id="myCanvas" width="1920" height="1080"></canvas>
+    <script>
+        function generateImage() {
+            var canvas = document.getElementById('myCanvas');
+            var ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            var x = document.getElementById('input-x').value;
+            var y = document.getElementById('input-y').value;
+            var pic = document.getElementById('input-pic').value;
+            let img = new Image();
+            img.onload = function() {
+                ctx.drawImage(img, x, y);
+                let background = new Image();
+                background.onload = function() {
+                    ctx.drawImage(background, 0, 0);
+
+                    // 在 canvas 上绘制图像
+
+                    // 生成 base64 编码的图片 URL
+                    var dataURL = canvas.toDataURL('image/png');
+
+                    // 更新下载链接的 href 属性，使它指向生成的图片
+                    var downloadLink = document.getElementById('downloadLink');
+                    downloadLink.href = dataURL;
+                    downloadLink.style.display = 'block';
+                };
+                background.src = "Pure_ui.png";
+            };
+            console.log(pic);
+            var fileInput = document.getElementById('input-file');
+            if (pic === "" && fileInput.files.length == 0) {
+                img.src = "default.png";
+            }
+            else if (pic.startsWith("http://") || pic.startsWith("https://")) {
+                img.src = pic;
+            } else {
+                var file = fileInput.files[0];
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
