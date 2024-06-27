@@ -1,0 +1,283 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/art.css">
+    <link rel="icon" type="images/png" href="/images/favicon.png">
+    <script src="/js/header.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/hitokoto.js"></script>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/atom-one-light.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js"></script>
+    <script src="/js/language.min.js"></script>
+    <title>
+        ZVL 导播教程 - DPairの非自制 blog
+    </title>
+</head>
+
+<body>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/load_theme.js"></script>
+
+    <script>
+        window.onload = function() {
+            loadMath();
+            drawSaying();
+            hljs.configure({ tabReplace: '    ' });
+            hljs.highlightAll()
+        }
+    </script>
+
+    <div class="content">
+        <div class="sidebar" id="sidebar">
+            <script>
+    document.heartland = false;
+    window.localStorage.setItem('heartland', false);
+</script>
+
+<div class="sidebar-title">
+    <p style="font-weight: bold; font-size: 25px; font-family: 'ZCOOL XiaoWei';" onclick="drawSaying()"> 
+    DPairの非自制 blog
+    </p>
+    <hr align="center" style="width: 200px;">
+    <p></p>
+    <div font style="text-align: center; font-size: 18px; font-family: 'ZCOOL XiaoWei';" class="sayingtype" id="sayingtype"> </div>
+    <div font="" style="text-align: center; font-size: 6px;"> 　 </div>
+    <div class="saying" id="saying"> </div>
+    <div class="sayer" id="sayer"> </div>
+</div>
+
+<style>
+    .floating-button {
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        z-index: 100;
+        border: none;
+        outline: none;
+        background-color: cadetblue;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 50%;
+    }
+</style>
+<button class="floating-button" style="font-family: ZCOOL XiaoWei; font-size:large" onclick="location.href='/milcubes'"">百</button>
+
+<div class="sidebar-body">
+
+    <div class="sidebar-content">
+        <ul class="sidebar-menu">
+            <a href="/">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-home">
+                    Home
+                </li>
+            </a>
+            <a href="/articles">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-articles" style="background: #e5e5e5">
+                    Articles
+                </li>
+            </a>
+            <a href="/tags">
+                <li class="list-item sidebar-menu-item" id="sidebar-content-tags">
+                    Tags
+                </li>
+            </a>
+        </ul>
+    </div>
+
+    <div class="sidebar-about">
+    <div style="text-align: center; font-size: 16px;">
+        <a href="/aboutme" style="text-decoration: none; color: currentColor;">
+            About me
+        </a>
+    </div>
+    <HR align="center">
+    <div class="avatar-rotate" style="margin: 2 auto; width: min-content">
+        <img class="avatar" alt="DPair" src="/images/avatar.png", onclick="NextBackground()"></img>
+    </div>
+
+    <ul class="sidebar-links">
+    <li class="sidebar-links-item">
+        <a href="https://dpair2005.github.io" class="friend-link">
+            github blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://dpair.gitee.io" class="friend-link">
+            gitee blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.luogu.com.cn/blog/DPair2005/" class="friend-link">
+            luogu blog 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://codeforces.com/profile/DPair" class="friend-link">
+            Codeforces 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://atcoder.jp/users/DPair" class="friend-link">
+            AtCoder 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://github.com/DPair2005" class="friend-link">
+            github 
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://gitee.com/DPair" class="friend-link">
+            gitee 
+        </a>
+    </li>
+    </ul>
+
+</div>
+
+<ul class="sidebar-links">
+    <div style="text-align: center; font-size: 16px;"> links </div>
+    <HR align="center">
+
+    <li class="sidebar-links-item">
+        <a href="https://coderoj.gitee.io/" class="friend-link">
+            Jacder's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://xyix.github.io/" class="friend-link">
+            xYix's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/flying2018" class="friend-link">
+            flying2018's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/Point-King/" class="friend-link">
+            Point_King's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://cnblogs.com/pealfrog" class="friend-link">
+            xtw's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="http://xyf007.ml/" class="friend-link">
+            xyf007's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/zkdxl" class="friend-link">
+            zkdxl's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.cnblogs.com/guts" class="friend-link">
+            krimson's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://blog.moonpie.cf/" class="friend-link">
+            moonpie's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://www.luogu.com.cn/blog/wh2005blog/" class="friend-link">
+            wuhao2005's blog
+        </a>
+    </li>
+<li class="sidebar-links-item">
+        <a href="https://blog.jasonfan.ml/" class="friend-link">
+            jasonfan's blog
+        </a>
+    </li>
+
+</ul>
+
+
+
+</div>
+        </div>
+
+        <div class="post" id="post">
+            <h1>ZVL 导播教程</h1>
+            <h2 id="0-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87">0 前期准备</h2>
+<ul>
+<li>安装 bilibili 直播姬：<a href="https://link.bilibili.com/p/eden/download?#/web">哔哩哔哩直播姬下载 (bilibili.com)</a></li>
+<li>安装 obs 软件: <a href="https://obsproject.com/">Open Broadcaster Software | OBS (obsproject.com)</a></li>
+<li>安装 bp 软件（通过联系主办方获得）</li>
+</ul>
+<p>本文使用环境为：</p>
+<ul>
+<li>obs 30.1.2</li>
+<li>bilibili 直播姬 5.13.0.6976</li>
+<li>ZVLbp 软件 5.0 版</li>
+</ul>
+<h2 id="1-bp-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8">1 bp 软件使用</h2>
+<h3 id="1-1-%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF">1.1 基本信息</h3>
+<p>bp软件后台大致如下：</p>
+<p><img src="./bp-back.png" alt=""></p>
+<p>导播应在 <strong>每局比赛开始前</strong> 确保求生者队伍、监管者队伍、全局禁选、场次、比分、选手ID准确无误。</p>
+<p><strong>bp开始</strong> 后，根据比赛模式中的bp结果更新本页面中选图，ban求生者/监管者，pick求生者/监管者部分。</p>
+<p>点击 “生成bp界面” 按钮即可唤起前台，前台应在 <strong>基本信息填写后，bp开始前</strong> 唤起。前台信息会随着后台更新而 <strong>实时更新</strong>。</p>
+<h3 id="1-2-%E6%9B%B4%E6%96%B0%E6%96%B9%E5%BC%8F">1.2 更新方式</h3>
+<p>ban/pick 求生者/监管者 可以通过输入角色 <strong>职业名称</strong> 或其首字母的方式检索角色（如幸运儿可以通过输入 xye 检索），选中后会出现对应的图片，此时前台也会对应更新。</p>
+<p>其他板块直接打字即可。</p>
+<h3 id="1-3-%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B">1.3 使用实例</h3>
+<p>下面给出一个后台对应的前台样式，以供参考。</p>
+<p><img src="./example1.png" alt=""></p>
+<p><img src="./example2.png" alt=""></p>
+<h3 id="1-4-bp-%E8%BD%AF%E4%BB%B6%E6%9B%B4%E6%96%B0">1.4 bp 软件更新</h3>
+<p>此任务应当由当届主办方与上一届主办方交流后完成，需要一定编程基础，此处暂略。</p>
+<h2 id="2-%E5%BC%80%E6%92%AD%E6%B5%81%E7%A8%8B">2 开播流程</h2>
+<h3 id="2-0-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87">2.0 前期准备</h3>
+<h4 id="2-0-1-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">2.0.1 环境配置</h4>
+<ul>
+<li>从主办方处获得配置 json 文件，此处示例为 <code>24.json</code></li>
+<li>选择上方的 <code>场景集合-导入</code>，然后点击<code>...</code>，找到场景集合 <code>24.json</code> 的位置并导入</li>
+</ul>
+<p><img src="./step1.png" alt=""></p>
+<ul>
+<li>选中文件，然后点击导入</li>
+</ul>
+<p><img src="./step2.png" alt=""></p>
+<ul>
+<li>此时可能会出现脱机提示，无视即可</li>
+</ul>
+<p><img src="./step3.png" alt=""></p>
+<ul>
+<li>然后你应该得到如下界面，此时场景一栏内有 6 个选项，后文中将一一介绍功能以及如何配置</li>
+</ul>
+<p><img src="./step4.png" alt=""></p>
+<ul>
+<li>打开 bilibili 直播姬，点击<code>更多-第三方推流</code>，获取推流地址和推流码</li>
+</ul>
+<p><img src="./step5.png" alt=""></p>
+<p><img src="./step6.png" alt=""></p>
+<p><img src="./step7.png" alt=""></p>
+<ul>
+<li>返回 obs，选择 <code>文件-设置-直播</code>，进入直播设置界面。在服务中选择 <code>自定义</code>，并且输入对应的服务器和推流码</li>
+</ul>
+<p><img src="./step8.png" alt=""></p>
+<ul>
+<li>此时返回 obs 主界面，点击 <code>开始直播</code>，即可看到 bilibili 直播姬也开始了直播。但在此之前应当先将场景全部配置完毕</li>
+</ul>
+<p><img src="./step9.png" alt=""></p>
+<h4 id="2-0-2-%E5%9C%BA%E6%99%AF%E9%85%8D%E7%BD%AE">2.0.2 场景配置</h4>
+<p>（此处以正式比赛流程为例，对于规则不同的娱乐模式等其他比赛，应用类似方法自行设计场景）</p>
+<p>（暂略）</p>
+<h3 id="2-1-%E5%BC%80%E6%92%AD%E6%B5%81%E7%A8%8B">2.1 开播流程</h3>
+<p>（暂略）</p>
+
+            
+
+        </div>
+
+    </div>
+</body>
